@@ -39,6 +39,10 @@ set(SOURCE
 		src/ArchMap.cpp
 		src/R2PrintC.h
 		src/R2PrintC.cpp
+		src/R2PrintLLVM.h
+		src/R2PrintLLVM.cpp
+		src/printLLVM.cc
+		src/printLLVM.hh
 		src/RCoreMutex.h
 		src/RCoreMutex.cpp)
 

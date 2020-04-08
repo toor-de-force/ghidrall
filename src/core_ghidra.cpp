@@ -152,7 +152,7 @@ static void Decompile(RCore *core, DecompileMode mode)
 		std::stringstream out_stream;
 		arch.print->setOutputStream(&out_stream);
 
-		arch.setPrintLanguage("r2-c-language");
+		arch.setPrintLanguage("r2-llvm-language");
 		ApplyPrintCConfig(core->config, dynamic_cast<PrintC *>(arch.print));
 
 		Funcdata *func = arch.symboltab->getGlobalScope()->findFunction(Address(arch.getDefaultCodeSpace(), function->addr));
