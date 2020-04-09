@@ -22,7 +22,6 @@ PrintLanguage *R2PrintLLVMCapability::buildLanguage(Architecture *glb)
 R2PrintLLVM::R2PrintLLVM(Architecture *g, const string &nm)
 	: PrintLLVM(g, nm)
 {
-    printf("%s\n", "LLVM!");
 }
 
 void R2PrintLLVM::pushUnnamedLocation(const Address &addr, const Varnode *vn, const PcodeOp *op)

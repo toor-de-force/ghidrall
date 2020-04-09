@@ -2122,14 +2122,21 @@ void PrintLLVM::emitExpression(const PcodeOp *op)
 void PrintLLVM::emitVarDecl(const Symbol *sym)
 
 {
-  int4 id = emit->beginVarDecl(sym);
-
-  pushTypeStart(sym->getType(),false);
-  pushSymbol(sym,(Varnode *)0,(PcodeOp *)0);
-  pushTypeEnd(sym->getType());
-  recurse();
-  
-  emit->endVarDecl(id);
+  stringstream ss;
+  emit->print("<var>");
+  emit->tagLine();
+  int4 id = emit->startIndent();
+  emit->print("<size>");
+  ss << sym->getType()->getSize();
+  emit->print(ss.str().c_str());
+  emit->print("</size>");
+  emit->tagLine();
+  emit->print("<name>");
+  emit->print(sym->getName().c_str());
+  emit->print("</name>");
+  emit->tagLine();
+  emit->stopIndent(id);
+  emit->print("</varr>");
 }
 
 void PrintLLVM::emitVarDeclStatement(const Symbol *sym)
@@ -2137,7 +2144,6 @@ void PrintLLVM::emitVarDeclStatement(const Symbol *sym)
 {
   emit->tagLine();
   emitVarDecl(sym);
-  emit->print(";");
 }
 
 bool PrintLLVM::emitScopeVarDecls(const Scope *scope,int4 cat)
@@ -2266,6 +2272,7 @@ void PrintLLVM::docSingleGlobal(const Symbol *sym)
 void PrintLLVM::docFunction(const Funcdata *fd)
 
 {
+  setFlat(true);
   uint4 modsave = mods;
   if (!fd->isProcStarted())
     throw RecovError("Function not decompiled");

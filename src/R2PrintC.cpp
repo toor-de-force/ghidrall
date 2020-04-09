@@ -22,7 +22,6 @@ PrintLanguage *R2PrintCCapability::buildLanguage(Architecture *glb)
 R2PrintC::R2PrintC(Architecture *g, const string &nm)
 	: PrintC(g, nm)
 {
-    printf("%s\n", "Still C :(d");
 }
 
 void R2PrintC::pushUnnamedLocation(const Address &addr, const Varnode *vn, const PcodeOp *op)
