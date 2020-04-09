@@ -1831,10 +1831,11 @@ void PrintLLVM::emitPrototypeOutput(const FuncProto *proto,
     vn = op->getIn(1);
   else
     vn = (Varnode *)0;
-  int4 id = emit->beginReturnType(vn);
-  pushType(outtype);
-  recurse();
-  emit->endReturnType(id);
+  emit->print("<return_size>");
+  stringstream ss;
+  ss << outtype->getSize();
+  emit->print(ss.str().c_str());
+  emit->print("</return_size>");
 }
 
 /// This emits the individual type declarations of the input parameters to the function as a
@@ -1844,39 +1845,21 @@ void PrintLLVM::emitPrototypeInputs(const FuncProto *proto)
 
 {
   int4 sz = proto->numParams();
-  
-  if (sz == 0)
-    emit->print("void",EmitXml::keyword_color);
-  else {
+
     for(int4 i=0;i<sz;++i) {
-      if (i!=0) {
-		  emit->print(",");
-		  if (option_space_after_comma) {
-			  emit->spaces(1);
-		  }
-      }
       ProtoParameter *param = proto->getParam(i);
       Symbol *sym = param->getSymbol();
-      if (sym != (Symbol *)0)
-	emitVarDecl(sym);
+      emit->print("<arg>");
+      int4 id = emit->startIndent();
+      emit->tagLine();
+      if (sym != (Symbol *)0) emitVarDecl(sym);
       else {
-	// Emit type without name, if there is no backing symbol
-	pushTypeStart(param->getType(),true);
-	pushAtom(Atom("",blanktoken,EmitXml::no_color));
-	pushTypeEnd(param->getType());
-	recurse();
+        emit->print("no_symbol");
       }
+      emit->stopIndent(id);
+      emit->tagLine();
+      emit->print("</arg>");
     }
-  }
-  if (proto->isDotdotdot()) {
-    if (sz != 0) {
-		emit->print(",");
-		if (option_space_after_comma) {
-			emit->spaces(1);
-		}
-	}
-    emit->print("...");
-  }
 }
 
 /// A formal variable declaration is emitted for every symbol in the given
@@ -1885,6 +1868,8 @@ void PrintLLVM::emitPrototypeInputs(const FuncProto *proto)
 void PrintLLVM::emitLocalVarDecls(const Funcdata *fd)
 
 {
+  emit->print("<locals>");
+  int id = emit->startIndent();
   bool notempty = false;
 
   if (emitScopeVarDecls(fd->getScopeLocal(),-1))
@@ -1898,9 +1883,10 @@ void PrintLLVM::emitLocalVarDecls(const Funcdata *fd)
       notempty = true;
     ++iter;
   }
-
-  if (notempty)
-    emit->tagLine();
+  emit->stopIndent(id);
+  emit->tagLine();
+  emit->print("</locals>");
+  emit->tagLine();
 }
 
 /// This emits an entire statement rooted at a given operation. All associated expressions
@@ -2124,8 +2110,8 @@ void PrintLLVM::emitVarDecl(const Symbol *sym)
 {
   stringstream ss;
   emit->print("<var>");
-  emit->tagLine();
   int4 id = emit->startIndent();
+  emit->tagLine();
   emit->print("<size>");
   ss << sym->getType()->getSize();
   emit->print(ss.str().c_str());
@@ -2134,9 +2120,9 @@ void PrintLLVM::emitVarDecl(const Symbol *sym)
   emit->print("<name>");
   emit->print(sym->getName().c_str());
   emit->print("</name>");
-  emit->tagLine();
   emit->stopIndent(id);
-  emit->print("</varr>");
+  emit->tagLine();
+  emit->print("</var>");
 }
 
 void PrintLLVM::emitVarDeclStatement(const Symbol *sym)
@@ -2210,26 +2196,18 @@ void PrintLLVM::emitFunctionDeclaration(const Funcdata *fd)
   const FuncProto *proto = &fd->getFuncProto();
   int4 id = emit->beginFuncProto();
   emitPrototypeOutput(proto,fd);
-  emit->spaces(1);
-  if (option_convention) {
-    if (fd->getFuncProto().hasModel()) {
-      if (!fd->getFuncProto().hasMatchingModel(fd->getArch()->defaultfp)) { // If not the default
-	emit->print(fd->getFuncProto().getModelName().c_str(),EmitXml::keyword_color);
-	emit->spaces(1);
-      }
-    }
-  }
-  int4 id1 = emit->openGroup();
-  emit->tagFuncName(fd->getName().c_str(),EmitXml::funcname_color,
+  emit->tagLine();
+  emit->print("<name>");
+  emit->tagFuncName(fd->getName().c_str(),EmitXml::no_color,
 		    fd,(PcodeOp *)0);
-
-  emit->spaces(function_call.spacing,function_call.bump);
-  int4 id2 = emit->openParen('(');
-  emit->spaces(0,function_call.bump);
+  emit->print("</name>");
+  emit->tagLine();
+  emit->print("<args>");
+  int4 id2 = emit->startIndent();
   emitPrototypeInputs(proto);
-  emit->closeParen(')',id2);
-  emit->closeGroup(id1);
-
+  emit->stopIndent(id2);
+  emit->tagLine();
+  emit->print("</args>");
   emit->endFuncProto(id);
 }
 
@@ -2281,23 +2259,18 @@ void PrintLLVM::docFunction(const Funcdata *fd)
   try {
     commsorter.setupFunctionList(instr_comment_type|head_comment_type,fd,*fd->getArch()->commentdb,option_unplaced);
     int4 id1 = emit->beginFunction(fd);
-    emitCommentFuncHeader(fd);
+    emit->print("<function>");
+    int4 id2 = emit->startIndent();
     emit->tagLine();
     emitFunctionDeclaration(fd);
     emit->tagLine();
-    if (option_newline_after_prototype) {
-      emit->tagLine();
-    }
-    int4 id = emit->startIndent();
-    emit->print("{");
     emitLocalVarDecls(fd);
-    if (isSet(flat))
-      emitBlockGraph(&fd->getBasicBlocks());
-    else
-      emitBlockGraph(&fd->getStructure());
-    emit->stopIndent(id);
     emit->tagLine();
-    emit->print("}");
+    emitBlockGraph(&fd->getBasicBlocks());
+    emit->tagLine();
+    emit->stopIndent(id2);
+    emit->tagLine();
+    emit->print("</function>");
     emit->tagLine();
     emit->endFunction(id1);
     emit->flush();
