@@ -2265,9 +2265,7 @@ void PrintLLVM::docFunction(const Funcdata *fd)
     emitFunctionDeclaration(fd);
     emit->tagLine();
     emitLocalVarDecls(fd);
-    emit->tagLine();
     emitBlockGraph(&fd->getBasicBlocks());
-    emit->tagLine();
     emit->stopIndent(id2);
     emit->tagLine();
     emit->print("</function>");
@@ -2289,69 +2287,24 @@ void PrintLLVM::docFunction(const Funcdata *fd)
 void PrintLLVM::emitBlockBasic(const BlockBasic *bb)
 
 {
-  const PcodeOp *inst;
-  bool separator;
-
-  commsorter.setupBlockList(bb);
-  emitLabelStatement(bb);	// Print label (for flat prints)
-  if (isSet(only_branch)) {
-    inst = bb->lastOp();
-    if (inst->isBranch())
-      emitExpression(inst);	// Only print branch instruction
-  }
-  else {
-    separator = false;
-    list<PcodeOp *>::const_iterator iter;
+    const PcodeOp *inst;
+    commsorter.setupBlockList(bb);
+    Address addr = bb->getEntryAddr();
+    const AddrSpace *spc = addr.getSpace();
+    uintb off = addr.getOffset();
+    ostringstream lb;
+    lb << addr.getShortcut();
+    addr.printRaw(lb);
+    emit->print("<label>");
+    emit->tagLabel(lb.str().c_str(),EmitXml::no_color,spc,off);
+    emit->print("</label>");
+    list<PcodeOp*>::const_iterator iter;
     for(iter=bb->beginOp();iter!=bb->endOp();++iter) {
-      inst = *iter;
-      if (inst->notPrinted()) continue;
-      if (inst->isBranch()) {
-	if (isSet(no_branch)) continue;
-	// A straight branch is always printed by
-	// the block classes
-	if (inst->code() == CPUI_BRANCH) continue;
-      }
-      const Varnode *vn = inst->getOut();
-      if ((vn!=(const Varnode *)0)&&(vn->isImplied()))
-	continue;
-      if (separator) {
-	if (isSet(comma_separate)) {
-	  emit->print(",");
-	  emit->spaces(1);
-	}
-	else {
-	  emitCommentGroup(inst);
-	  emit->tagLine();
-	}
-      }
-      else if (!isSet(comma_separate)) {
-	emitCommentGroup(inst);
-	emit->tagLine();
-      }
-      emitStatement(inst);
-      separator = true;
+        inst = *iter;
+        if (inst->notPrinted()) continue;
+        emit->tagLine();
+        emitStatement(inst);
     }
-				// If we are printing flat structure and there
-				// is no longer a normal fallthru, print a goto
-    if (isSet(flat)&&isSet(nofallthru)) {
-      inst = bb->lastOp();
-      emit->tagLine();
-      int4 id = emit->beginStatement(inst);
-      emit->print("goto",EmitXml::keyword_color);
-      emit->spaces(1);
-      if (bb->sizeOut()==2) {
-	if (inst->isFallthruTrue())
-	  emitLabel(bb->getOut(1));
-	else
-	  emitLabel(bb->getOut(0));
-      }
-      else
-	emitLabel(bb->getOut(0));
-      emit->print(";");
-      emit->endStatement(id);
-    }
-    emitCommentGroup((const PcodeOp *)0); // Any remaining comments
-  }
 }
 
 void PrintLLVM::emitBlockGraph(const BlockGraph *bl)
@@ -2359,12 +2312,23 @@ void PrintLLVM::emitBlockGraph(const BlockGraph *bl)
 {
   const vector<FlowBlock *> &list(bl->getList());
   vector<FlowBlock *>::const_iterator iter;
-
+  emit->print("<block_graph>");
+  int4 id2 = emit->startIndent();
   for(iter=list.begin();iter!=list.end();++iter) {
     int4 id = emit->beginBlock(*iter);
+    emit->tagLine();
+    emit->print("<block>");
+    int4 id3 = emit->startIndent();
+    emit->tagLine();
     (*iter)->emit(this);
+    emit->stopIndent(id3);
+    emit->tagLine();
+    emit->print("</block>");
     emit->endBlock(id);
   }
+  emit->stopIndent(id2);
+  emit->tagLine();
+  emit->print("</block_graph>");
 }
 
 void PrintLLVM::emitBlockCopy(const BlockCopy *bl)
