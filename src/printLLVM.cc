@@ -1897,10 +1897,12 @@ void PrintLLVM::emitStatement(const PcodeOp *inst)
 
 {
   int4 id = emit->beginStatement(inst);
+  emit->print("<op>");
+  int4 id2 = emit->startIndent();
   emitExpression(inst);
+  emit->stopIndent(id2);
+  emit->print("</op>");
   emit->endStatement(id);
-  if (!isSet(comma_separate))
-    emit->print(";");
 }
 
 /// \brief Emit a statement representing an unstructured branch
@@ -2079,30 +2081,7 @@ bool PrintLLVM::emitInplaceOp(const PcodeOp *op)
 void PrintLLVM::emitExpression(const PcodeOp *op)
    
 {
-  const Varnode *outvn = op->getOut();
-  if (outvn != (Varnode *)0) {
-    if (option_inplace_ops && emitInplaceOp(op)) return;
-    pushOp(&assignment,op);
-    pushVnLHS(outvn,op);
-  }
-  else if (op->doesSpecialPrinting()) {
-    // Printing of constructor syntax
-    const PcodeOp *newop = op->getIn(1)->getDef();
-    outvn = newop->getOut();
-    pushOp(&assignment,newop);
-    pushVnLHS(outvn,newop);
-    opConstructor(op,true);
-    recurse();
-    return;
-  }
-    // If STORE, print  *( ) = ( )
-    // If BRANCH, print nothing
-    // If CBRANCH, print condition  ( )
-    // If BRANCHIND, print switch( )
-    // If CALL, CALLIND, CALLOTHER  print  call
-    // If RETURN,   print return ( )
-  op->getOpcode()->push(this,op,(PcodeOp *)0);
-  recurse();
+
 }
 
 void PrintLLVM::emitVarDecl(const Symbol *sym)
@@ -2299,12 +2278,18 @@ void PrintLLVM::emitBlockBasic(const BlockBasic *bb)
     emit->tagLabel(lb.str().c_str(),EmitXml::no_color,spc,off);
     emit->print("</label>");
     list<PcodeOp*>::const_iterator iter;
+    emit->tagLine();
+    emit->print("<ops>");
+    int4 id = emit->startIndent();
     for(iter=bb->beginOp();iter!=bb->endOp();++iter) {
         inst = *iter;
         if (inst->notPrinted()) continue;
         emit->tagLine();
         emitStatement(inst);
     }
+    emit->stopIndent(id);
+    emit->tagLine();
+    emit->print("</ops>");
 }
 
 void PrintLLVM::emitBlockGraph(const BlockGraph *bl)
