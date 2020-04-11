@@ -2081,7 +2081,34 @@ bool PrintLLVM::emitInplaceOp(const PcodeOp *op)
 void PrintLLVM::emitExpression(const PcodeOp *op)
    
 {
-
+    const Varnode *outvn = op->getOut();
+    emit->tagLine();
+    emit->print("<opname>");
+    emit->print(op->getOpName().c_str());
+    emit->print("</opname>");
+    emit->tagLine();
+    if (outvn != (Varnode *)0) {
+        emit->print("<output>");
+        emit->print(printOperand(outvn).str().c_str());
+        emit->print("</output>");
+        emit->tagLine();
+    }
+    const Varnode * invn;
+    emit->print("<inputs>");
+    int4 id = emit->startIndent();
+    emit->tagLine();
+    for(int i = 0; i < op->numInput(); i++){
+        invn = op->getIn(i);
+        emit->print("<input>");
+        emit->print(printOperand(invn).str().c_str());
+        emit->print("</input>");
+        if (i < op->numInput()-1) emit->tagLine();
+    }
+    emit->stopIndent(id);
+    emit->tagLine();
+    emit->print("</inputs>");
+    emit->tagLine();
+    //op->getOpcode()->push(this,op,(PcodeOp *)0);
 }
 
 void PrintLLVM::emitVarDecl(const Symbol *sym)
@@ -2878,4 +2905,31 @@ string PrintLLVM::genericTypeName(const Datatype *ct)
   }
   s << dec << ct->getSize();
   return s.str();
+}
+
+stringstream PrintLLVM::printOperand(const Varnode *vn) {
+    stringstream ss;
+    if (vn->isAnnotation()) {
+        return ss;
+    }
+    HighVariable *high = vn->getHigh();
+    if (vn->isConstant()) {
+        ss << vn->getOffset();
+        return ss;
+    }
+    Symbol *sym = high->getSymbol();
+    if (sym == (Symbol *)0) {
+        ss << high->getNameRepresentative()->getAddr();
+        return ss;
+    }
+    else {
+        int4 symboloff = high->getSymbolOffset();
+        if (symboloff == -1){
+            ss << sym->getName();
+            return ss;
+        } else {
+            ss << "error";
+            return ss;
+        }
+    }
 }

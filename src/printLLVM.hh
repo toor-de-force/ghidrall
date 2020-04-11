@@ -194,6 +194,7 @@ protected:
   virtual void emitTypeDefinition(const Datatype *ct);
   virtual bool checkPrintNegation(const Varnode *vn);
 public:
+  stringstream printOperand(const Varnode *vn);
   PrintLLVM(Architecture *g,const string &nm="llvm-language");	///< Constructor
   void setNULLPrinting(bool val) { option_NULL = val; }		///< Toggle the printing of a 'NULL' token
   void setInplaceOps(bool val) { option_inplace_ops = val; }	///< Toggle the printing of \e in-place operators
