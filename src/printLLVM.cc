@@ -18,6 +18,8 @@
 
 // Operator tokens for expressions
 //                        token #in prec assoc   optype       space bump
+// Operator tokens for expressions
+//                        token #in prec assoc   optype       space bump
 OpToken PrintLLVM::hidden = { "", 1, 70, false, OpToken::hiddenfunction, 0, 0, (OpToken *)0 };
 OpToken PrintLLVM::scope = { "::", 2, 70, true, OpToken::binary, 0, 0, (OpToken *)0 };
 OpToken PrintLLVM::object_member = { ".", 2, 66, true, OpToken::binary, 0, 0, (OpToken *)0  };
@@ -51,7 +53,7 @@ OpToken PrintLLVM::boolean_and = { "&&", 2, 22, false, OpToken::binary, 1, 0, (O
 OpToken PrintLLVM::boolean_xor = { "^^", 2, 20, false, OpToken::binary, 1, 0, (OpToken *)0 };
 OpToken PrintLLVM::boolean_or = { "||", 2, 18, false, OpToken::binary, 1, 0, (OpToken *)0 };
 OpToken PrintLLVM::assignment = { "=", 2, 14, false, OpToken::binary, 1, 5, (OpToken *)0 };
-OpToken PrintLLVM::comma = { ", ", 2, 2, true, OpToken::binary, 0, 0, (OpToken *)0 };
+OpToken PrintLLVM::comma = { ",", 2, 2, true, OpToken::binary, 0, 0, (OpToken *)0 };
 OpToken PrintLLVM::new_op = { "", 2, 62, false, OpToken::space, 1, 0, (OpToken *)0 };
 
 // Inplace assignment operators
@@ -105,7 +107,7 @@ PrintLLVM::PrintLLVM(Architecture *g,const string &nm) : PrintLanguage(g,nm)
   option_newline_before_opening_brace = false;
   option_newline_after_prototype = true;
   nullToken = "NULL";
-  
+
   // Set the flip tokens
   less_than.negate = &greater_equal;
   less_equal.negate = &greater_than;
@@ -190,7 +192,7 @@ void PrintLLVM::pushTypeStart(const Datatype *ct,bool noident)
 
   ct = typestack.back();	// The base type
   OpToken *tok;
-  
+
   if (noident && (typestack.size()==1))
     tok = &type_expr_nospace;
   else
@@ -742,7 +744,7 @@ void PrintLLVM::opPtrsub(const PcodeOp *op)
       arrayvalue = valueon;	// If printing value, use [0]
       valueon = true;		// Don't print &
     }
-    
+
     if (!valueon) {		// Printing an ampersand
       if (flex) {		// EMIT  &( ).name
 	pushOp(&addressof,op);
@@ -2084,12 +2086,15 @@ void PrintLLVM::emitExpression(const PcodeOp *op)
     const Varnode *outvn = op->getOut();
     emit->tagLine();
     emit->print("<opname>");
-    emit->print(op->getOpName().c_str());
+    stringstream ss;
+    ss << op->getOpcode()->getName();
+    emit->print(ss.str().c_str());
     emit->print("</opname>");
     emit->tagLine();
     if (outvn != (Varnode *)0) {
         emit->print("<output>");
-        emit->print(printOperand(outvn).str().c_str());
+        pushVnExplicit(outvn,op);
+        recurse();
         emit->print("</output>");
         emit->tagLine();
     }
@@ -2100,7 +2105,7 @@ void PrintLLVM::emitExpression(const PcodeOp *op)
     for(int i = 0; i < op->numInput(); i++){
         invn = op->getIn(i);
         emit->print("<input>");
-        emit->print(printOperand(invn).str().c_str());
+        pushVnExplicit(invn, op);
         emit->print("</input>");
         if (i < op->numInput()-1) emit->tagLine();
     }
@@ -2108,7 +2113,6 @@ void PrintLLVM::emitExpression(const PcodeOp *op)
     emit->tagLine();
     emit->print("</inputs>");
     emit->tagLine();
-    //op->getOpcode()->push(this,op,(PcodeOp *)0);
 }
 
 void PrintLLVM::emitVarDecl(const Symbol *sym)
@@ -2122,6 +2126,11 @@ void PrintLLVM::emitVarDecl(const Symbol *sym)
   ss << sym->getType()->getSize();
   emit->print(ss.str().c_str());
   emit->print("</size>");
+  emit->tagLine();
+  emit->print("<type>");
+  ss << sym->getType()->getName();
+  emit->print(ss.str().c_str());
+  emit->print("</type>");
   emit->tagLine();
   emit->print("<name>");
   emit->print(sym->getName().c_str());
