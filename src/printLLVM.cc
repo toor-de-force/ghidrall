@@ -1861,16 +1861,10 @@ void PrintLLVM::emitPrototypeInputs(const FuncProto *proto)
     for(int4 i=0;i<sz;++i) {
       ProtoParameter *param = proto->getParam(i);
       Symbol *sym = param->getSymbol();
-      emit->print("<arg>");
-      int4 id = emit->startIndent();
-      emit->tagLine();
       if (sym != (Symbol *)0) emitVarDecl(sym);
       else {
         emit->print("no_symbol");
       }
-      emit->stopIndent(id);
-      emit->tagLine();
-      emit->print("</arg>");
     }
 }
 
@@ -2115,8 +2109,21 @@ void PrintLLVM::emitExpression(const PcodeOp *op)
     for(int i = 0; i < op->numInput(); i++){
         invn = op->getIn(i);
         emit->print("<input>");
-        pushVnExplicit(invn, op);
+        if (ss.str() == "CALL" && i == 0){
+            if (invn->getSpace()->getType()==IPTR_FSPEC) {
+                FuncCallSpecs *fc = FuncCallSpecs::getFspecFromConst(invn->getAddr());
+                if (fc->getName().size()==0) {
+                    string name = genericFunctionName(fc->getEntryAddress());
+                    pushAtom(Atom(name,functoken,EmitXml::no_color,op,(const Funcdata *)0));
+                }
+                else
+                    pushAtom(Atom(fc->getName(),functoken,EmitXml::no_color,op,(const Funcdata *)0));
+            }
+        } else {
+            pushVnExplicit(invn, op);
+        }
         emit->print("</input>");
+        recurse();
         if (i < op->numInput()-1) emit->tagLine();
     }
     emit->stopIndent(id);
@@ -2149,6 +2156,7 @@ void PrintLLVM::emitVarDecl(const Symbol *sym)
   emit->stopIndent(id);
   emit->tagLine();
   emit->print("</var>");
+  emit->tagLine();
 }
 
 void PrintLLVM::emitVarDeclStatement(const Symbol *sym)
@@ -2236,6 +2244,7 @@ void PrintLLVM::emitFunctionDeclaration(const Funcdata *fd)
   emit->tagLine();
   emit->print("<args>");
   int4 id2 = emit->startIndent();
+  emit->tagLine();
   emitPrototypeInputs(proto);
   emit->stopIndent(id2);
   emit->tagLine();
@@ -2282,6 +2291,7 @@ void PrintLLVM::docSingleGlobal(const Symbol *sym)
 void PrintLLVM::docFunction(const Funcdata *fd)
 
 {
+  printf("%s", "Got Here!");
   setFlat(true);
   uint4 modsave = mods;
   if (!fd->isProcStarted())

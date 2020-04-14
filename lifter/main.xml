@@ -1,0 +1,50 @@
+<function>
+  <return>
+    <type>undefined8</type>
+    <size>8</size>
+  </return>
+  <name>main</name>
+  <address>622</address>
+  <args>
+    
+  </args>
+  <locals>
+    <var>
+      <type>int64_t</type>
+      <size>8</size>
+      <name>var_ch</name>
+    </var>
+    
+  </locals>
+  <block_graph>
+    <block>
+      <label>
+        <address>622</address>
+      </label>
+      <ops>
+        <op>
+          <opname>CALL</opname>
+          <inputs>
+            <input>sym.multiple</input>
+            <input>5</input>
+            <input>6</input>
+          </inputs>
+          </op>
+        <op>
+          <opname>COPY</opname>
+          <output>*(undefined8 *)0x0</output>
+          <inputs>
+            <input>0</input>
+          </inputs>
+          </op>
+        <op>
+          <opname>RETURN</opname>
+          <inputs>
+            <input>0</input>
+            <input>*(undefined8 *)0x0</input>
+          </inputs>
+          </op>
+      </ops>
+    </block>
+  </block_graph>
+</function>
