@@ -1833,11 +1833,21 @@ void PrintLLVM::emitPrototypeOutput(const FuncProto *proto,
     vn = op->getIn(1);
   else
     vn = (Varnode *)0;
-  emit->print("<return_size>");
+  emit->print("<return>");
+  int4 id = emit->startIndent();
+  emit->tagLine();
+  emit->print("<type>");
+  emit->print(vn->getType()->getName().c_str());
+  emit->print("</type>");
+  emit->tagLine();
+  emit->print("<size>");
   stringstream ss;
   ss << outtype->getSize();
   emit->print(ss.str().c_str());
-  emit->print("</return_size>");
+  emit->print("</size>");
+  emit->stopIndent(id);
+  emit->tagLine();
+  emit->print("</return>");
 }
 
 /// This emits the individual type declarations of the input parameters to the function as a
@@ -2087,7 +2097,7 @@ void PrintLLVM::emitExpression(const PcodeOp *op)
     emit->tagLine();
     emit->print("<opname>");
     stringstream ss;
-    ss << op->getOpcode()->getName();
+    ss << getPcodeOpName(op->getOpcode()->getOpcode());
     emit->print(ss.str().c_str());
     emit->print("</opname>");
     emit->tagLine();
@@ -2122,15 +2132,16 @@ void PrintLLVM::emitVarDecl(const Symbol *sym)
   emit->print("<var>");
   int4 id = emit->startIndent();
   emit->tagLine();
-  emit->print("<size>");
-  ss << sym->getType()->getSize();
-  emit->print(ss.str().c_str());
-  emit->print("</size>");
-  emit->tagLine();
   emit->print("<type>");
   ss << sym->getType()->getName();
   emit->print(ss.str().c_str());
   emit->print("</type>");
+  emit->tagLine();
+  emit->print("<size>");
+  ss.str("");
+  ss << sym->getType()->getSize();
+  emit->print(ss.str().c_str());
+  emit->print("</size>");
   emit->tagLine();
   emit->print("<name>");
   emit->print(sym->getName().c_str());
@@ -2216,6 +2227,12 @@ void PrintLLVM::emitFunctionDeclaration(const Funcdata *fd)
   emit->tagFuncName(fd->getName().c_str(),EmitXml::no_color,
 		    fd,(PcodeOp *)0);
   emit->print("</name>");
+  emit->tagLine();
+  emit->print("<address>");
+  stringstream ss;
+  ss << hex << fd->getAddress().getOffset();
+  emit->print(ss.str().c_str());
+  emit->print("</address>");
   emit->tagLine();
   emit->print("<args>");
   int4 id2 = emit->startIndent();
@@ -2307,11 +2324,16 @@ void PrintLLVM::emitBlockBasic(const BlockBasic *bb)
     Address addr = bb->getEntryAddr();
     const AddrSpace *spc = addr.getSpace();
     uintb off = addr.getOffset();
-    ostringstream lb;
-    lb << addr.getShortcut();
-    addr.printRaw(lb);
+    stringstream ss;
     emit->print("<label>");
-    emit->tagLabel(lb.str().c_str(),EmitXml::no_color,spc,off);
+    int4 id2 = emit->startIndent();
+    emit->tagLine();
+    emit->print("<address>");
+    ss << hex << off;
+    emit->print(ss.str().c_str());
+    emit->print("</address>");
+    emit->stopIndent(id2);
+    emit->tagLine();
     emit->print("</label>");
     list<PcodeOp*>::const_iterator iter;
     emit->tagLine();
@@ -2916,29 +2938,96 @@ string PrintLLVM::genericTypeName(const Datatype *ct)
   return s.str();
 }
 
-stringstream PrintLLVM::printOperand(const Varnode *vn) {
-    stringstream ss;
-    if (vn->isAnnotation()) {
-        return ss;
-    }
-    HighVariable *high = vn->getHigh();
-    if (vn->isConstant()) {
-        ss << vn->getOffset();
-        return ss;
-    }
-    Symbol *sym = high->getSymbol();
-    if (sym == (Symbol *)0) {
-        ss << high->getNameRepresentative()->getAddr();
-        return ss;
-    }
-    else {
-        int4 symboloff = high->getSymbolOffset();
-        if (symboloff == -1){
-            ss << sym->getName();
-            return ss;
-        } else {
-            ss << "error";
-            return ss;
-        }
+string PrintLLVM::getPcodeOpName(int opcode) {
+    switch(opcode){
+        case 1: return "COPY";		///< Copy one operand to another
+        case 2: return "LOAD";		///< Load from a pointer into a specified address space
+        case 3: return "STORE";		///< Store at a pointer into a specified address space
+
+        case 4: return "BRANCH";		///< Always branch
+        case 5: return "CBRANCH";		///< Conditional branch
+        case 6: return "BRANCHIND";		///< Indirect branch (jumptable)
+
+        case 7: return "CALL";		///< Call to an absolute address
+        case 8: return "CALLIND";		///< Call through an indirect address
+        case 9: return "CALLOTHER";		///< User-defined operation
+        case 10: return "RETURN";		///< Return from subroutine
+
+        // Integer/bit operations
+
+        case 11: return "INT_EQUAL";		///< Integer comparison, equality (==)
+        case 12: return "INT_NOTEQUAL";	///< Integer comparison, in-equality (!=)
+        case 13: return "INT_SLESS";		///< Integer comparison, signed less-than (<)
+        case 14: return "INT_SLESSEQUAL";	///< Integer comparison, signed less-than-or-equal (<=)
+        case 15: return "INT_LESS";		///< Integer comparison, unsigned less-than (<)
+        // This also indicates a borrow on unsigned substraction
+        case 16: return "INT_LESSEQUAL";	///< Integer comparison, unsigned less-than-or-equal (<=)
+        case 17: return "INT_ZEXT";		///< Zero extension
+        case 18: return "INT_SEXT";		///< Sign extension
+        case 19: return "INT_ADD";		///< Addition, signed or unsigned (+)
+        case 20: return "INT_SUB";		///< Subtraction, signed or unsigned (-)
+        case 21: return "INT_CARRY";		///< Test for unsigned carry
+        case 22: return "INT_SCARRY";		///< Test for signed carry
+        case 23: return "INT_SBORROW";	///< Test for signed borrow
+        case 24: return "INT_2COMP";		///< Twos complement
+        case 25: return "INT_NEGATE";		///< Logical/bitwise negation (~)
+        case 26: return "INT_XOR";		///< Logical/bitwise exclusive-or (^)
+        case 27: return "INT_AND";		///< Logical/bitwise and (&)
+        case 28: return "INT_OR";		///< Logical/bitwise or (|)
+        case 29: return "INT_LEFT";		///< Left shift (<<)
+        case 30: return "INT_RIGHT";		///< Right shift, logical (>>)
+        case 31: return "INT_SRIGHT";		///< Right shift, arithmetic (>>)
+        case 32: return "INT_MULT";		///< Integer multiplication, signed and unsigned (*)
+        case 33: return "INT_DIV";		///< Integer division, unsigned (/)
+        case 34: return "INT_SDIV";		///< Integer division, signed (/)
+        case 35: return "INT_REM";		///< Remainder/modulo, unsigned (%)
+        case 36: return "INT_SREM";		///< Remainder/modulo, signed (%)
+
+        case 37: return "BOOL_NEGATE";	///< Boolean negate (!)
+        case 38: return "BOOL_XOR";		///< Boolean exclusive-or (^^)
+        case 39: return "BOOL_AND";		///< Boolean and (&&)
+        case 40: return "BOOL_OR";		///< Boolean or (||)
+
+        // Floating point operations
+
+        case 41: return "FLOAT_EQUAL";        ///< Floating-point comparison, equality (==)
+        case 42: return "FLOAT_NOTEQUAL";	///< Floating-point comparison, in-equality (!=)
+        case 43: return "FLOAT_LESS";		///< Floating-point comparison, less-than (<)
+        case 44: return "FLOAT_LESSEQUAL";	///< Floating-point comparison, less-than-or-equal (<=)
+        // Slot 45 is currently unused
+        case 46: return "FLOAT_NAN";	      ///< Not-a-number test (NaN)
+        case 47: return "FLOAT_ADD";          ///< Floating-point addition (+)
+        case 48: return "FLOAT_DIV";          ///< Floating-point division (/)
+        case 49: return "FLOAT_MULT";         ///< Floating-point multiplication (*)
+        case 50: return "FLOAT_SUB";          ///< Floating-point subtraction (-)
+        case 51: return "FLOAT_NEG";          ///< Floating-point negation (-)
+        case 52: return "FLOAT_ABS";          ///< Floating-point absolute value (abs)
+        case 53: return "FLOAT_SQRT";         ///< Floating-point square root (sqrt)
+        case 54: return "FLOAT_INT2FLOAT";    ///< Convert an integer to a floating-point
+        case 55: return "FLOAT_FLOAT2FLOAT";  ///< Convert between different floating-point sizes
+        case 56: return "FLOAT_TRUNC";       ///< Round towards zero
+        case 57: return "FLOAT_CEIL";         ///< Round towards +infinity
+        case 58: return "FLOAT_FLOOR";        ///< Round towards -infinity
+        case 59: return "FLOAT_ROUND";        ///< Round towards nearest
+
+        // Internal opcodes for simplification. Not
+        // typically generated in a direct translation.
+
+        // Data-flow operations
+        case 60: return "MULTIEQUAL";		///< Phi-node operator
+        case 61: return "INDIRECT";		///< Copy with an indirect effect
+        case 62: return "PIECE";		///< Concatenate
+        case 63: return "SUBPIECE";		///< Truncate
+        case 64: return "CAST";		///< Cast from one data-type to another
+        case 65: return "PTRADD";		///< Index into an array ([])
+        case 66: return "PTRSUB";		///< Drill down to a sub-field  (->)
+        case 67: return "SEGMENTOP";		///< Look-up a \e segmented address
+        case 68: return "CPOOLREF";		///< Recover a value from the \e constant \e pool
+        case 69: return "NEW";		///< Allocate a new object (new)
+        case 70: return "INSERT";		///< Insert a bit-range
+        case 71: return "EXTRACT";		///< Extract a bit-range
+        case 72: return "POPCOUNT";		///< Count the 1-bits
+        case 73: return "MAX";			///< Value indicating the end of the op-code values
+        default: return "Failed to recover pcodeop name";
     }
 }
