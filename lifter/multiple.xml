@@ -10,13 +10,11 @@
       <type>int64_t</type>
       <size>8</size>
       <name>arg1</name>
-    </var>
-    <var>
+    </var><var>
       <type>int64_t</type>
       <size>8</size>
       <name>arg2</name>
     </var>
-    
   </args>
   <locals>
     <var>
@@ -24,19 +22,16 @@
       <size>4</size>
       <name>var_18h</name>
     </var>
-    
     <var>
       <type>int64_t</type>
       <size>8</size>
       <name>var_14h</name>
     </var>
-    
     <var>
       <type>int64_t</type>
       <size>8</size>
       <name>var_4h</name>
     </var>
-    
   </locals>
   <block_graph>
     <block>
@@ -46,36 +41,73 @@
       <ops>
         <op>
           <opname>SUBPIECE</opname>
-          <output>*(int32_t *)0x38</output>
+          <output>
+            <name>register0x00000038</name>
+            <type>int32_t</type>
+            <size>4</size>
+          </output>
           <inputs>
-            <input>arg1</input>
-            <input>0</input>
+            <input>
+              <name>arg1</name>
+              <type>int64_t</type>
+              <size>8</size>
+            </input>
+            <input>
+              <name>0</name>
+              <type>undefined4</type>
+              <size>4</size>
+            </input>
           </inputs>
-          </op>
+        </op>
         <op>
           <opname>SUBPIECE</opname>
-          <output>var_18h</output>
+          <output>
+            <name>var_18h</name>
+            <type>int32_t</type>
+            <size>4</size>
+          </output>
           <inputs>
-            <input>arg2</input>
-            <input>0</input>
+            <input>
+              <name>arg2</name>
+              <type>int64_t</type>
+              <size>8</size>
+            </input>
+            <input>
+              <name>0</name>
+              <type>undefined4</type>
+              <size>4</size>
+            </input>
           </inputs>
-          </op>
+        </op>
         <op>
           <opname>COPY</opname>
-          <output>(int32_t)var_4h</output>
+          <output>
+            <name>var_4h</name>
+            <type>int32_t</type>
+            <size>4</size>
+          </output>
           <inputs>
-            <input>0</input>
+            <input>
+              <name>0</name>
+              <type>int32_t</type>
+              <size>4</size>
+            </input>
           </inputs>
-          </op>
+        </op>
         <op>
           <opname>BRANCH</opname>
           <inputs>
-            <input>0x617</input>
+            <input>
+              <name>0x617</name>
+              <type>code</type>
+              <size>1</size>
+            </input>
           </inputs>
-          </op>
+        </op>
       </ops>
       <out_branches>
-        <branch_target>0x00000617</branch_target></out_branches>
+        <branch_target>0x00000617</branch_target>
+      </out_branches>
     </block>
     <block>
       <label>
@@ -84,23 +116,44 @@
       <ops>
         <op>
           <opname>INT_SLESS</opname>
-          <output>unique0x000019f0</output>
+          <output>
+            <name>unique0x000019f0</name>
+            <type>bool</type>
+            <size>1</size>
+          </output>
           <inputs>
-            <input>0</input>
-            <input>var_18h</input>
+            <input>
+              <name>0</name>
+              <type>int32_t</type>
+              <size>4</size>
+            </input>
+            <input>
+              <name>var_18h</name>
+              <type>int32_t</type>
+              <size>4</size>
+            </input>
           </inputs>
-          </op>
+        </op>
         <op>
           <opname>CBRANCH</opname>
           <inputs>
-            <input>0x60d</input>
-            <input>unique0x000019f0</input>
+            <input>
+              <name>0x60d</name>
+              <type>code</type>
+              <size>1</size>
+            </input>
+            <input>
+              <name>unique0x000019f0</name>
+              <type>bool</type>
+              <size>1</size>
+            </input>
           </inputs>
-          </op>
+        </op>
       </ops>
       <out_branches>
         <branch_target>0x0000061d</branch_target>
-        <branch_target>0x0000060d</branch_target></out_branches>
+        <branch_target>0x0000060d</branch_target>
+      </out_branches>
     </block>
     <block>
       <label>
@@ -109,23 +162,48 @@
       <ops>
         <op>
           <opname>INT_ADD</opname>
-          <output>(int32_t)var_4h</output>
+          <output>
+            <name>var_4h</name>
+            <type>int32_t</type>
+            <size>4</size>
+          </output>
           <inputs>
-            <input>(int32_t)var_4h</input>
-            <input>*(int32_t *)0x38</input>
+            <input>
+              <name>var_4h</name>
+              <type>int32_t</type>
+              <size>4</size>
+            </input>
+            <input>
+              <name>register0x00000038</name>
+              <type>int32_t</type>
+              <size>4</size>
+            </input>
           </inputs>
-          </op>
+        </op>
         <op>
           <opname>INT_ADD</opname>
-          <output>var_18h</output>
+          <output>
+            <name>var_18h</name>
+            <type>int32_t</type>
+            <size>4</size>
+          </output>
           <inputs>
-            <input>var_18h</input>
-            <input>-1</input>
+            <input>
+              <name>var_18h</name>
+              <type>int32_t</type>
+              <size>4</size>
+            </input>
+            <input>
+              <name>-1</name>
+              <type>int32_t</type>
+              <size>4</size>
+            </input>
           </inputs>
-          </op>
+        </op>
       </ops>
       <out_branches>
-        <branch_target>0x00000617</branch_target></out_branches>
+        <branch_target>0x00000617</branch_target>
+      </out_branches>
     </block>
     <block>
       <label>
@@ -134,20 +212,37 @@
       <ops>
         <op>
           <opname>COPY</opname>
-          <output>*(int32_t *)0x0</output>
+          <output>
+            <name>register0x00000000</name>
+            <type>int32_t</type>
+            <size>4</size>
+          </output>
           <inputs>
-            <input>(int32_t)var_4h</input>
+            <input>
+              <name>var_4h</name>
+              <type>int32_t</type>
+              <size>4</size>
+            </input>
           </inputs>
-          </op>
+        </op>
         <op>
           <opname>RETURN</opname>
           <inputs>
-            <input>0</input>
-            <input>*(int32_t *)0x0</input>
+            <input>
+              <name>0</name>
+              <type>undefined8</type>
+              <size>8</size>
+            </input>
+            <input>
+              <name>register0x00000000</name>
+              <type>int32_t</type>
+              <size>4</size>
+            </input>
           </inputs>
-          </op>
+        </op>
       </ops>
-      <out_branches></out_branches>
+      <out_branches>
+      </out_branches>
     </block>
   </block_graph>
 </function>

@@ -14,7 +14,6 @@
       <size>8</size>
       <name>var_ch</name>
     </var>
-    
   </locals>
   <block_graph>
     <block>
@@ -25,27 +24,56 @@
         <op>
           <opname>CALL</opname>
           <inputs>
-            <input>sym.multiple</input>
-            <input>5</input>
-            <input>6</input>
+            <input>
+              <name>sym.multiple</name>
+              <type>undefined8</type>
+              <size>8</size>
+            </input>
+            <input>
+              <name>5</name>
+              <type>int64_t</type>
+              <size>8</size>
+            </input>
+            <input>
+              <name>6</name>
+              <type>int64_t</type>
+              <size>8</size>
+            </input>
           </inputs>
-          </op>
+        </op>
         <op>
           <opname>COPY</opname>
-          <output>*(undefined8 *)0x0</output>
+          <output>
+            <name>register0x00000000</name>
+            <type>undefined8</type>
+            <size>8</size>
+          </output>
           <inputs>
-            <input>0</input>
+            <input>
+              <name>0</name>
+              <type>undefined8</type>
+              <size>8</size>
+            </input>
           </inputs>
-          </op>
+        </op>
         <op>
           <opname>RETURN</opname>
           <inputs>
-            <input>0</input>
-            <input>*(undefined8 *)0x0</input>
+            <input>
+              <name>0</name>
+              <type>undefined8</type>
+              <size>8</size>
+            </input>
+            <input>
+              <name>register0x00000000</name>
+              <type>undefined8</type>
+              <size>8</size>
+            </input>
           </inputs>
-          </op>
+        </op>
       </ops>
-      <out_branches></out_branches>
+      <out_branches>
+      </out_branches>
     </block>
   </block_graph>
 </function>

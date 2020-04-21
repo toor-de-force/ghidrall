@@ -1,11 +1,41 @@
 from llvmlite import ir
+import llvmlite.binding as llvm
 import xml.etree.ElementTree as et
+import argparse
+import os
+import sys
+import r2pipe
 
 int32 = ir.IntType(32)
 int64 = ir.IntType(64)
 int1 = ir.IntType(1)
 void_type = ir.VoidType()
 function_names = []
+temps = {}
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Lift the provided binary to LLVM")
+    parser.add_argument('Path', metavar='path', type=str, help='the path to the target binary')
+    args = parser.parse_args()
+    target_binary = args.Path
+    if not os.path.isfile(target_binary):
+        print('Not a valid input file')
+        sys.exit()
+    r = r2pipe.open(target_binary)
+    r.cmd('aa')
+    r.cmd('s main')
+    main_xml_output = r.cmd('pdg')
+    main_file = open("main.xml", "w")
+    main_file.write(main_xml_output)
+    main_file.close()
+    r.cmd('aa')
+    r.cmd('s sym.multiple')
+    multiple_xml_output = r.cmd('pdg')
+    multiple_file = open("multiple.xml", "w")
+    multiple_file.write(multiple_xml_output)
+    multiple_file.close()
+    lift()
 
 
 def lift():
@@ -14,34 +44,49 @@ def lift():
     filename = "multiple.xml"
     root_multiple = et.parse(filename).getroot()
     module = ir.Module(name="lifted")
-
+    functions = {}
     # lifting multiple
 
     return_size = root_multiple.find("return").find("size").text
-    func_return = ir.IntType(int(return_size)*8)
+    func_return = ir.IntType(int(return_size) * 8)
     args = root_multiple.find("args")
     arguments = []
     for argument in args.findall("var"):
-        arguments.append(ir.IntType(int(argument.find("size").text)*8))
+        arguments.append(ir.IntType(int(argument.find("size").text) * 8))
     fnty = ir.FunctionType(func_return, arguments)
     name = root_multiple.find('name').text
     address = root_multiple.find('address').text
     ir_multiple = ir.Function(module, fnty, name)
-    block = ir_multiple.append_basic_block("entry")
+    functions[name] = ir_multiple
     blocks = {}
-    blocks["entry"] = block
+    xml_blocks = {}
+    entry_block = ir_multiple.append_basic_block("entry")
     for xml_block in root_multiple.find("block_graph").findall("block"):
         label = format_label(xml_block.find("label").find("address").text)
         block = ir_multiple.append_basic_block(label)
         blocks[label] = block
-    builder = ir.IRBuilder(blocks["entry"])
+        xml_blocks[label] = xml_block
+    builder = ir.IRBuilder(entry_block)
     locals_element = root_multiple.find("locals")
     local_vars = {}
     for local in locals_element.findall("var"):
-        size = int(local.find("size").text)*8
+        size = int(local.find("size").text) * 8
         name = local.find("name").text
         local_vars[name] = builder.alloca(ir.IntType(size), name=name)
-    builder.branch(list(blocks.values())[1])
+    args = root_multiple.find("args").findall("var")
+    i = 0
+    for arg in args:
+        local_vars[arg.find("name").text] = (list(ir_multiple.args))[i]
+        i += 1
+    builder.branch(list(blocks.values())[0])
+    i = 1
+    for block_key in list(blocks.keys()):
+        block = blocks[block_key]
+        builder = ir.IRBuilder(block)
+        xml_block = xml_blocks[block_key]
+        populate_cfg(blocks, builder, xml_block, local_vars, functions, False)
+        i += 1
+
     # Lifting main
 
     func_return = ir.VoidType()
@@ -50,27 +95,133 @@ def lift():
     name = root.find('name').text
     address = root.find('address').text
     ir_main = ir.Function(module, fnty, name)
-    block = ir_main.append_basic_block("entry")
+    functions[name] = ir_main
+    entry_block = ir_main.append_basic_block("entry")
     blocks = {}
-    blocks["entry"] = block
+    xml_blocks = {}
     for xml_block in root.find("block_graph").findall("block"):
         label = format_label(xml_block.find("label").find("address").text)
         block = ir_main.append_basic_block(label)
         blocks[label] = block
-    builder = ir.IRBuilder(blocks["entry"])
+        xml_blocks[label] = xml_block
+    builder = ir.IRBuilder(entry_block)
     locals_element = root.find("locals")
     local_vars = {}
     for local in locals_element.findall("var"):
-        size = int(local.find("size").text)*8
+        size = int(local.find("size").text) * 8
         name = local.find("name").text
         local_vars[name] = builder.alloca(ir.IntType(size), name=name)
-    builder.branch(list(blocks.values())[1])
+    builder.branch(list(blocks.values())[0])
+    i = 1
+    for block_key in list(blocks.keys()):
+        block = blocks[block_key]
+        builder = ir.IRBuilder(block)
+        xml_block = xml_blocks[block_key]
+        populate_cfg(blocks, builder, xml_block, local_vars, functions, True)
+        i += 1
 
+    module_ref = llvm.parse_assembly(str(module))
+    module_bc = llvm.parse_bitcode(module_ref.as_bitcode())
+    module_bc.verify()
     print(module)
 
 
+def populate_cfg(blocks, builder, block, local_vars, functions, is_void):
+    branched = False
+    for instruction in block.find("ops").findall("op"):
+        opname = instruction.find("opname").text
+        if opname == "CALL":
+            inputs = instruction.find("inputs").findall("input")
+            call_target = inputs[0].find("name").text
+            args = []
+            for arg in inputs[1:]:
+                args.append(ir.Constant(ir.IntType(64), arg.find("name").text))
+            builder.call(functions[call_target], args)
+        elif opname == "RETURN":
+            inputs = instruction.find("inputs").findall("input")
+            val = inputs[1].find("name").text
+            return_val = temps[val]
+            if is_void:
+                builder.ret_void()
+            else:
+                builder.ret(return_val)
+            branched = True
+        elif opname == "COPY":
+            target = instruction.find("output")
+            input_value = instruction.find("inputs").find("input")
+            if input_value.find("name").text == "0":
+                if target.find("name").text in list(local_vars.keys()):
+                    builder.store(ir.Constant(ir.IntType(64), 0), local_vars[target.find("name").text])
+                else:
+                    temps[target.find("name").text] = ir.Constant(ir.IntType(64), 0)
+            else:
+                val = builder.load(local_vars[input_value.find("name").text])
+                tmp = builder.trunc(val, ir.IntType(32))
+                temps[target.find("name").text] = tmp
+        elif opname == "SUBPIECE":
+            inputs = instruction.find("inputs").findall("input")
+            target = instruction.find("output")
+            target_size = target.find("size").text
+            if inputs[1].find("name").text == '0':
+                result = builder.trunc(local_vars[inputs[0].find("name").text], ir.IntType(int(target_size) * 8))
+                if target.find("name").text in local_vars:
+                    builder.store(result, local_vars[target.find("name").text])
+                else:
+                    temps[target.find("name").text] = result
+        elif opname == "BRANCH":
+            target = instruction.find("inputs").find("input").find("name").text
+            builder.branch(blocks[format_label(target)])
+            branched = True
+        elif opname == "CBRANCH":
+            inputs = instruction.find("inputs").findall("input")
+            true_branch = format_label(inputs[0].find("name").text)
+            condition = temps[inputs[1].find("name").text]
+            for branch in block.find("out_branches").findall("branch_target"):
+                if branch.text == true_branch:
+                    pass
+                else:
+                    false_branch = branch.text
+            builder.cbranch(condition, blocks[true_branch], blocks[false_branch])
+            branched = True
+        elif opname == "INT_SLESS":
+            inputs = instruction.find("inputs").findall("input")
+            target = instruction.find("output")
+            if "unique" in target.find("name").text:
+                lhs = ir.Constant(ir.IntType(32), 0)
+                rhs = builder.load(local_vars[inputs[1].find("name").text])
+                temps[target.find("name").text] = builder.icmp_signed('<', lhs, rhs)
+        elif opname == "INT_ADD":
+            inputs = instruction.find("inputs").findall("input")
+            target = instruction.find("output")
+            args = []
+            for input_value in inputs:
+                if input_value.find("name").text in list(local_vars.keys()):
+                    if input_value.find("name").text == "var_4h":
+                        val = builder.load(local_vars[input_value.find("name").text])
+                        args.append(builder.trunc(val, ir.IntType(32)))
+                    else:
+                        args.append(builder.load(local_vars[input_value.find("name").text]))
+                elif input_value.find("name").text in list(temps.keys()):
+                    args.append(temps[input_value.find("name").text])
+                else:
+                    args.append(ir.Constant(ir.IntType(32), int(input_value.find("name").text)))
+            lhs, rhs = args
+            result = builder.add(lhs, rhs)
+            if target.find("name").text == "var_4h":
+                temp = builder.zext(result, ir.IntType(64))
+                builder.store(temp, local_vars[target.find("name").text])
+            else:
+                builder.store(result, local_vars[target.find("name").text])
+
+    if not branched:
+        builder.branch(blocks[block.find("out_branches").find("branch_target").text])
+
+
 def format_label(label):
-    return '0x' + label.zfill(8)
+    if label[:2] == '0x':
+        label = label[2:]
+    new_label = '0x' + label.zfill(8)
+    return new_label
 
 
 def build_cfg(function, ir_func):
@@ -86,364 +237,6 @@ def build_cfg(function, ir_func):
             blocks[address] = block
             builders[address] = ir.IRBuilder(block)
     return builders, blocks
-
-
-# noinspection DuplicatedCode
-def populate_cfg(function, builders, blocks):
-    builder = builders["entry"]
-    stack_size = 10 * 1024 * 1024
-    stack = builder.alloca(ir.IntType(8), stack_size, name="stack")
-    stack_top = builder.gep(stack, [ir.Constant(int64, stack_size - 8)], name="stack_top")
-    builder.store(stack_top, registers["RSP"])
-    builder.branch(list(blocks.values())[1])
-    block_iterator = 1
-    instr = 0
-    quiter = False
-    for instruction in function.find("instructions"):
-        if quiter:
-            break
-        address = instruction.find("address").text
-        if address in builders:
-            builder = builders[address]
-        pcodes = instruction.find("pcodes")
-        pc = 0
-        no_branch = True
-        for pcode in pcodes:
-            pc += 1
-            mnemonic = pcode.find("name")
-            if mnemonic.text == "COPY":
-                output = pcode.find("output")
-                if output.text in flags and pcode.find("input_0").get("storage") == "constant":
-                    source = ir.Constant(ir.IntType(1), int(pcode.find("input_0").text, 0))
-                else:
-                    source = fetch_input_varnode(builder, pcode.find("input_0"))
-                update_output(builder, pcode.find("output"), source)
-            elif mnemonic.text == "LOAD":
-                input_1 = pcode.find("input_1")
-                output = pcode.find("output")
-                rhs = fetch_input_varnode(builder, input_1)
-                if input_1.get("storage") == "unique" and output.get("storage") == "unique":
-                    # This is incorrect. This is treating it as a copy, should load the memory address in the input 1
-                    update_output(builder, output, rhs)
-                else:
-                    if input_1.text in pointers:
-                        rhs = builder.gep(rhs, [ir.Constant(int64, 0)])
-                    result = builder.load(rhs)
-                    update_output(builder, output, result)
-            elif mnemonic.text == "STORE":
-                input_1 = pcode.find("input_1")  # target
-                input_2 = pcode.find("input_2")  # source
-                rhs = fetch_input_varnode(builder, input_2)
-                lhs = fetch_output_varnode(input_1)
-                lhs2 = builder.gep(lhs, [ir.Constant(int64, 0)])
-                if lhs2.type != rhs.type.as_pointer():
-                    lhs2 = builder.bitcast(lhs2, rhs.type.as_pointer())
-                builder.store(rhs, lhs2)
-            elif mnemonic.text == "BRANCH":
-                value = pcode.find("input_0").text[2:-2]
-                if value in functions:
-                    target = functions[value][0]
-                    builder.call(target, [])
-                elif value in blocks:
-                    target = blocks[value]
-                    builder.branch(target)
-                    no_branch = False
-                else:
-                    # weird jump into some label in another function
-                    # might be solved with callbr instruction?
-                    builder.call(internal_functions["intra_function_branch"], [])
-            elif mnemonic.text == "CBRANCH":
-                true_target = blocks[pcode.find("input_0").text[2:-2]]
-                false_target = list(blocks.values())[block_iterator + 1]
-                condition = fetch_input_varnode(builder, pcode.find("input_1"))
-                no_branch = False
-                builder.cbranch(condition, true_target, false_target)
-            elif mnemonic.text == "BRANCHIND":
-                no_branch = False
-                target = fetch_input_varnode(builder, pcode.find("input_0"))
-                if not target.type.is_pointer:
-                    target = builder.inttoptr(target, target.type.as_pointer())
-                builder.branch_indirect(target)
-            elif mnemonic.text == "CALL":
-                target = functions[pcode.find("input_0").text[2:-2]][0]
-                builder.call(target, [])
-            elif mnemonic.text == "CALLIND":
-                # target = pcode.find("input_0").text[2:-2]
-                builder.call(internal_functions["call_indirect"], [])
-            elif mnemonic.text == "USERDEFINED":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "RETURN":
-                input_1 = pcode.find("input_1")
-                no_branch = False
-                if input_1 is None:
-                    builder.ret_void()
-                else:
-                    raise Exception("Return value being passed")
-            elif mnemonic.text == "PIECE":
-                raise Exception("PIECE operation needs to be tested")
-            elif mnemonic.text == "SUBPIECE":
-                output = pcode.find("output")
-                input_0 = pcode.find("input_0")
-                input_1 = pcode.find("input_1")
-                if input_1.text == "0x0":
-                    val = fetch_input_varnode(builder, input_0)
-                    result = builder.trunc(val, ir.IntType(int(output.get("size")) * 8))
-                    update_output(builder, output, result)
-                else:
-                    builder.call(internal_functions['bit_extraction'], [])
-            elif mnemonic.text == "INT_EQUAL":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                lhs, rhs = int_comparison_check_inputs(builder, lhs, rhs)
-                result = builder.icmp_unsigned('==', lhs, rhs)
-                update_output(builder, pcode.find("output"), result)
-            elif mnemonic.text == "INT_NOTEQUAL":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                lhs, rhs = int_comparison_check_inputs(builder, lhs, rhs)
-                result = builder.icmp_unsigned('!=', lhs, rhs)
-                update_output(builder, pcode.find("output"), result)
-            elif mnemonic.text == "INT_LESS":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                lhs, rhs = int_comparison_check_inputs(builder, lhs, rhs)
-                result = builder.icmp_unsigned('<', lhs, rhs)
-                update_output(builder, pcode.find("output"), result)
-            elif mnemonic.text == "INT_SLESS":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                lhs, rhs = int_comparison_check_inputs(builder, lhs, rhs)
-                result = builder.icmp_signed('<', lhs, rhs)
-                update_output(builder, pcode.find("output"), result)
-            elif mnemonic.text == "INT_LESSEQUAL":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                lhs, rhs = int_comparison_check_inputs(builder, lhs, rhs)
-                result = builder.icmp_unsigned('<=', lhs, rhs)
-                update_output(builder, pcode.find("output"), result)
-            elif mnemonic.text == "INT_SLESS_EQUAL":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                lhs, rhs = int_comparison_check_inputs(builder, lhs, rhs)
-                result = builder.icmp_signed('<=', lhs, rhs)
-                update_output(builder, pcode.find("output"), result)
-            elif mnemonic.text == "INT_ZEXT":
-                rhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                if rhs.type.is_pointer:
-                    rhs = builder.ptrtoint(rhs, rhs.type.pointee)
-                output = builder.zext(rhs, ir.IntType(int(pcode.find("output").get("size")) * 8))
-                update_output(builder, pcode.find("output"), output)
-            elif mnemonic.text == "INT_SEXT":
-                rhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                if rhs.type.is_pointer:
-                    rhs = builder.ptrtoint(rhs, rhs.type.pointee)
-                output = builder.sext(rhs, ir.IntType(int(pcode.find("output").get("size")) * 8))
-                update_output(builder, pcode.find("output"), output)
-            elif mnemonic.text == "INT_ADD":
-                input_0 = pcode.find("input_0")
-                input_1 = pcode.find("input_1")
-                lhs = fetch_input_varnode(builder, input_0)
-                rhs = fetch_input_varnode(builder, input_1)
-                target = ir.IntType(int(pcode.find("output").get("size")) * 8)
-                if input_0.text in pointers and input_1.get("storage") == "constant":
-                    result = builder.gep(lhs, [ir.Constant(int64, int(input_1.text, 16))])
-                else:
-                    lhs, rhs = int_check_inputs(builder, lhs, rhs, target)
-                    result = builder.add(lhs, rhs)
-                update_output(builder, pcode.find("output"), result)
-            elif mnemonic.text == "INT_SUB":
-                input_0 = pcode.find("input_0")
-                input_1 = pcode.find("input_1")
-                lhs = fetch_input_varnode(builder, input_0)
-                rhs = fetch_input_varnode(builder, input_1)
-                target = ir.IntType(int(pcode.find("output").get("size")) * 8)
-                if input_0.text in pointers and input_1.get("storage") == "constant":
-                    result = builder.gep(lhs, [ir.Constant(int64, -int(input_1.text, 16))])
-                else:
-                    lhs, rhs = int_check_inputs(builder, lhs, rhs, target)
-                    result = builder.sub(lhs, rhs)
-                update_output(builder, pcode.find("output"), result)
-            elif mnemonic.text == "INT_CARRY":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                lhs, rhs = int_comparison_check_inputs(builder, lhs, rhs)
-                result = builder.uadd_with_overflow(lhs, rhs)
-                result = builder.extract_value(result, 1)
-                update_output(builder, pcode.find("output"), result)
-            elif mnemonic.text == "INT_SCARRY":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                lhs, rhs = int_comparison_check_inputs(builder, lhs, rhs)
-                result = builder.sadd_with_overflow(lhs, rhs)
-                result = builder.extract_value(result, 1)
-                update_output(builder, pcode.find("output"), result)
-            elif mnemonic.text == "INT_SBORROW":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                lhs, rhs = int_comparison_check_inputs(builder, lhs, rhs)
-                result = builder.sadd_with_overflow(lhs, rhs)
-                result = builder.extract_value(result, 1)
-                update_output(builder, pcode.find("output"), result)
-            elif mnemonic.text == "INT_2COMP":
-                val = fetch_input_varnode(builder, pcode.find("input_0"))
-                result = builder.not_(val)
-                update_output(builder, pcode.find("output"), result)
-            elif mnemonic.text == "INT_NEGATE":
-                val = fetch_input_varnode(builder, pcode.find("input_0"))
-                result = builder.neg(val)
-                update_output(builder, pcode.find("output"), result)
-            elif mnemonic.text == "INT_XOR":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                target = ir.IntType(int(pcode.find("output").get("size")) * 8)
-                lhs, rhs = int_check_inputs(builder, lhs, rhs, target)
-                output = builder.xor(lhs, rhs)
-                update_output(builder, pcode.find("output"), output)
-            elif mnemonic.text == "INT_AND":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                target = ir.IntType(int(pcode.find("output").get("size")) * 8)
-                lhs, rhs = int_check_inputs(builder, lhs, rhs, target)
-                output = builder.and_(lhs, rhs)
-                update_output(builder, pcode.find("output"), output)
-            elif mnemonic.text == "INT_OR":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                target = ir.IntType(int(pcode.find("output").get("size")) * 8)
-                lhs, rhs = int_check_inputs(builder, lhs, rhs, target)
-                output = builder.or_(lhs, rhs)
-                update_output(builder, pcode.find("output"), output)
-            elif mnemonic.text == "INT_LEFT":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                target = ir.IntType(int(pcode.find("output").get("size")) * 8)
-                lhs, rhs = check_shift_inputs(builder, lhs, rhs, target)
-                output = builder.shl(lhs, rhs)
-                update_output(builder, pcode.find("output"), output)
-            elif mnemonic.text == "INT_RIGHT":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                target = ir.IntType(int(pcode.find("output").get("size")) * 8)
-                lhs, rhs = check_shift_inputs(builder, lhs, rhs, target)
-                output = builder.lshr(lhs, rhs)
-                update_output(builder, pcode.find("output"), output)
-            elif mnemonic.text == "INT_SRIGHT":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                target = ir.IntType(int(pcode.find("output").get("size")) * 8)
-                lhs, rhs = check_shift_inputs(builder, lhs, rhs, target)
-                output = builder.ashr(lhs, rhs)
-                update_output(builder, pcode.find("output"), output)
-            elif mnemonic.text == "INT_MULT":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                target = ir.IntType(int(pcode.find("output").get("size")) * 8)
-                lhs, rhs = int_check_inputs(builder, lhs, rhs, target)
-                output = builder.mul(lhs, rhs)
-                update_output(builder, pcode.find("output"), output)
-            elif mnemonic.text == "INT_DIV":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                target = ir.IntType(int(pcode.find("output").get("size")) * 8)
-                lhs, rhs = int_check_inputs(builder, lhs, rhs, target)
-                output = builder.div(lhs, rhs)
-                update_output(builder, pcode.find("output"), output)
-            elif mnemonic.text == "INT_REM":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                target = ir.IntType(int(pcode.find("output").get("size")) * 8)
-                lhs, rhs = int_check_inputs(builder, lhs, rhs, target)
-                output = builder.urem(lhs, rhs)
-                update_output(builder, pcode.find("output"), output)
-            elif mnemonic.text == "INT_SDIV":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                target = ir.IntType(int(pcode.find("output").get("size")) * 8)
-                lhs, rhs = int_check_inputs(builder, lhs, rhs, target)
-                output = builder.sdiv(lhs, rhs)
-                update_output(builder, pcode.find("output"), output)
-            elif mnemonic.text == "INT_SREM":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                target = ir.IntType(int(pcode.find("output").get("size")) * 8)
-                lhs, rhs = int_check_inputs(builder, lhs, rhs, target)
-                output = builder.srem(lhs, rhs)
-                update_output(builder, pcode.find("output"), output)
-            elif mnemonic.text == "BOOL_NEGATE":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                result = builder.neg(lhs)
-                update_output(builder, pcode.find("output"), result)
-            elif mnemonic.text == "BOOL_XOR":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                result = builder.xor(lhs, rhs)
-                update_output(builder, pcode.find("output"), result)
-            elif mnemonic.text == "BOOL_AND":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                result = builder.and_(lhs, rhs)
-                update_output(builder, pcode.find("output"), result)
-            elif mnemonic.text == "BOOL_OR":
-                lhs = fetch_input_varnode(builder, pcode.find("input_0"))
-                rhs = fetch_input_varnode(builder, pcode.find("input_1"))
-                result = builder.or_(lhs, rhs)
-                update_output(builder, pcode.find("output"), result)
-            elif mnemonic.text == "FLOAT_EQUAL":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "FLOAT_NOTEQUAL":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "FLOAT_LESS":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "FLOAT_LESSEQUAL":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "FLOAT_ADD":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "FLOAT_SUB":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "FLOAT_MULT":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "FLOAT_DIV":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "FLOAT_NEG":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "FLOAT_ABS":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "FLOAT_SQRT":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "FLOAT_CEIL":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "FLOAT_FLOOR":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "FLOAT_ROUND":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "FLOAT_NAN":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "INT2FLOAT":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "FLOAT2FLOAT":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "TRUNC":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "CPOOLREF":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "NEW":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "MULTIEQUAL":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "INDIRECT":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "PTRADD":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "PTRSUB":
-                raise Exception("Not implemented")
-            elif mnemonic.text == "CAST":
-                raise Exception("Not implemented")
-            else:
-                raise Exception("Not a standard pcode instruction")
-        block_iterator += 1
-        instr += 1
-        if block_iterator < len(blocks) and no_branch:
-            builder.branch(list(blocks.values())[block_iterator])
 
 
 def fetch_input_varnode(builder, name):
@@ -519,4 +312,4 @@ def int_comparison_check_inputs(builder, lhs, rhs):
 
 
 if __name__ == "__main__":
-    lift()
+    main()
