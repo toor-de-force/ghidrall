@@ -40,7 +40,7 @@ def lift():
     for local in locals_element.findall("var"):
         size = int(local.find("size").text)*8
         name = local.find("name").text
-        local_vars[name] = builder.alloca(ir.IntType(size), name)
+        local_vars[name] = builder.alloca(ir.IntType(size), name=name)
     builder.branch(list(blocks.values())[1])
     # Lifting main
 
@@ -63,7 +63,7 @@ def lift():
     for local in locals_element.findall("var"):
         size = int(local.find("size").text)*8
         name = local.find("name").text
-        local_vars[name] = builder.alloca(ir.IntType(size), name)
+        local_vars[name] = builder.alloca(ir.IntType(size), name=name)
     builder.branch(list(blocks.values())[1])
 
     print(module)

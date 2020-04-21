@@ -1,0 +1,2 @@
+/usr/bin/ar qc libghidra_libdecomp.a  CMakeFiles/ghidra_libdecomp.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc.o
+/usr/bin/ranlib libghidra_libdecomp.a

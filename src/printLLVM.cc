@@ -1412,20 +1412,10 @@ void PrintLLVM::pushConstant(uintb val,const Datatype *ct,
   Datatype *subtype;
   switch(ct->getMetatype()) {
   case TYPE_UINT:
-    if (ct->isCharPrint())
-      pushCharConstant(val,(TypeChar *)ct,vn,op);
-    else if (ct->isEnumType())
-      pushEnumConstant(val,(TypeEnum *)ct,vn,op);
-    else
-      push_integer(val,ct->getSize(),false,vn,op);
+    push_integer(val,ct->getSize(),false,vn,op);
     return;
   case TYPE_INT:
-    if (ct->isCharPrint())
-      pushCharConstant(val,(TypeChar *)ct,vn,op);
-    else if (ct->isEnumType())
-      pushEnumConstant(val,(TypeEnum *)ct,vn,op);
-    else
-      push_integer(val,ct->getSize(),true,vn,op);
+    push_integer(val,ct->getSize(),true,vn,op);
     return;
   case TYPE_UNKNOWN:
     push_integer(val,ct->getSize(),false,vn,op);
@@ -1443,8 +1433,8 @@ void PrintLLVM::pushConstant(uintb val,const Datatype *ct,
     }
     subtype = ((TypePointer *)ct)->getPtrTo();
     if (subtype->isCharPrint()) {
-      if (pushPtrCharConstant(val,(const TypePointer *)ct,vn,op))
-	return;
+      push_integer(val,ct->getSize(),false,vn,op);
+      return;
     }
     else if (subtype->getMetatype()==TYPE_CODE) {
       if (pushPtrCodeConstant(val,(const TypePointer *)ct,vn,op))
@@ -1691,10 +1681,10 @@ void PrintLLVM::pushPartialSymbol(const Symbol *sym,int4 off,int4 sz,
     }
   }
 
-  if ((finalcast != (Datatype *)0)&&(!option_nocasts)) {
-    pushOp(&typecast,op);
-    pushType(finalcast);
-  }
+//  if ((finalcast != (Datatype *)0)&&(!option_nocasts)) {
+//    pushOp(&typecast,op);
+//    pushType(finalcast);
+//  }
   // Push these on the RPN stack in reverse order
   for(int4 i=stack.size()-1;i>=0;--i)
     pushOp(stack[i].token,op);
@@ -1907,6 +1897,7 @@ void PrintLLVM::emitStatement(const PcodeOp *inst)
   int4 id2 = emit->startIndent();
   emitExpression(inst);
   emit->stopIndent(id2);
+  emit->tagLine();
   emit->print("</op>");
   emit->endStatement(id);
 }
@@ -2095,10 +2086,26 @@ void PrintLLVM::emitExpression(const PcodeOp *op)
     emit->print(ss.str().c_str());
     emit->print("</opname>");
     emit->tagLine();
+    stringstream ss2;
     if (outvn != (Varnode *)0) {
         emit->print("<output>");
+        int4 id2 = emit->startIndent();
+        emit->tagLine();
+        emit->print("<name>");
         pushVnExplicit(outvn,op);
         recurse();
+        emit->print("</name>");
+        emit->tagLine();
+        emit->print("<type>");
+        emit->print(outvn->getType()->getName().c_str());
+        emit->print("</type>");
+        emit->tagLine();
+        emit->print("<size>");
+        ss2 << outvn->getType()->getSize();
+        emit->print(ss2.str().c_str());
+        emit->print("</size>");
+        emit->stopIndent(id2);
+        emit->tagLine();
         emit->print("</output>");
         emit->tagLine();
     }
@@ -2109,7 +2116,11 @@ void PrintLLVM::emitExpression(const PcodeOp *op)
     for(int i = 0; i < op->numInput(); i++){
         invn = op->getIn(i);
         emit->print("<input>");
+        int4 id2 = emit->startIndent();
+        emit->tagLine();
+        emit->print("<name>");
         if (ss.str() == "CALL" && i == 0){
+            const Varnode *callpoint = op->getIn(0);
             if (invn->getSpace()->getType()==IPTR_FSPEC) {
                 FuncCallSpecs *fc = FuncCallSpecs::getFspecFromConst(invn->getAddr());
                 if (fc->getName().size()==0) {
@@ -2122,14 +2133,26 @@ void PrintLLVM::emitExpression(const PcodeOp *op)
         } else {
             pushVnExplicit(invn, op);
         }
-        emit->print("</input>");
         recurse();
+        emit->print("</name>");
+        emit->tagLine();
+        emit->print("<type>");
+        emit->print(invn->getType()->getName().c_str());
+        emit->print("</type>");
+        emit->tagLine();
+        emit->print("<size>");
+        ss2.str("");
+        ss2 << invn->getType()->getSize();
+        emit->print(ss2.str().c_str());
+        emit->print("</size>");
+        emit->stopIndent(id2);
+        emit->tagLine();
+        emit->print("</input>");
         if (i < op->numInput()-1) emit->tagLine();
     }
     emit->stopIndent(id);
     emit->tagLine();
     emit->print("</inputs>");
-    emit->tagLine();
 }
 
 void PrintLLVM::emitVarDecl(const Symbol *sym)
@@ -2156,7 +2179,6 @@ void PrintLLVM::emitVarDecl(const Symbol *sym)
   emit->stopIndent(id);
   emit->tagLine();
   emit->print("</var>");
-  emit->tagLine();
 }
 
 void PrintLLVM::emitVarDeclStatement(const Symbol *sym)
@@ -2291,7 +2313,6 @@ void PrintLLVM::docSingleGlobal(const Symbol *sym)
 void PrintLLVM::docFunction(const Funcdata *fd)
 
 {
-  printf("%s", "Got Here!");
   setFlat(true);
   uint4 modsave = mods;
   if (!fd->isProcStarted())
@@ -2358,6 +2379,20 @@ void PrintLLVM::emitBlockBasic(const BlockBasic *bb)
     emit->stopIndent(id);
     emit->tagLine();
     emit->print("</ops>");
+    emit->tagLine();
+    emit->print("<out_branches>");
+    int4 id3 = emit->startIndent();
+    for (int4 i = 0; i < bb->sizeOut(); i++){
+        emit->tagLine();
+        emit->print("<branch_target>");
+        ss.str("");
+        ss << bb->getOut(i)->getStart();
+        emit->print(ss.str().c_str());
+        emit->print("</branch_target>");
+    }
+    emit->stopIndent(id3);
+    emit->tagLine();
+    emit->print("</out_branches>");
 }
 
 void PrintLLVM::emitBlockGraph(const BlockGraph *bl)
@@ -3039,5 +3074,34 @@ string PrintLLVM::getPcodeOpName(int opcode) {
         case 72: return "POPCOUNT";		///< Count the 1-bits
         case 73: return "MAX";			///< Value indicating the end of the op-code values
         default: return "Failed to recover pcodeop name";
+    }
+}
+
+void PrintLLVM::emitVnPlainly(Varnode *vn, PcodeOp *op) {
+    if (vn->isAnnotation()) {
+        pushAnnotation(vn,op);
+        return;
+    }
+    HighVariable *high = vn->getHigh();
+    if (vn->isConstant()) {
+        pushConstant(vn->getOffset(),high->getType(),vn,op);
+        return;
+    }
+    Symbol *sym = high->getSymbol();
+    if (sym == (Symbol *)0) {
+        pushUnnamedLocation(high->getNameRepresentative()->getAddr(),vn,op);
+    }
+    else {
+        int4 symboloff = high->getSymbolOffset();
+        if (symboloff == -1)
+            pushSymbol(sym,vn,op);
+        else {
+            if (symboloff + vn->getSize() <= sym->getType()->getSize()){
+                pushPartialSymbol(sym,symboloff,vn->getSize(),vn,op,vn->getHigh()->getType());
+            }
+            else {
+                pushMismatchSymbol(sym,symboloff,vn->getSize(),vn,op);
+            }
+        }
     }
 }

@@ -195,6 +195,7 @@ protected:
   virtual bool checkPrintNegation(const Varnode *vn);
 public:
   static string getPcodeOpName(int opcode);
+  void emitVnPlainly(Varnode *vn, PcodeOp *op);
   PrintLLVM(Architecture *g,const string &nm="llvm-language");	///< Constructor
   void setNULLPrinting(bool val) { option_NULL = val; }		///< Toggle the printing of a 'NULL' token
   void setInplaceOps(bool val) { option_inplace_ops = val; }	///< Toggle the printing of \e in-place operators

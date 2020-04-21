@@ -45,6 +45,7 @@
           </inputs>
           </op>
       </ops>
+      <out_branches></out_branches>
     </block>
   </block_graph>
 </function>
