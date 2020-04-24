@@ -1409,6 +1409,7 @@ void PrintLLVM::pushConstant(uintb val,const Datatype *ct,
 			    const Varnode *vn,
 			    const PcodeOp *op)
 {
+  emit->print(">");
   Datatype *subtype;
   switch(ct->getMetatype()) {
   case TYPE_UINT:
@@ -1552,14 +1553,17 @@ void PrintLLVM::pushAnnotation(const Varnode *vn,const PcodeOp *op)
       Datatype *ct = glb->types->getBase(size,TYPE_UINT);
       pushConstant(AddrSpace::byteToAddress(vn->getOffset(),vn->getSpace()->getWordSize()),ct,vn,op);
     }
-    else
-      pushAtom(Atom(regname,vartoken,EmitXml::var_color,op,vn));
+    else {
+        emit->print(">");
+        pushAtom(Atom(regname, vartoken, EmitXml::var_color, op, vn));
+    }
   }
 }
 
 void PrintLLVM::pushSymbol(const Symbol *sym,const Varnode *vn,const PcodeOp *op)
 
 {
+  emit->print(">");
   Datatype *ct = sym->getType();
   EmitXml::syntax_highlight tokenColor;
   if (((sym->getFlags()&Varnode::readonly)!=0)&&(ct->getMetatype()==TYPE_ARRAY)) {
@@ -1603,6 +1607,7 @@ void PrintLLVM::pushSymbol(const Symbol *sym,const Varnode *vn,const PcodeOp *op
 void PrintLLVM::pushUnnamedLocation(const Address &addr,
 				   const Varnode *vn,const PcodeOp *op)
 {
+  emit->print(">");
   ostringstream s;
   s << addr.getSpace()->getName();
   addr.printRaw(s);
@@ -1616,6 +1621,9 @@ void PrintLLVM::pushPartialSymbol(const Symbol *sym,int4 off,int4 sz,
   // We need to print "bottom up" in order to get parentheses right
   // I.e. we want to print globalstruct.arrayfield[0], rather than
   //                       globalstruct.(arrayfield[0])
+  stringstream ss;
+  ss << " offset=" << off << " size=" << sz;
+  emit->print(ss.str().c_str());
   vector<PartialSymbolEntry> stack;
   Datatype *finalcast = (Datatype *)0;
   
@@ -1709,6 +1717,7 @@ void PrintLLVM::pushMismatchSymbol(const Symbol *sym,int4 off,int4 sz,
 
   // We prepend an underscore to indicate a close
   // but not quite match
+    emit->print(">");
     string name = '_'+sym->getName();
     pushAtom(Atom(name,vartoken,EmitXml::var_color,op,vn));
   }
@@ -2091,10 +2100,10 @@ void PrintLLVM::emitExpression(const PcodeOp *op)
         emit->print("<output>");
         int4 id2 = emit->startIndent();
         emit->tagLine();
-        emit->print("<name>");
+        emit->print("<symbol");
         pushVnExplicit(outvn,op);
         recurse();
-        emit->print("</name>");
+        emit->print("</symbol>");
         emit->tagLine();
         emit->print("<type>");
         emit->print(outvn->getType()->getName().c_str());
@@ -2118,8 +2127,9 @@ void PrintLLVM::emitExpression(const PcodeOp *op)
         emit->print("<input>");
         int4 id2 = emit->startIndent();
         emit->tagLine();
-        emit->print("<name>");
+        emit->print("<symbol");
         if (ss.str() == "CALL" && i == 0){
+            emit->print(">");
             const Varnode *callpoint = op->getIn(0);
             if (invn->getSpace()->getType()==IPTR_FSPEC) {
                 FuncCallSpecs *fc = FuncCallSpecs::getFspecFromConst(invn->getAddr());
@@ -2134,7 +2144,7 @@ void PrintLLVM::emitExpression(const PcodeOp *op)
             pushVnExplicit(invn, op);
         }
         recurse();
-        emit->print("</name>");
+        emit->print("</symbol>");
         emit->tagLine();
         emit->print("<type>");
         emit->print(invn->getType()->getName().c_str());
