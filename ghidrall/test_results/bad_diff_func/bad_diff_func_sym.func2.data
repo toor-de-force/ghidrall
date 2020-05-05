@@ -1,0 +1,45 @@
+<function>
+  <return>
+    <type>void</type>
+    <size>void</size>
+    </return>
+    <name>sym.func2</name>
+    <address>9c3</address>
+    <args>
+      
+    </args>
+  <locals>
+  </locals>
+  <block_graph>
+    <block>
+      <label>
+        <address>9c3</address>
+      </label>
+      <ops>
+        <op>
+          <opname>CALL</opname>
+          <inputs>
+            <input>
+              <symbol>sym.path_nongoal</symbol>
+              <type>undefined8</type>
+              <size>8</size>
+            </input>
+          </inputs>
+        </op>
+        <op>
+          <opname>RETURN</opname>
+          <inputs>
+            <input>
+              <symbol>0</symbol>
+              <type>undefined8</type>
+              <size>8</size>
+            </input>
+          </inputs>
+        </op>
+      </ops>
+      <out_branches>
+      </out_branches>
+    </block>
+  </block_graph>
+  </function>
+  

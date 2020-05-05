@@ -1622,7 +1622,7 @@ void PrintLLVM::pushPartialSymbol(const Symbol *sym,int4 off,int4 sz,
   // I.e. we want to print globalstruct.arrayfield[0], rather than
   //                       globalstruct.(arrayfield[0])
   stringstream ss;
-  ss << " offset=" << off << " size=" << sz;
+  ss << " offset=\"" << off << "\" size=\"" << sz << "\"";
   emit->print(ss.str().c_str());
   vector<PartialSymbolEntry> stack;
   Datatype *finalcast = (Datatype *)0;
@@ -1681,8 +1681,8 @@ void PrintLLVM::pushPartialSymbol(const Symbol *sym,int4 off,int4 sz,
 	sz = ct->getSize() - off;
       // Special notation for subpiece which is neither
       // array entry nor struct field
-      s << '_' << dec << off << '_' << sz << '_';
-      entry.fieldname = s.str();
+      //s << '_' << dec << off << '_' << sz << '_';
+      //entry.fieldname = s.str();
       entry.field = (const TypeField *)0;
       entry.hilite = EmitXml::no_color;
       ct = (Datatype *)0;
@@ -1828,25 +1828,35 @@ void PrintLLVM::emitPrototypeOutput(const FuncProto *proto,
     op = (PcodeOp *)0;
 
   Datatype *outtype = proto->getOutputType();
-  if ((outtype->getMetatype()!=TYPE_VOID)&&(op != (PcodeOp *)0))
-    vn = op->getIn(1);
-  else
-    vn = (Varnode *)0;
-  emit->print("<return>");
-  int4 id = emit->startIndent();
-  emit->tagLine();
-  emit->print("<type>");
-  emit->print(vn->getType()->getName().c_str());
-  emit->print("</type>");
-  emit->tagLine();
-  emit->print("<size>");
-  stringstream ss;
-  ss << outtype->getSize();
-  emit->print(ss.str().c_str());
-  emit->print("</size>");
-  emit->stopIndent(id);
-  emit->tagLine();
-  emit->print("</return>");
+  if ((outtype->getMetatype()!=TYPE_VOID)&&(op != (PcodeOp *)0)) {
+      vn = op->getIn(1);
+      emit->print("<return>");
+      int4 id = emit->startIndent();
+      emit->tagLine();
+      emit->print("<type>");
+      emit->print(vn->getType()->getName().c_str());
+      emit->print("</type>");
+      emit->tagLine();
+      emit->print("<size>");
+      stringstream ss;
+      ss << outtype->getSize();
+      emit->print(ss.str().c_str());
+      emit->print("</size>");
+      emit->stopIndent(id);
+      emit->tagLine();
+      emit->print("</return>");
+  } else {
+      vn = (Varnode *) 0;
+      emit->print("<return>");
+      int4 id = emit->startIndent();
+      emit->tagLine();
+      emit->print("<type>void</type>");
+      emit->tagLine();
+      emit->print("<size>void</size>");
+      emit->tagLine();
+      emit->print("</return>");
+  }
+
 }
 
 /// This emits the individual type declarations of the input parameters to the function as a
