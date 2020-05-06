@@ -1,5 +1,4 @@
 import r2pipe
-import os
 
 instrumentation_list = ["sym.path_start", "sym.path_goal", "sym.path_nongoal", "sym.imp.rand"]
 
@@ -12,6 +11,7 @@ def decompile_binary(target_binary):
 
 class Decompiler:
     """Decompiler class for interfacing with Radare2 and pulling decompilation information in XML"""
+
     def __init__(self, target_binary):
         self.r = r2pipe.open(target_binary)
         self.r.cmd('aa')

@@ -2,6 +2,7 @@ import llvmlite.binding as llvm
 import sys
 import traceback
 
+
 def verify(module):
     try:
         module_ref = llvm.parse_assembly(str(module))
