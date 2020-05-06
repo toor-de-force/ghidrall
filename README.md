@@ -12,12 +12,12 @@ Coming Soon.
 
 ## Running tests
 
-cd ghidrall/tests
-mkdir build; cd build
-cmake ..
-cmake --build .
-cd ../..
-python run-all-tests.py
+1. cd ghidrall/tests
+2. mkdir build; cd build
+3. cmake ..
+4. cmake --build .
+5. cd ../..
+6. python run-all-tests.py
 
 This will compile all the test programs that are pre-instrumented with analysis, decompile, lift and verify them all for verification.
 
