@@ -1,0 +1,45 @@
+<function>
+  <return>
+    <type>void</type>
+    <size>void</size>
+    </return>
+    <name>sym.imp.__stack_chk_fail</name>
+    <address>540</address>
+    <args>
+      
+    </args>
+  <locals>
+  </locals>
+  <block_graph>
+    <block>
+      <label>
+        <address>540</address>
+      </label>
+      <ops>
+        <op>
+          <opname>CALLIND</opname>
+          <inputs>
+            <input>
+              <symbol>_reloc.__stack_chk_fail</symbol>
+              <type></type>
+              <size>8</size>
+            </input>
+          </inputs>
+        </op>
+        <op>
+          <opname>RETURN</opname>
+          <inputs>
+            <input>
+              <symbol>1</symbol>
+              <type>undefined4</type>
+              <size>4</size>
+            </input>
+          </inputs>
+        </op>
+      </ops>
+      <out_branches>
+      </out_branches>
+    </block>
+  </block_graph>
+  </function>
+  
