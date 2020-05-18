@@ -1,3 +1,6 @@
+#ifdef __SEAHORN__
+#include "test.seahorn.hpp"
+#else
 #include <stdlib.h>
 #include <time.h>
 
@@ -24,3 +27,4 @@ void path_goal() {
 void path_nongoal() {
   time(&global_time);
 }
+#endif
