@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/sleighc.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc.o CMakeFiles/sleighc.dir/bison/slghparse.cpp.o CMakeFiles/sleighc.dir/flex/slghscan.cpp.o  -o sleighc  libghidra_decompiler_sleigh.a libghidra_decompiler_base.a 
+/usr/bin/c++  -g  -rdynamic CMakeFiles/sleighc.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc.o CMakeFiles/sleighc.dir/bison/slghparse.cpp.o CMakeFiles/sleighc.dir/flex/slghscan.cpp.o  -o sleighc  libghidra_decompiler_sleigh.a libghidra_decompiler_base.a 

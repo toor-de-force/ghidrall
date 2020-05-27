@@ -2313,11 +2313,7 @@ void PrintLLVM::emitGlobalVarDeclsRecursive(Scope *scope)
 void PrintLLVM::docAllGlobals(void)
 
 {
-  int4 id = emit->beginDocument();
   emitGlobalVarDeclsRecursive(glb->symboltab->getGlobalScope());
-  emit->tagLine();
-  emit->endDocument(id);
-  emit->flush();
 }
 
 void PrintLLVM::docSingleGlobal(const Symbol *sym)

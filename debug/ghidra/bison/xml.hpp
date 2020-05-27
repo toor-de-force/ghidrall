@@ -30,8 +30,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_XML_HOME_TEJ_GITHUB_R2GHIDRA_DEC_DEBUG_GHIDRA_BISON_XML_HPP_INCLUDED
-# define YY_XML_HOME_TEJ_GITHUB_R2GHIDRA_DEC_DEBUG_GHIDRA_BISON_XML_HPP_INCLUDED
+#ifndef YY_XML_HOME_TEJ_GITHUB_GHIDRALL_DEBUG_GHIDRA_BISON_XML_HPP_INCLUDED
+# define YY_XML_HOME_TEJ_GITHUB_GHIDRALL_DEBUG_GHIDRA_BISON_XML_HPP_INCLUDED
 /* Debug traces.  */
 #ifndef XMLDEBUG
 # if defined YYDEBUG
@@ -70,14 +70,14 @@ extern int xmldebug;
 
 union XMLSTYPE
 {
-#line 119 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/xml.y" /* yacc.c:1909  */
+#line 119 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/xml.y" /* yacc.c:1909  */
 
   int4 i;
   string *str;
   Attributes *attr;
   NameValue *pair;
 
-#line 81 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/xml.hpp" /* yacc.c:1909  */
+#line 81 "/home/tej/github/Ghidrall/debug/ghidra/bison/xml.hpp" /* yacc.c:1909  */
 };
 
 typedef union XMLSTYPE XMLSTYPE;
@@ -90,4 +90,4 @@ extern XMLSTYPE xmllval;
 
 int xmlparse (void);
 
-#endif /* !YY_XML_HOME_TEJ_GITHUB_R2GHIDRA_DEC_DEBUG_GHIDRA_BISON_XML_HPP_INCLUDED  */
+#endif /* !YY_XML_HOME_TEJ_GITHUB_GHIDRALL_DEBUG_GHIDRA_BISON_XML_HPP_INCLUDED  */

@@ -30,8 +30,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_PCODEPARSE_HOME_TEJ_GITHUB_R2GHIDRA_DEC_DEBUG_GHIDRA_BISON_PCODEPARSE_HPP_INCLUDED
-# define YY_PCODEPARSE_HOME_TEJ_GITHUB_R2GHIDRA_DEC_DEBUG_GHIDRA_BISON_PCODEPARSE_HPP_INCLUDED
+#ifndef YY_PCODEPARSE_HOME_TEJ_GITHUB_GHIDRALL_DEBUG_GHIDRA_BISON_PCODEPARSE_HPP_INCLUDED
+# define YY_PCODEPARSE_HOME_TEJ_GITHUB_GHIDRALL_DEBUG_GHIDRA_BISON_PCODEPARSE_HPP_INCLUDED
 /* Debug traces.  */
 #ifndef PCODEPARSEDEBUG
 # if defined YYDEBUG
@@ -119,7 +119,7 @@ extern int pcodeparsedebug;
 
 union PCODEPARSESTYPE
 {
-#line 26 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeparse.y" /* yacc.c:1909  */
+#line 26 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeparse.y" /* yacc.c:1909  */
 
   uintb *i;
   string *str;
@@ -139,7 +139,7 @@ union PCODEPARSESTYPE
   VarnodeSymbol *varsym;
   SpecificSymbol *specsym;
 
-#line 143 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/pcodeparse.hpp" /* yacc.c:1909  */
+#line 143 "/home/tej/github/Ghidrall/debug/ghidra/bison/pcodeparse.hpp" /* yacc.c:1909  */
 };
 
 typedef union PCODEPARSESTYPE PCODEPARSESTYPE;
@@ -152,4 +152,4 @@ extern PCODEPARSESTYPE pcodeparselval;
 
 int pcodeparseparse (void);
 
-#endif /* !YY_PCODEPARSE_HOME_TEJ_GITHUB_R2GHIDRA_DEC_DEBUG_GHIDRA_BISON_PCODEPARSE_HPP_INCLUDED  */
+#endif /* !YY_PCODEPARSE_HOME_TEJ_GITHUB_GHIDRALL_DEBUG_GHIDRA_BISON_PCODEPARSE_HPP_INCLUDED  */

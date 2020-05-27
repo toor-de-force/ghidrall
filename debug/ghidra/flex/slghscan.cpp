@@ -1,6 +1,6 @@
-#line 2 "/home/tej/github/r2ghidra-dec/debug/ghidra/flex/slghscan.cpp"
+#line 2 "/home/tej/github/Ghidrall/debug/ghidra/flex/slghscan.cpp"
 
-#line 4 "/home/tej/github/r2ghidra-dec/debug/ghidra/flex/slghscan.cpp"
+#line 4 "/home/tej/github/Ghidrall/debug/ghidra/flex/slghscan.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -1317,9 +1317,9 @@ int4 scan_number(char *numtext,YYSTYPE *lval,bool signednum)
   return INTEGER;
 }
 
-#line 1321 "/home/tej/github/r2ghidra-dec/debug/ghidra/flex/slghscan.cpp"
+#line 1321 "/home/tej/github/Ghidrall/debug/ghidra/flex/slghscan.cpp"
 
-#line 1323 "/home/tej/github/r2ghidra-dec/debug/ghidra/flex/slghscan.cpp"
+#line 1323 "/home/tej/github/Ghidrall/debug/ghidra/flex/slghscan.cpp"
 
 #define INITIAL 0
 #define defblock 1
@@ -1548,7 +1548,7 @@ YY_DECL
 #line 490 "ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghscan.l"
 
 
-#line 1552 "/home/tej/github/r2ghidra-dec/debug/ghidra/flex/slghscan.cpp"
+#line 1552 "/home/tej/github/Ghidrall/debug/ghidra/flex/slghscan.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -2473,7 +2473,7 @@ YY_RULE_SETUP
 #line 673 "ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghscan.l"
 ECHO;
 	YY_BREAK
-#line 2477 "/home/tej/github/r2ghidra-dec/debug/ghidra/flex/slghscan.cpp"
+#line 2477 "/home/tej/github/Ghidrall/debug/ghidra/flex/slghscan.cpp"
 
 	case YY_END_OF_BUFFER:
 		{

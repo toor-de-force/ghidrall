@@ -22,10 +22,28 @@ class Lifter:
         self.module.data_layout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
         self.module.triple = "x86_64-pc-linux-gnu"
         self.decompile_info = decompile_info
+        self.global_vars = self.fish_globals()
         self.instrumentation = {}
         self.function_names = list(self.decompile_info.keys())
         self.functions_ir, self.functions_xml, self.functions_args, self.ret_types = self.create_function_signatures()
         self.populate_functions()
+
+    def fish_globals(self):
+        global_vars = {}
+        for decompile_info in list(self.decompile_info.values()):
+            pdg = decompile_info.splitlines()
+            i = 0
+            for line in pdg:
+                if "<symbol>_obj" in line or "<symbol>obj" in line:
+                    symbol = line.split('<symbol>')[1].split('</symbol>')[0]
+                    if symbol not in list(global_vars.keys()):
+                        size_line = pdg[i + 2]
+                        size = ir.IntType(int(size_line.split('<size>')[1].split('</size>')[0]) * 8)
+                        glob = ir.GlobalVariable(self.module, size, symbol)
+                        glob.initializer = size(0)
+                        global_vars[symbol] = glob
+                i += 1
+        return global_vars
 
     def create_function_signatures(self):
         all_ir, all_xml, all_args, return_types = {}, {}, {}, {}
@@ -42,11 +60,14 @@ class Lifter:
             else:
                 func_return = ir.IntType(8 * int(xml_return_type.find('size').text))
                 return_types[function] = 8 * int(xml_return_type.find('size').text)
-            args = []
+            args = {}
             for arg in xml_args:
-                args.append(ir.IntType(8 * int(arg.find('size').text)))
-            func_type = ir.FunctionType(func_return, args)
+                name = arg.find('name').text
+                args[name] = (ir.IntType(8 * int(arg.find('size').text)))
+            func_type = ir.FunctionType(func_return, list(args.values()))
             ir_func = ir.Function(self.module, func_type, function)
+            for i in range(len(ir_func.args)):
+                ir_func.args[i].name = list(args.keys())[i]
             all_xml[function] = function_xml
             all_ir[function] = ir_func
             all_args[function] = args
@@ -85,6 +106,22 @@ class Function:
             else:
                 size = int(local.find("size").text) * 8
             local_vars[name] = entry_builder.alloca(ir.IntType(size), name=name)
+        register_vars = {}
+        pdg = et.tostring(self.xml, encoding="unicode").splitlines()
+        i = 0
+        for line in pdg:
+            if "register0x" in line:
+                symbol = line.split('<symbol>')[1].split('</symbol>')[0]
+                size_line = pdg[i + 2]
+                size = int(size_line.split('<size>')[1].split('</size>')[0])
+                if size != 1:
+                    size *= 8
+                if symbol not in list(register_vars.keys()):
+                    register_vars[symbol] = size
+                elif size > register_vars[symbol]:
+                    register_vars[symbol] = size
+                local_vars[symbol] = entry_builder.alloca(ir.IntType(size), name=symbol)
+            i += 1
         return entry_block, local_vars, entry_builder
 
     def build_cfg(self):
@@ -108,8 +145,10 @@ class Function:
                 if opname == "COPY":
                     input_target = instruction.find("inputs").find("input")
                     target = instruction.find("output")
-                    result = self.fetch_input(builder, input_target, self.temps, self.ir_func, self.locals)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals)
+                    result = self.fetch_input(builder, input_target, self.temps, self.ir_func, self.locals,
+                                              self.lifter.global_vars)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "LOAD":
                     pass
                 elif opname == "STORE":
@@ -124,15 +163,22 @@ class Function:
                 elif opname == "CBRANCH":
                     inputs = instruction.find("inputs").findall("input")
                     true_branch = self.format_label(inputs[0].find("symbol").text)
-                    conditional = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals)
+                    conditional = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                                   self.lifter.global_vars)
                     false_branch = None
-                    for branch in xml_block.find("out_branches").findall("branch_target"):
-                        if branch.text == true_branch:
-                            pass
-                        elif branch.text == self.format_label(hex(int(true_branch, 16) + 1)):
-                            true_branch = branch.text
-                        else:
-                            false_branch = branch.text
+                    branches = xml_block.find("out_branches").findall("branch_target")
+                    true_branch_off_by_1 = self.format_label(hex(int(true_branch, 16) + 1))
+                    if true_branch not in branches or true_branch_off_by_1 not in branches:
+                        true_branch = branches[0].text
+                        false_branch = branches[1].text
+                    else:
+                        for branch in branches:
+                            if branch.text == true_branch:
+                                pass
+                            elif branch.text == true_branch_off_by_1:
+                                true_branch = branch.text
+                            else:
+                                false_branch = branch.text
                     if false_branch is None:
                         raise Exception("No block match in conditional branch")
                     builder.cbranch(conditional, self.ir_blocks[true_branch], self.ir_blocks[false_branch])
@@ -146,7 +192,8 @@ class Function:
                     args = []
                     result = None
                     for arg in inputs[1:]:
-                        args.append(self.fetch_input(builder, arg, self.temps, self.ir_func, self.locals))
+                        args.append(self.fetch_input(builder, arg, self.temps, self.ir_func, self.locals,
+                                                     self.lifter.global_vars))
                     if call_target in instrumentation_list:
                         func_call = self.instrument(call_target, self.lifter)
                         if func_call is not None:
@@ -154,9 +201,15 @@ class Function:
                     else:
                         result = builder.call(self.lifter.functions_ir[call_target], args=args)
                     if result is not None and target is not None:
-                        self.fetch_store_output(builder, target, result, self.temps, self.locals)
+                        self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                self.lifter.global_vars)
                 elif opname == "CALLIND":
-                    raise Exception("Don't know how to deal with CALLIND yet")
+                    #create an empty function declaration
+                    inputs = instruction.find("inputs").findall("input")
+                    call_target = inputs[0].find("symbol").text
+                    func_type = ir.FunctionType(ir.VoidType(), [])
+                    ir_func = ir.Function(self.lifter.module, func_type, call_target)
+                    builder.call(ir_func, [])
                 # elif opname == "CALLOTHER":
                 #     raise Exception("Not implemented: " + opname)
                 elif opname == "RETURN":
@@ -164,64 +217,92 @@ class Function:
                         builder.ret_void()
                     else:
                         inputs = instruction.find("inputs").findall("input")
-                        lhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals)
+                        lhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                               self.lifter.global_vars)
                         builder.ret(lhs)
                     branched = True
                 elif opname == "INT_EQUAL":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
-                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals)
-                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals)
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
                     result = builder.icmp_unsigned('==', lhs, rhs)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "INT_NOTEQUAL":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
-                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals)
-                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals)
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
                     result = builder.icmp_unsigned('!=', lhs, rhs)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "INT_SLESS":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
-                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals)
-                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals)
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
                     result = builder.icmp_signed('<', lhs, rhs)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 # elif opname == "INT_SLESSEQUAL":
                 #     raise Exception("Not implemented: " + opname)
-                # elif opname == "INT_LESS":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "INT_LESS":
+                    inputs = instruction.find("inputs").findall("input")
+                    target = instruction.find("output")
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    result = builder.icmp_unsigned('<', lhs, rhs)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 # elif opname == "INT_LESSEQUAL":
                 #     raise Exception("Not implemented: " + opname)
                 elif opname == "INT_ZEXT":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
-                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals)
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
                     target_type = ir.IntType(8 * int(target.find("size").text))
                     result = builder.zext(lhs, target_type)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "INT_SEXT":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
-                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals)
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
                     target_type = ir.IntType(8 * int(target.find("size").text))
                     result = builder.sext(lhs, target_type)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "INT_ADD":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
-                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals)
-                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals)
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
                     result = builder.add(lhs, rhs)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "INT_SUB":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
-                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals)
-                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals)
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
                     result = builder.sub(lhs, rhs)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 # elif opname == "INT_CARRY":
                 #     raise Exception("Not implemented: " + opname)
                 # elif opname == "INT_SCARRY":
@@ -237,47 +318,65 @@ class Function:
                 elif opname == "INT_AND":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
-                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals)
-                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals)
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
                     result = builder.and_(lhs, rhs)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 # elif opname == "INT_OR":
                 #     raise Exception("Not implemented: " + opname)
                 elif opname == "INT_LEFT":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
-                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals)
-                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals)
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
                     result = builder.shl(lhs, rhs)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "INT_RIGHT":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
-                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals)
-                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals)
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
                     result = builder.lshr(lhs, rhs)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "INT_SRIGHT":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
-                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals)
-                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals)
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
                     result = builder.ashr(lhs, rhs)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "INT_MULT":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
-                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals)
-                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals)
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
                     result = builder.mul(lhs, rhs)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "INT_DIV":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
-                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals)
-                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals)
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
                     result = builder.div(lhs, rhs)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 # elif opname == "INT_SDIV":
                 #     raise Exception("Not implemented: " + opname)
                 # elif opname == "INT_REM":
@@ -285,16 +384,21 @@ class Function:
                 elif opname == "INT_SREM":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
-                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals)
-                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals)
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
                     result = builder.srem(lhs, rhs)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "BOOL_NEGATE":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
-                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals)
-                    result = builder.neg(lhs)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals)
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    result = builder.not_(lhs)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 # elif opname == "BOOL_XOR":
                 #     raise Exception("Not implemented: " + opname)
                 # elif opname == "BOOL_AND":
@@ -346,19 +450,26 @@ class Function:
                 elif opname == "SUBPIECE":
                     output = instruction.find("output")
                     inputs = instruction.find("inputs").findall("input")
-                    argument = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals)
-                    offset = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals)
+                    argument = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                                self.lifter.global_vars)
+                    offset = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                              self.lifter.global_vars)
                     if inputs[1].find("symbol").text == "0":
                         result = builder.trunc(argument, ir.IntType(int(inputs[1].find("size").text) * 8))
                     else:
                         raise Exception("Unexpected subpiece operation")
-                    self.fetch_store_output(builder, output, result, self.temps, self.locals)
+                    self.fetch_store_output(builder, output, result, self.temps, self.locals, self.lifter.global_vars)
                 elif opname == "CAST":
-                    raise Exception("Cast not implemented")
+                    input_target = instruction.find("inputs").find("input")
+                    target = instruction.find("output")
+                    result = self.fetch_input(builder, input_target, self.temps, self.ir_func, self.locals,
+                                              self.lifter.global_vars)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 # elif opname == "PTRADD":
                 #     raise Exception("Not implemented: " + opname)
-                # elif opname == "PTRSUB":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "PTRSUB":
+                    raise Exception("Not implemented: " + opname)
                 # elif opname == "SEGMENTOP":
                 #     raise Exception("Not implemented: " + opname)
                 # elif opname == "CPOOLREF":
@@ -413,17 +524,26 @@ class Function:
         return ir_func
 
     @staticmethod
-    def fetch_input(builder, arg, temps, ir_func, local_vars):
+    def fetch_input(builder, arg, temps, ir_func, local_vars, global_vars):
         symbol = arg.find("symbol").text
         if "var" in symbol:
             symbol = symbol.split('.')[0]
         if "bVar" in symbol:
             size = 1
         else:
-            size = 8 * int(arg.find("size").text)
+            size = int(arg.find("size").text)
+            if size != 1:
+                size *= 8
+        if "argv" in symbol:
+            raise Exception("argc and argv weird behaviour")
+        if "argc" in symbol:
+            raise Exception("argc and argv weird behaviour")
         if "arg" in symbol:
-            val = int(symbol.split("arg")[1]) - 1
-            return ir_func.args[val]
+            for arg in ir_func.args:
+                if arg.name == symbol:
+                    return arg
+        elif symbol in global_vars:
+            return builder.load(global_vars[symbol])
         elif symbol in local_vars:
             offset = 0
             try:
@@ -452,6 +572,8 @@ class Function:
         elif "true" in symbol:
             return ir.Constant(ir.IntType(1), 1)
         else:
+            if "U" in symbol:
+                symbol = int(symbol.split('U')[0])
             if "0x" in symbol:
                 val = int(symbol, 16)
             else:
@@ -459,7 +581,7 @@ class Function:
             return ir.Constant(ir.IntType(size), val)
 
     @staticmethod
-    def fetch_store_output(builder, arg, result, temps, local_vars):
+    def fetch_store_output(builder, arg, result, temps, local_vars, global_vars):
         symbol = arg.find("symbol").text
         if "var" in symbol:
             symbol = symbol.split('.')[0]
@@ -480,6 +602,8 @@ class Function:
             if output.type != result.type.as_pointer():
                 output = builder.bitcast(output, result.type.as_pointer())
             return builder.store(result, output)
+        elif symbol in global_vars:
+            return builder.store(result, global_vars[symbol])
         elif "register" in symbol:
             temps[symbol] = result
         elif "unique" in symbol:

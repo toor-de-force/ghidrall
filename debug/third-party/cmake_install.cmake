@@ -1,4 +1,4 @@
-# Install script for directory: /home/tej/github/r2ghidra-dec/third-party
+# Install script for directory: /home/tej/github/Ghidrall/third-party
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

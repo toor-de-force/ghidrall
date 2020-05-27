@@ -1,3 +1,7 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(tests)
+
 set(ALL_TESTS
   bad_diff_func
   bound_loop_with_var
@@ -67,73 +71,8 @@ set(ALL_TESTS
   unbound_loop_with_var
   var_values
   var_values_param
-  # This makes it a little easier to manage the lists in CMake. Don't remove.
-  fake_failed_test
   )
-
-# Were these tests were split, renamed or just removed?
-# invalid_inter_mem2, invalid_inter_mem3, multi_call_inter
-
-# Function summary approach
-set(FS_FAILING_TESTS
-  # This makes it a little easier to manage the lists in CMake. Don't remove.
-  fake_failed_test
-  )
-
-# Weakest precondition approach
-set(WP_FAILING_TESTS
-  # This makes it a little easier to manage the lists in CMake. Don't remove.
-  fake_failed_test
-  )
-
-# SPACER approach
-set(SPACER_FAILING_TESTS
-  # This makes it a little easier to manage the lists in CMake. Don't remove.
-  fake_failed_test
-  )
-
-set(FS_PASSING_TESTS ${ALL_TESTS})
-set(WP_PASSING_TESTS ${ALL_TESTS})
-set(SPACER_PASSING_TESTS ${ALL_TESTS})
-list(REMOVE_ITEM FS_PASSING_TESTS ${FS_FAILING_TESTS})
-list(REMOVE_ITEM WP_PASSING_TESTS ${WP_FAILING_TESTS})
-list(REMOVE_ITEM SPACER_PASSING_TESTS ${SPACER_FAILING_TESTS})
-
-set(PATHANALYZER_TEST_DIR "${CMAKE_SOURCE_DIR}/tests/pathanalyzer")
-
-# Set PATHTEST_CXX_FLAGS to configure compilation flags for the test
-# programs.  For example, try one or more of: -fomit-frame-pointer,
-# -fno-inline-small-functions, -O1, -O2, -O3, -Os, -Og, etc.
-set(CMAKE_CXX_FLAGS ${PATHTEST_CXX_FLAGS})
-
-# No differences were revealed by 32-bit testing, but you can enable it if you install the required packages.
-set(CROSS32BIT false)
 
 foreach(test ${ALL_TESTS})
   add_executable(${test} ${test}.cpp)
-  if (CROSS32BIT)
-    add_executable(${test}_32 ${test}.cpp)
-    set_target_properties(${test}_32 PROPERTIES COMPILE_FLAGS "-m32" LINK_FLAGS "-m32")
-  endif()
-endforeach()
-
-foreach(test ${SPACER_PASSING_TESTS})
-  add_test(NAME pathanalyzer_spacer_${test} COMMAND pathanalyzer_spacer_test --allow-64bit ${PHAROS_TEST_OPS} ${test})
-  if (CROSS32BIT)
-    add_test(NAME pathanalyzer_spacer_${test}_32 COMMAND pathanalyzer_spacer_test ${PHAROS_TEST_OPS} ${test}_32)
-  endif()
-endforeach()
-
-foreach(test ${WP_PASSING_TESTS})
-  add_test(NAME pathanalyzer_wp_${test} COMMAND pathanalyzer_wp_test --allow-64bit ${PHAROS_TEST_OPS} ${test})
-  if (CROSS32BIT)
-    add_test(NAME pathanalyzer_wp_${test}_32 COMMAND pathanalyzer_wp_test ${PHAROS_TEST_OPS} ${test}_32)
-  endif()
-endforeach()
-
-foreach(test ${FS_PASSING_TESTS})
-  add_test(NAME pathanalyzer_fs_${test} COMMAND pathanalyzer_test --allow-64bit ${PHAROS_TEST_OPS} ${test})
-  if (CROSS32BIT)
-    add_test(NAME pathanalyzer_fs_${test}_32 COMMAND pathanalyzer_test ${PHAROS_TEST_OPS} ${test}_32)
-  endif()
 endforeach()

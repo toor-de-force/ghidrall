@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/tej/github/r2ghidra-dec/third-party/pugixml/src/pugiconfig.hpp
+/home/tej/github/Ghidrall/third-party/pugixml/src/pugiconfig.hpp
 
-/home/tej/github/r2ghidra-dec/third-party/pugixml/src/pugixml.cpp
+/home/tej/github/Ghidrall/third-party/pugixml/src/pugixml.cpp
 pugixml.hpp
-/home/tej/github/r2ghidra-dec/third-party/pugixml/src/pugixml.hpp
+/home/tej/github/Ghidrall/third-party/pugixml/src/pugixml.hpp
 stdlib.h
 -
 stdio.h
@@ -38,9 +38,9 @@ new
 stdint.h
 -
 
-/home/tej/github/r2ghidra-dec/third-party/pugixml/src/pugixml.hpp
+/home/tej/github/Ghidrall/third-party/pugixml/src/pugixml.hpp
 pugiconfig.hpp
-/home/tej/github/r2ghidra-dec/third-party/pugixml/src/pugiconfig.hpp
+/home/tej/github/Ghidrall/third-party/pugixml/src/pugiconfig.hpp
 stddef.h
 -
 exception

@@ -65,10 +65,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tej/github/r2ghidra-dec
+CMAKE_SOURCE_DIR = /home/tej/github/Ghidrall
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tej/github/r2ghidra-dec/debug
+CMAKE_BINARY_DIR = /home/tej/github/Ghidrall/debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -143,14 +143,14 @@ install/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/tej/github/r2ghidra-dec/debug && $(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/r2ghidra-dec/debug/CMakeFiles /home/tej/github/r2ghidra-dec/debug/third-party/CMakeFiles/progress.marks
-	cd /home/tej/github/r2ghidra-dec/debug && $(MAKE) -f CMakeFiles/Makefile2 third-party/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/r2ghidra-dec/debug/CMakeFiles 0
+	cd /home/tej/github/Ghidrall/debug && $(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/Ghidrall/debug/CMakeFiles /home/tej/github/Ghidrall/debug/third-party/CMakeFiles/progress.marks
+	cd /home/tej/github/Ghidrall/debug && $(MAKE) -f CMakeFiles/Makefile2 third-party/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/Ghidrall/debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/tej/github/r2ghidra-dec/debug && $(MAKE) -f CMakeFiles/Makefile2 third-party/clean
+	cd /home/tej/github/Ghidrall/debug && $(MAKE) -f CMakeFiles/Makefile2 third-party/clean
 .PHONY : clean
 
 # The main clean target
@@ -160,22 +160,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/tej/github/r2ghidra-dec/debug && $(MAKE) -f CMakeFiles/Makefile2 third-party/preinstall
+	cd /home/tej/github/Ghidrall/debug && $(MAKE) -f CMakeFiles/Makefile2 third-party/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/tej/github/r2ghidra-dec/debug && $(MAKE) -f CMakeFiles/Makefile2 third-party/preinstall
+	cd /home/tej/github/Ghidrall/debug && $(MAKE) -f CMakeFiles/Makefile2 third-party/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/tej/github/r2ghidra-dec/debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/tej/github/Ghidrall/debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 third-party/CMakeFiles/pugixml.dir/rule:
-	cd /home/tej/github/r2ghidra-dec/debug && $(MAKE) -f CMakeFiles/Makefile2 third-party/CMakeFiles/pugixml.dir/rule
+	cd /home/tej/github/Ghidrall/debug && $(MAKE) -f CMakeFiles/Makefile2 third-party/CMakeFiles/pugixml.dir/rule
 .PHONY : third-party/CMakeFiles/pugixml.dir/rule
 
 # Convenience name for target.
@@ -185,7 +185,7 @@ pugixml: third-party/CMakeFiles/pugixml.dir/rule
 
 # fast build rule for target.
 pugixml/fast:
-	cd /home/tej/github/r2ghidra-dec/debug && $(MAKE) -f third-party/CMakeFiles/pugixml.dir/build.make third-party/CMakeFiles/pugixml.dir/build
+	cd /home/tej/github/Ghidrall/debug && $(MAKE) -f third-party/CMakeFiles/pugixml.dir/build.make third-party/CMakeFiles/pugixml.dir/build
 .PHONY : pugixml/fast
 
 pugixml/src/pugixml.o: pugixml/src/pugixml.cpp.o
@@ -194,7 +194,7 @@ pugixml/src/pugixml.o: pugixml/src/pugixml.cpp.o
 
 # target to build an object file
 pugixml/src/pugixml.cpp.o:
-	cd /home/tej/github/r2ghidra-dec/debug && $(MAKE) -f third-party/CMakeFiles/pugixml.dir/build.make third-party/CMakeFiles/pugixml.dir/pugixml/src/pugixml.cpp.o
+	cd /home/tej/github/Ghidrall/debug && $(MAKE) -f third-party/CMakeFiles/pugixml.dir/build.make third-party/CMakeFiles/pugixml.dir/pugixml/src/pugixml.cpp.o
 .PHONY : pugixml/src/pugixml.cpp.o
 
 pugixml/src/pugixml.i: pugixml/src/pugixml.cpp.i
@@ -203,7 +203,7 @@ pugixml/src/pugixml.i: pugixml/src/pugixml.cpp.i
 
 # target to preprocess a source file
 pugixml/src/pugixml.cpp.i:
-	cd /home/tej/github/r2ghidra-dec/debug && $(MAKE) -f third-party/CMakeFiles/pugixml.dir/build.make third-party/CMakeFiles/pugixml.dir/pugixml/src/pugixml.cpp.i
+	cd /home/tej/github/Ghidrall/debug && $(MAKE) -f third-party/CMakeFiles/pugixml.dir/build.make third-party/CMakeFiles/pugixml.dir/pugixml/src/pugixml.cpp.i
 .PHONY : pugixml/src/pugixml.cpp.i
 
 pugixml/src/pugixml.s: pugixml/src/pugixml.cpp.s
@@ -212,7 +212,7 @@ pugixml/src/pugixml.s: pugixml/src/pugixml.cpp.s
 
 # target to generate assembly for a file
 pugixml/src/pugixml.cpp.s:
-	cd /home/tej/github/r2ghidra-dec/debug && $(MAKE) -f third-party/CMakeFiles/pugixml.dir/build.make third-party/CMakeFiles/pugixml.dir/pugixml/src/pugixml.cpp.s
+	cd /home/tej/github/Ghidrall/debug && $(MAKE) -f third-party/CMakeFiles/pugixml.dir/build.make third-party/CMakeFiles/pugixml.dir/pugixml/src/pugixml.cpp.s
 .PHONY : pugixml/src/pugixml.cpp.s
 
 # Help Target
@@ -242,6 +242,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/tej/github/r2ghidra-dec/debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/tej/github/Ghidrall/debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

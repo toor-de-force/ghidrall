@@ -60,10 +60,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tej/github/r2ghidra-dec
+CMAKE_SOURCE_DIR = /home/tej/github/Ghidrall
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tej/github/r2ghidra-dec/debug
+CMAKE_BINARY_DIR = /home/tej/github/Ghidrall/debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/core_ghidra.dir/depend.make
@@ -76,172 +76,172 @@ include CMakeFiles/core_ghidra.dir/flags.make
 
 CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o: CMakeFiles/core_ghidra.dir/flags.make
 CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o: ../src/core_ghidra.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o -c /home/tej/github/r2ghidra-dec/src/core_ghidra.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o -c /home/tej/github/Ghidrall/src/core_ghidra.cpp
 
 CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/src/core_ghidra.cpp > CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/src/core_ghidra.cpp > CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.i
 
 CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/src/core_ghidra.cpp -o CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/src/core_ghidra.cpp -o CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.s
 
 CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o: CMakeFiles/core_ghidra.dir/flags.make
 CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o: ../src/R2Architecture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o -c /home/tej/github/r2ghidra-dec/src/R2Architecture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o -c /home/tej/github/Ghidrall/src/R2Architecture.cpp
 
 CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/src/R2Architecture.cpp > CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/src/R2Architecture.cpp > CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.i
 
 CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/src/R2Architecture.cpp -o CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/src/R2Architecture.cpp -o CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.s
 
 CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o: CMakeFiles/core_ghidra.dir/flags.make
 CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o: ../src/R2LoadImage.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o -c /home/tej/github/r2ghidra-dec/src/R2LoadImage.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o -c /home/tej/github/Ghidrall/src/R2LoadImage.cpp
 
 CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/src/R2LoadImage.cpp > CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/src/R2LoadImage.cpp > CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.i
 
 CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/src/R2LoadImage.cpp -o CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/src/R2LoadImage.cpp -o CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.s
 
 CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o: CMakeFiles/core_ghidra.dir/flags.make
 CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o: ../src/R2Scope.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o -c /home/tej/github/r2ghidra-dec/src/R2Scope.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o -c /home/tej/github/Ghidrall/src/R2Scope.cpp
 
 CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/src/R2Scope.cpp > CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/src/R2Scope.cpp > CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.i
 
 CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/src/R2Scope.cpp -o CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/src/R2Scope.cpp -o CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.s
 
 CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o: CMakeFiles/core_ghidra.dir/flags.make
 CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o: ../src/R2TypeFactory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o -c /home/tej/github/r2ghidra-dec/src/R2TypeFactory.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o -c /home/tej/github/Ghidrall/src/R2TypeFactory.cpp
 
 CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/src/R2TypeFactory.cpp > CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/src/R2TypeFactory.cpp > CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.i
 
 CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/src/R2TypeFactory.cpp -o CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/src/R2TypeFactory.cpp -o CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.s
 
 CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o: CMakeFiles/core_ghidra.dir/flags.make
 CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o: ../src/R2CommentDatabase.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o -c /home/tej/github/r2ghidra-dec/src/R2CommentDatabase.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o -c /home/tej/github/Ghidrall/src/R2CommentDatabase.cpp
 
 CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/src/R2CommentDatabase.cpp > CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/src/R2CommentDatabase.cpp > CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.i
 
 CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/src/R2CommentDatabase.cpp -o CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/src/R2CommentDatabase.cpp -o CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.s
 
 CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o: CMakeFiles/core_ghidra.dir/flags.make
 CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o: ../src/AnnotatedCode.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o   -c /home/tej/github/r2ghidra-dec/src/AnnotatedCode.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o   -c /home/tej/github/Ghidrall/src/AnnotatedCode.c
 
 CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tej/github/r2ghidra-dec/src/AnnotatedCode.c > CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tej/github/Ghidrall/src/AnnotatedCode.c > CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.i
 
 CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tej/github/r2ghidra-dec/src/AnnotatedCode.c -o CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tej/github/Ghidrall/src/AnnotatedCode.c -o CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.s
 
 CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o: CMakeFiles/core_ghidra.dir/flags.make
 CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o: ../src/CodeXMLParse.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o -c /home/tej/github/r2ghidra-dec/src/CodeXMLParse.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o -c /home/tej/github/Ghidrall/src/CodeXMLParse.cpp
 
 CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/src/CodeXMLParse.cpp > CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/src/CodeXMLParse.cpp > CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.i
 
 CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/src/CodeXMLParse.cpp -o CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/src/CodeXMLParse.cpp -o CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.s
 
 CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o: CMakeFiles/core_ghidra.dir/flags.make
 CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o: ../src/ArchMap.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o -c /home/tej/github/r2ghidra-dec/src/ArchMap.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o -c /home/tej/github/Ghidrall/src/ArchMap.cpp
 
 CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/src/ArchMap.cpp > CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/src/ArchMap.cpp > CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.i
 
 CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/src/ArchMap.cpp -o CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/src/ArchMap.cpp -o CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.s
 
 CMakeFiles/core_ghidra.dir/src/R2PrintC.cpp.o: CMakeFiles/core_ghidra.dir/flags.make
 CMakeFiles/core_ghidra.dir/src/R2PrintC.cpp.o: ../src/R2PrintC.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/core_ghidra.dir/src/R2PrintC.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/R2PrintC.cpp.o -c /home/tej/github/r2ghidra-dec/src/R2PrintC.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/core_ghidra.dir/src/R2PrintC.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/R2PrintC.cpp.o -c /home/tej/github/Ghidrall/src/R2PrintC.cpp
 
 CMakeFiles/core_ghidra.dir/src/R2PrintC.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core_ghidra.dir/src/R2PrintC.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/src/R2PrintC.cpp > CMakeFiles/core_ghidra.dir/src/R2PrintC.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/src/R2PrintC.cpp > CMakeFiles/core_ghidra.dir/src/R2PrintC.cpp.i
 
 CMakeFiles/core_ghidra.dir/src/R2PrintC.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core_ghidra.dir/src/R2PrintC.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/src/R2PrintC.cpp -o CMakeFiles/core_ghidra.dir/src/R2PrintC.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/src/R2PrintC.cpp -o CMakeFiles/core_ghidra.dir/src/R2PrintC.cpp.s
 
 CMakeFiles/core_ghidra.dir/src/R2PrintLLVM.cpp.o: CMakeFiles/core_ghidra.dir/flags.make
 CMakeFiles/core_ghidra.dir/src/R2PrintLLVM.cpp.o: ../src/R2PrintLLVM.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/core_ghidra.dir/src/R2PrintLLVM.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/R2PrintLLVM.cpp.o -c /home/tej/github/r2ghidra-dec/src/R2PrintLLVM.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/core_ghidra.dir/src/R2PrintLLVM.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/R2PrintLLVM.cpp.o -c /home/tej/github/Ghidrall/src/R2PrintLLVM.cpp
 
 CMakeFiles/core_ghidra.dir/src/R2PrintLLVM.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core_ghidra.dir/src/R2PrintLLVM.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/src/R2PrintLLVM.cpp > CMakeFiles/core_ghidra.dir/src/R2PrintLLVM.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/src/R2PrintLLVM.cpp > CMakeFiles/core_ghidra.dir/src/R2PrintLLVM.cpp.i
 
 CMakeFiles/core_ghidra.dir/src/R2PrintLLVM.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core_ghidra.dir/src/R2PrintLLVM.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/src/R2PrintLLVM.cpp -o CMakeFiles/core_ghidra.dir/src/R2PrintLLVM.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/src/R2PrintLLVM.cpp -o CMakeFiles/core_ghidra.dir/src/R2PrintLLVM.cpp.s
 
 CMakeFiles/core_ghidra.dir/src/printLLVM.cc.o: CMakeFiles/core_ghidra.dir/flags.make
 CMakeFiles/core_ghidra.dir/src/printLLVM.cc.o: ../src/printLLVM.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/core_ghidra.dir/src/printLLVM.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/printLLVM.cc.o -c /home/tej/github/r2ghidra-dec/src/printLLVM.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/core_ghidra.dir/src/printLLVM.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/printLLVM.cc.o -c /home/tej/github/Ghidrall/src/printLLVM.cc
 
 CMakeFiles/core_ghidra.dir/src/printLLVM.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core_ghidra.dir/src/printLLVM.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/src/printLLVM.cc > CMakeFiles/core_ghidra.dir/src/printLLVM.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/src/printLLVM.cc > CMakeFiles/core_ghidra.dir/src/printLLVM.cc.i
 
 CMakeFiles/core_ghidra.dir/src/printLLVM.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core_ghidra.dir/src/printLLVM.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/src/printLLVM.cc -o CMakeFiles/core_ghidra.dir/src/printLLVM.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/src/printLLVM.cc -o CMakeFiles/core_ghidra.dir/src/printLLVM.cc.s
 
 CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.o: CMakeFiles/core_ghidra.dir/flags.make
 CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.o: ../src/RCoreMutex.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.o -c /home/tej/github/r2ghidra-dec/src/RCoreMutex.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.o -c /home/tej/github/Ghidrall/src/RCoreMutex.cpp
 
 CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/src/RCoreMutex.cpp > CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/src/RCoreMutex.cpp > CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.i
 
 CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/src/RCoreMutex.cpp -o CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/src/RCoreMutex.cpp -o CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.s
 
 # Object files for target core_ghidra
 core_ghidra_OBJECTS = \
@@ -306,7 +306,7 @@ core_ghidra.so: /usr/local/lib/libr_hash.so
 core_ghidra.so: /usr/local/lib/libr_util.so
 core_ghidra.so: /usr/lib/x86_64-linux-gnu/libdl.so
 core_ghidra.so: CMakeFiles/core_ghidra.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX shared library core_ghidra.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX shared library core_ghidra.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/core_ghidra.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -319,6 +319,6 @@ CMakeFiles/core_ghidra.dir/clean:
 .PHONY : CMakeFiles/core_ghidra.dir/clean
 
 CMakeFiles/core_ghidra.dir/depend:
-	cd /home/tej/github/r2ghidra-dec/debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tej/github/r2ghidra-dec /home/tej/github/r2ghidra-dec /home/tej/github/r2ghidra-dec/debug /home/tej/github/r2ghidra-dec/debug /home/tej/github/r2ghidra-dec/debug/CMakeFiles/core_ghidra.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tej/github/Ghidrall/debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tej/github/Ghidrall /home/tej/github/Ghidrall /home/tej/github/Ghidrall/debug /home/tej/github/Ghidrall/debug /home/tej/github/Ghidrall/debug/CMakeFiles/core_ghidra.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/core_ghidra.dir/depend
 

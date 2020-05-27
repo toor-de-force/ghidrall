@@ -6,5 +6,5 @@ CXX_FLAGS = -g -fPIC   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/tej/github/r2ghidra-dec/third-party/pugixml/src 
+CXX_INCLUDES = -I/home/tej/github/Ghidrall/third-party/pugixml/src 
 

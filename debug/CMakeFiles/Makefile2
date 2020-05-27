@@ -61,10 +61,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tej/github/r2ghidra-dec
+CMAKE_SOURCE_DIR = /home/tej/github/Ghidrall
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tej/github/r2ghidra-dec/debug
+CMAKE_BINARY_DIR = /home/tej/github/Ghidrall/debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -143,14 +143,14 @@ CMakeFiles/core_ghidra.dir/all: ghidra/CMakeFiles/ghidra_decompiler_sleigh.dir/a
 CMakeFiles/core_ghidra.dir/all: third-party/CMakeFiles/pugixml.dir/all
 	$(MAKE) -f CMakeFiles/core_ghidra.dir/build.make CMakeFiles/core_ghidra.dir/depend
 	$(MAKE) -f CMakeFiles/core_ghidra.dir/build.make CMakeFiles/core_ghidra.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target core_ghidra"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target core_ghidra"
 .PHONY : CMakeFiles/core_ghidra.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/core_ghidra.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/r2ghidra-dec/debug/CMakeFiles 46
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/Ghidrall/debug/CMakeFiles 46
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/core_ghidra.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/r2ghidra-dec/debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/Ghidrall/debug/CMakeFiles 0
 .PHONY : CMakeFiles/core_ghidra.dir/rule
 
 # Convenience name for target.
@@ -170,14 +170,14 @@ CMakeFiles/core_ghidra.dir/clean:
 ghidra/CMakeFiles/ghidra_libdecomp.dir/all:
 	$(MAKE) -f ghidra/CMakeFiles/ghidra_libdecomp.dir/build.make ghidra/CMakeFiles/ghidra_libdecomp.dir/depend
 	$(MAKE) -f ghidra/CMakeFiles/ghidra_libdecomp.dir/build.make ghidra/CMakeFiles/ghidra_libdecomp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=45 "Built target ghidra_libdecomp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=45 "Built target ghidra_libdecomp"
 .PHONY : ghidra/CMakeFiles/ghidra_libdecomp.dir/all
 
 # Build rule for subdir invocation for target.
 ghidra/CMakeFiles/ghidra_libdecomp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/r2ghidra-dec/debug/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/Ghidrall/debug/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 ghidra/CMakeFiles/ghidra_libdecomp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/r2ghidra-dec/debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/Ghidrall/debug/CMakeFiles 0
 .PHONY : ghidra/CMakeFiles/ghidra_libdecomp.dir/rule
 
 # Convenience name for target.
@@ -197,14 +197,14 @@ ghidra/CMakeFiles/ghidra_libdecomp.dir/clean:
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/all:
 	$(MAKE) -f ghidra/CMakeFiles/ghidra_decompiler_base.dir/build.make ghidra/CMakeFiles/ghidra_decompiler_base.dir/depend
 	$(MAKE) -f ghidra/CMakeFiles/ghidra_decompiler_base.dir/build.make ghidra/CMakeFiles/ghidra_decompiler_base.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36 "Built target ghidra_decompiler_base"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36 "Built target ghidra_decompiler_base"
 .PHONY : ghidra/CMakeFiles/ghidra_decompiler_base.dir/all
 
 # Build rule for subdir invocation for target.
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/r2ghidra-dec/debug/CMakeFiles 30
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/Ghidrall/debug/CMakeFiles 30
 	$(MAKE) -f CMakeFiles/Makefile2 ghidra/CMakeFiles/ghidra_decompiler_base.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/r2ghidra-dec/debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/Ghidrall/debug/CMakeFiles 0
 .PHONY : ghidra/CMakeFiles/ghidra_decompiler_base.dir/rule
 
 # Convenience name for target.
@@ -224,14 +224,14 @@ ghidra/CMakeFiles/ghidra_decompiler_base.dir/clean:
 ghidra/CMakeFiles/ghidra_decompiler_sleigh.dir/all:
 	$(MAKE) -f ghidra/CMakeFiles/ghidra_decompiler_sleigh.dir/build.make ghidra/CMakeFiles/ghidra_decompiler_sleigh.dir/depend
 	$(MAKE) -f ghidra/CMakeFiles/ghidra_decompiler_sleigh.dir/build.make ghidra/CMakeFiles/ghidra_decompiler_sleigh.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=37,38,39,40,41,42,43,44 "Built target ghidra_decompiler_sleigh"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=37,38,39,40,41,42,43,44 "Built target ghidra_decompiler_sleigh"
 .PHONY : ghidra/CMakeFiles/ghidra_decompiler_sleigh.dir/all
 
 # Build rule for subdir invocation for target.
 ghidra/CMakeFiles/ghidra_decompiler_sleigh.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/r2ghidra-dec/debug/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/Ghidrall/debug/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 ghidra/CMakeFiles/ghidra_decompiler_sleigh.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/r2ghidra-dec/debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/Ghidrall/debug/CMakeFiles 0
 .PHONY : ghidra/CMakeFiles/ghidra_decompiler_sleigh.dir/rule
 
 # Convenience name for target.
@@ -251,14 +251,14 @@ ghidra/CMakeFiles/ghidra_decompiler_sleigh.dir/clean:
 ghidra/CMakeFiles/sla.dir/all: ghidra/CMakeFiles/sleighc.dir/all
 	$(MAKE) -f ghidra/CMakeFiles/sla.dir/build.make ghidra/CMakeFiles/sla.dir/depend
 	$(MAKE) -f ghidra/CMakeFiles/sla.dir/build.make ghidra/CMakeFiles/sla.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97 "Built target sla"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97 "Built target sla"
 .PHONY : ghidra/CMakeFiles/sla.dir/all
 
 # Build rule for subdir invocation for target.
 ghidra/CMakeFiles/sla.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/r2ghidra-dec/debug/CMakeFiles 92
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/Ghidrall/debug/CMakeFiles 92
 	$(MAKE) -f CMakeFiles/Makefile2 ghidra/CMakeFiles/sla.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/r2ghidra-dec/debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/Ghidrall/debug/CMakeFiles 0
 .PHONY : ghidra/CMakeFiles/sla.dir/rule
 
 # Convenience name for target.
@@ -279,14 +279,14 @@ ghidra/CMakeFiles/sleighc.dir/all: ghidra/CMakeFiles/ghidra_decompiler_base.dir/
 ghidra/CMakeFiles/sleighc.dir/all: ghidra/CMakeFiles/ghidra_decompiler_sleigh.dir/all
 	$(MAKE) -f ghidra/CMakeFiles/sleighc.dir/build.make ghidra/CMakeFiles/sleighc.dir/depend
 	$(MAKE) -f ghidra/CMakeFiles/sleighc.dir/build.make ghidra/CMakeFiles/sleighc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=98,99,100 "Built target sleighc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=98,99,100 "Built target sleighc"
 .PHONY : ghidra/CMakeFiles/sleighc.dir/all
 
 # Build rule for subdir invocation for target.
 ghidra/CMakeFiles/sleighc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/r2ghidra-dec/debug/CMakeFiles 41
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/Ghidrall/debug/CMakeFiles 41
 	$(MAKE) -f CMakeFiles/Makefile2 ghidra/CMakeFiles/sleighc.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/r2ghidra-dec/debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/Ghidrall/debug/CMakeFiles 0
 .PHONY : ghidra/CMakeFiles/sleighc.dir/rule
 
 # Convenience name for target.
@@ -306,14 +306,14 @@ ghidra/CMakeFiles/sleighc.dir/clean:
 third-party/CMakeFiles/pugixml.dir/all:
 	$(MAKE) -f third-party/CMakeFiles/pugixml.dir/build.make third-party/CMakeFiles/pugixml.dir/depend
 	$(MAKE) -f third-party/CMakeFiles/pugixml.dir/build.make third-party/CMakeFiles/pugixml.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=46 "Built target pugixml"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=46 "Built target pugixml"
 .PHONY : third-party/CMakeFiles/pugixml.dir/all
 
 # Build rule for subdir invocation for target.
 third-party/CMakeFiles/pugixml.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/r2ghidra-dec/debug/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/Ghidrall/debug/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/CMakeFiles/pugixml.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/r2ghidra-dec/debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tej/github/Ghidrall/debug/CMakeFiles 0
 .PHONY : third-party/CMakeFiles/pugixml.dir/rule
 
 # Convenience name for target.

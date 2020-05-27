@@ -60,10 +60,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tej/github/r2ghidra-dec
+CMAKE_SOURCE_DIR = /home/tej/github/Ghidrall
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tej/github/r2ghidra-dec/debug
+CMAKE_BINARY_DIR = /home/tej/github/Ghidrall/debug
 
 # Include any dependencies generated for this target.
 include ghidra/CMakeFiles/sleighc.dir/depend.make
@@ -75,54 +75,54 @@ include ghidra/CMakeFiles/sleighc.dir/progress.make
 include ghidra/CMakeFiles/sleighc.dir/flags.make
 
 ghidra/bison/slghparse.cpp: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "[BISON][slghparse] Building parser with bison 3.0.4"
-	cd /home/tej/github/r2ghidra-dec/ghidra && /usr/bin/bison -Dapi.prefix={yy} -d -o /home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "[BISON][slghparse] Building parser with bison 3.0.4"
+	cd /home/tej/github/Ghidrall/ghidra && /usr/bin/bison -Dapi.prefix={yy} -d -o /home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y
 
 ghidra/bison/slghparse.hpp: ghidra/bison/slghparse.cpp
 	@$(CMAKE_COMMAND) -E touch_nocreate ghidra/bison/slghparse.hpp
 
 ghidra/flex/slghscan.cpp: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghscan.l
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "[FLEX][slghscan] Building scanner with flex 2.6.4"
-	cd /home/tej/github/r2ghidra-dec/ghidra && /usr/bin/flex -o/home/tej/github/r2ghidra-dec/debug/ghidra/flex/slghscan.cpp ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghscan.l
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "[FLEX][slghscan] Building scanner with flex 2.6.4"
+	cd /home/tej/github/Ghidrall/ghidra && /usr/bin/flex -o/home/tej/github/Ghidrall/debug/ghidra/flex/slghscan.cpp ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghscan.l
 
 ghidra/CMakeFiles/sleighc.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc.o: ghidra/CMakeFiles/sleighc.dir/flags.make
 ghidra/CMakeFiles/sleighc.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object ghidra/CMakeFiles/sleighc.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sleighc.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object ghidra/CMakeFiles/sleighc.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sleighc.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc
 
 ghidra/CMakeFiles/sleighc.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sleighc.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc > CMakeFiles/sleighc.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc > CMakeFiles/sleighc.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc.i
 
 ghidra/CMakeFiles/sleighc.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sleighc.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc -o CMakeFiles/sleighc.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc -o CMakeFiles/sleighc.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slgh_compile.cc.s
 
 ghidra/CMakeFiles/sleighc.dir/bison/slghparse.cpp.o: ghidra/CMakeFiles/sleighc.dir/flags.make
 ghidra/CMakeFiles/sleighc.dir/bison/slghparse.cpp.o: ghidra/bison/slghparse.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object ghidra/CMakeFiles/sleighc.dir/bison/slghparse.cpp.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sleighc.dir/bison/slghparse.cpp.o -c /home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object ghidra/CMakeFiles/sleighc.dir/bison/slghparse.cpp.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sleighc.dir/bison/slghparse.cpp.o -c /home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp
 
 ghidra/CMakeFiles/sleighc.dir/bison/slghparse.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sleighc.dir/bison/slghparse.cpp.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp > CMakeFiles/sleighc.dir/bison/slghparse.cpp.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp > CMakeFiles/sleighc.dir/bison/slghparse.cpp.i
 
 ghidra/CMakeFiles/sleighc.dir/bison/slghparse.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sleighc.dir/bison/slghparse.cpp.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp -o CMakeFiles/sleighc.dir/bison/slghparse.cpp.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp -o CMakeFiles/sleighc.dir/bison/slghparse.cpp.s
 
 ghidra/CMakeFiles/sleighc.dir/flex/slghscan.cpp.o: ghidra/CMakeFiles/sleighc.dir/flags.make
 ghidra/CMakeFiles/sleighc.dir/flex/slghscan.cpp.o: ghidra/flex/slghscan.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object ghidra/CMakeFiles/sleighc.dir/flex/slghscan.cpp.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sleighc.dir/flex/slghscan.cpp.o -c /home/tej/github/r2ghidra-dec/debug/ghidra/flex/slghscan.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object ghidra/CMakeFiles/sleighc.dir/flex/slghscan.cpp.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sleighc.dir/flex/slghscan.cpp.o -c /home/tej/github/Ghidrall/debug/ghidra/flex/slghscan.cpp
 
 ghidra/CMakeFiles/sleighc.dir/flex/slghscan.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sleighc.dir/flex/slghscan.cpp.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/debug/ghidra/flex/slghscan.cpp > CMakeFiles/sleighc.dir/flex/slghscan.cpp.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/debug/ghidra/flex/slghscan.cpp > CMakeFiles/sleighc.dir/flex/slghscan.cpp.i
 
 ghidra/CMakeFiles/sleighc.dir/flex/slghscan.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sleighc.dir/flex/slghscan.cpp.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/debug/ghidra/flex/slghscan.cpp -o CMakeFiles/sleighc.dir/flex/slghscan.cpp.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/debug/ghidra/flex/slghscan.cpp -o CMakeFiles/sleighc.dir/flex/slghscan.cpp.s
 
 # Object files for target sleighc
 sleighc_OBJECTS = \
@@ -140,8 +140,8 @@ ghidra/sleighc: ghidra/CMakeFiles/sleighc.dir/build.make
 ghidra/sleighc: ghidra/libghidra_decompiler_sleigh.a
 ghidra/sleighc: ghidra/libghidra_decompiler_base.a
 ghidra/sleighc: ghidra/CMakeFiles/sleighc.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable sleighc"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sleighc.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable sleighc"
+	cd /home/tej/github/Ghidrall/debug/ghidra && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sleighc.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 ghidra/CMakeFiles/sleighc.dir/build: ghidra/sleighc
@@ -149,12 +149,12 @@ ghidra/CMakeFiles/sleighc.dir/build: ghidra/sleighc
 .PHONY : ghidra/CMakeFiles/sleighc.dir/build
 
 ghidra/CMakeFiles/sleighc.dir/clean:
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && $(CMAKE_COMMAND) -P CMakeFiles/sleighc.dir/cmake_clean.cmake
+	cd /home/tej/github/Ghidrall/debug/ghidra && $(CMAKE_COMMAND) -P CMakeFiles/sleighc.dir/cmake_clean.cmake
 .PHONY : ghidra/CMakeFiles/sleighc.dir/clean
 
 ghidra/CMakeFiles/sleighc.dir/depend: ghidra/bison/slghparse.cpp
 ghidra/CMakeFiles/sleighc.dir/depend: ghidra/bison/slghparse.hpp
 ghidra/CMakeFiles/sleighc.dir/depend: ghidra/flex/slghscan.cpp
-	cd /home/tej/github/r2ghidra-dec/debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tej/github/r2ghidra-dec /home/tej/github/r2ghidra-dec/ghidra /home/tej/github/r2ghidra-dec/debug /home/tej/github/r2ghidra-dec/debug/ghidra /home/tej/github/r2ghidra-dec/debug/ghidra/CMakeFiles/sleighc.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tej/github/Ghidrall/debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tej/github/Ghidrall /home/tej/github/Ghidrall/ghidra /home/tej/github/Ghidrall/debug /home/tej/github/Ghidrall/debug/ghidra /home/tej/github/Ghidrall/debug/ghidra/CMakeFiles/sleighc.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : ghidra/CMakeFiles/sleighc.dir/depend
 

@@ -7,11 +7,11 @@ C_FLAGS = -g -fPIC
 
 C_DEFINES = -DR2GHIDRA_SLEIGHHOME_DEFAULT=\"/home/tej/.local/share/radare2/plugins/r2ghidra_sleigh\" -Dcore_ghidra_EXPORTS
 
-C_INCLUDES = -I/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp -I/home/tej/github/r2ghidra-dec/third-party/pugixml/src -isystem /usr/local/include/libr 
+C_INCLUDES = -I/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp -I/home/tej/github/Ghidrall/third-party/pugixml/src -isystem /usr/local/include/libr 
 
 CXX_FLAGS = -g -fPIC   -std=gnu++11
 
 CXX_DEFINES = -DR2GHIDRA_SLEIGHHOME_DEFAULT=\"/home/tej/.local/share/radare2/plugins/r2ghidra_sleigh\" -Dcore_ghidra_EXPORTS
 
-CXX_INCLUDES = -I/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp -I/home/tej/github/r2ghidra-dec/third-party/pugixml/src -isystem /usr/local/include/libr 
+CXX_INCLUDES = -I/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp -I/home/tej/github/Ghidrall/third-party/pugixml/src -isystem /usr/local/include/libr 
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/tej/github/r2ghidra-dec
+# Install script for directory: /home/tej/github/Ghidrall
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/share/radare2/plugins/core_ghidra.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/radare2/plugins" TYPE SHARED_LIBRARY FILES "/home/tej/github/r2ghidra-dec/debug/core_ghidra.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/radare2/plugins" TYPE SHARED_LIBRARY FILES "/home/tej/github/Ghidrall/debug/core_ghidra.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/share/radare2/plugins/core_ghidra.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/share/radare2/plugins/core_ghidra.so")
     file(RPATH_CHANGE
@@ -62,8 +62,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/tej/github/r2ghidra-dec/debug/ghidra/cmake_install.cmake")
-  include("/home/tej/github/r2ghidra-dec/debug/third-party/cmake_install.cmake")
+  include("/home/tej/github/Ghidrall/debug/ghidra/cmake_install.cmake")
+  include("/home/tej/github/Ghidrall/debug/third-party/cmake_install.cmake")
 
 endif()
 
@@ -75,5 +75,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/tej/github/r2ghidra-dec/debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/tej/github/Ghidrall/debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -30,8 +30,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_GRAMMAR_HOME_TEJ_GITHUB_R2GHIDRA_DEC_DEBUG_GHIDRA_BISON_GRAMMAR_HPP_INCLUDED
-# define YY_GRAMMAR_HOME_TEJ_GITHUB_R2GHIDRA_DEC_DEBUG_GHIDRA_BISON_GRAMMAR_HPP_INCLUDED
+#ifndef YY_GRAMMAR_HOME_TEJ_GITHUB_GHIDRALL_DEBUG_GHIDRA_BISON_GRAMMAR_HPP_INCLUDED
+# define YY_GRAMMAR_HOME_TEJ_GITHUB_GHIDRALL_DEBUG_GHIDRA_BISON_GRAMMAR_HPP_INCLUDED
 /* Debug traces.  */
 #ifndef GRAMMARDEBUG
 # if defined YYDEBUG
@@ -74,7 +74,7 @@ extern int grammardebug;
 
 union GRAMMARSTYPE
 {
-#line 25 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/grammar.y" /* yacc.c:1909  */
+#line 25 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/grammar.y" /* yacc.c:1909  */
 
   uint4 flags;
   TypeDeclarator *dec;
@@ -87,7 +87,7 @@ union GRAMMARSTYPE
   string *str;
   uintb *i;
 
-#line 91 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/grammar.hpp" /* yacc.c:1909  */
+#line 91 "/home/tej/github/Ghidrall/debug/ghidra/bison/grammar.hpp" /* yacc.c:1909  */
 };
 
 typedef union GRAMMARSTYPE GRAMMARSTYPE;
@@ -100,4 +100,4 @@ extern GRAMMARSTYPE grammarlval;
 
 int grammarparse (void);
 
-#endif /* !YY_GRAMMAR_HOME_TEJ_GITHUB_R2GHIDRA_DEC_DEBUG_GHIDRA_BISON_GRAMMAR_HPP_INCLUDED  */
+#endif /* !YY_GRAMMAR_HOME_TEJ_GITHUB_GHIDRALL_DEBUG_GHIDRA_BISON_GRAMMAR_HPP_INCLUDED  */

@@ -5,7 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/tej/github/r2ghidra-dec/src/AnnotatedCode.c" "/home/tej/github/r2ghidra-dec/debug/CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o"
+  "/home/tej/github/Ghidrall/src/AnnotatedCode.c" "/home/tej/github/Ghidrall/debug/CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -22,18 +22,18 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "/usr/local/include/libr"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/tej/github/r2ghidra-dec/src/ArchMap.cpp" "/home/tej/github/r2ghidra-dec/debug/CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o"
-  "/home/tej/github/r2ghidra-dec/src/CodeXMLParse.cpp" "/home/tej/github/r2ghidra-dec/debug/CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o"
-  "/home/tej/github/r2ghidra-dec/src/R2Architecture.cpp" "/home/tej/github/r2ghidra-dec/debug/CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o"
-  "/home/tej/github/r2ghidra-dec/src/R2CommentDatabase.cpp" "/home/tej/github/r2ghidra-dec/debug/CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o"
-  "/home/tej/github/r2ghidra-dec/src/R2LoadImage.cpp" "/home/tej/github/r2ghidra-dec/debug/CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o"
-  "/home/tej/github/r2ghidra-dec/src/R2PrintC.cpp" "/home/tej/github/r2ghidra-dec/debug/CMakeFiles/core_ghidra.dir/src/R2PrintC.cpp.o"
-  "/home/tej/github/r2ghidra-dec/src/R2PrintLLVM.cpp" "/home/tej/github/r2ghidra-dec/debug/CMakeFiles/core_ghidra.dir/src/R2PrintLLVM.cpp.o"
-  "/home/tej/github/r2ghidra-dec/src/R2Scope.cpp" "/home/tej/github/r2ghidra-dec/debug/CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o"
-  "/home/tej/github/r2ghidra-dec/src/R2TypeFactory.cpp" "/home/tej/github/r2ghidra-dec/debug/CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o"
-  "/home/tej/github/r2ghidra-dec/src/RCoreMutex.cpp" "/home/tej/github/r2ghidra-dec/debug/CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.o"
-  "/home/tej/github/r2ghidra-dec/src/core_ghidra.cpp" "/home/tej/github/r2ghidra-dec/debug/CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o"
-  "/home/tej/github/r2ghidra-dec/src/printLLVM.cc" "/home/tej/github/r2ghidra-dec/debug/CMakeFiles/core_ghidra.dir/src/printLLVM.cc.o"
+  "/home/tej/github/Ghidrall/src/ArchMap.cpp" "/home/tej/github/Ghidrall/debug/CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o"
+  "/home/tej/github/Ghidrall/src/CodeXMLParse.cpp" "/home/tej/github/Ghidrall/debug/CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o"
+  "/home/tej/github/Ghidrall/src/R2Architecture.cpp" "/home/tej/github/Ghidrall/debug/CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o"
+  "/home/tej/github/Ghidrall/src/R2CommentDatabase.cpp" "/home/tej/github/Ghidrall/debug/CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o"
+  "/home/tej/github/Ghidrall/src/R2LoadImage.cpp" "/home/tej/github/Ghidrall/debug/CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o"
+  "/home/tej/github/Ghidrall/src/R2PrintC.cpp" "/home/tej/github/Ghidrall/debug/CMakeFiles/core_ghidra.dir/src/R2PrintC.cpp.o"
+  "/home/tej/github/Ghidrall/src/R2PrintLLVM.cpp" "/home/tej/github/Ghidrall/debug/CMakeFiles/core_ghidra.dir/src/R2PrintLLVM.cpp.o"
+  "/home/tej/github/Ghidrall/src/R2Scope.cpp" "/home/tej/github/Ghidrall/debug/CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o"
+  "/home/tej/github/Ghidrall/src/R2TypeFactory.cpp" "/home/tej/github/Ghidrall/debug/CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o"
+  "/home/tej/github/Ghidrall/src/RCoreMutex.cpp" "/home/tej/github/Ghidrall/debug/CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.o"
+  "/home/tej/github/Ghidrall/src/core_ghidra.cpp" "/home/tej/github/Ghidrall/debug/CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o"
+  "/home/tej/github/Ghidrall/src/printLLVM.cc" "/home/tej/github/Ghidrall/debug/CMakeFiles/core_ghidra.dir/src/printLLVM.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -52,10 +52,10 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/tej/github/r2ghidra-dec/debug/ghidra/CMakeFiles/ghidra_decompiler_base.dir/DependInfo.cmake"
-  "/home/tej/github/r2ghidra-dec/debug/ghidra/CMakeFiles/ghidra_libdecomp.dir/DependInfo.cmake"
-  "/home/tej/github/r2ghidra-dec/debug/ghidra/CMakeFiles/ghidra_decompiler_sleigh.dir/DependInfo.cmake"
-  "/home/tej/github/r2ghidra-dec/debug/third-party/CMakeFiles/pugixml.dir/DependInfo.cmake"
+  "/home/tej/github/Ghidrall/debug/ghidra/CMakeFiles/ghidra_decompiler_base.dir/DependInfo.cmake"
+  "/home/tej/github/Ghidrall/debug/ghidra/CMakeFiles/ghidra_libdecomp.dir/DependInfo.cmake"
+  "/home/tej/github/Ghidrall/debug/ghidra/CMakeFiles/ghidra_decompiler_sleigh.dir/DependInfo.cmake"
+  "/home/tej/github/Ghidrall/debug/third-party/CMakeFiles/pugixml.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

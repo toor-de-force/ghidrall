@@ -60,10 +60,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tej/github/r2ghidra-dec
+CMAKE_SOURCE_DIR = /home/tej/github/Ghidrall
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tej/github/r2ghidra-dec/debug
+CMAKE_BINARY_DIR = /home/tej/github/Ghidrall/debug
 
 # Include any dependencies generated for this target.
 include ghidra/CMakeFiles/ghidra_decompiler_base.dir/depend.make
@@ -75,765 +75,765 @@ include ghidra/CMakeFiles/ghidra_decompiler_base.dir/progress.make
 include ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 
 ghidra/bison/xml.cpp: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/xml.y
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "[BISON][xml] Building parser with bison 3.0.4"
-	cd /home/tej/github/r2ghidra-dec/ghidra && /usr/bin/bison -Dapi.prefix={xml} -d -o /home/tej/github/r2ghidra-dec/debug/ghidra/bison/xml.cpp /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/xml.y
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "[BISON][xml] Building parser with bison 3.0.4"
+	cd /home/tej/github/Ghidrall/ghidra && /usr/bin/bison -Dapi.prefix={xml} -d -o /home/tej/github/Ghidrall/debug/ghidra/bison/xml.cpp /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/xml.y
 
 ghidra/bison/xml.hpp: ghidra/bison/xml.cpp
 	@$(CMAKE_COMMAND) -E touch_nocreate ghidra/bison/xml.hpp
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/float.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcoderaw.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/translate.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/globalcontext.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/capability.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/architecture.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/graph.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cover.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cast.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/cpool.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/comment.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/action.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/loadimage.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/variable.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varmap.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/jumptable.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulate.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/emulateutil.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/userop.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_block.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_varnode.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata_op.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/pcodeinject.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prefersplit.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/rangeutil.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/subflow.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/blockaction.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/merge.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/double.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/condexe.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/override.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/dynamic.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/prettyprint.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printlanguage.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printc.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/printjava.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/memstate.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/paramid.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc > CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc -o CMakeFiles/ghidra_decompiler_base.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/transform.cc.s
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/bison/xml.cpp.o: ghidra/CMakeFiles/ghidra_decompiler_base.dir/flags.make
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/bison/xml.cpp.o: ghidra/bison/xml.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/bison/xml.cpp.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/bison/xml.cpp.o -c /home/tej/github/r2ghidra-dec/debug/ghidra/bison/xml.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object ghidra/CMakeFiles/ghidra_decompiler_base.dir/bison/xml.cpp.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_decompiler_base.dir/bison/xml.cpp.o -c /home/tej/github/Ghidrall/debug/ghidra/bison/xml.cpp
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/bison/xml.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_decompiler_base.dir/bison/xml.cpp.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/debug/ghidra/bison/xml.cpp > CMakeFiles/ghidra_decompiler_base.dir/bison/xml.cpp.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/debug/ghidra/bison/xml.cpp > CMakeFiles/ghidra_decompiler_base.dir/bison/xml.cpp.i
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/bison/xml.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_decompiler_base.dir/bison/xml.cpp.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/debug/ghidra/bison/xml.cpp -o CMakeFiles/ghidra_decompiler_base.dir/bison/xml.cpp.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/debug/ghidra/bison/xml.cpp -o CMakeFiles/ghidra_decompiler_base.dir/bison/xml.cpp.s
 
 # Object files for target ghidra_decompiler_base
 ghidra_decompiler_base_OBJECTS = \
@@ -959,9 +959,9 @@ ghidra/libghidra_decompiler_base.a: ghidra/CMakeFiles/ghidra_decompiler_base.dir
 ghidra/libghidra_decompiler_base.a: ghidra/CMakeFiles/ghidra_decompiler_base.dir/bison/xml.cpp.o
 ghidra/libghidra_decompiler_base.a: ghidra/CMakeFiles/ghidra_decompiler_base.dir/build.make
 ghidra/libghidra_decompiler_base.a: ghidra/CMakeFiles/ghidra_decompiler_base.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Linking CXX static library libghidra_decompiler_base.a"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && $(CMAKE_COMMAND) -P CMakeFiles/ghidra_decompiler_base.dir/cmake_clean_target.cmake
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ghidra_decompiler_base.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Linking CXX static library libghidra_decompiler_base.a"
+	cd /home/tej/github/Ghidrall/debug/ghidra && $(CMAKE_COMMAND) -P CMakeFiles/ghidra_decompiler_base.dir/cmake_clean_target.cmake
+	cd /home/tej/github/Ghidrall/debug/ghidra && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ghidra_decompiler_base.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/build: ghidra/libghidra_decompiler_base.a
@@ -969,11 +969,11 @@ ghidra/CMakeFiles/ghidra_decompiler_base.dir/build: ghidra/libghidra_decompiler_
 .PHONY : ghidra/CMakeFiles/ghidra_decompiler_base.dir/build
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/clean:
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && $(CMAKE_COMMAND) -P CMakeFiles/ghidra_decompiler_base.dir/cmake_clean.cmake
+	cd /home/tej/github/Ghidrall/debug/ghidra && $(CMAKE_COMMAND) -P CMakeFiles/ghidra_decompiler_base.dir/cmake_clean.cmake
 .PHONY : ghidra/CMakeFiles/ghidra_decompiler_base.dir/clean
 
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/depend: ghidra/bison/xml.cpp
 ghidra/CMakeFiles/ghidra_decompiler_base.dir/depend: ghidra/bison/xml.hpp
-	cd /home/tej/github/r2ghidra-dec/debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tej/github/r2ghidra-dec /home/tej/github/r2ghidra-dec/ghidra /home/tej/github/r2ghidra-dec/debug /home/tej/github/r2ghidra-dec/debug/ghidra /home/tej/github/r2ghidra-dec/debug/ghidra/CMakeFiles/ghidra_decompiler_base.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tej/github/Ghidrall/debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tej/github/Ghidrall /home/tej/github/Ghidrall/ghidra /home/tej/github/Ghidrall/debug /home/tej/github/Ghidrall/debug/ghidra /home/tej/github/Ghidrall/debug/ghidra/CMakeFiles/ghidra_decompiler_base.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : ghidra/CMakeFiles/ghidra_decompiler_base.dir/depend
 

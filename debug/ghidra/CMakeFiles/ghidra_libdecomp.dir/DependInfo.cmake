@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc" "/home/tej/github/r2ghidra-dec/debug/ghidra/CMakeFiles/ghidra_libdecomp.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc.o"
+  "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc" "/home/tej/github/Ghidrall/debug/ghidra/CMakeFiles/ghidra_libdecomp.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -47,6 +47,7 @@ CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o: /usr/local/include/libr/r_user
 CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o: /usr/local/include/libr/r_util.h
 CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o: /usr/local/include/libr/r_util/pj.h
 CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o: /usr/local/include/libr/r_util/r_alloc.h
+CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o: /usr/local/include/libr/r_util/r_annotated_code.h
 CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o: /usr/local/include/libr/r_util/r_ascii_table.h
 CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o: /usr/local/include/libr/r_util/r_asn1.h
 CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o: /usr/local/include/libr/r_util/r_assert.h
@@ -98,7 +99,6 @@ CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o: /usr/local/include/libr/r_util
 CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o: /usr/local/include/libr/r_util/r_utf8.h
 CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o: /usr/local/include/libr/r_util/r_x509.h
 CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o: /usr/local/include/libr/r_vector.h
-CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o: /usr/local/include/libr/r_version.h
 CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o: /usr/local/include/libr/sdb.h
 CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o: /usr/local/include/libr/sdb/buffer.h
 CMakeFiles/core_ghidra.dir/src/AnnotatedCode.c.o: /usr/local/include/libr/sdb/cdb.h
@@ -163,6 +163,7 @@ CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o: /usr/local/include/libr/r_userconf
 CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o: /usr/local/include/libr/r_util.h
 CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o: /usr/local/include/libr/r_util/pj.h
 CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o: /usr/local/include/libr/r_util/r_alloc.h
+CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o: /usr/local/include/libr/r_util/r_annotated_code.h
 CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o: /usr/local/include/libr/r_util/r_ascii_table.h
 CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o: /usr/local/include/libr/r_util/r_asn1.h
 CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o: /usr/local/include/libr/r_util/r_assert.h
@@ -214,7 +215,6 @@ CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o: /usr/local/include/libr/r_util/r_u
 CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o: /usr/local/include/libr/r_util/r_utf8.h
 CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o: /usr/local/include/libr/r_util/r_x509.h
 CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o: /usr/local/include/libr/r_vector.h
-CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o: /usr/local/include/libr/r_version.h
 CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o: /usr/local/include/libr/sdb.h
 CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o: /usr/local/include/libr/sdb/buffer.h
 CMakeFiles/core_ghidra.dir/src/ArchMap.cpp.o: /usr/local/include/libr/sdb/cdb.h
@@ -325,6 +325,7 @@ CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o: /usr/local/include/libr/r_use
 CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o: /usr/local/include/libr/r_util.h
 CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o: /usr/local/include/libr/r_util/pj.h
 CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o: /usr/local/include/libr/r_util/r_alloc.h
+CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o: /usr/local/include/libr/r_util/r_annotated_code.h
 CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o: /usr/local/include/libr/r_util/r_ascii_table.h
 CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o: /usr/local/include/libr/r_util/r_asn1.h
 CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o: /usr/local/include/libr/r_util/r_assert.h
@@ -376,7 +377,6 @@ CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o: /usr/local/include/libr/r_uti
 CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o: /usr/local/include/libr/r_util/r_utf8.h
 CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o: /usr/local/include/libr/r_util/r_x509.h
 CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o: /usr/local/include/libr/r_vector.h
-CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o: /usr/local/include/libr/r_version.h
 CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o: /usr/local/include/libr/sdb.h
 CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o: /usr/local/include/libr/sdb/buffer.h
 CMakeFiles/core_ghidra.dir/src/CodeXMLParse.cpp.o: /usr/local/include/libr/sdb/cdb.h
@@ -503,6 +503,7 @@ CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o: /usr/local/include/libr/r_u
 CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o: /usr/local/include/libr/r_util.h
 CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o: /usr/local/include/libr/r_util/pj.h
 CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o: /usr/local/include/libr/r_util/r_alloc.h
+CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o: /usr/local/include/libr/r_util/r_annotated_code.h
 CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o: /usr/local/include/libr/r_util/r_ascii_table.h
 CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o: /usr/local/include/libr/r_util/r_asn1.h
 CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o: /usr/local/include/libr/r_util/r_assert.h
@@ -554,7 +555,6 @@ CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o: /usr/local/include/libr/r_u
 CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o: /usr/local/include/libr/r_util/r_utf8.h
 CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o: /usr/local/include/libr/r_util/r_x509.h
 CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o: /usr/local/include/libr/r_vector.h
-CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o: /usr/local/include/libr/r_version.h
 CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o: /usr/local/include/libr/sdb.h
 CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o: /usr/local/include/libr/sdb/buffer.h
 CMakeFiles/core_ghidra.dir/src/R2Architecture.cpp.o: /usr/local/include/libr/sdb/cdb.h
@@ -669,6 +669,7 @@ CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o: /usr/local/include/libr/
 CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o: /usr/local/include/libr/r_util.h
 CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o: /usr/local/include/libr/r_util/pj.h
 CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o: /usr/local/include/libr/r_util/r_alloc.h
+CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o: /usr/local/include/libr/r_util/r_annotated_code.h
 CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o: /usr/local/include/libr/r_util/r_ascii_table.h
 CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o: /usr/local/include/libr/r_util/r_asn1.h
 CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o: /usr/local/include/libr/r_util/r_assert.h
@@ -720,7 +721,6 @@ CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o: /usr/local/include/libr/
 CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o: /usr/local/include/libr/r_util/r_utf8.h
 CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o: /usr/local/include/libr/r_util/r_x509.h
 CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o: /usr/local/include/libr/r_vector.h
-CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o: /usr/local/include/libr/r_version.h
 CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o: /usr/local/include/libr/sdb.h
 CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o: /usr/local/include/libr/sdb/buffer.h
 CMakeFiles/core_ghidra.dir/src/R2CommentDatabase.cpp.o: /usr/local/include/libr/sdb/cdb.h
@@ -834,6 +834,7 @@ CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o: /usr/local/include/libr/r_user
 CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o: /usr/local/include/libr/r_util.h
 CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o: /usr/local/include/libr/r_util/pj.h
 CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o: /usr/local/include/libr/r_util/r_alloc.h
+CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o: /usr/local/include/libr/r_util/r_annotated_code.h
 CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o: /usr/local/include/libr/r_util/r_ascii_table.h
 CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o: /usr/local/include/libr/r_util/r_asn1.h
 CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o: /usr/local/include/libr/r_util/r_assert.h
@@ -885,7 +886,6 @@ CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o: /usr/local/include/libr/r_util
 CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o: /usr/local/include/libr/r_util/r_utf8.h
 CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o: /usr/local/include/libr/r_util/r_x509.h
 CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o: /usr/local/include/libr/r_vector.h
-CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o: /usr/local/include/libr/r_version.h
 CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o: /usr/local/include/libr/sdb.h
 CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o: /usr/local/include/libr/sdb/buffer.h
 CMakeFiles/core_ghidra.dir/src/R2LoadImage.cpp.o: /usr/local/include/libr/sdb/cdb.h
@@ -1098,6 +1098,7 @@ CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o: /usr/local/include/libr/r_userconf
 CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o: /usr/local/include/libr/r_util.h
 CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o: /usr/local/include/libr/r_util/pj.h
 CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o: /usr/local/include/libr/r_util/r_alloc.h
+CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o: /usr/local/include/libr/r_util/r_annotated_code.h
 CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o: /usr/local/include/libr/r_util/r_ascii_table.h
 CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o: /usr/local/include/libr/r_util/r_asn1.h
 CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o: /usr/local/include/libr/r_util/r_assert.h
@@ -1149,7 +1150,6 @@ CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o: /usr/local/include/libr/r_util/r_u
 CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o: /usr/local/include/libr/r_util/r_utf8.h
 CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o: /usr/local/include/libr/r_util/r_x509.h
 CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o: /usr/local/include/libr/r_vector.h
-CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o: /usr/local/include/libr/r_version.h
 CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o: /usr/local/include/libr/sdb.h
 CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o: /usr/local/include/libr/sdb/buffer.h
 CMakeFiles/core_ghidra.dir/src/R2Scope.cpp.o: /usr/local/include/libr/sdb/cdb.h
@@ -1264,6 +1264,7 @@ CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o: /usr/local/include/libr/r_us
 CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o: /usr/local/include/libr/r_util.h
 CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o: /usr/local/include/libr/r_util/pj.h
 CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o: /usr/local/include/libr/r_util/r_alloc.h
+CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o: /usr/local/include/libr/r_util/r_annotated_code.h
 CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o: /usr/local/include/libr/r_util/r_ascii_table.h
 CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o: /usr/local/include/libr/r_util/r_asn1.h
 CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o: /usr/local/include/libr/r_util/r_assert.h
@@ -1315,7 +1316,6 @@ CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o: /usr/local/include/libr/r_ut
 CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o: /usr/local/include/libr/r_util/r_utf8.h
 CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o: /usr/local/include/libr/r_util/r_x509.h
 CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o: /usr/local/include/libr/r_vector.h
-CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o: /usr/local/include/libr/r_version.h
 CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o: /usr/local/include/libr/sdb.h
 CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o: /usr/local/include/libr/sdb/buffer.h
 CMakeFiles/core_ghidra.dir/src/R2TypeFactory.cpp.o: /usr/local/include/libr/sdb/cdb.h
@@ -1357,7 +1357,6 @@ CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.o: /usr/local/include/libr/r_util/
 CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.o: /usr/local/include/libr/r_util/r_strbuf.h
 CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.o: /usr/local/include/libr/r_util/r_sys.h
 CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.o: /usr/local/include/libr/r_vector.h
-CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.o: /usr/local/include/libr/r_version.h
 CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.o: /usr/local/include/libr/sdb.h
 CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.o: /usr/local/include/libr/sdb/buffer.h
 CMakeFiles/core_ghidra.dir/src/RCoreMutex.cpp.o: /usr/local/include/libr/sdb/cdb.h
@@ -1490,6 +1489,7 @@ CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o: /usr/local/include/libr/r_user
 CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o: /usr/local/include/libr/r_util.h
 CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o: /usr/local/include/libr/r_util/pj.h
 CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o: /usr/local/include/libr/r_util/r_alloc.h
+CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o: /usr/local/include/libr/r_util/r_annotated_code.h
 CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o: /usr/local/include/libr/r_util/r_ascii_table.h
 CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o: /usr/local/include/libr/r_util/r_asn1.h
 CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o: /usr/local/include/libr/r_util/r_assert.h
@@ -1541,7 +1541,6 @@ CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o: /usr/local/include/libr/r_util
 CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o: /usr/local/include/libr/r_util/r_utf8.h
 CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o: /usr/local/include/libr/r_util/r_x509.h
 CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o: /usr/local/include/libr/r_vector.h
-CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o: /usr/local/include/libr/r_version.h
 CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o: /usr/local/include/libr/sdb.h
 CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o: /usr/local/include/libr/sdb/buffer.h
 CMakeFiles/core_ghidra.dir/src/core_ghidra.cpp.o: /usr/local/include/libr/sdb/cdb.h

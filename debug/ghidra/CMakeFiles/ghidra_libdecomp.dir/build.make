@@ -60,10 +60,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tej/github/r2ghidra-dec
+CMAKE_SOURCE_DIR = /home/tej/github/Ghidrall
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tej/github/r2ghidra-dec/debug
+CMAKE_BINARY_DIR = /home/tej/github/Ghidrall/debug
 
 # Include any dependencies generated for this target.
 include ghidra/CMakeFiles/ghidra_libdecomp.dir/depend.make
@@ -76,16 +76,16 @@ include ghidra/CMakeFiles/ghidra_libdecomp.dir/flags.make
 
 ghidra/CMakeFiles/ghidra_libdecomp.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc.o: ghidra/CMakeFiles/ghidra_libdecomp.dir/flags.make
 ghidra/CMakeFiles/ghidra_libdecomp.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc.o: ../ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object ghidra/CMakeFiles/ghidra_libdecomp.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc.o"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_libdecomp.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc.o -c /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object ghidra/CMakeFiles/ghidra_libdecomp.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc.o"
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ghidra_libdecomp.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc.o -c /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc
 
 ghidra/CMakeFiles/ghidra_libdecomp.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ghidra_libdecomp.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc.i"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc > CMakeFiles/ghidra_libdecomp.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc.i
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc > CMakeFiles/ghidra_libdecomp.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc.i
 
 ghidra/CMakeFiles/ghidra_libdecomp.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ghidra_libdecomp.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc.s"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc -o CMakeFiles/ghidra_libdecomp.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc.s
+	cd /home/tej/github/Ghidrall/debug/ghidra && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc -o CMakeFiles/ghidra_libdecomp.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc.s
 
 # Object files for target ghidra_libdecomp
 ghidra_libdecomp_OBJECTS = \
@@ -97,9 +97,9 @@ ghidra_libdecomp_EXTERNAL_OBJECTS =
 ghidra/libghidra_libdecomp.a: ghidra/CMakeFiles/ghidra_libdecomp.dir/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/libdecomp.cc.o
 ghidra/libghidra_libdecomp.a: ghidra/CMakeFiles/ghidra_libdecomp.dir/build.make
 ghidra/libghidra_libdecomp.a: ghidra/CMakeFiles/ghidra_libdecomp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tej/github/r2ghidra-dec/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libghidra_libdecomp.a"
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && $(CMAKE_COMMAND) -P CMakeFiles/ghidra_libdecomp.dir/cmake_clean_target.cmake
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ghidra_libdecomp.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tej/github/Ghidrall/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libghidra_libdecomp.a"
+	cd /home/tej/github/Ghidrall/debug/ghidra && $(CMAKE_COMMAND) -P CMakeFiles/ghidra_libdecomp.dir/cmake_clean_target.cmake
+	cd /home/tej/github/Ghidrall/debug/ghidra && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ghidra_libdecomp.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 ghidra/CMakeFiles/ghidra_libdecomp.dir/build: ghidra/libghidra_libdecomp.a
@@ -107,10 +107,10 @@ ghidra/CMakeFiles/ghidra_libdecomp.dir/build: ghidra/libghidra_libdecomp.a
 .PHONY : ghidra/CMakeFiles/ghidra_libdecomp.dir/build
 
 ghidra/CMakeFiles/ghidra_libdecomp.dir/clean:
-	cd /home/tej/github/r2ghidra-dec/debug/ghidra && $(CMAKE_COMMAND) -P CMakeFiles/ghidra_libdecomp.dir/cmake_clean.cmake
+	cd /home/tej/github/Ghidrall/debug/ghidra && $(CMAKE_COMMAND) -P CMakeFiles/ghidra_libdecomp.dir/cmake_clean.cmake
 .PHONY : ghidra/CMakeFiles/ghidra_libdecomp.dir/clean
 
 ghidra/CMakeFiles/ghidra_libdecomp.dir/depend:
-	cd /home/tej/github/r2ghidra-dec/debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tej/github/r2ghidra-dec /home/tej/github/r2ghidra-dec/ghidra /home/tej/github/r2ghidra-dec/debug /home/tej/github/r2ghidra-dec/debug/ghidra /home/tej/github/r2ghidra-dec/debug/ghidra/CMakeFiles/ghidra_libdecomp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tej/github/Ghidrall/debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tej/github/Ghidrall /home/tej/github/Ghidrall/ghidra /home/tej/github/Ghidrall/debug /home/tej/github/Ghidrall/debug/ghidra /home/tej/github/Ghidrall/debug/ghidra/CMakeFiles/ghidra_libdecomp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : ghidra/CMakeFiles/ghidra_libdecomp.dir/depend
 

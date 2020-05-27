@@ -62,7 +62,7 @@
 
 
 /* Copy the first part of user declarations.  */
-#line 16 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:339  */
+#line 16 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:339  */
 
 #include "slgh_compile.hh"
 
@@ -75,7 +75,7 @@
   extern int yylex(void);
   extern int yyerror(const char *str );
 
-#line 79 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:339  */
+#line 79 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -95,8 +95,8 @@
 
 /* In a future release of Bison, this section will be replaced
    by #include "slghparse.hpp".  */
-#ifndef YY_YY_HOME_TEJ_GITHUB_R2GHIDRA_DEC_DEBUG_GHIDRA_BISON_SLGHPARSE_HPP_INCLUDED
-# define YY_YY_HOME_TEJ_GITHUB_R2GHIDRA_DEC_DEBUG_GHIDRA_BISON_SLGHPARSE_HPP_INCLUDED
+#ifndef YY_YY_HOME_TEJ_GITHUB_GHIDRALL_DEBUG_GHIDRA_BISON_SLGHPARSE_HPP_INCLUDED
+# define YY_YY_HOME_TEJ_GITHUB_GHIDRALL_DEBUG_GHIDRA_BISON_SLGHPARSE_HPP_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -229,7 +229,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 29 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:355  */
+#line 29 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:355  */
 
   char ch;
   uintb *i;
@@ -273,7 +273,7 @@ union YYSTYPE
   FamilySymbol *famsym;
   SpecificSymbol *specsym;
 
-#line 277 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:355  */
+#line 277 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -286,11 +286,11 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-#endif /* !YY_YY_HOME_TEJ_GITHUB_R2GHIDRA_DEC_DEBUG_GHIDRA_BISON_SLGHPARSE_HPP_INCLUDED  */
+#endif /* !YY_YY_HOME_TEJ_GITHUB_GHIDRALL_DEBUG_GHIDRA_BISON_SLGHPARSE_HPP_INCLUDED  */
 
 /* Copy the second part of user declarations.  */
 
-#line 294 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:358  */
+#line 294 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -2251,1865 +2251,1865 @@ yyreduce:
   switch (yyn)
     {
         case 19:
-#line 175 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 175 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { slgh->resetConstructors(); }
-#line 2257 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2257 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 177 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 177 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { slgh->setEndian(1); }
-#line 2263 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2263 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 178 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 178 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { slgh->setEndian(0); }
-#line 2269 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2269 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 180 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 180 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { slgh->setAlignment(*(yyvsp[-1].i)); delete (yyvsp[-1].i); }
-#line 2275 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2275 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 182 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 182 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     {}
-#line 2281 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2281 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 184 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 184 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tokensym) = slgh->defineToken((yyvsp[-3].str),(yyvsp[-1].i)); }
-#line 2287 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2287 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 185 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 185 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tokensym) = (yyvsp[-1].tokensym); slgh->addTokenField((yyvsp[-1].tokensym),(yyvsp[0].fieldqual)); }
-#line 2293 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2293 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 186 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 186 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { string errmsg=(yyvsp[0].anysym)->getName()+": redefined as a token"; yyerror(errmsg.c_str()); YYERROR; }
-#line 2299 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2299 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 188 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 188 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     {}
-#line 2305 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2305 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 28:
-#line 190 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 190 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.varsym) = (yyvsp[0].varsym); }
-#line 2311 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2311 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 29:
-#line 191 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 191 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.varsym) = (yyvsp[-1].varsym); if (!slgh->addContextField( (yyvsp[-1].varsym), (yyvsp[0].fieldqual) ))
                                             { yyerror("All context definitions must come before constructors"); YYERROR; } }
-#line 2318 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2318 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 30:
-#line 194 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 194 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.fieldqual) = new FieldQuality((yyvsp[-6].str),(yyvsp[-3].i),(yyvsp[-1].i)); }
-#line 2324 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2324 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 31:
-#line 195 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 195 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { delete (yyvsp[-3].i); delete (yyvsp[-1].i); string errmsg = (yyvsp[-6].anysym)->getName()+": redefined as field"; yyerror(errmsg.c_str()); YYERROR; }
-#line 2330 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2330 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 32:
-#line 196 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 196 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->signext = true; }
-#line 2336 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2336 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 33:
-#line 197 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 197 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->hex = true; }
-#line 2342 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2342 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 34:
-#line 198 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 198 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->hex = false; }
-#line 2348 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2348 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 200 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 200 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.fieldqual) = new FieldQuality((yyvsp[-6].str),(yyvsp[-3].i),(yyvsp[-1].i)); }
-#line 2354 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2354 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 36:
-#line 201 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 201 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { delete (yyvsp[-3].i); delete (yyvsp[-1].i); string errmsg = (yyvsp[-6].anysym)->getName()+": redefined as field"; yyerror(errmsg.c_str()); YYERROR; }
-#line 2360 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2360 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 37:
-#line 202 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 202 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->signext = true; }
-#line 2366 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2366 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 203 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 203 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->flow = false; }
-#line 2372 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2372 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 39:
-#line 204 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 204 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->hex = true; }
-#line 2378 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2378 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 40:
-#line 205 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 205 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.fieldqual) = (yyvsp[-1].fieldqual); (yyval.fieldqual)->hex = false; }
-#line 2384 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2384 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 41:
-#line 207 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 207 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { slgh->newSpace((yyvsp[-1].spacequal)); }
-#line 2390 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2390 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 42:
-#line 209 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 209 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.spacequal) = new SpaceQuality(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 2396 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2396 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 43:
-#line 210 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 210 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { string errmsg = (yyvsp[0].anysym)->getName()+": redefined as space"; yyerror(errmsg.c_str()); YYERROR; }
-#line 2402 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2402 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 44:
-#line 211 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 211 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.spacequal) = (yyvsp[-3].spacequal); (yyval.spacequal)->type = SpaceQuality::ramtype; }
-#line 2408 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2408 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 45:
-#line 212 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 212 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.spacequal) = (yyvsp[-3].spacequal); (yyval.spacequal)->type = SpaceQuality::registertype; }
-#line 2414 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2414 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 46:
-#line 213 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 213 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.spacequal) = (yyvsp[-3].spacequal); (yyval.spacequal)->size = *(yyvsp[0].i); delete (yyvsp[0].i); }
-#line 2420 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2420 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 47:
-#line 214 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 214 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.spacequal) = (yyvsp[-3].spacequal); (yyval.spacequal)->wordsize = *(yyvsp[0].i); delete (yyvsp[0].i); }
-#line 2426 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2426 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 48:
-#line 215 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 215 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.spacequal) = (yyvsp[-1].spacequal); (yyval.spacequal)->isdefault = true; }
-#line 2432 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2432 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 49:
-#line 217 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 217 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     {
                slgh->defineVarnodes((yyvsp[-8].spacesym),(yyvsp[-5].i),(yyvsp[-2].i),(yyvsp[-1].strlist)); }
-#line 2439 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2439 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 50:
-#line 219 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 219 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { yyerror("Parsed integer is too big (overflow)"); YYERROR; }
-#line 2445 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2445 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 54:
-#line 226 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 226 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     {
                slgh->defineBitrange((yyvsp[-7].str),(yyvsp[-5].varsym),(uint4)*(yyvsp[-3].i),(uint4)*(yyvsp[-1].i)); delete (yyvsp[-3].i); delete (yyvsp[-1].i); }
-#line 2452 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2452 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 55:
-#line 229 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 229 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { slgh->addUserOp((yyvsp[-1].strlist)); }
-#line 2458 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2458 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 56:
-#line 231 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 231 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { slgh->attachValues((yyvsp[-2].symlist),(yyvsp[-1].biglist)); }
-#line 2464 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2464 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 57:
-#line 233 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 233 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { slgh->attachNames((yyvsp[-2].symlist),(yyvsp[-1].strlist)); }
-#line 2470 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2470 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 58:
-#line 235 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 235 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { slgh->attachVarnodes((yyvsp[-2].symlist),(yyvsp[-1].symlist)); }
-#line 2476 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2476 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 59:
-#line 237 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 237 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { slgh->buildMacro((yyvsp[-3].macrosym),(yyvsp[-1].sem)); }
-#line 2482 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2482 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 60:
-#line 240 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 240 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     {  slgh->pushWith((yyvsp[-4].subtablesym),(yyvsp[-2].pateq),(yyvsp[-1].contop)); }
-#line 2488 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2488 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 64:
-#line 246 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 246 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { slgh->popWith(); }
-#line 2494 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2494 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 65:
-#line 248 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 248 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.subtablesym) = (SubtableSymbol *)0; }
-#line 2500 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2500 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 66:
-#line 249 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 249 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.subtablesym) = (yyvsp[0].subtablesym); }
-#line 2506 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2506 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 67:
-#line 250 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 250 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.subtablesym) = slgh->newTable((yyvsp[0].str)); }
-#line 2512 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2512 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 68:
-#line 253 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 253 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = (PatternEquation *)0; }
-#line 2518 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2518 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 69:
-#line 254 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 254 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = (yyvsp[0].pateq); }
-#line 2524 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2524 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 70:
-#line 257 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 257 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.macrosym) = slgh->createMacro((yyvsp[-3].str),(yyvsp[-1].strlist)); }
-#line 2530 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2530 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 71:
-#line 259 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 259 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.sectionstart) = slgh->standaloneSection((yyvsp[-1].sem)); }
-#line 2536 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2536 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 72:
-#line 260 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 260 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.sectionstart) = slgh->finalNamedSection((yyvsp[-2].sectionstart),(yyvsp[-1].sem)); }
-#line 2542 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2542 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 73:
-#line 261 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 261 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.sectionstart) = (SectionVector *)0; }
-#line 2548 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2548 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 74:
-#line 263 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 263 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { slgh->buildConstructor((yyvsp[-4].construct),(yyvsp[-2].pateq),(yyvsp[-1].contop),(yyvsp[0].sectionstart)); }
-#line 2554 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2554 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 75:
-#line 264 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 264 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { slgh->buildConstructor((yyvsp[-4].construct),(yyvsp[-2].pateq),(yyvsp[-1].contop),(yyvsp[0].sectionstart)); }
-#line 2560 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2560 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 76:
-#line 266 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 266 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.construct) = (yyvsp[-1].construct); (yyval.construct)->addSyntax(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 2566 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2566 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 77:
-#line 267 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 267 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.construct) = (yyvsp[-1].construct); (yyval.construct)->addSyntax(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 2572 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2572 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 78:
-#line 268 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 268 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.construct) = (yyvsp[-1].construct); if (slgh->isInRoot((yyvsp[-1].construct))) { (yyval.construct)->addSyntax(*(yyvsp[0].str)); delete (yyvsp[0].str); } else slgh->newOperand((yyvsp[-1].construct),(yyvsp[0].str)); }
-#line 2578 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2578 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 79:
-#line 269 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 269 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.construct) = (yyvsp[-1].construct); if (!slgh->isInRoot((yyvsp[-1].construct))) { yyerror("Unexpected '^' at start of print pieces");  YYERROR; } }
-#line 2584 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2584 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 80:
-#line 270 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 270 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.construct) = (yyvsp[-1].construct); }
-#line 2590 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2590 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 81:
-#line 271 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 271 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.construct) = (yyvsp[-1].construct); (yyval.construct)->addSyntax(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 2596 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2596 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 82:
-#line 272 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 272 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.construct) = (yyvsp[-1].construct); (yyval.construct)->addSyntax(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 2602 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2602 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 83:
-#line 273 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 273 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.construct) = (yyvsp[-1].construct); (yyval.construct)->addSyntax(string(" ")); }
-#line 2608 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2608 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 84:
-#line 274 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 274 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.construct) = (yyvsp[-1].construct); slgh->newOperand((yyvsp[-1].construct),(yyvsp[0].str)); }
-#line 2614 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2614 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 85:
-#line 276 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 276 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.construct) = slgh->createConstructor((yyvsp[-1].subtablesym)); }
-#line 2620 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2620 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 86:
-#line 277 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 277 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { SubtableSymbol *sym=slgh->newTable((yyvsp[-1].str)); (yyval.construct) = slgh->createConstructor(sym); }
-#line 2626 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2626 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 87:
-#line 278 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 278 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.construct) = slgh->createConstructor((SubtableSymbol *)0); }
-#line 2632 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2632 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 88:
-#line 279 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 279 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.construct) = (yyvsp[-1].construct); }
-#line 2638 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2638 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 89:
-#line 281 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 281 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.patexp) = new ConstantValue(*(yyvsp[0].big)); delete (yyvsp[0].big); }
-#line 2644 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2644 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 90:
-#line 283 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 283 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { if ((actionon==1)&&((yyvsp[0].famsym)->getType() != SleighSymbol::context_symbol))
                                              { string errmsg="Global symbol "+(yyvsp[0].famsym)->getName(); errmsg += " is not allowed in action expression"; yyerror(errmsg.c_str()); } (yyval.patexp) = (yyvsp[0].famsym)->getPatternValue(); }
-#line 2651 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2651 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 91:
-#line 286 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 286 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.patexp) = (yyvsp[0].specsym)->getPatternExpression(); }
-#line 2657 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2657 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 92:
-#line 287 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 287 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.patexp) = (yyvsp[-1].patexp); }
-#line 2663 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2663 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 93:
-#line 288 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 288 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.patexp) = new PlusExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
-#line 2669 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2669 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 94:
-#line 289 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 289 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.patexp) = new SubExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
-#line 2675 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2675 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 95:
-#line 290 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 290 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.patexp) = new MultExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
-#line 2681 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2681 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 96:
-#line 291 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 291 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.patexp) = new LeftShiftExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
-#line 2687 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2687 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 97:
-#line 292 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 292 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.patexp) = new RightShiftExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
-#line 2693 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2693 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 98:
-#line 293 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 293 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.patexp) = new AndExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
-#line 2699 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2699 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 99:
-#line 294 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 294 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.patexp) = new OrExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
-#line 2705 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2705 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 100:
-#line 295 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 295 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.patexp) = new XorExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
-#line 2711 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2711 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 101:
-#line 296 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 296 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.patexp) = new DivExpression((yyvsp[-2].patexp),(yyvsp[0].patexp)); }
-#line 2717 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2717 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 102:
-#line 297 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 297 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.patexp) = new MinusExpression((yyvsp[0].patexp)); }
-#line 2723 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2723 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 103:
-#line 298 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 298 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.patexp) = new NotExpression((yyvsp[0].patexp)); }
-#line 2729 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2729 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 105:
-#line 301 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 301 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = new EquationAnd((yyvsp[-2].pateq),(yyvsp[0].pateq)); }
-#line 2735 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2735 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 106:
-#line 302 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 302 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = new EquationOr((yyvsp[-2].pateq),(yyvsp[0].pateq)); }
-#line 2741 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2741 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 107:
-#line 303 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 303 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = new EquationCat((yyvsp[-2].pateq),(yyvsp[0].pateq)); }
-#line 2747 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2747 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 108:
-#line 305 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 305 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = new EquationLeftEllipsis((yyvsp[0].pateq)); }
-#line 2753 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2753 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 110:
-#line 308 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 308 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = new EquationRightEllipsis((yyvsp[-1].pateq)); }
-#line 2759 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2759 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 113:
-#line 312 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 312 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = (yyvsp[-1].pateq); }
-#line 2765 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2765 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 114:
-#line 314 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 314 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = new EqualEquation((yyvsp[-2].famsym)->getPatternValue(),(yyvsp[0].patexp)); }
-#line 2771 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2771 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 115:
-#line 315 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 315 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = new NotEqualEquation((yyvsp[-2].famsym)->getPatternValue(),(yyvsp[0].patexp)); }
-#line 2777 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2777 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 116:
-#line 316 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 316 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = new LessEquation((yyvsp[-2].famsym)->getPatternValue(),(yyvsp[0].patexp)); }
-#line 2783 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2783 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 117:
-#line 317 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 317 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = new LessEqualEquation((yyvsp[-2].famsym)->getPatternValue(),(yyvsp[0].patexp)); }
-#line 2789 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2789 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 118:
-#line 318 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 318 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = new GreaterEquation((yyvsp[-2].famsym)->getPatternValue(),(yyvsp[0].patexp)); }
-#line 2795 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2795 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 119:
-#line 319 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 319 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = new GreaterEqualEquation((yyvsp[-2].famsym)->getPatternValue(),(yyvsp[0].patexp)); }
-#line 2801 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2801 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 120:
-#line 320 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 320 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = slgh->constrainOperand((yyvsp[-2].operandsym),(yyvsp[0].patexp)); 
                                           if ((yyval.pateq) == (PatternEquation *)0) 
                                             { string errmsg="Constraining currently undefined operand "+(yyvsp[-2].operandsym)->getName(); yyerror(errmsg.c_str()); } }
-#line 2809 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2809 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 121:
-#line 323 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 323 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = new OperandEquation((yyvsp[0].operandsym)->getIndex()); slgh->selfDefine((yyvsp[0].operandsym)); }
-#line 2815 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2815 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 122:
-#line 324 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 324 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = new UnconstrainedEquation((yyvsp[0].specsym)->getPatternExpression()); }
-#line 2821 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2821 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 123:
-#line 325 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 325 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = slgh->defineInvisibleOperand((yyvsp[0].famsym)); }
-#line 2827 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2827 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 124:
-#line 326 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 326 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.pateq) = slgh->defineInvisibleOperand((yyvsp[0].subtablesym)); }
-#line 2833 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2833 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 125:
-#line 328 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 328 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.contop) = (vector<ContextChange *> *)0; }
-#line 2839 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2839 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 126:
-#line 329 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 329 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.contop) = (yyvsp[-1].contop); }
-#line 2845 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2845 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 127:
-#line 331 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 331 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.contop) = new vector<ContextChange *>; }
-#line 2851 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2851 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 128:
-#line 332 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 332 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.contop) = (yyvsp[-4].contop); if (!slgh->contextMod((yyvsp[-4].contop),(yyvsp[-3].contextsym),(yyvsp[-1].patexp))) { string errmsg="Cannot use 'inst_next' to set context variable: "+(yyvsp[-3].contextsym)->getName(); yyerror(errmsg.c_str()); YYERROR; } }
-#line 2857 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2857 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 129:
-#line 333 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 333 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.contop) = (yyvsp[-7].contop); slgh->contextSet((yyvsp[-7].contop),(yyvsp[-4].famsym),(yyvsp[-2].contextsym)); }
-#line 2863 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2863 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 130:
-#line 334 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 334 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.contop) = (yyvsp[-7].contop); slgh->contextSet((yyvsp[-7].contop),(yyvsp[-4].specsym),(yyvsp[-2].contextsym)); }
-#line 2869 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2869 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 131:
-#line 335 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 335 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.contop) = (yyvsp[-4].contop); slgh->defineOperand((yyvsp[-3].operandsym),(yyvsp[-1].patexp)); }
-#line 2875 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2875 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 132:
-#line 336 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 336 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { string errmsg="Expecting context symbol, not "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
-#line 2881 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2881 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 133:
-#line 338 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 338 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.sectionsym) = slgh->newSectionSymbol( *(yyvsp[-1].str) ); delete (yyvsp[-1].str); }
-#line 2887 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2887 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 134:
-#line 339 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 339 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.sectionsym) = (yyvsp[-1].sectionsym); }
-#line 2893 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2893 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 135:
-#line 341 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 341 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.sectionstart) = slgh->firstNamedSection((yyvsp[-1].sem),(yyvsp[0].sectionsym)); }
-#line 2899 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2899 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 136:
-#line 343 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 343 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.sectionstart) = (yyvsp[0].sectionstart); }
-#line 2905 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2905 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 137:
-#line 344 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 344 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.sectionstart) = slgh->nextNamedSection((yyvsp[-2].sectionstart),(yyvsp[-1].sem),(yyvsp[0].sectionsym)); }
-#line 2911 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2911 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 138:
-#line 346 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 346 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.sem) = (yyvsp[0].sem); if ((yyval.sem)->getOpvec().empty() && ((yyval.sem)->getResult() == (HandleTpl *)0)) slgh->recordNop(); }
-#line 2917 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2917 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 139:
-#line 347 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 347 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.sem) = slgh->setResultVarnode((yyvsp[-3].sem),(yyvsp[-1].varnode)); }
-#line 2923 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2923 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 140:
-#line 348 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 348 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.sem) = slgh->setResultStarVarnode((yyvsp[-4].sem),(yyvsp[-2].starqual),(yyvsp[-1].varnode)); }
-#line 2929 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2929 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 141:
-#line 349 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 349 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { string errmsg="Unknown export varnode: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
-#line 2935 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2935 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 142:
-#line 350 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 350 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { string errmsg="Unknown pointer varnode: "+*(yyvsp[0].str); delete (yyvsp[-1].starqual); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
-#line 2941 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2941 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 143:
-#line 352 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 352 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.sem) = new ConstructTpl(); }
-#line 2947 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2947 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 144:
-#line 353 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 353 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.sem) = (yyvsp[-1].sem); if (!(yyval.sem)->addOpList(*(yyvsp[0].stmt))) { delete (yyvsp[0].stmt); yyerror("Multiple delayslot declarations"); YYERROR; } delete (yyvsp[0].stmt); }
-#line 2953 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2953 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 145:
-#line 354 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 354 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.sem) = (yyvsp[-3].sem); slgh->pcode.newLocalDefinition((yyvsp[-1].str)); }
-#line 2959 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2959 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 146:
-#line 355 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 355 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.sem) = (yyvsp[-5].sem); slgh->pcode.newLocalDefinition((yyvsp[-3].str),*(yyvsp[-1].i)); delete (yyvsp[-1].i); }
-#line 2965 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2965 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 147:
-#line 357 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 357 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyvsp[-1].tree)->setOutput((yyvsp[-3].varnode)); (yyval.stmt) = ExprTree::toVector((yyvsp[-1].tree)); }
-#line 2971 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2971 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 148:
-#line 358 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 358 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->pcode.newOutput(true,(yyvsp[-1].tree),(yyvsp[-3].str)); }
-#line 2977 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2977 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 149:
-#line 359 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 359 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->pcode.newOutput(false,(yyvsp[-1].tree),(yyvsp[-3].str)); }
-#line 2983 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2983 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 150:
-#line 360 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 360 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->pcode.newOutput(true,(yyvsp[-1].tree),(yyvsp[-5].str),*(yyvsp[-3].i)); delete (yyvsp[-3].i); }
-#line 2989 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2989 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 151:
-#line 361 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 361 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->pcode.newOutput(true,(yyvsp[-1].tree),(yyvsp[-5].str),*(yyvsp[-3].i)); delete (yyvsp[-3].i); }
-#line 2995 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 2995 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 152:
-#line 362 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 362 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = (vector<OpTpl *> *)0; string errmsg = "Redefinition of symbol: "+(yyvsp[-1].specsym)->getName(); yyerror(errmsg.c_str()); YYERROR; }
-#line 3001 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3001 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 153:
-#line 363 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 363 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->pcode.createStore((yyvsp[-4].starqual),(yyvsp[-3].tree),(yyvsp[-1].tree)); }
-#line 3007 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3007 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 154:
-#line 364 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 364 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->pcode.createUserOpNoOut((yyvsp[-4].useropsym),(yyvsp[-2].param)); }
-#line 3013 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3013 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 155:
-#line 365 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 365 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->pcode.assignBitRange((yyvsp[-8].varnode),(uint4)*(yyvsp[-6].i),(uint4)*(yyvsp[-4].i),(yyvsp[-1].tree)); delete (yyvsp[-6].i), delete (yyvsp[-4].i); }
-#line 3019 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3019 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 156:
-#line 366 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 366 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt)=slgh->pcode.assignBitRange((yyvsp[-3].bitsym)->getParentSymbol()->getVarnode(),(yyvsp[-3].bitsym)->getBitOffset(),(yyvsp[-3].bitsym)->numBits(),(yyvsp[-1].tree)); }
-#line 3025 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3025 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 157:
-#line 367 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 367 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { delete (yyvsp[-3].varnode); delete (yyvsp[-1].i); yyerror("Illegal truncation on left-hand side of assignment"); YYERROR; }
-#line 3031 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3031 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 158:
-#line 368 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 368 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { delete (yyvsp[-3].varnode); delete (yyvsp[-1].i); yyerror("Illegal subpiece on left-hand side of assignment"); YYERROR; }
-#line 3037 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3037 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 159:
-#line 369 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 369 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->pcode.createOpConst(BUILD,(yyvsp[-1].operandsym)->getIndex()); }
-#line 3043 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3043 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 160:
-#line 370 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 370 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->createCrossBuild((yyvsp[-3].varnode),(yyvsp[-1].sectionsym)); }
-#line 3049 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3049 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 161:
-#line 371 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 371 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->createCrossBuild((yyvsp[-3].varnode),slgh->newSectionSymbol(*(yyvsp[-1].str))); delete (yyvsp[-1].str); }
-#line 3055 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3055 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 162:
-#line 372 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 372 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->pcode.createOpConst(DELAY_SLOT,*(yyvsp[-2].i)); delete (yyvsp[-2].i); }
-#line 3061 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3061 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 163:
-#line 373 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 373 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->pcode.createOpNoOut(CPUI_BRANCH,new ExprTree((yyvsp[-1].varnode))); }
-#line 3067 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3067 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 164:
-#line 374 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 374 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->pcode.createOpNoOut(CPUI_CBRANCH,new ExprTree((yyvsp[-1].varnode)),(yyvsp[-3].tree)); }
-#line 3073 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3073 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 165:
-#line 375 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 375 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->pcode.createOpNoOut(CPUI_BRANCHIND,(yyvsp[-2].tree)); }
-#line 3079 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3079 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 166:
-#line 376 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 376 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->pcode.createOpNoOut(CPUI_CALL,new ExprTree((yyvsp[-1].varnode))); }
-#line 3085 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3085 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 167:
-#line 377 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 377 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->pcode.createOpNoOut(CPUI_CALLIND,(yyvsp[-2].tree)); }
-#line 3091 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3091 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 168:
-#line 378 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 378 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { yyerror("Must specify an indirect parameter for return"); YYERROR; }
-#line 3097 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3097 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 169:
-#line 379 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 379 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->pcode.createOpNoOut(CPUI_RETURN,(yyvsp[-2].tree)); }
-#line 3103 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3103 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 170:
-#line 380 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 380 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->createMacroUse((yyvsp[-4].macrosym),(yyvsp[-2].param)); }
-#line 3109 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3109 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 171:
-#line 381 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 381 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.stmt) = slgh->pcode.placeLabel( (yyvsp[0].labelsym) ); }
-#line 3115 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3115 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 172:
-#line 383 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 383 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = new ExprTree((yyvsp[0].varnode)); }
-#line 3121 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3121 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 173:
-#line 384 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 384 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createLoad((yyvsp[-1].starqual),(yyvsp[0].tree)); }
-#line 3127 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3127 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 174:
-#line 385 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 385 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = (yyvsp[-1].tree); }
-#line 3133 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3133 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 175:
-#line 386 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 386 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_ADD,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3139 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3139 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 176:
-#line 387 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 387 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SUB,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3145 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3145 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 177:
-#line 388 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 388 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_EQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3151 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3151 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 178:
-#line 389 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 389 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_NOTEQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3157 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3157 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 179:
-#line 390 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 390 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_LESS,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3163 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3163 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 180:
-#line 391 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 391 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_LESSEQUAL,(yyvsp[0].tree),(yyvsp[-2].tree)); }
-#line 3169 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3169 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 181:
-#line 392 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 392 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_LESSEQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3175 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3175 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 182:
-#line 393 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 393 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_LESS,(yyvsp[0].tree),(yyvsp[-2].tree)); }
-#line 3181 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3181 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 183:
-#line 394 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 394 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SLESS,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3187 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3187 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 184:
-#line 395 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 395 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SLESSEQUAL,(yyvsp[0].tree),(yyvsp[-2].tree)); }
-#line 3193 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3193 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 185:
-#line 396 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 396 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SLESSEQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3199 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3199 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 186:
-#line 397 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 397 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SLESS,(yyvsp[0].tree),(yyvsp[-2].tree)); }
-#line 3205 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3205 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 187:
-#line 398 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 398 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_2COMP,(yyvsp[0].tree)); }
-#line 3211 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3211 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 188:
-#line 399 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 399 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_NEGATE,(yyvsp[0].tree)); }
-#line 3217 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3217 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 189:
-#line 400 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 400 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_XOR,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3223 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3223 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 190:
-#line 401 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 401 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_AND,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3229 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3229 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 191:
-#line 402 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 402 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_OR,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3235 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3235 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 192:
-#line 403 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 403 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_LEFT,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3241 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3241 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 193:
-#line 404 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 404 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_RIGHT,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3247 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3247 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 194:
-#line 405 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 405 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SRIGHT,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3253 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3253 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 195:
-#line 406 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 406 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_MULT,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3259 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3259 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 196:
-#line 407 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 407 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_DIV,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3265 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3265 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 197:
-#line 408 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 408 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SDIV,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3271 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3271 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 198:
-#line 409 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 409 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_REM,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3277 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3277 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 199:
-#line 410 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 410 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SREM,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3283 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3283 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 200:
-#line 411 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 411 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_BOOL_NEGATE,(yyvsp[0].tree)); }
-#line 3289 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3289 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 201:
-#line 412 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 412 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_BOOL_XOR,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3295 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3295 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 202:
-#line 413 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 413 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_BOOL_AND,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3301 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3301 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 203:
-#line 414 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 414 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_BOOL_OR,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3307 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3307 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 204:
-#line 415 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 415 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_EQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3313 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3313 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 205:
-#line 416 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 416 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_NOTEQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3319 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3319 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 206:
-#line 417 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 417 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_LESS,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3325 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3325 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 207:
-#line 418 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 418 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_LESS,(yyvsp[0].tree),(yyvsp[-2].tree)); }
-#line 3331 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3331 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 208:
-#line 419 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 419 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_LESSEQUAL,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3337 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3337 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 209:
-#line 420 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 420 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_LESSEQUAL,(yyvsp[0].tree),(yyvsp[-2].tree)); }
-#line 3343 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3343 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 210:
-#line 421 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 421 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_ADD,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3349 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3349 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 211:
-#line 422 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 422 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_SUB,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3355 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3355 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 212:
-#line 423 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 423 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_MULT,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3361 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3361 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 213:
-#line 424 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 424 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_DIV,(yyvsp[-2].tree),(yyvsp[0].tree)); }
-#line 3367 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3367 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 214:
-#line 425 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 425 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_NEG,(yyvsp[0].tree)); }
-#line 3373 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3373 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 215:
-#line 426 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 426 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_ABS,(yyvsp[-1].tree)); }
-#line 3379 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3379 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 216:
-#line 427 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 427 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_SQRT,(yyvsp[-1].tree)); }
-#line 3385 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3385 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 217:
-#line 428 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 428 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SEXT,(yyvsp[-1].tree)); }
-#line 3391 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3391 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 218:
-#line 429 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 429 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_ZEXT,(yyvsp[-1].tree)); }
-#line 3397 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3397 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 219:
-#line 430 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 430 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_CARRY,(yyvsp[-3].tree),(yyvsp[-1].tree)); }
-#line 3403 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3403 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 220:
-#line 431 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 431 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SCARRY,(yyvsp[-3].tree),(yyvsp[-1].tree)); }
-#line 3409 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3409 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 221:
-#line 432 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 432 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_INT_SBORROW,(yyvsp[-3].tree),(yyvsp[-1].tree)); }
-#line 3415 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3415 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 222:
-#line 433 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 433 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_FLOAT2FLOAT,(yyvsp[-1].tree)); }
-#line 3421 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3421 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 223:
-#line 434 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 434 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_INT2FLOAT,(yyvsp[-1].tree)); }
-#line 3427 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3427 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 224:
-#line 435 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 435 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_NAN,(yyvsp[-1].tree)); }
-#line 3433 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3433 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 225:
-#line 436 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 436 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_TRUNC,(yyvsp[-1].tree)); }
-#line 3439 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3439 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 226:
-#line 437 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 437 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_CEIL,(yyvsp[-1].tree)); }
-#line 3445 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3445 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 227:
-#line 438 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 438 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_FLOOR,(yyvsp[-1].tree)); }
-#line 3451 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3451 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 228:
-#line 439 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 439 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_FLOAT_ROUND,(yyvsp[-1].tree)); }
-#line 3457 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3457 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 229:
-#line 440 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 440 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_NEW,(yyvsp[-1].tree)); }
-#line 3463 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3463 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 230:
-#line 441 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 441 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_NEW,(yyvsp[-3].tree),(yyvsp[-1].tree)); }
-#line 3469 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3469 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 231:
-#line 442 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 442 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_POPCOUNT,(yyvsp[-1].tree)); }
-#line 3475 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3475 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 232:
-#line 443 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 443 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createOp(CPUI_SUBPIECE,new ExprTree((yyvsp[-3].specsym)->getVarnode()),new ExprTree((yyvsp[-1].varnode))); }
-#line 3481 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3481 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 233:
-#line 444 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 444 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createBitRange((yyvsp[-2].specsym),0,(uint4)(*(yyvsp[0].i) * 8)); delete (yyvsp[0].i); }
-#line 3487 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3487 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 234:
-#line 445 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 445 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createBitRange((yyvsp[-5].specsym),(uint4)*(yyvsp[-3].i),(uint4)*(yyvsp[-1].i)); delete (yyvsp[-3].i), delete (yyvsp[-1].i); }
-#line 3493 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3493 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 235:
-#line 446 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 446 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree)=slgh->pcode.createBitRange((yyvsp[0].bitsym)->getParentSymbol(),(yyvsp[0].bitsym)->getBitOffset(),(yyvsp[0].bitsym)->numBits()); }
-#line 3499 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3499 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 236:
-#line 447 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 447 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.tree) = slgh->pcode.createUserOp((yyvsp[-3].useropsym),(yyvsp[-1].param)); }
-#line 3505 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3505 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 237:
-#line 448 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 448 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { if ((*(yyvsp[-1].param)).size() < 2) { string errmsg = "Must at least two inputs to cpool"; yyerror(errmsg.c_str()); YYERROR; } (yyval.tree) = slgh->pcode.createVariadic(CPUI_CPOOLREF,(yyvsp[-1].param)); }
-#line 3511 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3511 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 238:
-#line 450 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 450 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.starqual) = new StarQuality; (yyval.starqual)->size = *(yyvsp[0].i); delete (yyvsp[0].i); (yyval.starqual)->id=ConstTpl((yyvsp[-3].spacesym)->getSpace()); }
-#line 3517 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3517 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 239:
-#line 451 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 451 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.starqual) = new StarQuality; (yyval.starqual)->size = 0; (yyval.starqual)->id=ConstTpl((yyvsp[-1].spacesym)->getSpace()); }
-#line 3523 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3523 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 240:
-#line 452 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 452 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.starqual) = new StarQuality; (yyval.starqual)->size = *(yyvsp[0].i); delete (yyvsp[0].i); (yyval.starqual)->id=ConstTpl(slgh->getDefaultCodeSpace()); }
-#line 3529 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3529 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 241:
-#line 453 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 453 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.starqual) = new StarQuality; (yyval.starqual)->size = 0; (yyval.starqual)->id=ConstTpl(slgh->getDefaultCodeSpace()); }
-#line 3535 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3535 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 242:
-#line 455 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 455 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { VarnodeTpl *sym = (yyvsp[0].startsym)->getVarnode(); (yyval.varnode) = new VarnodeTpl(ConstTpl(ConstTpl::j_curspace),sym->getOffset(),ConstTpl(ConstTpl::j_curspace_size)); delete sym; }
-#line 3541 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3541 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 243:
-#line 456 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 456 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { VarnodeTpl *sym = (yyvsp[0].endsym)->getVarnode(); (yyval.varnode) = new VarnodeTpl(ConstTpl(ConstTpl::j_curspace),sym->getOffset(),ConstTpl(ConstTpl::j_curspace_size)); delete sym; }
-#line 3547 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3547 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 244:
-#line 457 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 457 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.varnode) = new VarnodeTpl(ConstTpl(ConstTpl::j_curspace),ConstTpl(ConstTpl::real,*(yyvsp[0].i)),ConstTpl(ConstTpl::j_curspace_size)); delete (yyvsp[0].i); }
-#line 3553 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3553 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 245:
-#line 458 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 458 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.varnode) = new VarnodeTpl(ConstTpl(ConstTpl::j_curspace),ConstTpl(ConstTpl::real,0),ConstTpl(ConstTpl::j_curspace_size)); yyerror("Parsed integer is too big (overflow)"); }
-#line 3559 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3559 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 246:
-#line 459 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 459 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.varnode) = (yyvsp[0].operandsym)->getVarnode(); (yyvsp[0].operandsym)->setCodeAddress(); }
-#line 3565 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3565 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 247:
-#line 460 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 460 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { AddrSpace *spc = (yyvsp[-1].spacesym)->getSpace(); (yyval.varnode) = new VarnodeTpl(ConstTpl(spc),ConstTpl(ConstTpl::real,*(yyvsp[-3].i)),ConstTpl(ConstTpl::real,spc->getAddrSize())); delete (yyvsp[-3].i); }
-#line 3571 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3571 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 248:
-#line 461 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 461 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.varnode) = new VarnodeTpl(ConstTpl(slgh->getConstantSpace()),ConstTpl(ConstTpl::j_relative,(yyvsp[0].labelsym)->getIndex()),ConstTpl(ConstTpl::real,sizeof(uintm))); (yyvsp[0].labelsym)->incrementRefCount(); }
-#line 3577 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3577 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 249:
-#line 462 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 462 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { string errmsg = "Unknown jump destination: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
-#line 3583 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3583 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 250:
-#line 464 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 464 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.varnode) = (yyvsp[0].specsym)->getVarnode(); }
-#line 3589 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3589 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 251:
-#line 465 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 465 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.varnode) = (yyvsp[0].varnode); }
-#line 3595 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3595 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 252:
-#line 466 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 466 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { string errmsg = "Unknown varnode parameter: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
-#line 3601 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3601 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 253:
-#line 467 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 467 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { string errmsg = "Subtable not attached to operand: "+(yyvsp[0].subtablesym)->getName(); yyerror(errmsg.c_str()); YYERROR; }
-#line 3607 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3607 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 254:
-#line 469 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 469 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.varnode) = new VarnodeTpl(ConstTpl(slgh->getConstantSpace()),ConstTpl(ConstTpl::real,*(yyvsp[0].i)),ConstTpl(ConstTpl::real,0)); delete (yyvsp[0].i); }
-#line 3613 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3613 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 255:
-#line 470 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 470 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.varnode) = new VarnodeTpl(ConstTpl(slgh->getConstantSpace()),ConstTpl(ConstTpl::real,0),ConstTpl(ConstTpl::real,0)); yyerror("Parsed integer is too big (overflow)"); }
-#line 3619 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3619 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 256:
-#line 471 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 471 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.varnode) = new VarnodeTpl(ConstTpl(slgh->getConstantSpace()),ConstTpl(ConstTpl::real,*(yyvsp[-2].i)),ConstTpl(ConstTpl::real,*(yyvsp[0].i))); delete (yyvsp[-2].i); delete (yyvsp[0].i); }
-#line 3625 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3625 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 257:
-#line 472 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 472 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.varnode) = slgh->pcode.addressOf((yyvsp[0].varnode),0); }
-#line 3631 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3631 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 258:
-#line 473 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 473 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.varnode) = slgh->pcode.addressOf((yyvsp[0].varnode),*(yyvsp[-1].i)); delete (yyvsp[-1].i); }
-#line 3637 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3637 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 259:
-#line 475 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 475 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.varnode) = (yyvsp[0].specsym)->getVarnode(); }
-#line 3643 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3643 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 260:
-#line 476 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 476 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { string errmsg = "Unknown assignment varnode: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
-#line 3649 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3649 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 261:
-#line 477 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 477 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { string errmsg = "Subtable not attached to operand: "+(yyvsp[0].subtablesym)->getName(); yyerror(errmsg.c_str()); YYERROR; }
-#line 3655 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3655 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 262:
-#line 479 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 479 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.labelsym) = (yyvsp[-1].labelsym); }
-#line 3661 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3661 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 263:
-#line 480 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 480 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.labelsym) = slgh->pcode.defineLabel( (yyvsp[-1].str) ); }
-#line 3667 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3667 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 264:
-#line 482 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 482 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.varnode) = (yyvsp[0].specsym)->getVarnode(); }
-#line 3673 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3673 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 265:
-#line 483 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 483 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.varnode) = slgh->pcode.addressOf((yyvsp[0].varnode),0); }
-#line 3679 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3679 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 266:
-#line 484 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 484 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.varnode) = slgh->pcode.addressOf((yyvsp[0].varnode),*(yyvsp[-1].i)); delete (yyvsp[-1].i); }
-#line 3685 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3685 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 267:
-#line 485 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 485 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.varnode) = new VarnodeTpl(ConstTpl(slgh->getConstantSpace()),ConstTpl(ConstTpl::real,*(yyvsp[-2].i)),ConstTpl(ConstTpl::real,*(yyvsp[0].i))); delete (yyvsp[-2].i); delete (yyvsp[0].i); }
-#line 3691 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3691 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 268:
-#line 486 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 486 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { string errmsg="Unknown export varnode: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
-#line 3697 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3697 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 269:
-#line 487 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 487 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { string errmsg = "Subtable not attached to operand: "+(yyvsp[0].subtablesym)->getName(); yyerror(errmsg.c_str()); YYERROR; }
-#line 3703 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3703 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 270:
-#line 489 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 489 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.famsym) = (yyvsp[0].valuesym); }
-#line 3709 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3709 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 271:
-#line 490 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 490 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.famsym) = (yyvsp[0].valuemapsym); }
-#line 3715 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3715 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 272:
-#line 491 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 491 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.famsym) = (yyvsp[0].contextsym); }
-#line 3721 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3721 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 273:
-#line 492 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 492 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.famsym) = (yyvsp[0].namesym); }
-#line 3727 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3727 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 274:
-#line 493 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 493 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.famsym) = (yyvsp[0].varlistsym); }
-#line 3733 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3733 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 275:
-#line 495 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 495 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.specsym) = (yyvsp[0].varsym); }
-#line 3739 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3739 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 276:
-#line 496 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 496 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.specsym) = (yyvsp[0].specsym); }
-#line 3745 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3745 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 277:
-#line 497 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 497 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.specsym) = (yyvsp[0].operandsym); }
-#line 3751 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3751 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 278:
-#line 498 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 498 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.specsym) = (yyvsp[0].startsym); }
-#line 3757 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3757 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 279:
-#line 499 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 499 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.specsym) = (yyvsp[0].endsym); }
-#line 3763 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3763 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 280:
-#line 501 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 501 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.str) = new string; (*(yyval.str)) += (yyvsp[0].ch); }
-#line 3769 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3769 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 281:
-#line 502 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 502 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.str) = (yyvsp[-1].str); (*(yyval.str)) += (yyvsp[0].ch); }
-#line 3775 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3775 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 282:
-#line 504 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 504 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.biglist) = (yyvsp[-1].biglist); }
-#line 3781 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3781 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 283:
-#line 505 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 505 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.biglist) = new vector<intb>; (yyval.biglist)->push_back(intb(*(yyvsp[0].i))); delete (yyvsp[0].i); }
-#line 3787 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3787 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 284:
-#line 506 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 506 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.biglist) = new vector<intb>; (yyval.biglist)->push_back(-intb(*(yyvsp[0].i))); delete (yyvsp[0].i); }
-#line 3793 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3793 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 285:
-#line 508 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 508 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.biglist) = new vector<intb>; (yyval.biglist)->push_back(intb(*(yyvsp[0].i))); delete (yyvsp[0].i); }
-#line 3799 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3799 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 286:
-#line 509 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 509 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.biglist) = new vector<intb>; (yyval.biglist)->push_back(-intb(*(yyvsp[0].i))); delete (yyvsp[0].i); }
-#line 3805 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3805 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 287:
-#line 510 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 510 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { if (*(yyvsp[0].str)!="_") { string errmsg = "Expecting integer but saw: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
                                   (yyval.biglist) = new vector<intb>; (yyval.biglist)->push_back((intb)0xBADBEEF); delete (yyvsp[0].str); }
-#line 3812 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3812 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 288:
-#line 512 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 512 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.biglist) = (yyvsp[-1].biglist); (yyval.biglist)->push_back(intb(*(yyvsp[0].i))); delete (yyvsp[0].i); }
-#line 3818 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3818 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 289:
-#line 513 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 513 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.biglist) = (yyvsp[-2].biglist); (yyval.biglist)->push_back(-intb(*(yyvsp[0].i))); delete (yyvsp[0].i); }
-#line 3824 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3824 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 290:
-#line 514 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 514 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { if (*(yyvsp[0].str)!="_") { string errmsg = "Expecting integer but saw: "+*(yyvsp[0].str); delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
                                   (yyval.biglist) = (yyvsp[-1].biglist); (yyval.biglist)->push_back((intb)0xBADBEEF); delete (yyvsp[0].str); }
-#line 3831 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3831 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 291:
-#line 517 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 517 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.strlist) = (yyvsp[-1].strlist); }
-#line 3837 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3837 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 292:
-#line 518 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 518 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.strlist) = new vector<string>; (yyval.strlist)->push_back(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 3843 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3843 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 293:
-#line 520 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 520 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.strlist) = new vector<string>; (yyval.strlist)->push_back( *(yyvsp[0].str) ); delete (yyvsp[0].str); }
-#line 3849 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3849 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 294:
-#line 521 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 521 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.strlist) = (yyvsp[-1].strlist); (yyval.strlist)->push_back(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 3855 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3855 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 295:
-#line 522 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 522 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { string errmsg = (yyvsp[0].anysym)->getName()+": redefined"; yyerror(errmsg.c_str()); YYERROR; }
-#line 3861 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3861 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 296:
-#line 524 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 524 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.strlist) = (yyvsp[-1].strlist); }
-#line 3867 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3867 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 297:
-#line 526 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 526 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.strlist) = new vector<string>; (yyval.strlist)->push_back( *(yyvsp[0].str) ); delete (yyvsp[0].str); }
-#line 3873 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3873 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 298:
-#line 527 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 527 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.strlist) = new vector<string>; (yyval.strlist)->push_back( (yyvsp[0].anysym)->getName() ); }
-#line 3879 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3879 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 299:
-#line 528 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 528 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.strlist) = (yyvsp[-1].strlist); (yyval.strlist)->push_back(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 3885 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3885 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 300:
-#line 529 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 529 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.strlist) = (yyvsp[-1].strlist); (yyval.strlist)->push_back((yyvsp[0].anysym)->getName()); }
-#line 3891 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3891 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 301:
-#line 531 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 531 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.symlist) = (yyvsp[-1].symlist); }
-#line 3897 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3897 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 302:
-#line 532 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 532 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back((yyvsp[0].valuesym)); }
-#line 3903 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3903 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 303:
-#line 533 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 533 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back((yyvsp[0].contextsym)); }
-#line 3909 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3909 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 304:
-#line 535 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 535 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back( (yyvsp[0].valuesym) ); }
-#line 3915 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3915 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 305:
-#line 536 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 536 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back((yyvsp[0].contextsym)); }
-#line 3921 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3921 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 306:
-#line 537 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 537 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.symlist) = (yyvsp[-1].symlist); (yyval.symlist)->push_back((yyvsp[0].valuesym)); }
-#line 3927 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3927 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 307:
-#line 538 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 538 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.symlist) = (yyvsp[-1].symlist); (yyval.symlist)->push_back((yyvsp[0].contextsym)); }
-#line 3933 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3933 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 308:
-#line 539 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 539 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { string errmsg = *(yyvsp[0].str)+": is not a value pattern"; delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
-#line 3939 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3939 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 309:
-#line 541 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 541 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.symlist) = (yyvsp[-1].symlist); }
-#line 3945 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3945 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 310:
-#line 542 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 542 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back((yyvsp[0].varsym)); }
-#line 3951 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3951 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 311:
-#line 544 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 544 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back((yyvsp[0].varsym)); }
-#line 3957 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3957 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 312:
-#line 545 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 545 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { if (*(yyvsp[0].str)!="_") { string errmsg = *(yyvsp[0].str)+": is not a varnode symbol"; delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
 				  (yyval.symlist) = new vector<SleighSymbol *>; (yyval.symlist)->push_back((SleighSymbol *)0); delete (yyvsp[0].str); }
-#line 3964 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3964 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 313:
-#line 547 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 547 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.symlist) = (yyvsp[-1].symlist); (yyval.symlist)->push_back((yyvsp[0].varsym)); }
-#line 3970 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3970 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 314:
-#line 548 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 548 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { if (*(yyvsp[0].str)!="_") { string errmsg = *(yyvsp[0].str)+": is not a varnode symbol"; delete (yyvsp[0].str); yyerror(errmsg.c_str()); YYERROR; }
                                   (yyval.symlist) = (yyvsp[-1].symlist); (yyval.symlist)->push_back((SleighSymbol *)0); delete (yyvsp[0].str); }
-#line 3977 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3977 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 315:
-#line 551 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 551 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.param) = new vector<ExprTree *>; }
-#line 3983 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3983 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 316:
-#line 552 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 552 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.param) = new vector<ExprTree *>; (yyval.param)->push_back((yyvsp[0].tree)); }
-#line 3989 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3989 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 317:
-#line 553 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 553 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.param) = (yyvsp[-2].param); (yyval.param)->push_back((yyvsp[0].tree)); }
-#line 3995 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 3995 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 318:
-#line 555 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 555 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.strlist) = new vector<string>; }
-#line 4001 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4001 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 319:
-#line 556 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 556 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.strlist) = new vector<string>; (yyval.strlist)->push_back(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 4007 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4007 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 320:
-#line 557 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 557 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.strlist) = (yyvsp[-2].strlist); (yyval.strlist)->push_back(*(yyvsp[0].str)); delete (yyvsp[0].str); }
-#line 4013 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4013 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 321:
-#line 559 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 559 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.anysym) = (yyvsp[0].spacesym); }
-#line 4019 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4019 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 322:
-#line 560 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 560 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.anysym) = (yyvsp[0].sectionsym); }
-#line 4025 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4025 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 323:
-#line 561 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 561 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.anysym) = (yyvsp[0].tokensym); }
-#line 4031 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4031 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 324:
-#line 562 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 562 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.anysym) = (yyvsp[0].useropsym); }
-#line 4037 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4037 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 325:
-#line 563 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 563 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.anysym) = (yyvsp[0].macrosym); }
-#line 4043 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4043 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 326:
-#line 564 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 564 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.anysym) = (yyvsp[0].subtablesym); }
-#line 4049 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4049 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 327:
-#line 565 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 565 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.anysym) = (yyvsp[0].valuesym); }
-#line 4055 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4055 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 328:
-#line 566 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 566 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.anysym) = (yyvsp[0].valuemapsym); }
-#line 4061 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4061 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 329:
-#line 567 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 567 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.anysym) = (yyvsp[0].contextsym); }
-#line 4067 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4067 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 330:
-#line 568 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 568 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.anysym) = (yyvsp[0].namesym); }
-#line 4073 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4073 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 331:
-#line 569 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 569 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.anysym) = (yyvsp[0].varsym); }
-#line 4079 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4079 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 332:
-#line 570 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 570 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.anysym) = (yyvsp[0].varlistsym); }
-#line 4085 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4085 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 333:
-#line 571 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 571 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.anysym) = (yyvsp[0].operandsym); }
-#line 4091 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4091 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 334:
-#line 572 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 572 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.anysym) = (yyvsp[0].startsym); }
-#line 4097 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4097 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 335:
-#line 573 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 573 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.anysym) = (yyvsp[0].endsym); }
-#line 4103 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4103 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
   case 336:
-#line 574 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
+#line 574 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1646  */
     { (yyval.anysym) = (yyvsp[0].bitsym); }
-#line 4109 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4109 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
     break;
 
 
-#line 4113 "/home/tej/github/r2ghidra-dec/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
+#line 4113 "/home/tej/github/Ghidrall/debug/ghidra/bison/slghparse.cpp" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -4337,7 +4337,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 576 "/home/tej/github/r2ghidra-dec/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1906  */
+#line 576 "/home/tej/github/Ghidrall/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/slghparse.y" /* yacc.c:1906  */
 
 
 int yyerror(const char *s)
