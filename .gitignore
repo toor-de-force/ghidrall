@@ -10,3 +10,4 @@ ghidra/flex/
 !/ghidrall/tests/README.md
 !/ghidrall/tests/seatest.py
 /debug/
+.vscode
