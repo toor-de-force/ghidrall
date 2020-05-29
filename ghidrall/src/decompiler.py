@@ -23,7 +23,7 @@ class Decompiler:
         """Find all important functions in call hierarchy from main, excluding instrumentation"""
         active_functions.append(target)
         self.r.cmd("s " + target)
-        pdg = self.r.cmd('pdg')
+        pdg = self.r.cmd('pdgl')
         for function in self.function_list:
             if function == target:
                 pass

@@ -108,7 +108,7 @@ static void PrintUsage(const RCore *const core)
 	r_cons_cmd_help(help, core->print->flags & R_PRINT_FLAGS_COLOR);
 }
 
-enum class DecompileMode { DEFAULT, XML, DEBUG_XML, OFFSET, STATEMENTS, JSON };
+enum class DecompileMode { DEFAULT, XML, DEBUG_XML, OFFSET, STATEMENTS, JSON ,GHIDRALL_XML};
 
 //#define DEBUG_EXCEPTIONS
 
@@ -151,8 +151,11 @@ static void Decompile(RCore *core, DecompileMode mode)
 
 		std::stringstream out_stream;
 		arch.print->setOutputStream(&out_stream);
-
-		arch.setPrintLanguage("r2-llvm-language");
+		if(mode == DecompileMode::GHIDRALL_XML){
+			arch.setPrintLanguage("r2-llvm-language");
+		}else{
+			arch.setPrintLanguage("r2-c-language");
+		}
 		ApplyPrintCConfig(core->config, dynamic_cast<PrintC *>(arch.print));
 
 		Funcdata *func = arch.symboltab->getGlobalScope()->findFunction(Address(arch.getDefaultCodeSpace(), function->addr));
@@ -199,6 +202,7 @@ static void Decompile(RCore *core, DecompileMode mode)
 			case DecompileMode::JSON:
 			case DecompileMode::OFFSET:
 			case DecompileMode::STATEMENTS:
+			case DecompileMode::GHIDRALL_XML:
 				arch.print->setXML(true);
 				break;
 			default:
@@ -220,6 +224,7 @@ static void Decompile(RCore *core, DecompileMode mode)
 			case DecompileMode::JSON:
 			case DecompileMode::OFFSET:
 			case DecompileMode::STATEMENTS:
+			case DecompileMode::GHIDRALL_XML:
 				arch.print->docFunction(func);
 				if(mode != DecompileMode::XML)
 				{
@@ -256,6 +261,10 @@ static void Decompile(RCore *core, DecompileMode mode)
 			case DecompileMode::XML:
 				out_stream << "</code></result>";
 				// fallthrough
+				break;
+			case DecompileMode::GHIDRALL_XML:
+				r_core_annotated_code_print(code, nullptr);
+				break;
 			default:
 				r_cons_printf("%s\n", out_stream.str().c_str());
 				break;
@@ -421,6 +430,9 @@ static void _cmd(RCore *core, const char *input)
 					ListSleighLangs();
 					break;
 			}
+			break;
+		case 'l':
+			Decompile(core, DecompileMode::GHIDRALL_XML);
 			break;
 		default:
 			PrintUsage(core);
