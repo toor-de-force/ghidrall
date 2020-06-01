@@ -181,7 +181,7 @@ class Function:
                                 false_branch = branch.text
                     if false_branch is None:
                         raise Exception("No block match in conditional branch")
-                    builder.cbranch(conditional, self.ir_blocks[true_branch], self.ir_blocks[false_branch])
+                    builder.cbranch(conditional, self.ir_blocks[false_branch], self.ir_blocks[true_branch])
                     branched = True
                 # elif opname == "BRANCHIND":
                 #     raise Exception("Not implemented: " + opname)
@@ -512,7 +512,7 @@ class Function:
         elif call_target == "sym.path_nongoal":
             args = []
             func_type = ir.FunctionType(void_type, args)
-            ir_func = ir.Function(module, func_type, "seahorn.fail")
+            ir_func = ir.Function(module, func_type, "verifier.error")
             lifter.instrumentation[call_target] = ir_func
         elif call_target == "sym.imp.rand":
             args = []

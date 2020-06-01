@@ -3,6 +3,9 @@ import src.lifter as lifter
 import src.verifier as verifier
 import os
 import shutil
+import datetime
+
+begin_time = datetime.datetime.now()
 
 instrumentation_list = ["\"nd\"", "\"verifier.error\"", "\"seahorn.fail\""]
 file_path = "./tests/build/"
@@ -21,6 +24,7 @@ file_list = [
     "empty",
     "exclusive_ite",
     "exclusive_ite_goal_in_else",
+    "fake_failed_test",
     "goal_diff_func",
     "global_var",
     "global_var_updates",
@@ -77,6 +81,82 @@ file_list = [
     "unbound_loop_with_var",
     "var_values",
     "var_values_param"]
+
+sat = "; CHECK-L: sat\n"
+unsat = "; CHECK-L: unsat\n"
+warning = "; CHECK-L: WARNING: no assertion was found\n"
+
+check = {
+    "bad_diff_func" : "; CHECK-L: WARNING: no assertion was found\n",
+    "bound_loop_with_var" : "; CHECK-L: sat\n",
+    "compound_condition" : "; CHECK-L: sat\n",
+    "compound_condition_param" : "; CHECK-L: sat\n",
+    "compound_condition_param_v2" : "; CHECK-L: sat\n",
+    "compound_condition_v2" : "; CHECK-L: sat\n",
+    "compound_condition_v3" : "; CHECK-L: sat\n",
+    "condcall_one" : "; CHECK-L: sat\n",
+    # Decompiler can't handle return 1-liner? "condcall_two" : "; CHECK-L: WARNING: no assertion was found\n",
+    "empty" : "; CHECK-L: sat\n",
+    "exclusive_ite" : "; CHECK-L: sat\n",
+    "exclusive_ite_goal_in_else" : "; CHECK-L: sat\n",
+    "fake_failed_test" : ";XFAIL: *\n\n; CHECK-L: sat\n",
+    "goal_diff_func" : "; CHECK-L: sat\n",
+    "global_var" : "; CHECK-L: sat\n",
+    "global_var_updates" : "; CHECK-L: sat\n",
+    "global_var_nongoal" : "; CHECK-L: unsat\n",
+    "independent_ite" : "; CHECK-L: sat\n",
+    "independent_ite_param" : "; CHECK-L: sat\n",
+    "input_inside_bound_loop" : "; CHECK-L: sat\n",
+    "inter_func_narrow_to_wide_constraint" : "; CHECK-L: sat\n",
+    "inter_func_param" : "; CHECK-L: sat\n",
+    "inter_func_wide_to_narrow_constraint" : "; CHECK-L: sat\n",
+    # Decompiler can't handle return 1-liner? "inter_rv" : "; CHECK-L: sat\n"
+    "invalid_compound_condition" : "; CHECK-L: WARNING: no assertion was found\n",
+    "invalid_compound_condition_param" : "; CHECK-L: WARNING: no assertion was found\n",
+    "invalid_compound_condition_v2" : "; CHECK-L: WARNING: no assertion was found\n",
+    "invalid_condition" : "; CHECK-L: WARNING: no assertion was found\n",
+    "invalid_inter_func" : "; CHECK-L: WARNING: no assertion was found\n",
+    "invalid_nested_conditions" : "; CHECK-L: unsat\n",
+    "linear_flow" : "; CHECK-L: sat\n",
+    "loop_even_odd" : "; CHECK-L: sat\n",
+    # Fails on compiler "loop_even_odd_nongoal" : "; CHECK-L: sat\n"
+    "multi_call_inter_cond" : "; CHECK-L: sat\n",
+    "multi_call_inter_cond_else" : "; CHECK-L: sat\n",
+    "multi_call_inter_seq" : "; CHECK-L: sat\n",
+    "multiple_ite" : "; CHECK-L: sat\n",
+    "multivar_compound_condition" : "; CHECK-L: sat\n",
+    "nested_condition" : "; CHECK-L: sat\n",
+    "nested_condition_v2" : "; CHECK-L: sat\n",
+    "nested_condition_v3" : "; CHECK-L: sat\n",
+    "nested_ite_condition" : "; CHECK-L: sat\n",
+    "nested_ite_condition_param" : "; CHECK-L: sat\n",
+    "nested_ite_condition_param_v2" : "; CHECK-L: sat\n",
+    "nested_ite_condition_v2" : "; CHECK-L: sat\n",
+    "nested_loop" : "; CHECK-L: sat\n",
+    # Not dealing with OO yet "oo_simple_goal" : "; CHECK-L: sat\n"
+    # Not dealing with OO yet "oo_simple_nongoal" : "; CHECK-L: sat\n"
+    # Not dealing with OO yet "oo_virtual_func_goal" : "; CHECK-L: sat\n"
+    # Not dealing with OO yet "oo_virtual_func_nongoal" : "; CHECK-L: sat\n"
+    "param_n_var_conpound_condition" : "; CHECK-L: sat\n",
+    "rv_cond" : "; CHECK-L: sat\n",
+    "rv_same_var" : "; CHECK-L: sat\n",
+    "rv_seq" : "; CHECK-L: sat\n",
+    "rv_seq_v1" : "; CHECK-L: sat\n",
+    "rv_seq_v2" : "; CHECK-L: sat\n",
+    # Decompiler can't handle return 1-liner? "seq_call_five" : "; CHECK-L: sat\n"
+    # Decompiler can't handle return 1-liner? "seq_call_four" : "; CHECK-L: sat\n"
+    # Decompiler can't handle return 1-liner? "seq_call_one" : "; CHECK-L: sat\n"
+    # Decompiler can't handle return 1-liner? "seq_call_three" : "; CHECK-L: sat\n"
+    # Decompiler can't handle return 1-liner? "seq_call_two" : "; CHECK-L: sat\n"
+    "seq_v4" : "; CHECK-L: sat\n",
+    "single_condition" : "; CHECK-L: sat\n",
+    "single_condition_param" : "; CHECK-L: sat\n",
+    "single_condition_param_v2" : "; CHECK-L: sat\n",
+    "single_condition_v2" : "; CHECK-L: sat\n",
+    "unbound_loop_with_var" : "; CHECK-L: sat\n",
+    "var_values" : "; CHECK-L: sat\n",
+    "var_values_param" : "; CHECK-L: sat\n"}
+
 try:
     shutil.rmtree("./tests/results")
 except FileNotFoundError:
@@ -103,7 +183,11 @@ for file in file_list:
     verifier.compile_ir(module)
     print("Done.")
     # Cleanup
-    module_string = str(module)
+    run1 = "; RUN: %sea bpf --bmc=mono --inline -O0 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+    run2 = "; RUN: %sea bpf --bmc=mono --inline -O1 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+    run3 = "; RUN: %sea bpf --bmc=mono --inline -O2 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+    run4 = "; RUN: %sea bpf --bmc=mono --inline -O3 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+    module_string = run1 + run2 + run3 + run4 + check[file] + "\n" + str(module)
     for instrument in instrumentation_list:
         module_string = module_string.replace(instrument, instrument[1:-1])
     results = "tests/results/"
@@ -111,3 +195,4 @@ for file in file_list:
     f.write(module_string)
     f.close()
 
+print("Time to lift: " + str(datetime.datetime.now() - begin_time))

@@ -15,6 +15,7 @@ set(ALL_TESTS
   empty
   exclusive_ite
   exclusive_ite_goal_in_else
+  fake_failed_test
   goal_diff_func
   global_var
   global_var_updates
