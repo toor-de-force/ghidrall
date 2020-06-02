@@ -6,7 +6,6 @@ int32 = ir.IntType(32)
 int64 = ir.IntType(64)
 int1 = ir.IntType(1)
 void_type = ir.VoidType()
-void_type_ptr = ir.PointerType(ir.IntType(8))
 
 
 def lift_binary(decompile_info, filename):
@@ -575,9 +574,8 @@ class Function:
             return ir.Constant(ir.IntType(1), 1)
         else:
             if "U" in symbol:
-                # symbol = int(symbol.split('U')[0])
                 val = int(symbol.split('U')[0])
-            elif "0x" in symbol:
+            elif "0x" == symbol[0:2]:
                 val = int(symbol, 16)
             else:
                 val = int(symbol)
