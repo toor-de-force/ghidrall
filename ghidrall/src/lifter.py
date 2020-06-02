@@ -574,8 +574,9 @@ class Function:
             return ir.Constant(ir.IntType(1), 1)
         else:
             if "U" in symbol:
-                symbol = int(symbol.split('U')[0])
-            if "0x" in symbol:
+                # symbol = int(symbol.split('U')[0])
+                val = int(symbol.split('U')[0])
+            elif "0x" in symbol:
                 val = int(symbol, 16)
             else:
                 val = int(symbol)
