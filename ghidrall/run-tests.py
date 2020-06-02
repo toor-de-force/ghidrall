@@ -174,7 +174,8 @@ for file in file_list:
         f.close()
     print("Done.")
     print("Lifting " + file + "...", end="")
-    module = lifter.lift_binary(decompile_info, file)
+    lifting_options = {"stack": "single_struct"}
+    module = lifter.lift_binary(decompile_info, file, lifting_options)
     print("Done.")
     print("Verifying " + file + "...", end="")
     verifier.verify(module)

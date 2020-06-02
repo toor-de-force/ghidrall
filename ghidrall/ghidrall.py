@@ -12,8 +12,11 @@ instrumentation_list = ["\"nd\"", "\"verifier.error\"", "\"seahorn.fail\""]
 
 parser = argparse.ArgumentParser(description="Lift the provided binary to LLVM")
 parser.add_argument('Path', metavar='path', type=str, help="the path to the target binary")
+parser.add_argument("-s", "--stack", choices=["single_struct", "byte_addressable"], default="no_option",
+                    help="choose how local variables are displayed")
 args = parser.parse_args()
 file_name = args.Path
+lifting_options = {"stack": args.stack}
 if not os.path.isfile(file_name):
     print("Not a valid input file")
     sys.exit()
@@ -33,7 +36,7 @@ for function in list(decompile_info.keys()):
     f.close()
 print("Done.")
 print("Lifting " + file + "...", end="")
-module = lifter.lift_binary(decompile_info, file)
+module = lifter.lift_binary(decompile_info, file, lifting_options)
 print("Done.")
 print("Verifying " + file + "...", end="")
 verifier.verify(module)

@@ -1,24 +1,29 @@
 from llvmlite import ir
+from llvmlite import binding as llvm
 import xml.etree.ElementTree as et
 
 instrumentation_list = ["sym.path_start", "sym.path_goal", "sym.path_nongoal", "sym.imp.rand"]
 int32 = ir.IntType(32)
 int64 = ir.IntType(64)
 int1 = ir.IntType(1)
+int8 = ir.IntType(8)
 void_type = ir.VoidType()
 
 
-def lift_binary(decompile_info, filename):
+def lift_binary(decompile_info, filename, lifting_options):
     """Initiates a Lifter object with a decompiled binary and lifts"""
-    lifter = Lifter(decompile_info, filename)
+    ir.global_context.identified_types = {}
+    lifter = Lifter(decompile_info, filename, lifting_options)
     return lifter.module
 
 
 class Lifter:
     """Decompiler class for interfacing with Radare2 and pulling decompilation information in XML"""
 
-    def __init__(self, decompile_info, filename):
+    def __init__(self, decompile_info, filename, lifting_options):
+        self.filename = filename
         self.module = ir.Module(name=filename)
+        self.options = lifting_options
         self.module.data_layout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
         self.module.triple = "x86_64-pc-linux-gnu"
         self.decompile_info = decompile_info
@@ -87,10 +92,12 @@ class Function:
     def __init__(self, function_name, ir_func, xml, args, return_type, lifter):
         self.name = function_name
         self.ir_func = ir_func
+        self.local_sizes = {}
         self.xml = xml
         self.args = args
         self.return_type = return_type
         self.lifter = lifter
+        self.options = lifter.options
         self.temps = {}
         self.entry_block, self.locals, self.entry_builder = self.recover_locals()
         self.ir_blocks, self.xml_blocks = self.build_cfg()
@@ -99,13 +106,50 @@ class Function:
         local_vars = {}
         entry_block = self.ir_func.append_basic_block("entry")
         entry_builder = ir.IRBuilder(entry_block)
-        for local in self.xml.find("locals").findall('var'):
-            name = local.find("name").text
-            if "bVar" in name:
-                size = 1
-            else:
-                size = int(local.find("size").text) * 8
-            local_vars[name] = entry_builder.alloca(ir.IntType(size), name=name)
+        if self.options["stack"] == "single_struct":
+            local_context = ir.global_context
+            local_struct = local_context.get_identified_type("struct.locals." + self.lifter.filename + "." + self.name)
+            local_sizes = {}
+            for local in self.xml.find("locals").findall('var'):
+                name = local.find("name").text
+                if "bVar" in name:
+                    size = 1
+                else:
+                    size = int(local.find("size").text) * 8
+                local_sizes[name] = ir.IntType(size)
+            local_struct.set_body(*list(local_sizes.values()))
+            struct = entry_builder.alloca(local_struct)
+            for index, name in enumerate(list(local_sizes.keys())):
+                local_vars[name] = entry_builder.gep(struct, [int32(0), int32(index)], inbounds=True, name=name)
+        elif self.options["stack"] == "byte_addressable":
+            local_context = ir.global_context
+            local_struct = local_context.get_identified_type("struct.locals." + self.lifter.filename + "." + self.name)
+            local_sizes = []
+            total_size = 0
+            for local in self.xml.find("locals").findall('var'):
+                name = local.find("name").text
+                if "bVar" in name:
+                    size = 1
+                    bit_size = 1
+                else:
+                    size = int(local.find("size").text)
+                    bit_size = size * 8
+                local_sizes.append((name, total_size, ir.IntType(bit_size)))  # total_size is index here
+                total_size += size  # size in bytes
+            local_struct.set_body(*[int8 for _ in range(total_size)])
+            struct = entry_builder.alloca(local_struct)
+            for name, index, bits in local_sizes:
+                temp = entry_builder.gep(struct, [int32(0), int32(index)], inbounds=True)
+                local_vars[name] = entry_builder.bitcast(temp, ir.PointerType(bits), name=name)
+        elif self.options['stack'] == "no_option":
+            for local in self.xml.find("locals").findall('var'):
+                name = local.find("name").text
+                if "bVar" in name:
+                    size = 1
+                else:
+                    size = int(local.find("size").text) * 8
+                local_vars[name] = entry_builder.alloca(ir.IntType(size), name=name)
+        # Recover register types
         register_vars = {}
         pdg = et.tostring(self.xml, encoding="unicode").splitlines()
         i = 0
@@ -120,8 +164,9 @@ class Function:
                     register_vars[symbol] = size
                 elif size > register_vars[symbol]:
                     register_vars[symbol] = size
-                local_vars[symbol] = entry_builder.alloca(ir.IntType(size), name=symbol)
             i += 1
+        for symbol, size in register_vars.items():
+            local_vars[symbol] = entry_builder.alloca(ir.IntType(size), name=symbol)
         return entry_block, local_vars, entry_builder
 
     def build_cfg(self):
@@ -204,7 +249,7 @@ class Function:
                         self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                 self.lifter.global_vars)
                 elif opname == "CALLIND":
-                    #create an empty function declaration
+                    # create an empty function declaration
                     inputs = instruction.find("inputs").findall("input")
                     call_target = inputs[0].find("symbol").text
                     func_type = ir.FunctionType(ir.VoidType(), [])
@@ -523,8 +568,7 @@ class Function:
             raise Exception("Not excepted instrumentation function")
         return ir_func
 
-    @staticmethod
-    def fetch_input(builder, arg, temps, ir_func, local_vars, global_vars):
+    def fetch_input(self, builder, arg, temps, ir_func, local_vars, global_vars):
         symbol = arg.find("symbol").text
         if "var" in symbol:
             symbol = symbol.split('.')[0]
@@ -545,6 +589,8 @@ class Function:
         elif symbol in global_vars:
             return builder.load(global_vars[symbol])
         elif symbol in local_vars:
+            if symbol in self.local_sizes:
+                return builder.load(local_vars[symbol])
             offset = 0
             try:
                 offset = 8 * int(arg.find("symbol").get("offset"))
@@ -580,8 +626,7 @@ class Function:
                 val = int(symbol)
             return ir.Constant(ir.IntType(size), val)
 
-    @staticmethod
-    def fetch_store_output(builder, arg, result, temps, local_vars, global_vars):
+    def fetch_store_output(self, builder, arg, result, temps, local_vars, global_vars):
         symbol = arg.find("symbol").text
         if "var" in symbol:
             symbol = symbol.split('.')[0]
