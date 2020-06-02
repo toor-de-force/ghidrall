@@ -55,7 +55,8 @@ class Lifter:
             xml_return_type = function_xml.find('return')
             return_types[function] = "void"
             if xml_return_type.find('type').text == "undefined8":
-                func_return = void_type
+                func_return = ir.IntType(64)
+                return_types[function] = "undefined8"
             elif xml_return_type.find('type').text == "void":
                 func_return = void_type
             else:
