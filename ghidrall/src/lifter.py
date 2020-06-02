@@ -6,6 +6,7 @@ int32 = ir.IntType(32)
 int64 = ir.IntType(64)
 int1 = ir.IntType(1)
 void_type = ir.VoidType()
+void_type_ptr = ir.PointerType(ir.IntType(8))
 
 
 def lift_binary(decompile_info, filename):
@@ -54,9 +55,9 @@ class Lifter:
             xml_return_type = function_xml.find('return')
             return_types[function] = "void"
             if xml_return_type.find('type').text == "undefined8":
-                func_return = ir.VoidType()
+                func_return = void_type
             elif xml_return_type.find('type').text == "void":
-                func_return = ir.VoidType()
+                func_return = void_type
             else:
                 func_return = ir.IntType(8 * int(xml_return_type.find('size').text))
                 return_types[function] = 8 * int(xml_return_type.find('size').text)
@@ -599,9 +600,12 @@ class Function:
                 output = builder.gep(local_vars[symbol], [ir.Constant(ir.IntType(offset_size), offset)])
             else:
                 output = local_vars[symbol]
-            if output.type != result.type.as_pointer():
-                output = builder.bitcast(output, result.type.as_pointer())
-            return builder.store(result, output)
+            if result.type != void_type:
+                if output.type != result.type.as_pointer():
+                    output = builder.bitcast(output, result.type.as_pointer())
+                return builder.store(result, output)
+            else:
+                return None
         elif symbol in global_vars:
             return builder.store(result, global_vars[symbol])
         elif "register" in symbol:
