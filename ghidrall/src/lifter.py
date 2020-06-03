@@ -59,9 +59,10 @@ class Lifter:
             xml_return_type = function_xml.find('return')
             return_types[function] = "void"
             if xml_return_type.find('type').text == "undefined8":
-                func_return = ir.VoidType()
+                func_return = ir.IntType(64)
+                return_types[function] = "undefined8"
             elif xml_return_type.find('type').text == "void":
-                func_return = ir.VoidType()
+                func_return = void_type
             else:
                 func_return = ir.IntType(8 * int(xml_return_type.find('size').text))
                 return_types[function] = 8 * int(xml_return_type.find('size').text)
@@ -619,8 +620,8 @@ class Function:
             return ir.Constant(ir.IntType(1), 1)
         else:
             if "U" in symbol:
-                symbol = int(symbol.split('U')[0])
-            if "0x" in symbol:
+                val = int(symbol.split('U')[0])
+            elif "0x" == symbol[0:2]:
                 val = int(symbol, 16)
             else:
                 val = int(symbol)
@@ -644,9 +645,12 @@ class Function:
                 output = builder.gep(local_vars[symbol], [ir.Constant(ir.IntType(offset_size), offset)])
             else:
                 output = local_vars[symbol]
-            if output.type != result.type.as_pointer():
-                output = builder.bitcast(output, result.type.as_pointer())
-            return builder.store(result, output)
+            if result.type != void_type:
+                if output.type != result.type.as_pointer():
+                    output = builder.bitcast(output, result.type.as_pointer())
+                return builder.store(result, output)
+            else:
+                return None
         elif symbol in global_vars:
             return builder.store(result, global_vars[symbol])
         elif "register" in symbol:
