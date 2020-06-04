@@ -614,7 +614,9 @@ class Function:
                 final = builder.trunc(final, ir.IntType(offset_size))
             return final
         if symbol in temps:
-            if temps[symbol].type != ir.IntType(size) and temps[symbol].type != int1:
+            if temps[symbol].type == void_type:
+                return ir.Constant(ir.IntType(1), 0)
+            elif temps[symbol].type != ir.IntType(size) and temps[symbol].type != int1:
                 result = builder.trunc(temps[symbol], ir.IntType(size))
                 return result
             else:
