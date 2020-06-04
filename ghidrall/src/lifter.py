@@ -238,14 +238,19 @@ class Function:
                     args = []
                     result = None
                     for arg in inputs[1:]:
-                        args.append(self.fetch_input(builder, arg, self.temps, self.ir_func, self.locals,
-                                                     self.lifter.global_vars))
+                        a = self.fetch_input(builder, arg, self.temps, self.ir_func, self.locals,
+                                                     self.lifter.global_vars)
+                        if a is not None:
+                            args.append(a)
                     if call_target in instrumentation_list:
                         func_call = self.instrument(call_target, self.lifter)
                         if func_call is not None:
                             result = builder.call(func_call, [])
                     else:
-                        result = builder.call(self.lifter.functions_ir[call_target], args=args)
+                        if len(self.lifter.functions_ir[call_target].args) == 0:
+                            result = builder.call(self.lifter.functions_ir[call_target], args=[])
+                        else:
+                            result = builder.call(self.lifter.functions_ir[call_target], args=args)
                     if result is not None and target is not None:
                         self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                 self.lifter.global_vars)
@@ -587,9 +592,9 @@ class Function:
             for arg in ir_func.args:
                 if arg.name == symbol:
                     return arg
-        elif symbol in global_vars:
+        if symbol in global_vars:
             return builder.load(global_vars[symbol])
-        elif symbol in local_vars:
+        if symbol in local_vars:
             if symbol in self.local_sizes:
                 return builder.load(local_vars[symbol])
             offset = 0
@@ -608,21 +613,22 @@ class Function:
             if final.type != ir.IntType(offset_size):
                 final = builder.trunc(final, ir.IntType(offset_size))
             return final
-        elif symbol in temps:
+        if symbol in temps:
             if temps[symbol].type != ir.IntType(size) and temps[symbol].type != int1:
                 result = builder.trunc(temps[symbol], ir.IntType(size))
                 return result
             else:
                 return temps[symbol]
-        elif "false" in symbol:
+        if "false" in symbol:
             return ir.Constant(ir.IntType(1), 0)
-        elif "true" in symbol:
+        if "true" in symbol:
             return ir.Constant(ir.IntType(1), 1)
         else:
             if "U" in symbol:
                 val = int(symbol.split('U')[0])
-            elif "0x" == symbol[0:2]:
-                val = int(symbol, 16)
+            elif "0x" in symbol:
+                index = symbol.index("0x")
+                val = int(symbol[index:], 16)
             else:
                 val = int(symbol)
             return ir.Constant(ir.IntType(size), val)
