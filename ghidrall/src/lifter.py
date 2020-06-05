@@ -34,6 +34,7 @@ class Lifter:
         self.populate_functions()
 
     def fish_globals(self):
+        """Find globals as identified by r2 given ".obj" identifier"""
         global_vars = {}
         for decompile_info in list(self.decompile_info.values()):
             pdg = decompile_info.splitlines()
@@ -51,6 +52,7 @@ class Lifter:
         return global_vars
 
     def create_function_signatures(self):
+        """"Create the function signatures before building instructions and basic blocks so function calls resolve"""
         all_ir, all_xml, all_args, return_types = {}, {}, {}, {}
         for function in self.function_names:
             function_pdg = self.decompile_info[function]
@@ -80,6 +82,7 @@ class Lifter:
         return all_ir, all_xml, all_args, return_types
 
     def populate_functions(self):
+        """"Given a function signature, build basic blocks and instructions"""
         for function in self.function_names:
             func = Function(function,
                             self.functions_ir[function],
@@ -90,7 +93,9 @@ class Lifter:
 
 
 class Function:
+    """"Holds the relevant data for a function"""
     def __init__(self, function_name, ir_func, xml, args, return_type, lifter):
+        """"Initialize function variables, recover locals, and build the CFG"""
         self.name = function_name
         self.ir_func = ir_func
         self.local_sizes = {}
@@ -104,6 +109,7 @@ class Function:
         self.ir_blocks, self.xml_blocks = self.build_cfg()
 
     def recover_locals(self):
+        """"Recover stack variables based on decided structure from lifting options. Also recovers register types"""
         local_vars = {}
         entry_block = self.ir_func.append_basic_block("entry")
         entry_builder = ir.IRBuilder(entry_block)
@@ -171,6 +177,7 @@ class Function:
         return entry_block, local_vars, entry_builder
 
     def build_cfg(self):
+        """Build the CFG of the function"""
         ir_blocks, xml_blocks = {}, {}
         for xml_block in self.xml.find("block_graph").findall("block"):
             label = self.format_label(xml_block.find("label").find("address").text)
@@ -181,6 +188,7 @@ class Function:
         return ir_blocks, xml_blocks
 
     def lift_function(self):
+        """Populate the CFG with instructions"""
         for label in list(self.ir_blocks.keys()):
             ir_block = self.ir_blocks[label]
             xml_block = self.xml_blocks[label]
@@ -538,6 +546,7 @@ class Function:
 
     @staticmethod
     def format_label(label):
+        """Helper function for formatting hexidecimal addresses"""
         if label[:2] == '0x':
             label = label[2:]
         new_label = '0x' + label.zfill(8)
@@ -545,6 +554,7 @@ class Function:
 
     @staticmethod
     def instrument(call_target, lifter):
+        """Instrumentation features for test cases based on Pharos queries to convert to Seahorn"""
         module = lifter.module
         if call_target in lifter.instrumentation:
             return lifter.instrumentation[call_target]
@@ -570,6 +580,7 @@ class Function:
         return ir_func
 
     def fetch_input(self, builder, arg, temps, ir_func, local_vars, global_vars):
+        """Fetch the input of a single instruction"""
         symbol = arg.find("symbol").text
         if "var" in symbol:
             symbol = symbol.split('.')[0]
@@ -628,6 +639,7 @@ class Function:
             return ir.Constant(ir.IntType(size), val)
 
     def fetch_store_output(self, builder, arg, result, temps, local_vars, global_vars):
+        """"Fetch the output of a given instruction"""
         symbol = arg.find("symbol").text
         if "var" in symbol:
             symbol = symbol.split('.')[0]
