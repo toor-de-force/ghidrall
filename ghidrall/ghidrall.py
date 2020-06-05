@@ -14,9 +14,11 @@ parser = argparse.ArgumentParser(description="Lift the provided binary to LLVM")
 parser.add_argument('Path', metavar='path', type=str, help="the path to the target binary")
 parser.add_argument("-s", "--stack", choices=["single_struct", "byte_addressable"], default="no_option",
                     help="choose how local variables are displayed")
+parser.add_argument("-d", "--debug", action="store_true", help="choose how local variables are displayed")
 args = parser.parse_args()
 file_name = args.Path
 lifting_options = {"stack": args.stack}
+debug = args.debug
 if not os.path.isfile(file_name):
     print("Not a valid input file")
     sys.exit()
@@ -30,10 +32,11 @@ except FileNotFoundError:
 os.mkdir(results_path, mode=0o777)
 print("Decompiling " + file + "...", end="")
 decompile_info = decompiler.decompile_binary(file_name)
-for function in list(decompile_info.keys()):
-    f = open(file + "_" + function + ".xml", 'w')
-    f.write(decompile_info[function])
-    f.close()
+if debug:
+    for function in list(decompile_info.keys()):
+        f = open(file + "_" + function + ".xml", 'w')
+        f.write(decompile_info[function])
+        f.close()
 print("Done.")
 print("Lifting " + file + "...", end="")
 module = lifter.lift_binary(decompile_info, file, lifting_options)
