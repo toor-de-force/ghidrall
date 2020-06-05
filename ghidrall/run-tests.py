@@ -4,6 +4,12 @@ import src.verifier as verifier
 import os
 import shutil
 import datetime
+import argparse
+
+parser = argparse.ArgumentParser(description="Lift the provided binary to LLVM")
+parser.add_argument("-chc", action="store_true", help="Build tests for bit-precise CHC engine in Seahorn")
+args = parser.parse_args()
+chc = args.chc
 
 begin_time = datetime.datetime.now()
 
@@ -95,7 +101,7 @@ check = {
     "compound_condition_v2" : "; CHECK-L: sat\n",
     "compound_condition_v3" : "; CHECK-L: sat\n",
     "condcall_one" : "; CHECK-L: sat\n",
-    # Decompiler can't handle return 1-liner? "condcall_two" : "; CHECK-L: WARNING: no assertion was found\n",
+    "condcall_two" : "; CHECK-L: WARNING: no assertion was found\n",
     "empty" : "; CHECK-L: sat\n",
     "exclusive_ite" : "; CHECK-L: sat\n",
     "exclusive_ite_goal_in_else" : "; CHECK-L: sat\n",
@@ -110,7 +116,7 @@ check = {
     "inter_func_narrow_to_wide_constraint" : "; CHECK-L: sat\n",
     "inter_func_param" : "; CHECK-L: sat\n",
     "inter_func_wide_to_narrow_constraint" : "; CHECK-L: sat\n",
-    # Decompiler can't handle return 1-liner? "inter_rv" : "; CHECK-L: sat\n"
+    "inter_rv" : "; CHECK-L: sat\n",
     "invalid_compound_condition" : "; CHECK-L: WARNING: no assertion was found\n",
     "invalid_compound_condition_param" : "; CHECK-L: WARNING: no assertion was found\n",
     "invalid_compound_condition_v2" : "; CHECK-L: WARNING: no assertion was found\n",
@@ -143,11 +149,11 @@ check = {
     "rv_seq" : "; CHECK-L: sat\n",
     "rv_seq_v1" : "; CHECK-L: sat\n",
     "rv_seq_v2" : "; CHECK-L: sat\n",
-    # Decompiler can't handle return 1-liner? "seq_call_five" : "; CHECK-L: sat\n"
-    # Decompiler can't handle return 1-liner? "seq_call_four" : "; CHECK-L: sat\n"
-    # Decompiler can't handle return 1-liner? "seq_call_one" : "; CHECK-L: sat\n"
-    # Decompiler can't handle return 1-liner? "seq_call_three" : "; CHECK-L: sat\n"
-    # Decompiler can't handle return 1-liner? "seq_call_two" : "; CHECK-L: sat\n"
+    "seq_call_five" : "; CHECK-L: sat\n",
+    "seq_call_four" : "; CHECK-L: sat\n",
+    "seq_call_one" : "; CHECK-L: sat\n",
+    "seq_call_three" : "; CHECK-L: sat\n",
+    "seq_call_two" : "; CHECK-L: sat\n",
     "seq_v4" : "; CHECK-L: sat\n",
     "single_condition" : "; CHECK-L: sat\n",
     "single_condition_param" : "; CHECK-L: sat\n",
@@ -184,10 +190,16 @@ for file in file_list:
     verifier.compile_ir(module)
     print("Done.")
     # Cleanup
-    run1 = "; RUN: %sea bpf --bmc=mono --inline -O0 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
-    run2 = "; RUN: %sea bpf --bmc=mono --inline -O1 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
-    run3 = "; RUN: %sea bpf --bmc=mono --inline -O2 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
-    run4 = "; RUN: %sea bpf --bmc=mono --inline -O3 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+    if chc:
+        run1 = "; RUN: %sea pf --bv-chc --inline -O0 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+        run2 = "; RUN: %sea pf --bv-chc --inline -O1 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+        run3 = "; RUN: %sea pf --bv-chc --inline -O2 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+        run4 = "; RUN: %sea pf --bv-chc --inline -O3 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+    else:
+        run1 = "; RUN: %sea bpf --bmc=mono --inline -O0 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+        run2 = "; RUN: %sea bpf --bmc=mono --inline -O1 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+        run3 = "; RUN: %sea bpf --bmc=mono --inline -O2 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+        run4 = "; RUN: %sea bpf --bmc=mono --inline -O3 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
     module_string = run1 + run2 + run3 + run4 + check[file] + "\n" + str(module)
     for instrument in instrumentation_list:
         module_string = module_string.replace(instrument, instrument[1:-1])
