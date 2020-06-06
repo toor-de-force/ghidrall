@@ -50,7 +50,7 @@ file_list = [
     "invalid_nested_conditions",
     "linear_flow",
     "loop_even_odd",
-    # Fails on compiler "loop_even_odd_nongoal",
+    "loop_even_odd_nongoal",  
     "multi_call_inter_cond",
     "multi_call_inter_cond_else",
     "multi_call_inter_seq",
@@ -64,10 +64,10 @@ file_list = [
     "nested_ite_condition_param_v2",
     "nested_ite_condition_v2",
     "nested_loop",
-    # Not dealing with OO yet "oo_simple_goal",
-    # Not dealing with OO yet "oo_simple_nongoal",
-    # Not dealing with OO yet "oo_virtual_func_goal",
-    # Not dealing with OO yet "oo_virtual_func_nongoal",
+    "oo_simple_goal", # # Not dealing with OO yet 
+    "oo_simple_nongoal",# # Not dealing with OO yet 
+    "oo_virtual_func_goal",# # Not dealing with OO yet 
+    "oo_virtual_func_nongoal",# # Not dealing with OO yet 
     "param_n_var_conpound_condition",
     "rv_cond",
     "rv_same_var",
@@ -86,7 +86,8 @@ file_list = [
     "single_condition_v2",
     "unbound_loop_with_var",
     "var_values",
-    "var_values_param"]
+    "var_values_param"
+    ]
 
 sat = "; CHECK-L: sat\n"
 unsat = "; CHECK-L: unsat\n"
@@ -125,7 +126,7 @@ check = {
     "invalid_nested_conditions" : "; CHECK-L: unsat\n",
     "linear_flow" : "; CHECK-L: sat\n",
     "loop_even_odd" : "; CHECK-L: sat\n",
-    # Fails on compiler "loop_even_odd_nongoal" : "; CHECK-L: sat\n"
+    "loop_even_odd_nongoal" : "; CHECK-L: sat\n",
     "multi_call_inter_cond" : "; CHECK-L: sat\n",
     "multi_call_inter_cond_else" : "; CHECK-L: sat\n",
     "multi_call_inter_seq" : "; CHECK-L: sat\n",
@@ -139,10 +140,10 @@ check = {
     "nested_ite_condition_param_v2" : "; CHECK-L: sat\n",
     "nested_ite_condition_v2" : "; CHECK-L: sat\n",
     "nested_loop" : "; CHECK-L: sat\n",
-    # Not dealing with OO yet "oo_simple_goal" : "; CHECK-L: sat\n"
-    # Not dealing with OO yet "oo_simple_nongoal" : "; CHECK-L: sat\n"
-    # Not dealing with OO yet "oo_virtual_func_goal" : "; CHECK-L: sat\n"
-    # Not dealing with OO yet "oo_virtual_func_nongoal" : "; CHECK-L: sat\n"
+    "oo_simple_goal" : "; CHECK-L: sat\n",  
+    "oo_simple_nongoal" : "; CHECK-L: sat\n", 
+    "oo_virtual_func_goal" : "; CHECK-L: sat\n", 
+    "oo_virtual_func_nongoal" : "; CHECK-L: sat\n", 
     "param_n_var_conpound_condition" : "; CHECK-L: sat\n",
     "rv_cond" : "; CHECK-L: sat\n",
     "rv_same_var" : "; CHECK-L: sat\n",
@@ -189,7 +190,6 @@ for file in file_list:
     print("Compiling " + file + "...", end="")
     verifier.compile_ir(module)
     print("Done.")
-    # Cleanup
     if chc:
         run1 = "; RUN: %sea pf --bv-chc --inline -O0 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
         run2 = "; RUN: %sea pf --bv-chc --inline -O1 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
