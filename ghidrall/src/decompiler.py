@@ -17,18 +17,29 @@ class Decompiler:
         self.r.cmd('aa')
         self.function_list = [name.split()[-1] for name in self.r.cmd('afl').splitlines()]
         self.functions_pdg = {}
-        self.active_function_list = self.find_active_functions('main', [])
+        self.active_function_list = self.find_active_functions('main')
 
-    def find_active_functions(self, target, active_functions):
+    def find_active_functions(self, target):
         """Find all important functions in call hierarchy from main, excluding instrumentation"""
-        active_functions.append(target)
-        self.r.cmd("s " + target)
-        pdg = self.r.cmd('pdgl')
-        for function in self.function_list:
-            if function == target:
+        active_functions = [target]
+        to_visit_functions = [target]
+        visited_functions = []
+        while len(to_visit_functions) > 0:
+            t = to_visit_functions.pop()
+            visited_functions.append(t)
+            self.r.cmd("s " + t)
+            pdgl = self.r.cmd('pdgl')
+            self.functions_pdg[t] = pdgl
+            for function in self.function_list:
+                if function == target:
+                    pass
+                elif function in pdgl:
+                    if function not in instrumentation_list and function not in active_functions:
+                        active_functions.append(function)
+                        if function not in visited_functions:
+                            to_visit_functions.append(function)
+                        pass
                 pass
-            elif function in pdg:
-                if function not in instrumentation_list:
-                    active_functions = self.find_active_functions(function, active_functions)
-        self.functions_pdg[target] = pdg
+            pass
+        pass
         return active_functions
