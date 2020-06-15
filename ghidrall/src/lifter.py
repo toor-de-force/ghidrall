@@ -186,7 +186,15 @@ class Function:
             xml_blocks[label] = xml_block
         self.entry_builder.branch(list(ir_blocks.values())[0])
         return ir_blocks, xml_blocks
-
+    def fixConflictingIntType(self,lhs,rhs):
+        widthLhs = lhs.type.width
+        widthRhs = rhs.type.width
+        if widthLhs > widthRhs:
+            rhs.type = ir.IntType(widthLhs)
+        else:
+            lhs.type = ir.IntType(widthRhs)
+        return lhs, rhs
+        pass
     def lift_function(self):
         """Populate the CFG with instructions"""
         for label in list(self.ir_blocks.keys()):
@@ -287,8 +295,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
-                    if lhs.type != rhs.type:
-                        lhs.type = rhs.type
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
                     result = builder.icmp_unsigned('==', lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -299,6 +307,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
                     result = builder.icmp_unsigned('!=', lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -309,6 +319,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
                     result = builder.icmp_signed('<', lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -319,6 +331,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
                     result = builder.icmp_signed('<=', lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -329,6 +343,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
                     result = builder.icmp_unsigned('<', lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -339,6 +355,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
                     result = builder.icmp_unsigned('<=', lhs, rhs)
                 elif opname == "INT_ZEXT":
                     inputs = instruction.find("inputs").findall("input")
