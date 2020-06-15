@@ -287,6 +287,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type:
+                        lhs.type = rhs.type
                     result = builder.icmp_unsigned('==', lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -310,8 +312,16 @@ class Function:
                     result = builder.icmp_signed('<', lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
-                # elif opname == "INT_SLESSEQUAL":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "INT_SLESSEQUAL":
+                    inputs = instruction.find("inputs").findall("input")
+                    target = instruction.find("output")
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    result = builder.icmp_signed('<=', lhs, rhs)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "INT_LESS":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
@@ -322,8 +332,14 @@ class Function:
                     result = builder.icmp_unsigned('<', lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
-                # elif opname == "INT_LESSEQUAL":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "INT_LESSEQUAL":
+                    inputs = instruction.find("inputs").findall("input")
+                    target = instruction.find("output")
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    result = builder.icmp_unsigned('<=', lhs, rhs)
                 elif opname == "INT_ZEXT":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
@@ -368,12 +384,26 @@ class Function:
                 #     raise Exception("Not implemented: " + opname)
                 # elif opname == "INT_SBORROW":
                 #     raise Exception("Not implemented: " + opname)
-                # elif opname == "INT_2COMP":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "INT_2COMP":
+                    inputs = instruction.find("inputs").findall("input")
+                    target = instruction.find("output")
+                    input0 = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    result = builder.neg(input0)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 # elif opname == "INT_NEGATE":
                 #     raise Exception("Not implemented: " + opname)
-                # elif opname == "INT_XOR":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "INT_XOR":
+                    inputs = instruction.find("inputs").findall("input")
+                    target = instruction.find("output")
+                    input0 = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    input1 = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    result = builder.xor(input0,input1)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "INT_AND":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
@@ -384,8 +414,16 @@ class Function:
                     result = builder.and_(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
-                # elif opname == "INT_OR":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "INT_OR":
+                    inputs = instruction.find("inputs").findall("input")
+                    target = instruction.find("output")
+                    input0 = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    input1 = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    result = builder.or_(input0,input1)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars) 
                 elif opname == "INT_LEFT":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
@@ -433,11 +471,19 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
-                    result = builder.div(lhs, rhs)
+                    result = builder.udiv(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
-                # elif opname == "INT_SDIV":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "INT_SDIV":
+                    inputs = instruction.find("inputs").findall("input")
+                    target = instruction.find("output")
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    result = builder.sdiv(lhs, rhs)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 # elif opname == "INT_REM":
                 #     raise Exception("Not implemented: " + opname)
                 elif opname == "INT_SREM":
@@ -458,12 +504,36 @@ class Function:
                     result = builder.not_(lhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
-                # elif opname == "BOOL_XOR":
-                #     raise Exception("Not implemented: " + opname)
-                # elif opname == "BOOL_AND":
-                #     raise Exception("Not implemented: " + opname)
-                # elif opname == "BOOL_OR":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "BOOL_XOR":
+                    inputs = instruction.find("inputs").findall("input")
+                    target = instruction.find("output")
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    result = builder.xor(lhs,rhs)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
+                elif opname == "BOOL_AND":
+                    inputs = instruction.find("inputs").findall("input")
+                    target = instruction.find("output")
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    result = builder.and_(lhs,rhs)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
+                elif opname == "BOOL_OR":
+                    inputs = instruction.find("inputs").findall("input")
+                    target = instruction.find("output")
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    result = builder.or_(lhs,rhs)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 # elif opname == "FLOAT_EQUAL":
                 #     raise Exception("Not implemented: " + opname)
                 # elif opname == "FLOAT_NOTEQUAL":
@@ -504,8 +574,21 @@ class Function:
                 #     raise Exception("Not implemented: " + opname)
                 # elif opname == "INDIRECT":
                 #     raise Exception("Not implemented: " + opname)
-                # elif opname == "PIECE":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "PIECE":
+                    target = instruction.find("output")
+                    output_size = 8*int(instruction.find("output").find("size").text)
+                    inputs = instruction.find("inputs").findall("input")
+                    least_sig_size = 8*int(instruction.find("inputs").findall("input")[1].find("size").text)
+                    input_most_sig = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                                self.lifter.global_vars)
+                    input_least_sig = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                                self.lifter.global_vars)
+                    input_least_sig = builder.zext(input_least_sig,ir.IntType(output_size))
+                    input_most_sig = builder.zext(input_most_sig,ir.IntType(output_size))
+                    input_most_sig = builder.shl(input_most_sig,ir.Constant(ir.IntType(output_size),least_sig_size))
+                    result = builder.or_(input_least_sig,input_most_sig)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "SUBPIECE":
                     output = instruction.find("output")
                     inputs = instruction.find("inputs").findall("input")
@@ -525,10 +608,29 @@ class Function:
                                               self.lifter.global_vars)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
-                # elif opname == "PTRADD":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "PTRADD":
+                    target = instruction.find("output")
+                    inputs = instruction.find("inputs").findall("input")
+                    input0 = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                                self.lifter.global_vars)
+                    input1 = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                                self.lifter.global_vars)
+                    input2 = self.fetch_input(builder, inputs[2], self.temps, self.ir_func, self.locals,
+                                                self.lifter.global_vars)
+                    input1_times_input2 = builder.mul(input1,input2)
+                    result = builder.add(input0,input1_times_input2)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "PTRSUB":
-                    raise Exception("Not implemented: " + opname)
+                    target = instruction.find("output")
+                    inputs = instruction.find("inputs").findall("input")
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                                self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                                self.lifter.global_vars)
+                    result = builder.add(lhs,rhs)
+                    output  = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 # elif opname == "SEGMENTOP":
                 #     raise Exception("Not implemented: " + opname)
                 # elif opname == "CPOOLREF":
