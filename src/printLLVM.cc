@@ -2368,7 +2368,7 @@ void PrintLLVM::emitBlockBasic(const BlockBasic *bb)
 {
     const PcodeOp *inst;
     commsorter.setupBlockList(bb);
-    Address addr = bb->getEntryAddr();
+    Address addr = bb->getStart();
     const AddrSpace *spc = addr.getSpace();
     uintb off = addr.getOffset();
     stringstream ss;
@@ -2386,6 +2386,7 @@ void PrintLLVM::emitBlockBasic(const BlockBasic *bb)
     emit->tagLine();
     emit->print("<ops>");
     int4 id = emit->startIndent();
+    
     for(iter=bb->beginOp();iter!=bb->endOp();++iter) {
         inst = *iter;
         if (inst->notPrinted()) continue;
