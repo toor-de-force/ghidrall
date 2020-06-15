@@ -275,7 +275,10 @@ class Function:
                     inputs = instruction.find("inputs").findall("input")
                     call_target = inputs[0].find("symbol").text
                     func_type = ir.FunctionType(ir.VoidType(), [])
-                    ir_func = ir.Function(self.lifter.module, func_type, call_target)
+                    if call_target not in builder.module.globals:
+                        ir_func = ir.Function(self.lifter.module, func_type, call_target)
+                    else:
+                        ir_func = builder.module.globals[call_target]
                     builder.call(ir_func, [])
                 # elif opname == "CALLOTHER":
                 #     raise Exception("Not implemented: " + opname)
@@ -758,8 +761,8 @@ class Function:
             return ir.Constant(ir.IntType(1), 1)
         else:
             if "U" in symbol:
-                val = int(symbol.split('U')[0])
-            elif "0x" in symbol:
+                symbol = symbol.split('U')[0]
+            if "0x" in symbol:
                 index = symbol.index("0x")
                 val = int(symbol[index:], 16)
             else:
@@ -772,15 +775,15 @@ class Function:
         if "var" in symbol:
             symbol = symbol.split('.')[0]
         size = 8 * int(arg.find("size").text)
+        offset = 0
+        try:
+            offset = 8 * int(arg.find("symbol").get("offset"))
+            offset_size = 8 * int(arg.find("symbol").get("size"))
+            success = True
+        except:
+            offset_size = size
+            success = False
         if symbol in local_vars:
-            offset = 0
-            try:
-                offset = 8 * int(arg.find("symbol").get("offset"))
-                offset_size = 8 * int(arg.find("symbol").get("size"))
-                success = True
-            except:
-                offset_size = size
-                success = False
             if success:
                 output = builder.gep(local_vars[symbol], [ir.Constant(ir.IntType(offset_size), offset)])
             else:
@@ -797,5 +800,7 @@ class Function:
             temps[symbol] = result
         elif "unique" in symbol:
             temps[symbol] = result
+        elif "arg" in symbol:
+            pass
         else:
             raise Exception("Unexpected target varnode")
