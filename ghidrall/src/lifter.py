@@ -246,8 +246,11 @@ class Function:
                         raise Exception("No block match in conditional branch")
                     builder.cbranch(conditional, self.ir_blocks[false_branch], self.ir_blocks[true_branch])
                     branched = True
-                # elif opname == "BRANCHIND":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "BRANCHIND":
+                    inputs = instruction.find("inputs").findall("input")
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    builder.goto_block(lhs)
                 elif opname == "CALL":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
@@ -387,6 +390,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
                     result = builder.add(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -397,6 +402,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
                     result = builder.sub(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -433,6 +440,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
                     result = builder.and_(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -443,6 +452,8 @@ class Function:
                                            self.lifter.global_vars)
                     input1 = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
                     result = builder.or_(input0,input1)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars) 
@@ -453,6 +464,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
                     result = builder.shl(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -463,6 +476,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
                     result = builder.lshr(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -473,6 +488,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
                     result = builder.ashr(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -483,6 +500,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
                     result = builder.mul(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -493,6 +512,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
                     result = builder.udiv(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -503,11 +524,23 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
                     result = builder.sdiv(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
-                # elif opname == "INT_REM":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "INT_REM":
+                    inputs = instruction.find("inputs").findall("input")
+                    target = instruction.find("output")
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
+                    result = builder.urem(lhs, rhs)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "INT_SREM":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
@@ -515,6 +548,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
                     result = builder.srem(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -761,14 +796,17 @@ class Function:
         if "true" in symbol:
             return ir.Constant(ir.IntType(1), 1)
         else:
-            if "U" in symbol:
-                symbol = symbol.split('U')[0]
-            if "0x" in symbol:
-                index = symbol.index("0x")
-                val = int(symbol[index:], 16)
-            else:
-                val = int(symbol)
-            return ir.Constant(ir.IntType(size), val)
+            try:
+                if "U" in symbol:
+                    symbol = symbol.split('U')[0]
+                if "0x" in symbol:
+                    index = symbol.index("0x")
+                    val = int(symbol[index:], 16)
+                else:
+                    val = int(symbol)
+                return ir.Constant(ir.IntType(size), val)
+            except:
+                return ir.Constant(ir.IntType(size), 0)
 
     def fetch_store_output(self, builder, arg, result, temps, local_vars, global_vars):
         """"Fetch the output of a given instruction"""
@@ -802,6 +840,8 @@ class Function:
         elif "unique" in symbol:
             temps[symbol] = result
         elif "arg" in symbol:
+            #TODO:implement
             pass
         else:
-            raise Exception("Unexpected target varnode")
+            pass
+            # raise Exception("Unexpected target varnode: ",symbol)
