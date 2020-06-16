@@ -20,13 +20,14 @@ def lift_binary(decompile_info, filename, lifting_options):
 class Lifter:
     """Decompiler class for interfacing with Radare2 and pulling decompilation information in XML"""
 
-    def __init__(self, decompile_info, filename, lifting_options):
+    def __init__(self, decompiler, filename, lifting_options):
         self.filename = filename
         self.module = ir.Module(name=filename)
         self.options = lifting_options
         self.module.data_layout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
         self.module.triple = "x86_64-pc-linux-gnu"
-        self.decompile_info = decompile_info
+        self.decompile_info = decompiler.functions_pdg
+        self.functions_afv = decompiler.functions_afv
         self.global_vars = self.fish_globals()
         self.instrumentation = {}
         self.function_names = list(self.decompile_info.keys())
@@ -115,40 +116,92 @@ class Function:
         entry_block = self.ir_func.append_basic_block("entry")
         entry_builder = ir.IRBuilder(entry_block)
         if self.options["stack"] == "single_struct":
+            function_afv = self.lifter.functions_afv[self.name]
             local_context = ir.global_context
-            local_struct = local_context.get_identified_type("struct.locals." + self.lifter.filename + "." + self.name)
-            local_sizes = {}
+            local_struct_bp = local_context.get_identified_type("struct.locals." + self.lifter.filename + "." + self.name + ".bp")
+            local_struct_sp = local_context.get_identified_type("struct.locals." + self.lifter.filename + "." + self.name + ".sp")
+            local_struct_bp.packed = True
+            local_struct_sp.packed = True
+            local_sizes_bp, local_sizes_sp = {}, {}
             for local in self.xml.find("locals").findall('var'):
                 name = local.find("name").text
-                if "bVar" in name:
-                    size = 1
-                else:
-                    size = int(local.find("size").text) * 8
-                local_sizes[name] = ir.IntType(size)
-            local_struct.set_body(*list(local_sizes.values()))
-            struct = entry_builder.alloca(local_struct)
-            for index, name in enumerate(list(local_sizes.keys())):
-                local_vars[name] = entry_builder.gep(struct, [int32(0), int32(index)], inbounds=True, name=name)
+                try:
+                    sv = function_afv[name]
+                    if sv.ptr == "bp":
+                        if "bVar" in name:
+                            size = 1
+                        else:
+                            size = int(local.find("size").text) * 8
+                        local_sizes_bp[name] = ir.IntType(size)
+                    elif sv.ptr == "sp":
+                        if "bVar" in name:
+                            size = 1
+                        else:
+                            size = int(local.find("size").text) * 8
+                        local_sizes_sp[name] = ir.IntType(size)
+                except KeyError:
+                    if local.find("metatype").text == "2":
+                        # We know this is a pointer type
+                        temp = entry_builder.alloca(ir.ArrayType(int64, 8), name=name)
+                        local_vars[name] = entry_builder.gep(temp, [int32(0), int32(0)], inbounds=True)
+                    else:
+                        if "bVar" in name:
+                            size = 1
+                        else:
+                            size = int(local.find("size").text) * 8
+                        local_vars[name] = entry_builder.alloca(ir.IntType(size), name=name)
+            local_struct_bp.set_body(*list(local_sizes_bp.values()))
+            local_struct_sp.set_body(*list(local_sizes_sp.values()))
+            struct_bp = entry_builder.alloca(local_struct_bp)
+            struct_sp = entry_builder.alloca(local_struct_sp)
+            for index, name in enumerate(list(local_sizes_bp.keys())):
+                local_vars[name] = entry_builder.gep(struct_bp, [int32(0), int32(index)], inbounds=True, name=name)
+            for index, name in enumerate(list(local_sizes_sp.keys())):
+                local_vars[name] = entry_builder.gep(struct_sp, [int32(0), int32(index)], inbounds=True, name=name)
         elif self.options["stack"] == "byte_addressable":
-            local_context = ir.global_context
-            local_struct = local_context.get_identified_type("struct.locals." + self.lifter.filename + "." + self.name)
-            local_sizes = []
-            total_size = 0
+            function_afv = self.lifter.functions_afv[self.name]
+            local_sizes_bp, local_sizes_sp = {}, {}
+            local_index_bp, local_index_sp = {}, {}
+            total_size_bp, total_size_sp = 0, 0
             for local in self.xml.find("locals").findall('var'):
                 name = local.find("name").text
-                if "bVar" in name:
-                    size = 1
-                    bit_size = 1
-                else:
-                    size = int(local.find("size").text)
-                    bit_size = size * 8
-                local_sizes.append((name, total_size, ir.IntType(bit_size)))  # total_size is index here
-                total_size += size  # size in bytes
-            local_struct.set_body(*[int8 for _ in range(total_size)])
-            struct = entry_builder.alloca(local_struct)
-            for name, index, bits in local_sizes:
-                temp = entry_builder.gep(struct, [int32(0), int32(index)], inbounds=True)
-                local_vars[name] = entry_builder.bitcast(temp, ir.PointerType(bits), name=name)
+                try:
+                    sv = function_afv[name]
+                    if sv.ptr == "bp":
+                        if "bVar" in name:
+                            size = 1
+                        else:
+                            size = int(local.find("size").text) * 8
+                        local_sizes_bp[name] = ir.IntType(size)
+                        total_size_bp += int(local.find("size").text)
+                        local_index_bp[name] = total_size_bp
+                    elif sv.ptr == "sp":
+                        if "bVar" in name:
+                            size = 1
+                        else:
+                            size = int(local.find("size").text) * 8
+                        local_sizes_sp[name] = ir.IntType(size)
+                        total_size_sp += int(local.find("size").text)
+                        local_index_sp[name] = total_size_sp
+                except KeyError:
+                    if local.find("metatype").text == "2":
+                        # We know this is a pointer type
+                        temp = entry_builder.alloca(ir.ArrayType(int64, 8), name=name)
+                        local_vars[name] = entry_builder.gep(temp, [int32(0), int32(0)], inbounds=True)
+                    else:
+                        if "bVar" in name:
+                            size = 1
+                        else:
+                            size = int(local.find("size").text) * 8
+                        local_vars[name] = entry_builder.alloca(ir.IntType(size), name=name)
+            bp = entry_builder.alloca(ir.ArrayType(int8, total_size_bp))
+            sp = entry_builder.alloca(ir.ArrayType(int8, total_size_sp))
+            for name, index in local_index_bp.items():
+                temp = entry_builder.gep(bp, [int32(0), int32(index)], inbounds=True)
+                local_vars[name] = entry_builder.bitcast(temp, ir.PointerType(local_sizes_bp[name]), name=name)
+            for name, index in local_index_sp.items():
+                temp = entry_builder.gep(sp, [int32(0), int32(index)], inbounds=True)
+                local_vars[name] = entry_builder.bitcast(temp, ir.PointerType(local_sizes_sp[name]), name=name)
         elif self.options['stack'] == "no_option":
             for local in self.xml.find("locals").findall('var'):
                 name = local.find("name").text
@@ -171,9 +224,12 @@ class Function:
                 symbol = line.split('<symbol>')[1].split('</symbol>')[0]
                 type_line = pdg[i + 1]
                 size_line = pdg[i + 3]
-                sym_type = type_line.split('<type>')[1].split('</type>')[0]
                 size = int(size_line.split('<size>')[1].split('</size>')[0])
-                if sym_type != "bool":
+                try:
+                    sym_type = type_line.split('<type>')[1].split('</type>')[0]
+                    if sym_type != "bool":
+                        size *= 8
+                except IndexError:
                     size *= 8
                 if symbol not in list(register_vars.keys()):
                     register_vars[symbol] = size
@@ -290,7 +346,13 @@ class Function:
                         if len(self.lifter.functions_ir[call_target].args) == 0:
                             result = builder.call(self.lifter.functions_ir[call_target], args=[])
                         else:
-                            result = builder.call(self.lifter.functions_ir[call_target], args=args)
+                            final_args = []
+                            for arg, targ in zip(args, self.lifter.functions_ir[call_target].args):
+                                if arg.type != targ.type:
+                                    final_args.append(builder.trunc(arg, targ.type))
+                                else:
+                                    final_args.append(arg)
+                            result = builder.call(self.lifter.functions_ir[call_target], args=final_args)
                     if result is not None and target is not None:
                         self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                 self.lifter.global_vars)
@@ -435,6 +497,7 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
                     result = builder.shl(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -573,9 +636,14 @@ class Function:
                     target = instruction.find("output")
                     result = self.fetch_input(builder, input_target, self.temps, self.ir_func, self.locals,
                                               self.lifter.global_vars)
-                    if result != ir.Constant(ir.IntType(1), 0):
-                        output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
-                                                     self.lifter.global_vars)
+                    if target.find("metatype").text == "2":
+                        name = target.find("symbol").text
+                        temp = builder.alloca(ir.ArrayType(int64, 8), name=name)
+                        self.locals[name] = builder.gep(temp, [int32(0), int32(0)], inbounds=True)
+                    else:
+                        if result != ir.Constant(ir.IntType(1), 0):
+                            output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                         self.lifter.global_vars)
                 elif opname == "PTRADD":
                     output = instruction.find("output")
                     inputs = instruction.find("inputs").findall("input")
@@ -590,7 +658,19 @@ class Function:
                     output = self.fetch_store_output(builder, output, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
                 elif opname == "PTRSUB":
-                    raise Exception("Not implemented: " + opname)
+                    inputs = instruction.find("inputs").findall("input")
+                    if "BADSPACEBASE" in inputs[0].find("symbol").text:
+                        pass
+                    else:
+                        output = instruction.find("output")
+                        inputs = instruction.find("inputs").findall("input")
+                        name = self.locals[inputs[0].find("symbol").text]
+                        offset = ir.Constant(ir.IntType(32), -int(inputs[1].find("symbol").text))
+                        if offset.type != ir.IntType(32):
+                            offset = builder.trunc(offset, ir.IntType(32))
+                        result = builder.gep(name, [offset], inbounds=True)
+                        output = self.fetch_store_output(builder, output, result, self.temps, self.locals,
+                                                         self.lifter.global_vars)
                 # elif opname == "SEGMENTOP":
                 #     raise Exception("Not implemented: " + opname)
                 # elif opname == "CPOOLREF":
@@ -675,6 +755,10 @@ class Function:
             for arg in ir_func.args:
                 if arg.name == symbol:
                     return arg
+        if symbol in self.args:
+            for arg in self.ir_func.args:
+                if arg.name == symbol:
+                    return arg
         if symbol in global_vars:
             return builder.load(global_vars[symbol])
         if symbol in local_vars:
@@ -753,7 +837,7 @@ class Function:
             return builder.store(result, global_vars[symbol])
         elif "register" in symbol:
             temps[symbol] = result
-        elif "unique" in symbol:
+        else:
             if symbol in temps:
                 if temps[symbol].type.is_pointer and not result.type.is_pointer:
                     builder.store(result, temps[symbol])
@@ -761,5 +845,3 @@ class Function:
                     temps[symbol] = result
             else:
                 temps[symbol] = result
-        else:
-            raise Exception("Unexpected target varnode")

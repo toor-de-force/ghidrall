@@ -64,10 +64,10 @@ file_list = [
     "nested_ite_condition_param_v2",
     "nested_ite_condition_v2",
     "nested_loop",
-    "oo_simple_goal", # # Not dealing with OO yet 
-    "oo_simple_nongoal",# # Not dealing with OO yet 
-    "oo_virtual_func_goal",# # Not dealing with OO yet 
-    "oo_virtual_func_nongoal",# # Not dealing with OO yet 
+    "oo_simple_goal",
+    "oo_simple_nongoal",
+    "oo_virtual_func_goal",
+    "oo_virtual_func_nongoal",
     "param_n_var_conpound_condition",
     "rv_cond",
     "rv_same_var",
@@ -175,13 +175,13 @@ for file in file_list:
     os.mkdir(results_path, mode=0o777)
     print("Decompiling " + file + "...", end="")
     decompile_info = decompiler.decompile_binary(file_path + file)
-    for function in list(decompile_info.keys()):
+    for function in list(decompile_info.functions_pdg.keys()):
         f = open(results_path + file + "_" + function + ".xml", 'w')
-        f.write(decompile_info[function])
+        f.write(decompile_info.functions_pdg[function])
         f.close()
     print("Done.")
     print("Lifting " + file + "...", end="")
-    lifting_options = {"stack": "single_struct"}
+    lifting_options = {"stack": "byte_addressable"}
     module = lifter.lift_binary(decompile_info, file, lifting_options)
     print("Done.")
     print("Verifying " + file + "...", end="")
