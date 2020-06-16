@@ -2379,6 +2379,13 @@ void PrintLLVM::emitBlockBasic(const BlockBasic *bb)
     ss << hex << off;
     emit->print(ss.str().c_str());
     emit->print("</address>");
+    emit->tagLine();
+    emit->print("<block_id>");
+    ss.str("");
+    int4 val = bb->getIndex();
+    ss << val;
+    emit->print(ss.str().c_str());
+    emit->print("</block_id>");
     emit->stopIndent(id2);
     emit->tagLine();
     emit->print("</label>");
@@ -2402,9 +2409,22 @@ void PrintLLVM::emitBlockBasic(const BlockBasic *bb)
     for (int4 i = 0; i < bb->sizeOut(); i++){
         emit->tagLine();
         emit->print("<branch_target>");
+        int4 id4 = emit->startIndent();
+        emit->tagLine();
+        emit->print("<address>");
         ss.str("");
         ss << bb->getOut(i)->getStart();
         emit->print(ss.str().c_str());
+        emit->print("</address>");
+        emit->tagLine();
+        emit->print("<block_id>");
+        ss.str("");
+        int4 val = bb->getOut(i)->getIndex();
+        ss << val;
+        emit->print(ss.str().c_str());
+        emit->print("</block_id>");
+        emit->stopIndent(id4);
+        emit->tagLine();
         emit->print("</branch_target>");
     }
     emit->stopIndent(id3);

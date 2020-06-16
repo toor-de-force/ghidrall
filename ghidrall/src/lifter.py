@@ -107,7 +107,7 @@ class Function:
         self.options = lifter.options
         self.temps = {}
         self.entry_block, self.locals, self.entry_builder = self.recover_locals()
-        self.ir_blocks, self.xml_blocks = self.build_cfg()
+        self.ir_blocks, self.xml_blocks, self.block_ids = self.build_cfg()
 
     def recover_locals(self):
         """"Recover stack variables based on decided structure from lifting options. Also recovers register types"""
@@ -164,9 +164,11 @@ class Function:
         for line in pdg:
             if "register0x" in line:
                 symbol = line.split('<symbol>')[1].split('</symbol>')[0]
+                type_line = pdg[i + 1]
                 size_line = pdg[i + 2]
+                sym_type = type_line.split('<type>')[1].split('</type>')[0]
                 size = int(size_line.split('<size>')[1].split('</size>')[0])
-                if size != 1:
+                if sym_type != "bool":
                     size *= 8
                 if symbol not in list(register_vars.keys()):
                     register_vars[symbol] = size
@@ -179,14 +181,16 @@ class Function:
 
     def build_cfg(self):
         """Build the CFG of the function"""
-        ir_blocks, xml_blocks = {}, {}
+        ir_blocks, xml_blocks, block_ids = {}, {}, {}
         for xml_block in self.xml.find("block_graph").findall("block"):
+            block_id = xml_block.find("label").find("block_id").text
             label = self.format_label(xml_block.find("label").find("address").text)
             block = self.ir_func.append_basic_block(label)
-            ir_blocks[label] = block
-            xml_blocks[label] = xml_block
+            ir_blocks[block_id] = block
+            xml_blocks[block_id] = xml_block
+            block_ids[label] = block_id
         self.entry_builder.branch(list(ir_blocks.values())[0])
-        return ir_blocks, xml_blocks
+        return ir_blocks, xml_blocks, block_ids
 
     def lift_function(self):
         """Populate the CFG with instructions"""
@@ -209,19 +213,19 @@ class Function:
                 elif opname == "STORE":
                     pass
                 elif opname == "BRANCH":
-                    target = self.format_label(instruction.find("inputs").find("input").find("symbol").text)
-                    out_target = self.format_label(xml_block.find("out_branches").findall("branch_target")[0].text)
-                    if target != out_target:
-                        target = out_target
-                    builder.branch(self.ir_blocks[target])
+                    out_target = xml_block.find("out_branches").findall("branch_target")[0].find("block_id").text
+                    builder.branch(self.ir_blocks[out_target])
                     branched = True
                 elif opname == "CBRANCH":
                     inputs = instruction.find("inputs").findall("input")
                     true_branch = self.format_label(inputs[0].find("symbol").text)
                     conditional = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                                    self.lifter.global_vars)
+                    if conditional.type != int1:
+                        conditional = builder.trunc(conditional, int1)
                     false_branch = None
-                    branches = xml_block.find("out_branches").findall("branch_target")
+                    branch_targets = xml_block.find("out_branches").findall("branch_target")
+                    branches = [branch.find("address") for branch in branch_targets]
                     true_branch_off_by_1 = self.format_label(hex(int(true_branch, 16) + 1))
                     if true_branch not in branches or true_branch_off_by_1 not in branches:
                         true_branch = branches[0].text
@@ -236,7 +240,7 @@ class Function:
                                 false_branch = branch.text
                     if false_branch is None:
                         raise Exception("No block match in conditional branch")
-                    builder.cbranch(conditional, self.ir_blocks[false_branch], self.ir_blocks[true_branch])
+                    builder.cbranch(conditional, self.ir_blocks[self.block_ids[false_branch]], self.ir_blocks[self.block_ids[true_branch]])
                     branched = True
                 # elif opname == "BRANCHIND":
                 #     raise Exception("Not implemented: " + opname)
@@ -373,8 +377,16 @@ class Function:
                 #     raise Exception("Not implemented: " + opname)
                 # elif opname == "INT_NEGATE":
                 #     raise Exception("Not implemented: " + opname)
-                # elif opname == "INT_XOR":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "INT_XOR":
+                    inputs = instruction.find("inputs").findall("input")
+                    target = instruction.find("output")
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    result = builder.xor(lhs, rhs)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "INT_AND":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
@@ -461,8 +473,16 @@ class Function:
                                                      self.lifter.global_vars)
                 # elif opname == "BOOL_XOR":
                 #     raise Exception("Not implemented: " + opname)
-                # elif opname == "BOOL_AND":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "BOOL_AND":
+                    inputs = instruction.find("inputs").findall("input")
+                    target = instruction.find("output")
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    result = builder.and_(lhs, rhs)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 # elif opname == "BOOL_OR":
                 #     raise Exception("Not implemented: " + opname)
                 # elif opname == "FLOAT_EQUAL":
@@ -526,8 +546,9 @@ class Function:
                                               self.lifter.global_vars)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
-                # elif opname == "PTRADD":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "PTRADD":
+                    print(self.lifter.module)
+                    raise Exception("Not implemented: " + opname)
                 elif opname == "PTRSUB":
                     raise Exception("Not implemented: " + opname)
                 # elif opname == "SEGMENTOP":
@@ -548,7 +569,7 @@ class Function:
                     raise Exception("Not expected: " + opname)
 
             if not branched:
-                builder.branch(self.ir_blocks[xml_block.find("out_branches").find("branch_target").text])
+                builder.branch(self.ir_blocks[xml_block.find("out_branches").find("branch_target").find("block_id").text])
 
     @staticmethod
     def format_label(label):
@@ -622,8 +643,9 @@ class Function:
             else:
                 output = local_vars[symbol]
             final = builder.load(output)
-            if final.type != ir.IntType(offset_size):
-                final = builder.trunc(final, ir.IntType(offset_size))
+            if final.type != ir.IntType(offset_size) and arg.find("type").text != "char":
+                if arg.find("type").text != "bool":
+                    final = builder.trunc(final, ir.IntType(offset_size))
             return final
         if symbol in temps:
             if temps[symbol].type == void_type:
