@@ -35,7 +35,7 @@ mkdir build; cd build
 cmake ..
 cmake --build .
 cd ../..
-python run-all-tests.py
+python run-tests.py
 
 This will compile all the test programs that are pre-instrumented with analysis, decompile, lift and verify them all for verification.
 
