@@ -16,15 +16,15 @@
 
 time_t global_time;
 
-void path_start() {
+void NOINLINE path_start() {
   time(&global_time);
 }
 
-void path_goal() {
+void NOINLINE path_goal() {
   time(&global_time);
 }
 
-void path_nongoal() {
+void NOINLINE path_nongoal() {
   time(&global_time);
 }
 #endif

@@ -12,7 +12,7 @@
 NOINLINE void func2() {
   path_goal();
 }
-void func1(int n) {
+NOINLINE void func1(int n) {
   if (n == 1) {
     func2();
   }

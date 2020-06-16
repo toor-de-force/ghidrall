@@ -31,7 +31,8 @@ except FileNotFoundError:
     pass
 os.mkdir(results_path, mode=0o777)
 print("Decompiling " + file + "...", end="")
-decompile_info = decompiler.decompile_binary(file_name)
+decompiler = decompiler.decompile_binary(file_name)
+decompile_info = decompiler.functions_pdg
 if debug:
     for function in list(decompile_info.keys()):
         f = open(file + "_" + function + ".xml", 'w')
@@ -39,7 +40,7 @@ if debug:
         f.close()
 print("Done.")
 print("Lifting " + file + "...", end="")
-module = lifter.lift_binary(decompile_info, file, lifting_options)
+module = lifter.lift_binary(decompiler, file, lifting_options)
 print("Done.")
 print("Verifying " + file + "...", end="")
 verifier.verify(module)
