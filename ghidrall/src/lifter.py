@@ -51,6 +51,7 @@ class Lifter:
                 i += 1
         return global_vars
 
+    
     def create_function_signatures(self):
         """"Create the function signatures before building instructions and basic blocks so function calls resolve"""
         all_ir, all_xml, all_args, return_types = {}, {}, {}, {}
