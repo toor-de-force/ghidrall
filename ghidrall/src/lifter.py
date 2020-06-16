@@ -94,6 +94,7 @@ class Lifter:
 
 class Function:
     """"Holds the relevant data for a function"""
+
     def __init__(self, function_name, ir_func, xml, args, return_type, lifter):
         """"Initialize function variables, recover locals, and build the CFG"""
         self.name = function_name
@@ -247,7 +248,7 @@ class Function:
                     result = None
                     for arg in inputs[1:]:
                         a = self.fetch_input(builder, arg, self.temps, self.ir_func, self.locals,
-                                                     self.lifter.global_vars)
+                                             self.lifter.global_vars)
                         if a is not None:
                             args.append(a)
                     if call_target in instrumentation_list:
@@ -638,7 +639,10 @@ class Function:
             return ir.Constant(ir.IntType(1), 1)
         else:
             if "U" in symbol:
-                val = int(symbol.split('U')[0])
+                try:
+                    val = int(symbol.split('U')[0])
+                except ValueError:
+                    val = int(symbol.split('U')[0], 16)
             elif "0x" in symbol:
                 index = symbol.index("0x")
                 val = int(symbol[index:], 16)
