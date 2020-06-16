@@ -43,7 +43,7 @@ class Lifter:
                 if "<symbol>_obj" in line or "<symbol>obj" in line:
                     symbol = line.split('<symbol>')[1].split('</symbol>')[0]
                     if symbol not in list(global_vars.keys()):
-                        size_line = pdg[i + 2]
+                        size_line = pdg[i + 3]
                         size = ir.IntType(int(size_line.split('<size>')[1].split('</size>')[0]) * 8)
                         glob = ir.GlobalVariable(self.module, size, symbol)
                         glob.initializer = size(0)
@@ -152,11 +152,16 @@ class Function:
         elif self.options['stack'] == "no_option":
             for local in self.xml.find("locals").findall('var'):
                 name = local.find("name").text
-                if "bVar" in name:
-                    size = 1
+                if local.find("metatype").text == "2":
+                    # We know this is a pointer type
+                    temp = entry_builder.alloca(ir.ArrayType(int64, 8), name=name)
+                    local_vars[name] = entry_builder.gep(temp, [int32(0), int32(0)], inbounds=True)
                 else:
-                    size = int(local.find("size").text) * 8
-                local_vars[name] = entry_builder.alloca(ir.IntType(size), name=name)
+                    if "bVar" in name:
+                        size = 1
+                    else:
+                        size = int(local.find("size").text) * 8
+                    local_vars[name] = entry_builder.alloca(ir.IntType(size), name=name)
         # Recover register types
         register_vars = {}
         pdg = et.tostring(self.xml, encoding="unicode").splitlines()
@@ -165,7 +170,7 @@ class Function:
             if "register0x" in line:
                 symbol = line.split('<symbol>')[1].split('</symbol>')[0]
                 type_line = pdg[i + 1]
-                size_line = pdg[i + 2]
+                size_line = pdg[i + 3]
                 sym_type = type_line.split('<type>')[1].split('</type>')[0]
                 size = int(size_line.split('<size>')[1].split('</size>')[0])
                 if sym_type != "bool":
@@ -209,9 +214,30 @@ class Function:
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
                 elif opname == "LOAD":
-                    pass
+                    input = instruction.find("inputs").findall("input")[1]
+                    target = instruction.find("output")
+                    input_target = self.fetch_input(builder, input, self.temps, self.ir_func, self.locals,
+                                              self.lifter.global_vars)
+                    if input_target.type.is_pointer:
+                        result = builder.load(input_target)
+                    else:
+                        result = input_target
+                    output_target = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "STORE":
-                    pass
+                    input_target = instruction.find("inputs").findall("input")[2]
+                    target = instruction.find("inputs").findall("input")[1]
+                    result = self.fetch_input(builder, input_target, self.temps, self.ir_func, self.locals,
+                                              self.lifter.global_vars)
+                    if target.find("symbol").text in self.temps:
+                        target = self.temps[target.find("symbol").text]
+                    elif target.find("symbol").text in self.locals:
+                        target = self.locals[target.find("symbol").text]
+                    else:
+                        raise Exception("Unknown store target")
+                    if result.type.as_pointer() != target.type:
+                        target = builder.bitcast(target, result.type.as_pointer())
+                    builder.store(result, target)
                 elif opname == "BRANCH":
                     out_target = xml_block.find("out_branches").findall("branch_target")[0].find("block_id").text
                     builder.branch(self.ir_blocks[out_target])
@@ -240,7 +266,8 @@ class Function:
                                 false_branch = branch.text
                     if false_branch is None:
                         raise Exception("No block match in conditional branch")
-                    builder.cbranch(conditional, self.ir_blocks[self.block_ids[false_branch]], self.ir_blocks[self.block_ids[true_branch]])
+                    builder.cbranch(conditional, self.ir_blocks[self.block_ids[false_branch]],
+                                    self.ir_blocks[self.block_ids[true_branch]])
                     branched = True
                 # elif opname == "BRANCHIND":
                 #     raise Exception("Not implemented: " + opname)
@@ -354,6 +381,7 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
                     result = builder.add(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -364,6 +392,7 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
                     result = builder.sub(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -544,11 +573,22 @@ class Function:
                     target = instruction.find("output")
                     result = self.fetch_input(builder, input_target, self.temps, self.ir_func, self.locals,
                                               self.lifter.global_vars)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                    if result != ir.Constant(ir.IntType(1), 0):
+                        output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
                 elif opname == "PTRADD":
-                    print(self.lifter.module)
-                    raise Exception("Not implemented: " + opname)
+                    output = instruction.find("output")
+                    inputs = instruction.find("inputs").findall("input")
+                    name = self.locals[inputs[0].find("symbol").text]
+                    offset = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                              self.lifter.global_vars)
+                    if offset.type != ir.IntType(32):
+                        offset = builder.trunc(offset, ir.IntType(32))
+                    size = self.fetch_input(builder, inputs[2], self.temps, self.ir_func, self.locals,
+                                            self.lifter.global_vars)
+                    result = builder.gep(name, [offset], inbounds=True)
+                    output = self.fetch_store_output(builder, output, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "PTRSUB":
                     raise Exception("Not implemented: " + opname)
                 # elif opname == "SEGMENTOP":
@@ -569,7 +609,8 @@ class Function:
                     raise Exception("Not expected: " + opname)
 
             if not branched:
-                builder.branch(self.ir_blocks[xml_block.find("out_branches").find("branch_target").find("block_id").text])
+                builder.branch(
+                    self.ir_blocks[xml_block.find("out_branches").find("branch_target").find("block_id").text])
 
     @staticmethod
     def format_label(label):
@@ -578,6 +619,15 @@ class Function:
             label = label[2:]
         new_label = '0x' + label.zfill(8)
         return new_label
+
+    @staticmethod
+    def type_check(builder, target_size, input0, input1):
+        """Make sure operands are of the right type"""
+        if input0.type != ir.IntType(target_size):
+            input0 = builder.zext(input0, ir.IntType(target_size))
+        if input1.type != ir.IntType(target_size):
+            input1 = builder.zext(input1, ir.IntType(target_size))
+        return input0, input1
 
     @staticmethod
     def instrument(call_target, lifter):
@@ -644,12 +694,14 @@ class Function:
                 output = local_vars[symbol]
             final = builder.load(output)
             if final.type != ir.IntType(offset_size) and arg.find("type").text != "char":
-                if arg.find("type").text != "bool":
+                if arg.find("type").text != "bool" or not final.type.is_pointer:
                     final = builder.trunc(final, ir.IntType(offset_size))
             return final
         if symbol in temps:
             if temps[symbol].type == void_type:
                 return ir.Constant(ir.IntType(1), 0)
+            elif temps[symbol].type.is_pointer:
+                return temps[symbol]
             elif temps[symbol].type != ir.IntType(size) and temps[symbol].type != int1:
                 result = builder.trunc(temps[symbol], ir.IntType(size))
                 return result
@@ -702,6 +754,12 @@ class Function:
         elif "register" in symbol:
             temps[symbol] = result
         elif "unique" in symbol:
-            temps[symbol] = result
+            if symbol in temps:
+                if temps[symbol].type.is_pointer and not result.type.is_pointer:
+                    builder.store(result, temps[symbol])
+                else:
+                    temps[symbol] = result
+            else:
+                temps[symbol] = result
         else:
             raise Exception("Unexpected target varnode")
