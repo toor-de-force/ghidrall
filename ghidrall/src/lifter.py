@@ -236,7 +236,7 @@ class Function:
                     register_vars[symbol] = size
                 elif size > register_vars[symbol]:
                     register_vars[symbol] = size
-            if "unique0x" in line:
+            elif "unique0x" in line:
                 symbol = line.split('<symbol>')[1].split('</symbol>')[0]
                 type_line = pdg[i + 1]
                 size_line = pdg[i + 3]
@@ -251,7 +251,6 @@ class Function:
                     unique_vars[symbol] = size
                 elif size > unique_vars[symbol]:
                     unique_vars[symbol] = size
-
             i += 1
         for symbol, size in register_vars.items():
             local_vars[symbol] = entry_builder.alloca(ir.IntType(size), name=symbol)
@@ -279,7 +278,6 @@ class Function:
         else:
             lhs.type = ir.IntType(widthRhs)
         return lhs, rhs
-        pass
     def lift_function(self):
         """Populate the CFG with instructions"""
         for label in list(self.ir_blocks.keys()):
@@ -756,15 +754,31 @@ class Function:
                 elif opname == "PTRADD":
                     output = instruction.find("output")
                     inputs = instruction.find("inputs").findall("input")
-                    name = self.locals[inputs[0].find("symbol").text]
-                    offset = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
-                                              self.lifter.global_vars)
-                    if offset.type != ir.IntType(32):
-                        offset = builder.trunc(offset, ir.IntType(32))
-                    size = self.fetch_input(builder, inputs[2], self.temps, self.ir_func, self.locals,
-                                            self.lifter.global_vars)
-                    result = builder.gep(name, [offset], inbounds=True)
-                    output = self.fetch_store_output(builder, output, result, self.temps, self.locals,
+                    try:
+                        name = self.locals[inputs[0].find("symbol").text]
+                        is_local = True
+                    except KeyError:
+                        is_local = False
+                    if is_local:    
+                        offset = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                                  self.lifter.global_vars)
+                        if offset.type != ir.IntType(32):
+                            offset = builder.trunc(offset, ir.IntType(32))
+                        size = self.fetch_input(builder, inputs[2], self.temps, self.ir_func, self.locals,
+                                                self.lifter.global_vars)
+                        result = builder.gep(name, [offset], inbounds=True)
+                        output = self.fetch_store_output(builder, output, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
+                    else:
+                        input0 = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                                self.lifter.global_vars)
+                        input1 = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                                    self.lifter.global_vars)
+                        input2 = self.fetch_input(builder, inputs[2], self.temps, self.ir_func, self.locals,
+                                                    self.lifter.global_vars)
+                        input1_times_input2 = builder.mul(input1,input2)
+                        result = builder.add(input0,input1_times_input2)
+                        output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
                 # elif opname == "PTRADD":
                 #     target = instruction.find("output")
@@ -879,13 +893,13 @@ class Function:
         if "argc" in symbol:
             raise Exception("argc and argv weird behaviour")
         if "arg" in symbol:
-            for arg in ir_func.args:
-                if arg.name == symbol:
-                    return arg
+            for arg_iter in ir_func.args:
+                if arg_iter.name == symbol:
+                    return arg_iter
         if symbol in self.args:
-            for arg in self.ir_func.args:
-                if arg.name == symbol:
-                    return arg
+            for arg_iter in self.ir_func.args:
+                if arg_iter.name == symbol:
+                    return arg_iter
         if symbol in global_vars:
             return builder.load(global_vars[symbol])
         if symbol in local_vars:
