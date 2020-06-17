@@ -52,6 +52,7 @@ class Lifter:
                 i += 1
         return global_vars
 
+    
     def create_function_signatures(self):
         """"Create the function signatures before building instructions and basic blocks so function calls resolve"""
         all_ir, all_xml, all_args, return_types = {}, {}, {}, {}
@@ -270,13 +271,13 @@ class Function:
             block_ids[label] = block_id
         self.entry_builder.branch(list(ir_blocks.values())[0])
         return ir_blocks, xml_blocks, block_ids
-    def fixConflictingIntType(self,lhs,rhs):
+    def fixConflictingIntType(self,lhs,rhs,builder):
         widthLhs = lhs.type.width
         widthRhs = rhs.type.width
         if widthLhs > widthRhs:
-            rhs.type = ir.IntType(widthLhs)
+            rhs = builder.zext(rhs,ir.IntType(widthLhs))
         else:
-            lhs.type = ir.IntType(widthRhs)
+            lhs = builder.zext(lhs,ir.IntType(widthRhs))
         return lhs, rhs
     def lift_function(self):
         """Populate the CFG with instructions"""
@@ -350,8 +351,11 @@ class Function:
                     builder.cbranch(conditional, self.ir_blocks[self.block_ids[false_branch]],
                                     self.ir_blocks[self.block_ids[true_branch]])
                     branched = True
-                # elif opname == "BRANCHIND":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "BRANCHIND":
+                    inputs = instruction.find("inputs").findall("input")
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    builder.goto_block(lhs)
                 elif opname == "CALL":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
@@ -410,7 +414,7 @@ class Function:
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
                     if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
-                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs,builder)
                     result = builder.icmp_unsigned('==', lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -422,7 +426,7 @@ class Function:
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
                     if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
-                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs,builder)
                     result = builder.icmp_unsigned('!=', lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -434,7 +438,7 @@ class Function:
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
                     if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
-                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs,builder)
                     result = builder.icmp_signed('<', lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -446,7 +450,7 @@ class Function:
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
                     if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
-                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs,builder)
                     result = builder.icmp_signed('<=', lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -458,7 +462,7 @@ class Function:
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
                     if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
-                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs,builder)
                     result = builder.icmp_unsigned('<', lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -470,7 +474,7 @@ class Function:
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
                     if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
-                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs,builder)
                     result = builder.icmp_unsigned('<=', lhs, rhs)
                 elif opname == "INT_ZEXT":
                     inputs = instruction.find("inputs").findall("input")
@@ -498,6 +502,8 @@ class Function:
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
                     lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs,builder)
                     result = builder.add(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -509,6 +515,8 @@ class Function:
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
                     lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs,builder)
                     result = builder.sub(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -545,17 +553,21 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs,builder)
                     result = builder.and_(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
                 elif opname == "INT_OR":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
-                    input0 = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
-                    input1 = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
-                    result = builder.or_(input0,input1)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs,builder)
+                    result = builder.or_(lhs,rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars) 
                 elif opname == "INT_LEFT":
@@ -566,6 +578,8 @@ class Function:
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
                     lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs,builder)
                     result = builder.shl(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -576,6 +590,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs,builder)
                     result = builder.lshr(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -586,6 +602,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs,builder)
                     result = builder.ashr(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -596,6 +614,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs,builder)
                     result = builder.mul(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -606,6 +626,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs,builder)
                     result = builder.udiv(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -616,11 +638,23 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs,builder)
                     result = builder.sdiv(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
-                # elif opname == "INT_REM":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "INT_REM":
+                    inputs = instruction.find("inputs").findall("input")
+                    target = instruction.find("output")
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs,builder)
+                    result = builder.urem(lhs, rhs)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "INT_SREM":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
@@ -628,6 +662,8 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
+                        lhs,rhs = self.fixConflictingIntType(lhs,rhs,builder)
                     result = builder.srem(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -955,15 +991,15 @@ class Function:
         if "var" in symbol:
             symbol = symbol.split('.')[0]
         size = 8 * int(arg.find("size").text)
+        offset = 0
+        try:
+            offset = 8 * int(arg.find("symbol").get("offset"))
+            offset_size = 8 * int(arg.find("symbol").get("size"))
+            success = True
+        except:
+            offset_size = size
+            success = False
         if symbol in local_vars:
-            offset = 0
-            try:
-                offset = 8 * int(arg.find("symbol").get("offset"))
-                offset_size = 8 * int(arg.find("symbol").get("size"))
-                success = True
-            except:
-                offset_size = size
-                success = False
             if success:
                 output = builder.gep(local_vars[symbol], [ir.Constant(ir.IntType(offset_size), offset)])
             else:

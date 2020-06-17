@@ -1,4 +1,5 @@
 import r2pipe
+import re
 
 instrumentation_list = ["sym.path_start", "sym.path_goal", "sym.path_nongoal", "sym.imp.rand"]
 
