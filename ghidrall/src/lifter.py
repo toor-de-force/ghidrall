@@ -217,6 +217,7 @@ class Function:
                     local_vars[name] = entry_builder.alloca(ir.IntType(size), name=name)
         # Recover register types
         register_vars = {}
+        unique_vars = {}
         pdg = et.tostring(self.xml, encoding="unicode").splitlines()
         i = 0
         for line in pdg:
@@ -235,8 +236,26 @@ class Function:
                     register_vars[symbol] = size
                 elif size > register_vars[symbol]:
                     register_vars[symbol] = size
+            if "unique0x" in line:
+                symbol = line.split('<symbol>')[1].split('</symbol>')[0]
+                type_line = pdg[i + 1]
+                size_line = pdg[i + 3]
+                size = int(size_line.split('<size>')[1].split('</size>')[0])
+                try:
+                    sym_type = type_line.split('<type>')[1].split('</type>')[0]
+                    if sym_type != "bool":
+                        size *= 8
+                except IndexError:
+                    size *= 8
+                if symbol not in list(unique_vars.keys()):
+                    unique_vars[symbol] = size
+                elif size > unique_vars[symbol]:
+                    unique_vars[symbol] = size
+
             i += 1
         for symbol, size in register_vars.items():
+            local_vars[symbol] = entry_builder.alloca(ir.IntType(size), name=symbol)
+        for symbol, size in unique_vars.items():
             local_vars[symbol] = entry_builder.alloca(ir.IntType(size), name=symbol)
         return entry_block, local_vars, entry_builder
 
@@ -369,7 +388,10 @@ class Function:
                     inputs = instruction.find("inputs").findall("input")
                     call_target = inputs[0].find("symbol").text
                     func_type = ir.FunctionType(ir.VoidType(), [])
-                    ir_func = ir.Function(self.lifter.module, func_type, call_target)
+                    if call_target not in builder.module.globals:
+                        ir_func = ir.Function(self.lifter.module, func_type, call_target)
+                    else:
+                        ir_func = builder.module.globals[call_target]
                     builder.call(ir_func, [])
                 # elif opname == "CALLOTHER":
                 #     raise Exception("Not implemented: " + opname)
@@ -744,19 +766,19 @@ class Function:
                     result = builder.gep(name, [offset], inbounds=True)
                     output = self.fetch_store_output(builder, output, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
-                elif opname == "PTRADD":
-                    target = instruction.find("output")
-                    inputs = instruction.find("inputs").findall("input")
-                    input0 = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
-                                                self.lifter.global_vars)
-                    input1 = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
-                                                self.lifter.global_vars)
-                    input2 = self.fetch_input(builder, inputs[2], self.temps, self.ir_func, self.locals,
-                                                self.lifter.global_vars)
-                    input1_times_input2 = builder.mul(input1,input2)
-                    result = builder.add(input0,input1_times_input2)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
-                                                     self.lifter.global_vars)
+                # elif opname == "PTRADD":
+                #     target = instruction.find("output")
+                #     inputs = instruction.find("inputs").findall("input")
+                #     input0 = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                #                                 self.lifter.global_vars)
+                #     input1 = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                #                                 self.lifter.global_vars)
+                #     input2 = self.fetch_input(builder, inputs[2], self.temps, self.ir_func, self.locals,
+                #                                 self.lifter.global_vars)
+                #     input1_times_input2 = builder.mul(input1,input2)
+                #     result = builder.add(input0,input1_times_input2)
+                #     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                #                                      self.lifter.global_vars)
                 elif opname == "PTRSUB":
                     inputs = instruction.find("inputs").findall("input")
                     if "BADSPACEBASE" in inputs[0].find("symbol").text:
@@ -765,7 +787,11 @@ class Function:
                         output = instruction.find("output")
                         inputs = instruction.find("inputs").findall("input")
                         name = self.locals[inputs[0].find("symbol").text]
-                        offset = ir.Constant(ir.IntType(32), -int(inputs[1].find("symbol").text))
+                        symbol = inputs[1].find("symbol").text
+                        offset = ir.Constant(ir.IntType(32), 0)
+                        if "0x" in symbol:
+                            index = symbol.index("0x")
+                            offset = ir.Constant(ir.IntType(32), -int(symbol[index:],16))
                         if offset.type != ir.IntType(32):
                             offset = builder.trunc(offset, ir.IntType(32))
                         result = builder.gep(name, [offset], inbounds=True)
