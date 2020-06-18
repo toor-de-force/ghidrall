@@ -924,7 +924,7 @@ class Function:
             if temps[symbol].type == void_type:
                 return ir.Constant(ir.IntType(1), 0)
             elif temps[symbol].type.is_pointer:
-                return temps[symbol]
+                return builder.load(temps[symbol])
             elif temps[symbol].type != ir.IntType(size) and temps[symbol].type != int1:
                 result = builder.trunc(temps[symbol], ir.IntType(size))
                 return result
