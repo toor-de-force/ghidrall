@@ -379,13 +379,7 @@ class Function:
                         inputs = instruction.find("inputs").findall("input")
                         lhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                                self.lifter.global_vars)
-                        if self.ir_func.ftype.return_type != lhs.type and isinstance(lhs.type,ir.IntType) and isinstance(self.ir_func.ftype.return_type,ir.IntType):
-                            widthRet = self.ir_func.ftype.return_type.width
-                            widthCurr = lhs.type.width
-                            if widthCurr < widthRet:
-                                lhs = builder.zext(lhs,ir.IntType(widthRet))
-                            else:
-                                lhs = builder.trunc(lhs,ir.IntType(widthRet))
+                        lhs,_ = self.type_check(builder, self.ir_func.ftype.return_type.width, lhs, lhs)
                         builder.ret(lhs)
                     branched = True
                 elif opname == "INT_EQUAL":
