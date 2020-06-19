@@ -541,8 +541,16 @@ class Function:
                     result = builder.div(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
-                # elif opname == "INT_SDIV":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "INT_SDIV":
+                    inputs = instruction.find("inputs").findall("input")
+                    target = instruction.find("output")
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    result = builder.sdiv(lhs, rhs)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 # elif opname == "INT_REM":
                 #     raise Exception("Not implemented: " + opname)
                 elif opname == "INT_SREM":
@@ -745,8 +753,7 @@ class Function:
             size = 1
         else:
             size = int(arg.find("size").text)
-            if size != 1:
-                size *= 8
+            size *= 8
         if "argv" in symbol:
             raise Exception("argc and argv weird behaviour")
         if "argc" in symbol:
@@ -802,8 +809,7 @@ class Function:
                 except ValueError:
                     val = int(symbol.split('U')[0], 16)
             elif "0x" in symbol:
-                index = symbol.index("0x")
-                val = int(symbol[index:], 16)
+                val = int(symbol, 16)
             else:
                 val = int(symbol)
             return ir.Constant(ir.IntType(size), val)
