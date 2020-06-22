@@ -292,17 +292,6 @@ class Function:
                         target = self.locals[target.find("symbol").text]
                     else:
                         raise Exception("Unknown store target")
-                    # if not target.type.is_pointer:
-                    #     target = instruction.find("inputs").findall("input")[1]
-                    #     target_size = int(target.find('size').text)*8
-                    #     target = builder.alloca(ir.IntType,target_size)
-                    # if instruction.find("inputs").findall("input")[1].find('metatype').text == '2':
-                    #     target = instruction.find("inputs").findall("input")[1]
-                    #     name = target.find("symbol").text
-                    #     temp = builder.alloca(ir.ArrayType(int64, 8), name=name)
-                    #     target = builder.gep(temp, [int32(0), int32(0)], inbounds=True)
-                    #     self.locals[name] = target
-                    #     self.temps[name] = target
                     if target.type.is_pointer:
                         if result.type.as_pointer() != target.type:
                             target = builder.bitcast(target, result.type.as_pointer())
@@ -784,19 +773,6 @@ class Function:
                         result = builder.add(input0,input1_times_input2)
                         output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
-                # elif opname == "PTRADD":
-                #     target = instruction.find("output")
-                #     inputs = instruction.find("inputs").findall("input")
-                #     input0 = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
-                #                                 self.lifter.global_vars)
-                #     input1 = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
-                #                                 self.lifter.global_vars)
-                #     input2 = self.fetch_input(builder, inputs[2], self.temps, self.ir_func, self.locals,
-                #                                 self.lifter.global_vars)
-                #     input1_times_input2 = builder.mul(input1,input2)
-                #     result = builder.add(input0,input1_times_input2)
-                #     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
-                #                                      self.lifter.global_vars)
                 elif opname == "PTRSUB":
                     inputs = instruction.find("inputs").findall("input")
                     if "BADSPACEBASE" in inputs[0].find("symbol").text:
@@ -991,10 +967,6 @@ class Function:
             temps[symbol] = result
         else:
             if symbol in temps:
-                # if metatype == '2' and not result.type.is_pointer:
-                #     result = ir.PointerType(result)
-                #     temps[symbol] = result
-                #     # raise Exception('wrong result: ',symbol)
                 if temps[symbol].type.is_pointer and not result.type.is_pointer:
                     builder.store(result, temps[symbol])
                 else:

@@ -14,7 +14,7 @@ def verify(module):
         module_bc.verify()
     except RuntimeError:
         traceback.print_exc()
-        # print(module)
+        print(module)
         sys.exit()
     return module_bc
 
