@@ -292,9 +292,21 @@ class Function:
                         target = self.locals[target.find("symbol").text]
                     else:
                         raise Exception("Unknown store target")
-                    if result.type.as_pointer() != target.type:
-                        target = builder.bitcast(target, result.type.as_pointer())
-                    builder.store(result, target)
+                    # if not target.type.is_pointer:
+                    #     target = instruction.find("inputs").findall("input")[1]
+                    #     target_size = int(target.find('size').text)*8
+                    #     target = builder.alloca(ir.IntType,target_size)
+                    # if instruction.find("inputs").findall("input")[1].find('metatype').text == '2':
+                    #     target = instruction.find("inputs").findall("input")[1]
+                    #     name = target.find("symbol").text
+                    #     temp = builder.alloca(ir.ArrayType(int64, 8), name=name)
+                    #     target = builder.gep(temp, [int32(0), int32(0)], inbounds=True)
+                    #     self.locals[name] = target
+                    #     self.temps[name] = target
+                    if target.type.is_pointer:
+                        if result.type.as_pointer() != target.type:
+                            target = builder.bitcast(target, result.type.as_pointer())
+                        builder.store(result, target)
                 elif opname == "BRANCH":
                     out_target = xml_block.find("out_branches").findall("branch_target")[0].find("block_id").text
                     builder.branch(self.ir_blocks[out_target])
@@ -950,6 +962,7 @@ class Function:
     def fetch_store_output(self, builder, arg, result, temps, local_vars, global_vars):
         """"Fetch the output of a given instruction"""
         symbol = arg.find("symbol").text
+        metatype = arg.find("metatype").text
         if "var" in symbol:
             symbol = symbol.split('.')[0]
         size = 8 * int(arg.find("size").text)
@@ -978,6 +991,10 @@ class Function:
             temps[symbol] = result
         else:
             if symbol in temps:
+                # if metatype == '2' and not result.type.is_pointer:
+                #     result = ir.PointerType(result)
+                #     temps[symbol] = result
+                #     # raise Exception('wrong result: ',symbol)
                 if temps[symbol].type.is_pointer and not result.type.is_pointer:
                     builder.store(result, temps[symbol])
                 else:
