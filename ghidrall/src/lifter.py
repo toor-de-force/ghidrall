@@ -52,6 +52,7 @@ class Lifter:
                 i += 1
         return global_vars
 
+    
     def create_function_signatures(self):
         """"Create the function signatures before building instructions and basic blocks so function calls resolve"""
         all_ir, all_xml, all_args, return_types = {}, {}, {}, {}
@@ -252,15 +253,7 @@ class Function:
             block_ids[label] = block_id
         self.entry_builder.branch(list(ir_blocks.values())[0])
         return ir_blocks, xml_blocks, block_ids
-    def fixConflictingIntType(self,lhs,rhs):
-        widthLhs = lhs.type.width
-        widthRhs = rhs.type.width
-        if widthLhs > widthRhs:
-            rhs.type = ir.IntType(widthLhs)
-        else:
-            lhs.type = ir.IntType(widthRhs)
-        return lhs, rhs
-        pass
+
     def lift_function(self):
         """Populate the CFG with instructions"""
         for label in list(self.ir_blocks.keys()):
@@ -299,9 +292,10 @@ class Function:
                         target = self.locals[target.find("symbol").text]
                     else:
                         raise Exception("Unknown store target")
-                    if result.type.as_pointer() != target.type:
-                        target = builder.bitcast(target, result.type.as_pointer())
-                    builder.store(result, target)
+                    if target.type.is_pointer:
+                        if result.type.as_pointer() != target.type:
+                            target = builder.bitcast(target, result.type.as_pointer())
+                        builder.store(result, target)
                 elif opname == "BRANCH":
                     out_target = xml_block.find("out_branches").findall("branch_target")[0].find("block_id").text
                     builder.branch(self.ir_blocks[out_target])
@@ -334,8 +328,11 @@ class Function:
                     builder.cbranch(conditional, self.ir_blocks[self.block_ids[false_branch]],
                                     self.ir_blocks[self.block_ids[true_branch]])
                     branched = True
-                # elif opname == "BRANCHIND":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "BRANCHIND":
+                    inputs = instruction.find("inputs").findall("input")
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    builder.goto_block(lhs)
                 elif opname == "CALL":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
@@ -370,7 +367,10 @@ class Function:
                     inputs = instruction.find("inputs").findall("input")
                     call_target = inputs[0].find("symbol").text
                     func_type = ir.FunctionType(ir.VoidType(), [])
-                    ir_func = ir.Function(self.lifter.module, func_type, call_target)
+                    if call_target not in builder.module.globals:
+                        ir_func = ir.Function(self.lifter.module, func_type, call_target)
+                    else:
+                        ir_func = builder.module.globals[call_target]
                     builder.call(ir_func, [])
                 # elif opname == "CALLOTHER":
                 #     raise Exception("Not implemented: " + opname)
@@ -381,6 +381,7 @@ class Function:
                         inputs = instruction.find("inputs").findall("input")
                         lhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                                self.lifter.global_vars)
+                        lhs,_ = self.type_check(builder, self.ir_func.ftype.return_type.width, lhs, lhs)
                         builder.ret(lhs)
                     branched = True
                 elif opname == "INT_EQUAL":
@@ -390,8 +391,7 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
-                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
-                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
                     result = builder.icmp_unsigned('==', lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -402,8 +402,7 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
-                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
-                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
                     result = builder.icmp_unsigned('!=', lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -414,8 +413,7 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
-                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
-                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
                     result = builder.icmp_signed('<', lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -426,8 +424,7 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
-                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
-                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
                     result = builder.icmp_signed('<=', lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -438,8 +435,7 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
-                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
-                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
                     result = builder.icmp_unsigned('<', lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -450,8 +446,7 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
-                    if lhs.type != rhs.type and isinstance(lhs.type,ir.IntType) and isinstance(rhs.type,ir.IntType):
-                        lhs,rhs = self.fixConflictingIntType(lhs,rhs)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
                     result = builder.icmp_unsigned('<=', lhs, rhs)
                 elif opname == "INT_ZEXT":
                     inputs = instruction.find("inputs").findall("input")
@@ -516,6 +511,7 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
                     result = builder.xor(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -526,17 +522,19 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
                     result = builder.and_(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
                 elif opname == "INT_OR":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
-                    input0 = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
-                    input1 = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
-                    result = builder.or_(input0,input1)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
+                    result = builder.or_(lhs,rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars) 
                 elif opname == "INT_LEFT":
@@ -557,6 +555,7 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
                     result = builder.lshr(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -567,6 +566,7 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
                     result = builder.ashr(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -577,6 +577,7 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
                     result = builder.mul(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -587,6 +588,7 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
                     result = builder.udiv(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -597,11 +599,21 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
                     result = builder.sdiv(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
-                # elif opname == "INT_REM":
-                #     raise Exception("Not implemented: " + opname)
+                elif opname == "INT_REM":
+                    inputs = instruction.find("inputs").findall("input")
+                    target = instruction.find("output")
+                    lhs = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                           self.lifter.global_vars)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
+                    result = builder.urem(lhs, rhs)
+                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                                                     self.lifter.global_vars)
                 elif opname == "INT_SREM":
                     inputs = instruction.find("inputs").findall("input")
                     target = instruction.find("output")
@@ -609,6 +621,7 @@ class Function:
                                            self.lifter.global_vars)
                     rhs = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                            self.lifter.global_vars)
+                    lhs, rhs = self.type_check(builder, int(target.find("size").text) * 8, lhs, rhs)
                     result = builder.srem(lhs, rhs)
                     output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
@@ -735,28 +748,31 @@ class Function:
                 elif opname == "PTRADD":
                     output = instruction.find("output")
                     inputs = instruction.find("inputs").findall("input")
-                    name = self.locals[inputs[0].find("symbol").text]
-                    offset = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
-                                              self.lifter.global_vars)
-                    if offset.type != ir.IntType(32):
-                        offset = builder.trunc(offset, ir.IntType(32))
-                    size = self.fetch_input(builder, inputs[2], self.temps, self.ir_func, self.locals,
-                                            self.lifter.global_vars)
-                    result = builder.gep(name, [offset], inbounds=True)
-                    output = self.fetch_store_output(builder, output, result, self.temps, self.locals,
+                    try:
+                        name = self.locals[inputs[0].find("symbol").text]
+                        is_local = True
+                    except KeyError:
+                        is_local = False
+                    if is_local:    
+                        offset = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                                  self.lifter.global_vars)
+                        if offset.type != ir.IntType(32):
+                            offset = builder.trunc(offset, ir.IntType(32))
+                        size = self.fetch_input(builder, inputs[2], self.temps, self.ir_func, self.locals,
+                                                self.lifter.global_vars)
+                        result = builder.gep(name, [offset], inbounds=True)
+                        output = self.fetch_store_output(builder, output, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
-                elif opname == "PTRADD":
-                    target = instruction.find("output")
-                    inputs = instruction.find("inputs").findall("input")
-                    input0 = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
+                    else:
+                        input0 = self.fetch_input(builder, inputs[0], self.temps, self.ir_func, self.locals,
                                                 self.lifter.global_vars)
-                    input1 = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
-                                                self.lifter.global_vars)
-                    input2 = self.fetch_input(builder, inputs[2], self.temps, self.ir_func, self.locals,
-                                                self.lifter.global_vars)
-                    input1_times_input2 = builder.mul(input1,input2)
-                    result = builder.add(input0,input1_times_input2)
-                    output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
+                        input1 = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
+                                                    self.lifter.global_vars)
+                        input2 = self.fetch_input(builder, inputs[2], self.temps, self.ir_func, self.locals,
+                                                    self.lifter.global_vars)
+                        input1_times_input2 = builder.mul(input1,input2)
+                        result = builder.add(input0,input1_times_input2)
+                        output = self.fetch_store_output(builder, target, result, self.temps, self.locals,
                                                      self.lifter.global_vars)
                 elif opname == "PTRSUB":
                     inputs = instruction.find("inputs").findall("input")
@@ -766,7 +782,11 @@ class Function:
                         output = instruction.find("output")
                         inputs = instruction.find("inputs").findall("input")
                         name = self.locals[inputs[0].find("symbol").text]
-                        offset = ir.Constant(ir.IntType(32), -int(inputs[1].find("symbol").text))
+                        symbol = inputs[1].find("symbol").text
+                        offset = ir.Constant(ir.IntType(32), 0)
+                        if "0x" in symbol:
+                            index = symbol.index("0x")
+                            offset = ir.Constant(ir.IntType(32), -int(symbol[index:],16))
                         if offset.type != ir.IntType(32):
                             offset = builder.trunc(offset, ir.IntType(32))
                         result = builder.gep(name, [offset], inbounds=True)
@@ -806,9 +826,15 @@ class Function:
     def type_check(builder, target_size, input0, input1):
         """Make sure operands are of the right type"""
         if input0.type != ir.IntType(target_size):
-            input0 = builder.zext(input0, ir.IntType(target_size))
+            if input0.type.width < target_size:
+                input0 = builder.zext(input0, ir.IntType(target_size))
+            else:
+                input0 = builder.trunc(input0, ir.IntType(target_size))
         if input1.type != ir.IntType(target_size):
-            input1 = builder.zext(input1, ir.IntType(target_size))
+            if input1.type.width < target_size:
+                input1 = builder.zext(input1, ir.IntType(target_size))
+            else:
+                input1 = builder.trunc(input1, ir.IntType(target_size))
         return input0, input1
 
     @staticmethod
@@ -853,13 +879,13 @@ class Function:
         if "argc" in symbol:
             raise Exception("argc and argv weird behaviour")
         if "arg" in symbol:
-            for arg in ir_func.args:
-                if arg.name == symbol:
-                    return arg
+            for arg_iter in ir_func.args:
+                if arg_iter.name == symbol:
+                    return arg_iter
         if symbol in self.args:
-            for arg in self.ir_func.args:
-                if arg.name == symbol:
-                    return arg
+            for arg_iter in self.ir_func.args:
+                if arg_iter.name == symbol:
+                    return arg_iter
         if symbol in global_vars:
             return builder.load(global_vars[symbol])
         if symbol in local_vars:
@@ -886,7 +912,7 @@ class Function:
             if temps[symbol].type == void_type:
                 return ir.Constant(ir.IntType(1), 0)
             elif temps[symbol].type.is_pointer:
-                return temps[symbol]
+                return builder.load(temps[symbol])
             elif temps[symbol].type != ir.IntType(size) and temps[symbol].type != int1:
                 result = builder.trunc(temps[symbol], ir.IntType(size))
                 return result
@@ -911,18 +937,19 @@ class Function:
     def fetch_store_output(self, builder, arg, result, temps, local_vars, global_vars):
         """"Fetch the output of a given instruction"""
         symbol = arg.find("symbol").text
+        metatype = arg.find("metatype").text
         if "var" in symbol:
             symbol = symbol.split('.')[0]
         size = 8 * int(arg.find("size").text)
+        offset = 0
+        try:
+            offset = 8 * int(arg.find("symbol").get("offset"))
+            offset_size = 8 * int(arg.find("symbol").get("size"))
+            success = True
+        except:
+            offset_size = size
+            success = False
         if symbol in local_vars:
-            offset = 0
-            try:
-                offset = 8 * int(arg.find("symbol").get("offset"))
-                offset_size = 8 * int(arg.find("symbol").get("size"))
-                success = True
-            except:
-                offset_size = size
-                success = False
             if success:
                 output = builder.gep(local_vars[symbol], [ir.Constant(ir.IntType(offset_size), offset)])
             else:

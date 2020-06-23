@@ -2119,6 +2119,12 @@ void PrintLLVM::emitExpression(const PcodeOp *op)
         emit->print("<symbol");
         pushVnExplicit(outvn,op);
         recurse();
+        stringstream ss_type_mod;
+        ss_type_mod << outvn->getType()->getMetatype();
+        if(!outvn ->isConstant() && outvn->getType()->getMetatype() == 2){
+          emit ->print("_");
+          emit->print(ss_type_mod.str().c_str());
+        }
         emit->print("</symbol>");
         emit->tagLine();
         emit->print("<type>");
@@ -2166,6 +2172,12 @@ void PrintLLVM::emitExpression(const PcodeOp *op)
             pushVnExplicit(invn, op);
         }
         recurse();
+        stringstream ss_type_mod_input;
+        ss_type_mod_input << invn->getType()->getMetatype();
+        if(!invn ->isConstant() && (invn->getType()->getMetatype() == 2)){
+          emit ->print("_");
+          emit->print(ss_type_mod_input.str().c_str());
+        }
         emit->print("</symbol>");
         emit->tagLine();
         emit->print("<type>");
