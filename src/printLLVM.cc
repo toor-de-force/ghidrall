@@ -2220,6 +2220,10 @@ void PrintLLVM::emitVarDecl(const Symbol *sym)
   emit->print("<name>");
   emit->print(sym->getName().c_str());
   emit->print("</name>");
+  emit->tagLine();
+  emit->print("<symbol_entry>");
+  emit->print(sym->getFirstWholeMap()->getUseLimit()->
+  emit->print("</symbol_entry>");
   emit->stopIndent(id);
   emit->tagLine();
   emit->print("</var>");

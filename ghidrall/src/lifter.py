@@ -312,6 +312,7 @@ class Function:
                     conditional = self.fetch_input(builder, inputs[1], self.temps, self.ir_func, self.locals,
                                                    self.lifter.global_vars)
                     if conditional.type != int1:
+                        raise Exception("For what?: " + str(conditional.type))
                         conditional = builder.trunc(conditional, int1)
                     false_branch = None
                     branch_targets = xml_block.find("out_branches").findall("branch_target")
@@ -830,7 +831,7 @@ class Function:
             lifter.instrumentation[call_target] = ir_func
         elif call_target == "sym.imp.rand":
             args = []
-            func_type = ir.FunctionType(int32, args)
+            func_type = ir.FunctionType(int8, args)
             ir_func = ir.Function(module, func_type, "nd")
             lifter.instrumentation[call_target] = ir_func
         else:
@@ -878,7 +879,7 @@ class Function:
                 output = local_vars[symbol]
             final = builder.load(output)
             if final.type != ir.IntType(offset_size) and arg.find("type").text != "char":
-                if arg.find("type").text != "bool" or not final.type.is_pointer:
+                if arg.find("type").text != "bool" and not final.type.is_pointer:
                     final = builder.trunc(final, ir.IntType(offset_size))
             return final
         if symbol in temps:

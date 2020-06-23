@@ -181,7 +181,7 @@ for file in file_list:
         f.close()
     print("Done.")
     print("Lifting " + file + "...", end="")
-    lifting_options = {"stack": "byte_addressable"}
+    lifting_options = {"stack": "no_option"}
     module = lifter.lift_binary(decompile_info, file, lifting_options)
     print("Done.")
     print("Verifying " + file + "...", end="")
