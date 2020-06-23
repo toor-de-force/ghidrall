@@ -18,6 +18,7 @@ file_path = "./tests/build/"
 
 # Delete all test results except
 file_list = [
+    "argv_argc_imp_test"
     "bad_diff_func",
     "bound_loop_with_var",
     "compound_condition",
@@ -94,6 +95,7 @@ unsat = "; CHECK-L: unsat\n"
 warning = "; CHECK-L: WARNING: no assertion was found\n"
 
 check = {
+    "argv_argc_imp_test" : "; CHECK-L: WARNING: no assertion was found\n",
     "bad_diff_func" : "; CHECK-L: WARNING: no assertion was found\n",
     "bound_loop_with_var" : "; CHECK-L: sat\n",
     "compound_condition" : "; CHECK-L: sat\n",
