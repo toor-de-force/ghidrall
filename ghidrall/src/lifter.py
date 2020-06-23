@@ -72,7 +72,10 @@ class Lifter:
             args = {}
             for arg in xml_args:
                 name = arg.find('name').text
-                args[name] = (ir.IntType(8 * int(arg.find('size').text)))
+                if name == "argv" and function == 'main':
+                    args[name] = ir.PointerType(ir.PointerType(ir.IntType(8)))
+                else:
+                    args[name] = (ir.IntType(8 * int(arg.find('size').text)))
             func_type = ir.FunctionType(func_return, list(args.values()))
             ir_func = ir.Function(self.module, func_type, function)
             for i in range(len(ir_func.args)):
@@ -766,7 +769,7 @@ class Function:
                         output = instruction.find("output")
                         inputs = instruction.find("inputs").findall("input")
                         name = self.locals[inputs[0].find("symbol").text]
-                        offset = ir.Constant(ir.IntType(32), -int(inputs[1].find("symbol").text))
+                        offset = ir.Constant(ir.IntType(32), -int(inputs[1].find("symbol").text,16))
                         if offset.type != ir.IntType(32):
                             offset = builder.trunc(offset, ir.IntType(32))
                         result = builder.gep(name, [offset], inbounds=True)
@@ -848,10 +851,10 @@ class Function:
         else:
             size = int(arg.find("size").text)
             size *= 8
-        if "argv" in symbol:
-            raise Exception("argc and argv weird behaviour")
-        if "argc" in symbol:
-            raise Exception("argc and argv weird behaviour")
+        # if "argv" in symbol:
+        #     raise Exception("argc and argv weird behaviour")
+        # if "argc" in symbol:
+        #     raise Exception("argc and argv weird behaviour")
         if "arg" in symbol:
             for arg in ir_func.args:
                 if arg.name == symbol:
