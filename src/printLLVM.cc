@@ -1830,37 +1830,16 @@ void PrintLLVM::emitPrototypeOutput(const FuncProto *proto,
   Datatype *outtype = proto->getOutputType();
   if ((outtype->getMetatype()!=TYPE_VOID)&&(op != (PcodeOp *)0)) {
       vn = op->getIn(1);
-      emit->print("<return>");
-      int4 id = emit->startIndent();
-      emit->tagLine();
-      emit->print("<type>");
-      emit->print(vn->getType()->getName().c_str());
-      emit->print("</type>");
-      emit->tagLine();
-      emit->print("<metatype>");
       stringstream ss;
-      ss << vn->getType()->getMetatype();
+      stringstream hx;
+      ss << "<typeref name=\"" << vn->getType()->getName() << "\" metatype=\"" << vn->getType()->getMetatype();
+      ss << "\" size=\"" << vn->getType()->getSize() << "\" id=\"0x" << hex << vn->getType()->getId() << "\"/>";
       emit->print(ss.str().c_str());
-      emit->print("</metatype>");
-      emit->tagLine();
-      emit->print("<size>");
-      ss.str("");
-      ss << outtype->getSize();
-      emit->print(ss.str().c_str());
-      emit->print("</size>");
-      emit->stopIndent(id);
-      emit->tagLine();
-      emit->print("</return>");
   } else {
-      vn = (Varnode *) 0;
-      emit->print("<return>");
-      int4 id = emit->startIndent();
-      emit->tagLine();
-      emit->print("<type>void</type>");
-      emit->tagLine();
-      emit->print("<size>void</size>");
-      emit->tagLine();
-      emit->print("</return>");
+      stringstream ss;
+      stringstream hx;
+      ss << "<typeref name=\"void\" metatype=\"10\" size=\"void\" id=\"void\"/>";
+      emit->print(ss.str().c_str());
   }
 
 }
@@ -1874,6 +1853,7 @@ void PrintLLVM::emitPrototypeInputs(const FuncProto *proto)
   int4 sz = proto->numParams();
 
     for(int4 i=0;i<sz;++i) {
+      emit->tagLine();
       ProtoParameter *param = proto->getParam(i);
       Symbol *sym = param->getSymbol();
       if (sym != (Symbol *)0) emitVarDecl(sym);
@@ -2197,32 +2177,37 @@ void PrintLLVM::emitVarDecl(const Symbol *sym)
 
 {
   stringstream ss;
-  emit->print("<var>");
+  stringstream hx;
+  emit->print("<mapsym>");
   int4 id = emit->startIndent();
   emit->tagLine();
-  emit->print("<type>");
-  ss << sym->getType()->getName();
+  ss << "<symbol name=\"" << sym->getName().c_str() << "\" id=\"";
+  hx << "0x" << hex << sym->getId();
+  ss << hx.str() << "\" cat=\"" << sym->getCategory() << "\"/>";
+  hx.str("");
   emit->print(ss.str().c_str());
-  emit->print("</type>");
   emit->tagLine();
-  emit->print("<metatype>");
   ss.str("");
-  ss << sym->getType()->getMetatype();
+  ss << "<typeref name=\"" << sym->getType()->getName() << "\" metatype=\"" << sym->getType()->getMetatype();
+  ss << "\" size=\"" << sym->getType()->getSize() << "\" id=\"0x" << hex << sym->getType()->getId() << "\"/>";
   emit->print(ss.str().c_str());
-  emit->print("</metatype>");
   emit->tagLine();
-  emit->print("<size>");
-  ss.str("");
-  ss << sym->getType()->getSize();
-  emit->print(ss.str().c_str());
-  emit->print("</size>");
+  emit->print("<entries>");
+  int4 id2 = emit->startIndent();
+  for(int i=0; i<sym->numEntries(); i++){
+      SymbolEntry* se = sym->getMapEntry(i);
+      auto addr = se->getAddr();
+      emit->tagLine();
+      ss.str("");
+      ss << "<entry space=\"" << addr.getSpace()->getName() << "\" offset=\"0x" << hex << addr.getOffset() << "\"/>";
+      emit->print(ss.str().c_str());
+  }
+  emit->stopIndent(id2);
   emit->tagLine();
-  emit->print("<name>");
-  emit->print(sym->getName().c_str());
-  emit->print("</name>");
+  emit->print("</entries>");
   emit->stopIndent(id);
   emit->tagLine();
-  emit->print("</var>");
+  emit->print("</mapsym>");
 }
 
 void PrintLLVM::emitVarDeclStatement(const Symbol *sym)
@@ -2297,24 +2282,49 @@ void PrintLLVM::emitFunctionDeclaration(const Funcdata *fd)
   int4 id = emit->beginFuncProto();
   emitPrototypeOutput(proto,fd);
   emit->tagLine();
-  emit->print("<name>");
-  emit->tagFuncName(fd->getName().c_str(),EmitXml::no_color,
-		    fd,(PcodeOp *)0);
-  emit->print("</name>");
-  emit->tagLine();
-  emit->print("<address>");
   stringstream ss;
-  ss << hex << fd->getAddress().getOffset();
+  const RangeList lr = fd->getFuncProto().getLocalRange();
+  const RangeList pr = fd->getFuncProto().getParamRange();
+  ss << "<signature name=\"" << fd->getName() << "\" addr=\"0x" << hex << fd->getAddress().getOffset() << "\"/>";
   emit->print(ss.str().c_str());
-  emit->print("</address>");
   emit->tagLine();
-  emit->print("<args>");
+  ss.str("");
+  emit->print("<local_ranges>");
   int4 id2 = emit->startIndent();
+  set<Range>::const_iterator iter = lr.begin();
+  set<Range>::const_iterator end = lr.end();
+  for(;iter!=end;iter++){
+      emit->tagLine();
+      ss << "<range name=\"" << iter->getSpace()->getName() << "\" first=\"0x" << hex << iter->getFirst();
+      ss << "\" last=\"0x" << iter->getLast() << "\">";
+      emit->print(ss.str().c_str());
+      ss.str("");
+  }
+  emit->stopIndent(id2);
   emit->tagLine();
+  emit->print("</local_ranges>");
+  emit->tagLine();
+  emit->print("<param_ranges>");
+  int4 id3 = emit->startIndent();
+  iter = lr.begin();
+  end = lr.end();
+  for(;iter!=end;iter++){
+    emit->tagLine();
+    ss << "<range name=\"" << iter->getSpace()->getName() << "\" first=\"0x" << hex << iter->getFirst();
+    ss << "\" last=\"0x" << iter->getLast() << "\">";
+    emit->print(ss.str().c_str());
+    ss.str("");
+  }
+  emit->stopIndent(id2);
+  emit->tagLine();
+  emit->print("</param_ranges>");
+  emit->tagLine();
+  emit->print("<params>");
+  int4 id4 = emit->startIndent();
   emitPrototypeInputs(proto);
   emit->stopIndent(id2);
   emit->tagLine();
-  emit->print("</args>");
+  emit->print("</params>");
   emit->endFuncProto(id);
 }
 
@@ -2396,28 +2406,12 @@ void PrintLLVM::emitBlockBasic(const BlockBasic *bb)
     const AddrSpace *spc = addr.getSpace();
     uintb off = addr.getOffset();
     stringstream ss;
-    emit->print("<label>");
-    int4 id2 = emit->startIndent();
-    emit->tagLine();
-    emit->print("<address>");
-    ss << hex << off;
+    ss << "<label id=\"" << bb->getIndex() << "\" address=\"0x" << hex << off << "\"/>";
     emit->print(ss.str().c_str());
-    emit->print("</address>");
     emit->tagLine();
-    emit->print("<block_id>");
-    ss.str("");
-    int4 val = bb->getIndex();
-    ss << val;
-    emit->print(ss.str().c_str());
-    emit->print("</block_id>");
-    emit->stopIndent(id2);
-    emit->tagLine();
-    emit->print("</label>");
     list<PcodeOp*>::const_iterator iter;
-    emit->tagLine();
     emit->print("<ops>");
     int4 id = emit->startIndent();
-    
     for(iter=bb->beginOp();iter!=bb->endOp();++iter) {
         inst = *iter;
         if (inst->notPrinted()) continue;
@@ -2432,28 +2426,25 @@ void PrintLLVM::emitBlockBasic(const BlockBasic *bb)
     int4 id3 = emit->startIndent();
     for (int4 i = 0; i < bb->sizeOut(); i++){
         emit->tagLine();
-        emit->print("<branch_target>");
-        int4 id4 = emit->startIndent();
-        emit->tagLine();
-        emit->print("<address>");
         ss.str("");
-        ss << bb->getOut(i)->getStart();
+        ss << "<target id=\"" << bb->getOut(i)->getIndex() << "\" address=\"" << hex << bb->getOut(i)->getStart().getOffset() << "\"/>";
         emit->print(ss.str().c_str());
-        emit->print("</address>");
-        emit->tagLine();
-        emit->print("<block_id>");
-        ss.str("");
-        int4 val = bb->getOut(i)->getIndex();
-        ss << val;
-        emit->print(ss.str().c_str());
-        emit->print("</block_id>");
-        emit->stopIndent(id4);
-        emit->tagLine();
-        emit->print("</branch_target>");
     }
     emit->stopIndent(id3);
     emit->tagLine();
     emit->print("</out_branches>");
+    emit->tagLine();
+    emit->print("<in_branches>");
+    int4 id4 = emit->startIndent();
+    for (int4 i = 0; i < bb->sizeIn(); i++){
+        emit->tagLine();
+        ss.str("");
+        ss << "<target id=\"" << bb->getIn(i)->getIndex() << "\" address=\"" << hex << bb->getIn(i)->getStart().getOffset() << "\"/>";
+        emit->print(ss.str().c_str());
+    }
+    emit->stopIndent(id4);
+    emit->tagLine();
+    emit->print("</in_branches>");
 }
 
 void PrintLLVM::emitBlockGraph(const BlockGraph *bl)
