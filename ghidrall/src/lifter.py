@@ -71,8 +71,10 @@ class Lifter:
             return_meta_type = int(xml_return_type.get("metatype"))
             return_types[function] = xml_return_type.get("name")
             if return_meta_type == 10:
-                # Void Type
+                return_types[function] = "void"
                 func_return = void_type
+            elif return_types[function] == "undefined8":
+                func_return = ir.IntType(64)
             else:
                 func_return = ir.IntType(8 * int(xml_return_type.get('size')))
             args = {}

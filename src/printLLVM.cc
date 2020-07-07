@@ -11,10 +11,12 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
+ * See the License for the specific language governing permissions and
  * limitations under the License.
  */
 #include "printLLVM.hh"
 #include "funcdata.hh"
+#include <typeinfo>
 
 // Operator tokens for expressions
 //                        token #in prec assoc   optype       space bump
@@ -1838,7 +1840,7 @@ void PrintLLVM::emitPrototypeOutput(const FuncProto *proto,
   } else {
       stringstream ss;
       stringstream hx;
-      ss << "<typeref name=\"void\" metatype=\"10\" size=\"void\" id=\"void\"/>";
+      ss << "<typeref name=\"undefined8\" metatype=\"10\" size=\"1\" id=\"void\"/>";
       emit->print(ss.str().c_str());
   }
 
@@ -2115,6 +2117,26 @@ void PrintLLVM::emitExpression(const PcodeOp *op)
         ss2 << outvn->getType()->getSize();
         emit->print(ss2.str().c_str());
         emit->print("</size>");
+        emit->tagLine();
+        emit->print("<space>");
+        ss2.str("");
+        ss2 << outvn->getSpace()->getName();
+        emit->print(ss2.str().c_str());
+        emit->print("</space>");
+        emit->tagLine();
+        emit->print("<offset>");
+        ss2.str("");
+        ss2 << "0x" << hex << outvn->getOffset();
+        emit->print(ss2.str().c_str());
+        emit->print("</offset>");
+        emit->tagLine();
+        emit->print("<id>");
+        if (outvn->getSymbolEntry() != (SymbolEntry *)0) {
+            ss2.str("");
+            ss2 << "0x" << hex << outvn->getSymbolEntry()->getSymbol()->getId();
+            emit->print(ss2.str().c_str());
+        }
+        emit->print("</id>");
         emit->stopIndent(id2);
         emit->tagLine();
         emit->print("</output>");
@@ -2130,43 +2152,118 @@ void PrintLLVM::emitExpression(const PcodeOp *op)
         int4 id2 = emit->startIndent();
         emit->tagLine();
         emit->print("<symbol");
-        if (ss.str() == "CALL" && i == 0){
+        if (ss.str() == "PTRSUB" && i == 0) {
             emit->print(">");
-            const Varnode *callpoint = op->getIn(0);
-            if (invn->getSpace()->getType()==IPTR_FSPEC) {
-                FuncCallSpecs *fc = FuncCallSpecs::getFspecFromConst(invn->getAddr());
-                if (fc->getName().size()==0) {
-                    string name = genericFunctionName(fc->getEntryAddress());
-                    pushAtom(Atom(name,functoken,EmitXml::no_color,op,(const Funcdata *)0));
+            TypePointer *ptype = (TypePointer *) invn->getHigh()->getType();
+            Datatype *ct = ptype->getPtrTo();
+            if (ct->getMetatype() == TYPE_SPACEBASE) {
+                TypeSpacebase *sb = (TypeSpacebase *) ct;
+                Address addr = sb->getAddress(op->getIn(1)->getOffset(), invn->getSize(), op->getAddr());
+                ss2.str("");
+                ss2 << "0x" << hex << addr.getOffset();
+                emit->print(ss2.str().c_str());
+                emit->print("</symbol>");
+                emit->tagLine();
+                emit->print("<type>");
+                emit->print(invn->getType()->getName().c_str());
+                emit->print("</type>");
+                emit->tagLine();
+                emit->print("<metatype>");
+                ss.str("");
+                ss << invn->getType()->getMetatype();
+                emit->print(ss.str().c_str());
+                emit->print("</metatype>");
+                emit->tagLine();
+                emit->print("<size>");
+                ss2.str("");
+                ss2 << invn->getType()->getSize();
+                emit->print(ss2.str().c_str());
+                emit->print("</size>");
+                emit->tagLine();
+                emit->print("<space>");
+                ss2.str("");
+                ss2 << addr.getSpace()->getName();
+                emit->print(ss2.str().c_str());
+                emit->print("</space>");
+                emit->tagLine();
+                emit->print("<offset>");
+                ss2.str("");
+                ss2 << "0x" << hex << invn->getOffset();
+                emit->print(ss2.str().c_str());
+                emit->print("</offset>");
+                emit->tagLine();
+                emit->print("<id>");
+                if (invn->getSymbolEntry() != (SymbolEntry *) 0) {
+                    ss2.str("");
+                    ss2 << "0x" << hex << invn->getSymbolEntry()->getSymbol()->getId();
+                    emit->print(ss2.str().c_str());
                 }
-                else
-                    pushAtom(Atom(fc->getName(),functoken,EmitXml::no_color,op,(const Funcdata *)0));
+                emit->print("</id>");
+                emit->stopIndent(id2);
+                emit->tagLine();
+                emit->print("</input>");
+            } else {
+                throw LowlevelError("PTRSUB not indexing off of spacebase");
             }
         } else {
-            pushVnExplicit(invn, op);
+            if (ss.str() == "CALL" && i == 0){
+                emit->print(">");
+                const Varnode *callpoint = op->getIn(0);
+                if (invn->getSpace()->getType()==IPTR_FSPEC) {
+                    FuncCallSpecs *fc = FuncCallSpecs::getFspecFromConst(invn->getAddr());
+                    if (fc->getName().size()==0) {
+                        string name = genericFunctionName(fc->getEntryAddress());
+                        pushAtom(Atom(name,functoken,EmitXml::no_color,op,(const Funcdata *)0));
+                    }
+                    else
+                        pushAtom(Atom(fc->getName(),functoken,EmitXml::no_color,op,(const Funcdata *)0));
+                }
+            } else {
+                pushVnExplicit(invn, op);
+            }
+            recurse();
+            emit->print("</symbol>");
+            emit->tagLine();
+            emit->print("<type>");
+            emit->print(invn->getType()->getName().c_str());
+            emit->print("</type>");
+            emit->tagLine();
+            emit->print("<metatype>");
+            ss.str("");
+            ss << invn->getType()->getMetatype();
+            emit->print(ss.str().c_str());
+            emit->print("</metatype>");
+            emit->tagLine();
+            emit->print("<size>");
+            ss2.str("");
+            ss2 << invn->getType()->getSize();
+            emit->print(ss2.str().c_str());
+            emit->print("</size>");
+            emit->tagLine();
+            emit->print("<space>");
+            ss2.str("");
+            ss2 << invn->getSpace()->getName();
+            emit->print(ss2.str().c_str());
+            emit->print("</space>");
+            emit->tagLine();
+            emit->print("<offset>");
+            ss2.str("");
+            ss2 << "0x" << hex << invn->getOffset();
+            emit->print(ss2.str().c_str());
+            emit->print("</offset>");
+            emit->tagLine();
+            emit->print("<id>");
+            if (invn->getSymbolEntry() != (SymbolEntry *)0) {
+                ss2.str("");
+                ss2 << "0x" << hex << invn->getSymbolEntry()->getSymbol()->getId();
+                emit->print(ss2.str().c_str());
+            }
+            emit->print("</id>");
+            emit->stopIndent(id2);
+            emit->tagLine();
+            emit->print("</input>");
+            if (i < op->numInput()-1) emit->tagLine();
         }
-        recurse();
-        emit->print("</symbol>");
-        emit->tagLine();
-        emit->print("<type>");
-        emit->print(invn->getType()->getName().c_str());
-        emit->print("</type>");
-        emit->tagLine();
-        emit->print("<metatype>");
-        ss.str("");
-        ss << invn->getType()->getMetatype();
-        emit->print(ss.str().c_str());
-        emit->print("</metatype>");
-        emit->tagLine();
-        emit->print("<size>");
-        ss2.str("");
-        ss2 << invn->getType()->getSize();
-        emit->print(ss2.str().c_str());
-        emit->print("</size>");
-        emit->stopIndent(id2);
-        emit->tagLine();
-        emit->print("</input>");
-        if (i < op->numInput()-1) emit->tagLine();
     }
     emit->stopIndent(id);
     emit->tagLine();
@@ -2295,8 +2392,9 @@ void PrintLLVM::emitFunctionDeclaration(const Funcdata *fd)
   set<Range>::const_iterator end = lr.end();
   for(;iter!=end;iter++){
       emit->tagLine();
-      ss << "<range name=\"" << iter->getSpace()->getName() << "\" first=\"0x" << hex << iter->getFirst();
-      ss << "\" last=\"0x" << iter->getLast() << "\">";
+      ss << "<range name=\"" << iter->getSpace()->getName() << "\" size=\"" << iter->getSpace()->getAddrSize();
+      ss <<"\" first=\"0x" << hex << iter->getFirst();
+      ss << "\" last=\"0x" << iter->getLast() << "\"/>";
       emit->print(ss.str().c_str());
       ss.str("");
   }
@@ -2306,12 +2404,13 @@ void PrintLLVM::emitFunctionDeclaration(const Funcdata *fd)
   emit->tagLine();
   emit->print("<param_ranges>");
   int4 id3 = emit->startIndent();
-  iter = lr.begin();
-  end = lr.end();
+  iter = pr.begin();
+  end = pr.end();
   for(;iter!=end;iter++){
     emit->tagLine();
-    ss << "<range name=\"" << iter->getSpace()->getName() << "\" first=\"0x" << hex << iter->getFirst();
-    ss << "\" last=\"0x" << iter->getLast() << "\">";
+    ss << "<range name=\"" << iter->getSpace()->getName() << "\" size=\"" << iter->getSpace()->getAddrSize();
+    ss <<"\" first=\"0x" << hex << iter->getFirst();
+    ss << "\" last=\"0x" << iter->getLast() << "\"/>";
     emit->print(ss.str().c_str());
     ss.str("");
   }
@@ -2406,7 +2505,7 @@ void PrintLLVM::emitBlockBasic(const BlockBasic *bb)
     const AddrSpace *spc = addr.getSpace();
     uintb off = addr.getOffset();
     stringstream ss;
-    ss << "<label id=\"" << bb->getIndex() << "\" address=\"0x" << hex << off << "\"/>";
+    ss << "<label id=\"" << hex << bb->getIndex() << "\" address=\"0x" << hex << off << "\"/>";
     emit->print(ss.str().c_str());
     emit->tagLine();
     list<PcodeOp*>::const_iterator iter;
@@ -2427,9 +2526,21 @@ void PrintLLVM::emitBlockBasic(const BlockBasic *bb)
     for (int4 i = 0; i < bb->sizeOut(); i++){
         emit->tagLine();
         ss.str("");
-        ss << "<target id=\"" << bb->getOut(i)->getIndex() << "\" address=\"" << hex << bb->getOut(i)->getStart().getOffset() << "\"/>";
+        ss << "<target id=\"" << bb->getOut(i)->getIndex()  << "\" address=\"0x" << hex << bb->getOut(i)->getStart().getOffset() << "\"/>";
         emit->print(ss.str().c_str());
     }
+    const PcodeOp *op;
+    op = bb->lastOp();
+    if ((bb->sizeOut()==2) && (op != (const PcodeOp *)0) && (op->code() == CPUI_CBRANCH)){
+        emit->tagLine();
+        if (op->isFallthruTrue()) {
+            emit->print("<fallthru>true</fallthru>");
+        } else {
+            emit->print("<fallthru>false</fallthru>");
+        }
+    }
+
+
     emit->stopIndent(id3);
     emit->tagLine();
     emit->print("</out_branches>");
@@ -2439,7 +2550,7 @@ void PrintLLVM::emitBlockBasic(const BlockBasic *bb)
     for (int4 i = 0; i < bb->sizeIn(); i++){
         emit->tagLine();
         ss.str("");
-        ss << "<target id=\"" << bb->getIn(i)->getIndex() << "\" address=\"" << hex << bb->getIn(i)->getStart().getOffset() << "\"/>";
+        ss << "<target id=\"" << bb->getIn(i)->getIndex() << "\" address=\"0x" << hex << bb->getIn(i)->getStart().getOffset() << "\"/>";
         emit->print(ss.str().c_str());
     }
     emit->stopIndent(id4);

@@ -22,6 +22,7 @@ begin_time = datetime.datetime.now()
 instrumentation_list = ["\"nd\"", "\"verifier.error\"", "\"seahorn.fail\""]
 file_path = "./tests/build/"
 
+# Delete all test results except
 file_list = [
     "bad_diff_func",
     "bound_loop_with_var",
@@ -55,7 +56,7 @@ file_list = [
     "invalid_nested_conditions",
     "linear_flow",
     "loop_even_odd",
-    "loop_even_odd_nongoal",  
+    "loop_even_odd_nongoal",
     "multi_call_inter_cond",
     "multi_call_inter_cond_else",
     "multi_call_inter_seq",
@@ -71,8 +72,8 @@ file_list = [
     "nested_loop",
     "oo_simple_goal",
     "oo_simple_nongoal",
-    "oo_virtual_func_goal",
-    "oo_virtual_func_nongoal",
+    # "oo_virtual_func_goal",
+    # "oo_virtual_func_nongoal",
     "param_n_var_conpound_condition",
     "rv_cond",
     "rv_same_var",
@@ -195,22 +196,31 @@ for file in file_list:
     print("Compiling " + file + "...", end="")
     verifier.compile_ir(module)
     print("Done.")
-    if chc:
-        run1 = "; RUN: %sea pf --bv-chc --inline -O0 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
-        run2 = "; RUN: %sea pf --bv-chc --inline -O1 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
-        run3 = "; RUN: %sea pf --bv-chc --inline -O2 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
-        run4 = "; RUN: %sea pf --bv-chc --inline -O3 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+    if file in check:
+        if chc:
+            run1 = "; RUN: %sea pf --bv-chc --inline -O0 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+            run2 = "; RUN: %sea pf --bv-chc --inline -O1 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+            run3 = "; RUN: %sea pf --bv-chc --inline -O2 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+            run4 = "; RUN: %sea pf --bv-chc --inline -O3 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+        else:
+            run1 = "; RUN: %sea bpf --bmc=mono --inline -O0 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+            run2 = "; RUN: %sea bpf --bmc=mono --inline -O1 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+            run3 = "; RUN: %sea bpf --bmc=mono --inline -O2 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+            run4 = "; RUN: %sea bpf --bmc=mono --inline -O3 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+        module_string = run1 + run2 + run3 + run4 + check[file] + "\n" + str(module)
+        for instrument in instrumentation_list:
+            module_string = module_string.replace(instrument, instrument[1:-1])
+        results = "tests/results/"
+        f = open(results + file + ".ll", 'w')
+        f.write(module_string)
+        f.close()
     else:
-        run1 = "; RUN: %sea bpf --bmc=mono --inline -O0 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
-        run2 = "; RUN: %sea bpf --bmc=mono --inline -O1 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
-        run3 = "; RUN: %sea bpf --bmc=mono --inline -O2 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
-        run4 = "; RUN: %sea bpf --bmc=mono --inline -O3 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
-    module_string = run1 + run2 + run3 + run4 + check[file] + "\n" + str(module)
-    for instrument in instrumentation_list:
-        module_string = module_string.replace(instrument, instrument[1:-1])
-    results = "tests/results/"
-    f = open(results + file + ".ll", 'w')
-    f.write(module_string)
-    f.close()
+        module_string = str(module)
+        # for instrument in instrumentation_list:
+        #     module_string = module_string.replace(instrument, instrument[1:-1])
+        # results = "tests/results/"
+        # f = open(results + file + ".ll", 'w')
+        # f.write(module_string)
+        # f.close()
 
 print("Time to lift: " + str(datetime.datetime.now() - begin_time))

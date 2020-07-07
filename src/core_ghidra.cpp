@@ -202,9 +202,9 @@ static void Decompile(RCore *core, DecompileMode mode)
 			case DecompileMode::JSON:
 			case DecompileMode::OFFSET:
 			case DecompileMode::STATEMENTS:
-			case DecompileMode::GHIDRALL_XML:
-				arch.print->setXML(true);
-				break;
+            case DecompileMode::GHIDRALL_XML:
+                arch.print->setXML(true);
+                break;
 			default:
 				break;
 		}
