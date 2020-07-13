@@ -39,8 +39,6 @@ class Comparator:
         self.use_mem_graphs()
         pass
     def use_call_graphs(self):
-        g1 = w.WL(self.g1_call)
-        g2 = w.WL(self.g2_call)
         # TODO: Apply WL kernel. How to handle different dimensions issue?
         pass
     def use_mem_graphs(self):
