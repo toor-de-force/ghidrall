@@ -1,0 +1,8 @@
+digraph unnamed {
+	graph [center=true, ratio=true, bgcolor=lightgray, fontname=Helvetica];
+	node  [fontname=Helvetica, fontsize=11];
+
+	Node0x7fffe2d95a00 [shape=record,fillcolor=gray, style=filled,label="{\{0:i32\}:SMR}"];
+	Node0x7fffe2d80588 [shape=plaintext, label ="  %2 = alloca i32, align 4"];
+	Node0x7fffe2d80588 -> Node0x7fffe2d95a00[arrowtail=tee,label="0",fontsize=8,color=purple];
+}
