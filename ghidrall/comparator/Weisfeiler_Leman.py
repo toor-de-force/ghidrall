@@ -77,7 +77,7 @@ class WL:
         self.add_vector()
         pass
     def add_vector(self):
-        new_vector = list(self.histogram.values())
-        self.histogram_vectors.append(new_vector)
+        # new_vector = list(self.histogram.values())
+        self.histogram_vectors.append(self.histogram)
         pass
     pass

@@ -2,7 +2,8 @@ import networkx as nx
 import pydot
 import os
 import shutil
-import Weisfeiler_Leman as w
+import CallGraphComp as cgc
+import MemGraphComp as mgc
 mem_graph = "/home/tkappen/3ASummer/sea-dsa/build/bin/seadsa -sea-dsa=butd-cs -sea-dsa-type-aware -sea-dsa-dot  {path} -sea-dsa-dot-outdir=comparator/mem_results"
 call_graph = "/home/tkappen/3ASummer/sea-dsa/build/bin/seadsa --enable-name-compression --sea-dsa-callgraph-dot {path} -sea-dsa-dot-outdir=comparator/call_results"
 class Comparator:
@@ -40,8 +41,12 @@ class Comparator:
         pass
     def use_call_graphs(self):
         # TODO: Apply WL kernel. How to handle different dimensions issue?
+        call_comp = cgc.CallGraphComp(self.g1_call,self.g2_call)
+        self.callgraph_similarity = call_comp.score
         pass
     def use_mem_graphs(self):
+        mem_comp = mgc.MemGraphCompare(self.g1_mem,self.g2_mem)
+        self.memgraph_similarity = mem_comp.score
         pass
     def setup(self):
         self.cleanup()
