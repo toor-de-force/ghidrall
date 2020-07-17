@@ -2,7 +2,6 @@ import Weisfeiler_Leman as w
 class WL_Wrapper(w.WL):
     def __init__(self, G1, G2,scheme):
         self.g1 = w.WL(G1,scheme)
-        scheme.reset()
         self.g2 = w.WL(G2,scheme)
         self.score = self.get_score()
         pass
@@ -17,16 +16,15 @@ class WL_Wrapper(w.WL):
             score = score + weight*self.Kernel(vector1,vector2)
         return score
     def Kernel(self,v1,v2):
-        mag1 = self.vector_magnitude(v1)
-        mag2 = self.vector_magnitude(v2)
+        mag1 = self.vector_magnitude(list(v1.values()))
+        mag2 = self.vector_magnitude(list(v2.values()))
         dot_product = self.get_dot_product(v1,v2)
         kernel_value = (dot_product)/(mag1*mag2)
         return kernel_value
     def get_dot_product(self,v1,v2):
         prod = 0
-        size = len(v1)
-        for i in range(size):
-            prod = prod + v1[i]*v2[i]
+        for k,v in v1.items():
+            prod = prod + v1[k]*v2[k]
         return prod
     def vector_magnitude(self,vector):
         mag = 0
@@ -35,8 +33,8 @@ class WL_Wrapper(w.WL):
         mag = pow(mag,0.5)
         return mag
     def get_vectors(self,iteration):
-        vector1 = []
-        vector2 = []
+        vector1 = {}
+        vector2 = {}
         added_keys_1 = []
         added_keys_2 = []
         keys1 = list(self.g1.histogram_vectors[iteration].keys())
@@ -47,15 +45,15 @@ class WL_Wrapper(w.WL):
         for key in total_keys:
             if key not in added_keys_1:
                 try:
-                    vector1.append(h1[key])
+                    vector1[key] = h1[key]
                 except KeyError:
-                    vector1.append(0)
+                    vector1[key] = 0
                 added_keys_1.append(key)
             if key not in added_keys_2:
                 try:
-                    vector2.append(h2[key])
+                    vector2[key]=h2[key]
                 except KeyError:
-                    vector2.append(0)
+                    vector2[key]= 0
                 added_keys_2.append(key)
             pass
         return vector1, vector2

@@ -1,32 +1,18 @@
 digraph "Call graph" {
 	label="Call graph";
 
-	Node0x7fffd2d58630 [shape=record,label="{external node}"];
-	Node0x7fffd2d58630 -> Node0x7fffd2d58e40;
-	Node0x7fffd2d58630 -> Node0x7fffd2d58ee0;
-	Node0x7fffd2d58630 -> Node0x7fffd2d58fd0;
-	Node0x7fffd2d58630 -> Node0x7fffd2d59070;
-	Node0x7fffd2d58630 -> Node0x7fffd2d59540;
-	Node0x7fffd2d58630 -> Node0x7fffd2d596f0;
-	Node0x7fffd2d58630 -> Node0x7fffd2d59790;
-	Node0x7fffd2d58e40 [shape=record,label="{_Z10path_startv}"];
-	Node0x7fffd2d58e40 -> Node0x7fffd2d58ee0;
-	Node0x7fffd2d58ee0 [shape=record,label="{time}"];
-	Node0x7fffd2d58ee0 -> Node0x7fffd2d58dd0;
-	Node0x7fffd2d58fd0 [shape=record,label="{_Z9path_goalv}"];
-	Node0x7fffd2d58fd0 -> Node0x7fffd2d58ee0;
-	Node0x7fffd2d59070 [shape=record,label="{_Z12path_nongoalv}"];
-	Node0x7fffd2d59070 -> Node0x7fffd2d58ee0;
-	Node0x7fffd2d59540 [shape=record,label="{_Z4funciiibc}"];
-	Node0x7fffd2d59540 -> Node0x7fffd2d58fd0;
-	Node0x7fffd2d596f0 [shape=record,label="{main}"];
-	Node0x7fffd2d596f0 -> Node0x7fffd2d58e40;
-	Node0x7fffd2d596f0 -> Node0x7fffd2d59790;
-	Node0x7fffd2d596f0 -> Node0x7fffd2d59790;
-	Node0x7fffd2d596f0 -> Node0x7fffd2d59790;
-	Node0x7fffd2d596f0 -> Node0x7fffd2d59790;
-	Node0x7fffd2d596f0 -> Node0x7fffd2d59790;
-	Node0x7fffd2d596f0 -> Node0x7fffd2d59540;
-	Node0x7fffd2d59790 [shape=record,label="{rand}"];
-	Node0x7fffd2d59790 -> Node0x7fffd2d58dd0;
+	Node0x7fffd2621410 [shape=record,label="{external node}"];
+	Node0x7fffd2621410 -> Node0x7fffd2621de0;
+	Node0x7fffd2621410 -> Node0x7fffd2622450;
+	Node0x7fffd2621410 -> Node0x7fffd2621e80;
+	Node0x7fffd2621410 -> Node0x7fffd2621e10;
+	Node0x7fffd2621de0 [shape=record,label="{main}"];
+	Node0x7fffd2621de0 -> Node0x7fffd2621e80;
+	Node0x7fffd2621de0 -> Node0x7fffd2622450;
+	Node0x7fffd2621e80 [shape=record,label="{nd}"];
+	Node0x7fffd2621e80 -> Node0x7fffd2621d70;
+	Node0x7fffd2622450 [shape=record,label="{sym.func_int}"];
+	Node0x7fffd2622450 -> Node0x7fffd2621e10;
+	Node0x7fffd2621e10 [shape=record,label="{verifier.error}"];
+	Node0x7fffd2621e10 -> Node0x7fffd2621d70;
 }

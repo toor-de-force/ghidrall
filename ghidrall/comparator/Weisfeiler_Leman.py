@@ -4,7 +4,7 @@ import json
 class WL:
     def __init__(self,g,scheme):
         self.histogram_vectors = []
-        self.scheme = scheme
+        self.scheme = scheme.reset()
         self.graph = g
         self.setup()
         self.to_canonical()

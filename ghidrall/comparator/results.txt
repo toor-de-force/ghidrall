@@ -1,248 +1,248 @@
 bad_diff_func.ll
-callgraph: 0.15936356625322906
-memgraph: 0.2222222222222222
+callgraph: 0.2988071523335984
+memgraph: 0.30618621784789724
 
 bound_loop_with_var.ll
-callgraph: 0.34068388282692647
-memgraph: 0.2857142857142857
+callgraph: 0.3952847075210474
+memgraph: 0.40824829046386296
 
 compound_condition.ll
-callgraph: 0.34068388282692647
-memgraph: 0.2857142857142857
+callgraph: 0.3952847075210474
+memgraph: 0.2886751345948129
 
 compound_condition_param.ll
-callgraph: 0.22477160067350188
-memgraph: 0.39999999999999997
+callgraph: 0.3693675008958761
+memgraph: 0.14219617802916762
 
 compound_condition_param_v2.ll
-callgraph: 0.22477160067350188
-memgraph: 0.39999999999999997
+callgraph: 0.3693675008958761
+memgraph: 0.0
 
 compound_condition_v2.ll
-callgraph: 0.34068388282692647
-memgraph: 0.4
+callgraph: 0.3952847075210474
+memgraph: 0.35355339059327373
 
 compound_condition_v3.ll
-callgraph: 0.23606158275794503
-memgraph: 0.1333333333333333
+callgraph: 0.3952847075210474
+memgraph: 0.21428571428571433
 
 condcall_one.ll
-callgraph: 0.19234220985417486
-memgraph: 0.21573738535660847
+callgraph: 0.46656947481584343
+memgraph: 0.5079525636424413
 
 condcall_two.ll
-callgraph: 0.1252849325719519
-memgraph: 0.15054817055881314
+callgraph: 0.47377936967913425
+memgraph: 0.5029116428926569
 
 empty.ll
-callgraph: 0.15982443974006852
-memgraph: 0.6666666666666665
+callgraph: 0.30237157840738177
+memgraph: 0.0
 
 exclusive_ite.ll
-callgraph: 0.34068388282692647
-memgraph: 0.22222222222222218
+callgraph: 0.3952847075210474
+memgraph: 0.39999999999999997
 
 exclusive_ite_goal_in_else.ll
-callgraph: 0.34068388282692647
-memgraph: 0.22222222222222218
+callgraph: 0.3952847075210474
+memgraph: 0.39999999999999997
 
 fake_failed_test.ll
-callgraph: 0.15982443974006852
-memgraph: 0.6666666666666665
+callgraph: 0.30237157840738177
+memgraph: 0.0
 
 goal_diff_func.ll
-callgraph: 0.15936356625322906
-memgraph: 0.2222222222222222
+callgraph: 0.2988071523335984
+memgraph: 0.30618621784789724
 
 independent_ite.ll
-callgraph: 0.4597737741163482
-memgraph: 0.15384615384615385
+callgraph: 0.3952847075210474
+memgraph: 0.19764235376052364
 
 independent_ite_param.ll
-callgraph: 0.2733353621707923
-memgraph: 0.18181818181818182
+callgraph: 0.3693675008958761
+memgraph: 0.34033959185758794
 
 input_inside_bound_loop.ll
-callgraph: 0.34068388282692647
-memgraph: 0.2857142857142857
+callgraph: 0.3952847075210474
+memgraph: 0.25819888974716115
 
 inter_func_narrow_to_wide_constraint.ll
-callgraph: 0.14983833829270893
-memgraph: 0.2857142857142857
+callgraph: 0.3137475099502783
+memgraph: 0.1507556722888818
 
 inter_func_param.ll
-callgraph: 0.1621048262452387
-memgraph: 0.18181818181818182
+callgraph: 0.35856858280031806
+memgraph: 0.35171520356964286
 
 inter_func_wide_to_narrow_constraint.ll
-callgraph: 0.14983833829270893
-memgraph: 0.2857142857142857
+callgraph: 0.3137475099502783
+memgraph: 0.13298331008726477
 
 inter_rv.ll
-callgraph: 0.1100921672737718
-memgraph: 0.15384615384615385
+callgraph: 0.2487341690815455
+memgraph: 0.4884700062485333
 
 invalid_compound_condition.ll
-callgraph: 0.14288690166235207
-memgraph: 0.4
+callgraph: 0.42426406871192845
+memgraph: 0.35355339059327373
 
 invalid_compound_condition_param.ll
-callgraph: 0.19164206730533345
-memgraph: 0.39999999999999997
+callgraph: 0.39752319599996255
+memgraph: 0.0
 
 invalid_compound_condition_v2.ll
-callgraph: 0.14288690166235207
-memgraph: 0.4
+callgraph: 0.42426406871192845
+memgraph: 0.35355339059327373
 
 invalid_condition.ll
-callgraph: 0.08606629658238703
-memgraph: 0.4
+callgraph: 0.17817416127494956
+memgraph: 0.35355339059327373
 
 invalid_inter_func.ll
-callgraph: 0.19164206730533345
-memgraph: 0.39999999999999997
+callgraph: 0.37267799624996495
+memgraph: 0.0
 
 invalid_nested_conditions.ll
-callgraph: 0.31798754240569865
-memgraph: 0.2222222222222222
+callgraph: 0.3952847075210474
+memgraph: 0.40089186286863665
 
 linear_flow.ll
-callgraph: 0.15982443974006852
-memgraph: 0.4
+callgraph: 0.30237157840738177
+memgraph: 0.20412414523193156
 
 loop_even_odd.ll
-callgraph: 0.34068388282692647
-memgraph: 0.2222222222222222
+callgraph: 0.3952847075210474
+memgraph: 0.5669467095138407
 
 loop_even_odd_nongoal.ll
-callgraph: 0.31798754240569865
-memgraph: 0.18181818181818182
+callgraph: 0.3952847075210474
+memgraph: 0.5477225575051661
 
 multi_call_inter_cond.ll
-callgraph: 0.14709725528616557
-memgraph: 0.2857142857142857
+callgraph: 0.35856858280031806
+memgraph: 0.28350868827743436
 
 multi_call_inter_cond_else.ll
-callgraph: 0.14709725528616557
-memgraph: 0.2857142857142857
+callgraph: 0.35856858280031806
+memgraph: 0.11794319921570914
 
 multi_call_inter_seq.ll
-callgraph: 0.13721931206881247
-memgraph: 0.2857142857142857
+callgraph: 0.35856858280031806
+memgraph: 0.0
 
 multiple_ite.ll
-callgraph: 0.31798754240569865
-memgraph: 0.18181818181818182
+callgraph: 0.3952847075210474
+memgraph: 0.4923659639173309
 
 multivar_compound_condition.ll
-callgraph: 0.31798754240569865
-memgraph: 0.18181818181818182
+callgraph: 0.3952847075210474
+memgraph: 0.4008918628686365
 
 nested_condition.ll
-callgraph: 0.34068388282692647
-memgraph: 0.2857142857142857
+callgraph: 0.3952847075210474
+memgraph: 0.2886751345948129
 
 nested_condition_v2.ll
-callgraph: 0.34068388282692647
-memgraph: 0.2857142857142857
+callgraph: 0.3952847075210474
+memgraph: 0.2886751345948129
 
 nested_condition_v3.ll
-callgraph: 0.34068388282692647
-memgraph: 0.4
+callgraph: 0.3952847075210474
+memgraph: 0.35355339059327373
 
 nested_ite_condition.ll
-callgraph: 0.34068388282692647
-memgraph: 0.22222222222222218
-
-nested_ite_condition_param.ll
-callgraph: 0.22477160067350188
-memgraph: 0.2857142857142857
-
-nested_ite_condition_param_v2.ll
-callgraph: 0.22477160067350188
-memgraph: 0.2857142857142857
-
-nested_ite_condition_v2.ll
-callgraph: 0.34068388282692647
-memgraph: 0.22222222222222218
-
-nested_loop.ll
-callgraph: 0.34068388282692647
-memgraph: 0.22222222222222218
-
-param_n_var_conpound_condition.ll
-callgraph: 0.18611447474957823
-memgraph: 0.2222222222222222
-
-rv_cond.ll
-callgraph: 0.2284818768316635
-memgraph: 0.18181818181818182
-
-rv_same_var.ll
-callgraph: 0.2284818768316635
-memgraph: 0.22222222222222218
-
-rv_seq.ll
-callgraph: 0.2284818768316635
-memgraph: 0.2222222222222222
-
-rv_seq_v1.ll
-callgraph: 0.19234220985417486
-memgraph: 0.2222222222222222
-
-rv_seq_v2.ll
-callgraph: 0.2284818768316635
-memgraph: 0.18181818181818182
-
-seq_call_five.ll
-callgraph: 0.10949695506416146
-memgraph: 0.2222222222222222
-
-seq_call_four.ll
-callgraph: 0.1453743522150707
-memgraph: 0.1782604230863504
-
-seq_call_one.ll
-callgraph: 0.11011587806639982
-memgraph: 0.15384615384615385
-
-seq_call_three.ll
-callgraph: 0.11011587806639982
-memgraph: 0.1611580912791764
-
-seq_call_two.ll
-callgraph: 0.1453743522150707
-memgraph: 0.18181818181818182
-
-seq_v4.ll
-callgraph: 0.19234220985417486
-memgraph: 0.2222222222222222
-
-single_condition.ll
-callgraph: 0.34068388282692647
-memgraph: 0.4
-
-single_condition_param.ll
-callgraph: 0.22477160067350188
-memgraph: 0.4
-
-single_condition_param_v2.ll
-callgraph: 0.22477160067350188
+callgraph: 0.3952847075210474
 memgraph: 0.39999999999999997
 
+nested_ite_condition_param.ll
+callgraph: 0.3693675008958761
+memgraph: 0.39894993026179437
+
+nested_ite_condition_param_v2.ll
+callgraph: 0.3693675008958761
+memgraph: 0.39894993026179437
+
+nested_ite_condition_v2.ll
+callgraph: 0.3952847075210474
+memgraph: 0.39999999999999997
+
+nested_loop.ll
+callgraph: 0.3952847075210474
+memgraph: 0.5393598899705936
+
+param_n_var_conpound_condition.ll
+callgraph: 0.3693675008958761
+memgraph: 0.42250801332796467
+
+rv_cond.ll
+callgraph: 0.46656947481584343
+memgraph: 0.5430112256676539
+
+rv_same_var.ll
+callgraph: 0.46656947481584343
+memgraph: 0.4236080194679911
+
+rv_seq.ll
+callgraph: 0.46656947481584343
+memgraph: 0.49851825148803197
+
+rv_seq_v1.ll
+callgraph: 0.46656947481584343
+memgraph: 0.49851825148803197
+
+rv_seq_v2.ll
+callgraph: 0.46656947481584343
+memgraph: 0.46148309948751975
+
+seq_call_five.ll
+callgraph: 0.2487341690815455
+memgraph: 0.224577789091394
+
+seq_call_four.ll
+callgraph: 0.5229125165837971
+memgraph: 0.3538438351031463
+
+seq_call_one.ll
+callgraph: 0.5685352436149611
+memgraph: 0.3919942435296323
+
+seq_call_three.ll
+callgraph: 0.5685352436149611
+memgraph: 0.40291148201268995
+
+seq_call_two.ll
+callgraph: 0.28386679471691845
+memgraph: 0.3331257059770024
+
+seq_v4.ll
+callgraph: 0.33048671132788915
+memgraph: 0.49851825148803197
+
+single_condition.ll
+callgraph: 0.3952847075210474
+memgraph: 0.35355339059327373
+
+single_condition_param.ll
+callgraph: 0.3693675008958761
+memgraph: 0.13190449676496976
+
+single_condition_param_v2.ll
+callgraph: 0.3693675008958761
+memgraph: 0.0
+
 single_condition_v2.ll
-callgraph: 0.34068388282692647
-memgraph: 0.2857142857142857
+callgraph: 0.3952847075210474
+memgraph: 0.24999999999999992
 
 unbound_loop_with_var.ll
-callgraph: 0.34068388282692647
-memgraph: 0.22222222222222218
+callgraph: 0.3952847075210474
+memgraph: 0.4629100498862757
 
 var_values.ll
-callgraph: 0.23606158275794503
-memgraph: 0.1333333333333333
+callgraph: 0.3952847075210474
+memgraph: 0.21428571428571433
 
 var_values_param.ll
-callgraph: 0.19897206685701535
-memgraph: 0.08695652173913043
+callgraph: 0.3693675008958761
+memgraph: 0.34856496382332525
 

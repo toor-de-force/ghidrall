@@ -42,12 +42,12 @@ class Comparator:
         pass
     def use_call_graphs(self):
         # TODO: Apply WL kernel. How to handle different dimensions issue?
-        scheme = schemes.IteratorScheme()
+        scheme = schemes.StringCompressionScheme()
         call_comp = cgc.CallGraphComp(self.g1_call,self.g2_call,scheme)
         self.callgraph_similarity = call_comp.score
         pass
     def use_mem_graphs(self):
-        scheme = schemes.IteratorScheme()
+        scheme = schemes.StringCompressionScheme()
         mem_comp = mgc.MemGraphCompare(self.g1_mem,self.g2_mem,scheme)
         self.memgraph_similarity = mem_comp.score
         pass
