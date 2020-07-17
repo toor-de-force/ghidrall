@@ -1,5 +1,5 @@
 import Weisfeiler_Leman as w
-class WL_Wrapper:
+class WL_Wrapper(w.WL):
     def __init__(self, G1, G2):
         self.g1 = w.WL(G1)
         self.g2 = w.WL(G2)
@@ -7,10 +7,10 @@ class WL_Wrapper:
         pass
     def get_score(self):
         iterations = len(self.g1.histogram_vectors)
-        weight = 1/iterations
         score = 0
         if iterations > len(self.g2.histogram_vectors):
             iterations = len(self.g2.histogram_vectors)
+        weight = 1/iterations
         for iteration in range(iterations):
             vector1, vector2 = self.get_vectors(iteration)
             score = score + weight*self.Kernel(vector1,vector2)
@@ -36,20 +36,26 @@ class WL_Wrapper:
     def get_vectors(self,iteration):
         vector1 = []
         vector2 = []
+        added_keys_1 = []
+        added_keys_2 = []
         keys1 = list(self.g1.histogram_vectors[iteration].keys())
         keys2 = list(self.g2.histogram_vectors[iteration].keys())
         total_keys = keys1 + keys2
         h1 = self.g1.histogram_vectors[iteration]
         h2 = self.g2.histogram_vectors[iteration]
         for key in total_keys:
-            try:
-                vector1.append(h1[key])
-            except KeyError:
-                vector1.append(0)
-            try:
-                vector2.append(h2[key])
-            except KeyError:
-                vector2.append(0)
+            if key not in added_keys_1:
+                try:
+                    vector1.append(h1[key])
+                except KeyError:
+                    vector1.append(0)
+                added_keys_1.append(key)
+            if key not in added_keys_2:
+                try:
+                    vector2.append(h2[key])
+                except KeyError:
+                    vector2.append(0)
+                added_keys_2.append(key)
             pass
         return vector1, vector2
     pass

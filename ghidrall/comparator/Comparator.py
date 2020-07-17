@@ -5,7 +5,7 @@ import shutil
 import CallGraphComp as cgc
 import MemGraphComp as mgc
 mem_graph = "/home/tkappen/3ASummer/sea-dsa/build/bin/seadsa -sea-dsa=butd-cs -sea-dsa-type-aware -sea-dsa-dot  {path} -sea-dsa-dot-outdir=comparator/mem_results"
-call_graph = "/home/tkappen/3ASummer/sea-dsa/build/bin/seadsa --enable-name-compression --sea-dsa-callgraph-dot {path} -sea-dsa-dot-outdir=comparator/call_results"
+call_graph = "/home/tkappen/3ASummer/sea-dsa/build/bin/seadsa  --sea-dsa-callgraph-dot {path} -sea-dsa-dot-outdir=comparator/call_results"
 class Comparator:
     #Takes the path to each llvm file and computes a similarity score
     def __init__(self,source_1_path,source_2_path):

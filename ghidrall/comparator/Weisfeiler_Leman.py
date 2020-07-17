@@ -7,17 +7,20 @@ class WL:
         self.compresser_ctr = 0
         self.seen_tuples = {}
         self.histogram = {}
-        self.graph = self.setup(g)
-        self.graph_history = []
         self.histogram_vectors = []
+        self.graph = g
+        self.setup()
         self.to_canonical()
-    def setup(self,g):
+    
+    def set_initial_colours(self,g):
         initial_wl_colour = {}
         for node in g.nodes:
             if g.degree[node] > self.compresser_ctr:
                 self.compresser_ctr = g.degree[node]
             initial_wl_colour[node] = g.degree[node]
         nx.set_node_attributes(g,initial_wl_colour,"wl_colour")
+        return g
+    def set_initial_multiset(self,g):
         multiset = {}
         for node in g.nodes:
             multiset[node] = m.Multiset()
@@ -25,21 +28,17 @@ class WL:
                 multiset[node].add(g.nodes[neighbor]["wl_colour"])
                 pass
         nx.set_node_attributes(g,multiset,"neighbour_multiset")
-        for node in g.nodes:
-            colour = g.nodes()[node]['wl_colour']
-            if colour not in self.histogram.keys():
-                self.histogram[colour] = 1
-            else:
-                self.histogram[colour] = self.histogram[colour] + 1
         return g
+    def setup(self):
+        self.graph = self.set_initial_colours(self.graph)
+        self.graph = self.set_initial_multiset(self.graph)
+        self.update_histogram()
     def to_canonical(self):
         N = len(self.graph.nodes())
         number_of_iterations = N
         new_labels = {}
         for _ in range(number_of_iterations):
             for i in self.graph.nodes():
-                old_graph = copy.deepcopy(self.graph)
-                self.graph_history.append(old_graph)
                 new_labels[i] = self.get_new_label(i)
             nx.set_node_attributes(self.graph,new_labels,"wl_colour")
             self.update_multisets()
@@ -77,7 +76,6 @@ class WL:
         self.add_vector()
         pass
     def add_vector(self):
-        # new_vector = list(self.histogram.values())
         self.histogram_vectors.append(self.histogram)
         pass
     pass

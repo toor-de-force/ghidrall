@@ -1,248 +1,248 @@
 bad_diff_func.ll
-callgraph: 0.06554735253444621
-memgraph: 0.5714285714285713
+callgraph: 0.15936356625322906
+memgraph: 0.9999999999999997
 
 bound_loop_with_var.ll
-callgraph: 0.04264014327112209
-memgraph: 0.6
+callgraph: 0.16139959142676746
+memgraph: 0.9999999999999998
 
 compound_condition.ll
-callgraph: 0.04264014327112209
-memgraph: 0.9999999999999999
+callgraph: 0.16139959142676746
+memgraph: 1.0000000000000002
 
 compound_condition_param.ll
-callgraph: 0.07905694150420947
-memgraph: 0.4
+callgraph: 0.17908573288301394
+memgraph: 0.9999999999999998
 
 compound_condition_param_v2.ll
-callgraph: 0.07905694150420947
-memgraph: 0.5
+callgraph: 0.17908573288301394
+memgraph: 0.9999999999999998
 
 compound_condition_v2.ll
-callgraph: 0.04264014327112209
+callgraph: 0.16139959142676746
 memgraph: 1.0
 
 compound_condition_v3.ll
-callgraph: 0.27879842544471267
-memgraph: 0.875
+callgraph: 0.31686186813632944
+memgraph: 0.9999999999999998
 
 condcall_one.ll
-callgraph: 0.10803395392536072
-memgraph: 0.0
+callgraph: 0.20512795557604216
+memgraph: 0.09081532183729997
 
 condcall_two.ll
-callgraph: 0.07005606728972563
-memgraph: 0.0
+callgraph: 0.15279390828980854
+memgraph: 0.06663413840580526
 
 empty.ll
-callgraph: 0.1636634176769943
-memgraph: 1.0
+callgraph: 0.2264911064067352
+memgraph: 0.9999999999999998
 
 exclusive_ite.ll
-callgraph: 0.04264014327112209
-memgraph: 1.0
+callgraph: 0.16139959142676746
+memgraph: 0.9999999999999996
 
 exclusive_ite_goal_in_else.ll
-callgraph: 0.04264014327112209
-memgraph: 1.0
+callgraph: 0.16139959142676746
+memgraph: 0.9999999999999996
 
 fake_failed_test.ll
-callgraph: 0.1636634176769943
-memgraph: 1.0
+callgraph: 0.2264911064067352
+memgraph: 0.9999999999999998
 
 goal_diff_func.ll
-callgraph: 0.06554735253444621
-memgraph: 0.5714285714285713
+callgraph: 0.15936356625322906
+memgraph: 0.9999999999999997
 
 independent_ite.ll
-callgraph: 0.4801588240557495
-memgraph: 0.8571428571428569
+callgraph: 0.46163750107284024
+memgraph: 1.0000000000000004
 
 independent_ite_param.ll
-callgraph: 0.367326021917348
-memgraph: 0.35714285714285704
+callgraph: 0.3773620966228441
+memgraph: 1.0000000000000002
 
 input_inside_bound_loop.ll
-callgraph: 0.04264014327112209
-memgraph: 0.75
+callgraph: 0.16139959142676746
+memgraph: 0.9999999999999998
 
 inter_func_narrow_to_wide_constraint.ll
-callgraph: 0.08694008849288351
-memgraph: 0.4285714285714285
+callgraph: 0.17995496249484108
+memgraph: 1.0000000000000002
 
 inter_func_param.ll
-callgraph: 0.1681122448483915
-memgraph: 0.4166666666666667
+callgraph: 0.22769435737431043
+memgraph: 1.0000000000000002
 
 inter_func_wide_to_narrow_constraint.ll
-callgraph: 0.08694008849288351
-memgraph: 0.375
+callgraph: 0.17995496249484108
+memgraph: 0.9999999999999998
 
 inter_rv.ll
-callgraph: 0.0692831634656784
-memgraph: 0.39999999999999997
+callgraph: 0.14576103458650277
+memgraph: 0.9999999999999998
 
 invalid_compound_condition.ll
-callgraph: 0.06741998624632421
+callgraph: 0.17450967826403588
 memgraph: 1.0
 
 invalid_compound_condition_param.ll
-callgraph: 0.047140452079103175
-memgraph: 0.5
+callgraph: 0.16916873855655873
+memgraph: 0.9999999999999998
 
 invalid_compound_condition_v2.ll
-callgraph: 0.06741998624632421
+callgraph: 0.17450967826403588
 memgraph: 1.0
 
 invalid_condition.ll
-callgraph: 0.0
+callgraph: 0.08606629658238703
 memgraph: 1.0
 
 invalid_inter_func.ll
-callgraph: 0.047140452079103175
-memgraph: 0.5
+callgraph: 0.16916873855655873
+memgraph: 0.9999999999999998
 
 invalid_nested_conditions.ll
-callgraph: 0.19065795262904262
-memgraph: 0.6666666666666666
+callgraph: 0.2366339043810576
+memgraph: 1.0000000000000002
 
 linear_flow.ll
-callgraph: 0.1636634176769943
+callgraph: 0.2264911064067352
 memgraph: 1.0
 
 loop_even_odd.ll
-callgraph: 0.04264014327112209
-memgraph: 0.6666666666666666
+callgraph: 0.16139959142676746
+memgraph: 1.0000000000000002
 
 loop_even_odd_nongoal.ll
-callgraph: 0.19065795262904262
-memgraph: 0.625
+callgraph: 0.2366339043810576
+memgraph: 1.0
 
 multi_call_inter_cond.ll
-callgraph: 0.07776157913597391
-memgraph: 0.27272727272727276
+callgraph: 0.16518574888018056
+memgraph: 1.0000000000000002
 
 multi_call_inter_cond_else.ll
-callgraph: 0.07776157913597391
-memgraph: 0.33333333333333337
+callgraph: 0.16518574888018056
+memgraph: 1.0000000000000002
 
 multi_call_inter_seq.ll
-callgraph: 0.07776157913597391
-memgraph: 0.4285714285714285
+callgraph: 0.16669793468878302
+memgraph: 1.0000000000000002
 
 multiple_ite.ll
-callgraph: 0.19065795262904262
-memgraph: 0.9999999999999999
+callgraph: 0.2366339043810576
+memgraph: 1.0
 
 multivar_compound_condition.ll
-callgraph: 0.19065795262904262
-memgraph: 0.9999999999999999
+callgraph: 0.2366339043810576
+memgraph: 1.0
 
 nested_condition.ll
-callgraph: 0.04264014327112209
-memgraph: 0.9999999999999999
+callgraph: 0.16139959142676746
+memgraph: 1.0000000000000002
 
 nested_condition_v2.ll
-callgraph: 0.04264014327112209
-memgraph: 0.9999999999999999
+callgraph: 0.16139959142676746
+memgraph: 1.0000000000000002
 
 nested_condition_v3.ll
-callgraph: 0.04264014327112209
+callgraph: 0.16139959142676746
 memgraph: 1.0
 
 nested_ite_condition.ll
-callgraph: 0.04264014327112209
-memgraph: 1.0
+callgraph: 0.16139959142676746
+memgraph: 0.9999999999999996
 
 nested_ite_condition_param.ll
-callgraph: 0.07905694150420947
-memgraph: 0.375
+callgraph: 0.17908573288301394
+memgraph: 0.9999999999999998
 
 nested_ite_condition_param_v2.ll
-callgraph: 0.07905694150420947
-memgraph: 0.375
+callgraph: 0.17908573288301394
+memgraph: 0.9999999999999998
 
 nested_ite_condition_v2.ll
-callgraph: 0.04264014327112209
-memgraph: 1.0
+callgraph: 0.16139959142676746
+memgraph: 0.9999999999999996
 
 nested_loop.ll
-callgraph: 0.04264014327112209
-memgraph: 1.0
+callgraph: 0.16139959142676746
+memgraph: 0.9999999999999996
 
 param_n_var_conpound_condition.ll
-callgraph: 0.1441632594999245
-memgraph: 0.44444444444444453
+callgraph: 0.184272961190018
+memgraph: 1.0000000000000002
 
 rv_cond.ll
-callgraph: 0.047619047619047616
-memgraph: 0.5555555555555557
+callgraph: 0.12824667462514588
+memgraph: 1.0000000000000002
 
 rv_same_var.ll
-callgraph: 0.047619047619047616
-memgraph: 0.5
+callgraph: 0.12824667462514588
+memgraph: 0.9999999999999996
 
 rv_seq.ll
-callgraph: 0.047619047619047616
-memgraph: 0.44444444444444453
+callgraph: 0.12824667462514588
+memgraph: 1.0000000000000002
 
 rv_seq_v1.ll
-callgraph: 0.10803395392536072
-memgraph: 0.44444444444444453
+callgraph: 0.20512795557604216
+memgraph: 1.0000000000000002
 
 rv_seq_v2.ll
-callgraph: 0.047619047619047616
-memgraph: 0.625
+callgraph: 0.12824667462514588
+memgraph: 1.0
 
 seq_call_five.ll
-callgraph: 0.07142857142857142
-memgraph: 0.3636363636363637
+callgraph: 0.14695442384053056
+memgraph: 1.0000000000000002
 
 seq_call_four.ll
-callgraph: 0.08193419066805777
-memgraph: 0.0
+callgraph: 0.16123500949953926
+memgraph: 0.07686624420240878
 
 seq_call_one.ll
-callgraph: 0.05815526314990443
-memgraph: 0.39999999999999997
+callgraph: 0.1323105439882234
+memgraph: 0.9999999999999998
 
 seq_call_three.ll
-callgraph: 0.05815526314990443
-memgraph: 0.0
+callgraph: 0.1323105439882234
+memgraph: 0.06664777824960907
 
 seq_call_two.ll
-callgraph: 0.08193419066805777
-memgraph: 0.45454545454545464
+callgraph: 0.16123500949953926
+memgraph: 1.0000000000000002
 
 seq_v4.ll
-callgraph: 0.10803395392536072
-memgraph: 0.44444444444444453
+callgraph: 0.20512795557604216
+memgraph: 1.0000000000000002
 
 single_condition.ll
-callgraph: 0.04264014327112209
+callgraph: 0.16139959142676746
 memgraph: 1.0
 
 single_condition_param.ll
-callgraph: 0.07905694150420947
-memgraph: 0.3333333333333333
+callgraph: 0.17908573288301394
+memgraph: 1.0
 
 single_condition_param_v2.ll
-callgraph: 0.07905694150420947
-memgraph: 0.5
+callgraph: 0.17908573288301394
+memgraph: 0.9999999999999998
 
 single_condition_v2.ll
-callgraph: 0.04264014327112209
-memgraph: 0.75
+callgraph: 0.16139959142676746
+memgraph: 0.9999999999999998
 
 unbound_loop_with_var.ll
-callgraph: 0.04264014327112209
-memgraph: 0.7999999999999999
+callgraph: 0.16139959142676746
+memgraph: 0.9999999999999996
 
 var_values.ll
-callgraph: 0.27879842544471267
-memgraph: 0.875
+callgraph: 0.31686186813632944
+memgraph: 0.9999999999999998
 
 var_values_param.ll
-callgraph: 0.2825061522731394
-memgraph: 0.6875
+callgraph: 0.317796842986382
+memgraph: 0.9999999999999996
 
