@@ -4,6 +4,7 @@ import os
 import shutil
 import CallGraphComp as cgc
 import MemGraphComp as mgc
+import compression_schemes as schemes
 mem_graph = "/home/tkappen/3ASummer/sea-dsa/build/bin/seadsa -sea-dsa=butd-cs -sea-dsa-type-aware -sea-dsa-dot  {path} -sea-dsa-dot-outdir=comparator/mem_results"
 call_graph = "/home/tkappen/3ASummer/sea-dsa/build/bin/seadsa  --sea-dsa-callgraph-dot {path} -sea-dsa-dot-outdir=comparator/call_results"
 class Comparator:
@@ -41,11 +42,13 @@ class Comparator:
         pass
     def use_call_graphs(self):
         # TODO: Apply WL kernel. How to handle different dimensions issue?
-        call_comp = cgc.CallGraphComp(self.g1_call,self.g2_call)
+        scheme = schemes.IteratorScheme()
+        call_comp = cgc.CallGraphComp(self.g1_call,self.g2_call,scheme)
         self.callgraph_similarity = call_comp.score
         pass
     def use_mem_graphs(self):
-        mem_comp = mgc.MemGraphCompare(self.g1_mem,self.g2_mem)
+        scheme = schemes.IteratorScheme()
+        mem_comp = mgc.MemGraphCompare(self.g1_mem,self.g2_mem,scheme)
         self.memgraph_similarity = mem_comp.score
         pass
     def setup(self):

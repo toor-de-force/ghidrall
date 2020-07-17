@@ -2,7 +2,7 @@ import WL_Wrapper as w
 import networkx as nx
 import copy
 class CallGraphComp(w.WL_Wrapper):
-    def __init__(self,G1,G2):
+    def __init__(self,G1,G2,scheme):
         G1 = self.clean_up_labels(G1)
         G2 = self.clean_up_labels(G2)
         fn = open("comparator/callgraphlabels.txt","a")
@@ -13,7 +13,7 @@ class CallGraphComp(w.WL_Wrapper):
         labels = nx.get_node_attributes(G2,"label")
         fn.write(str(list(labels.values())))
         fn.close()
-        super().__init__(G1,G2)
+        super().__init__(G1,G2,scheme)
     def clean_up_labels(self,g):
         for node in g.nodes:
             try:

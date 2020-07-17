@@ -1,8 +1,9 @@
 import Weisfeiler_Leman as w
 class WL_Wrapper(w.WL):
-    def __init__(self, G1, G2):
-        self.g1 = w.WL(G1)
-        self.g2 = w.WL(G2)
+    def __init__(self, G1, G2,scheme):
+        self.g1 = w.WL(G1,scheme)
+        scheme.reset()
+        self.g2 = w.WL(G2,scheme)
         self.score = self.get_score()
         pass
     def get_score(self):
