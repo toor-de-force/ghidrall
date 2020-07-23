@@ -5,14 +5,6 @@ class CallGraphComp(w.WL_Wrapper):
     def __init__(self,G1,G2,scheme):
         G1 = self.clean_up_labels(G1)
         G2 = self.clean_up_labels(G2)
-        fn = open("comparator/callgraphlabels.txt","a")
-        fn.write("\nG1:\n")
-        labels = nx.get_node_attributes(G1,"label")
-        fn.write(str(list(labels.values())))
-        fn.write("\nG2:\n")
-        labels = nx.get_node_attributes(G2,"label")
-        fn.write(str(list(labels.values())))
-        fn.close()
         super().__init__(G1,G2,scheme)
     def clean_up_labels(self,g):
         for node in g.nodes:
