@@ -31,6 +31,7 @@ class Lifter:
         self.instrumentation = {}
         self.function_names = list(self.decompile_info.keys())
         self.functions_ir, self.functions_xml, self.functions_args, self.ret_types = self.create_function_signatures()
+        self.function_address = self.store_function_addresses()
         self.populate_functions()
 
     def fish_globals(self, pdgd):
@@ -39,7 +40,7 @@ class Lifter:
         global_size = {}
         global_names = [symbol.get("name") for symbol in
                         et.fromstring(pdgd).findall(".//scope[@name='radare2-internal']/symbollist/mapsym/symbol")]
-        for pdgl in list(self.decompile_info.values()):
+        for key, pdgl in self.decompile_info.items():
             xml = et.fromstring(pdgl)
             for symbol in xml.find('block_graph').findall('.//input') + xml.find('block_graph').findall('.//output'):
                 name = symbol.find("symbol").text.strip("_")
@@ -50,9 +51,14 @@ class Lifter:
                     size = int(size) * 8
                     if name in global_size:
                         if size != global_size[name]:
-                            raise Exception("Global size is not consistent across binary")
+                            raise Exception("Global size (" + str(size) + ") is not consistent across binary: " + str(global_size[name]))
                     else:
                         global_size[name] = size
+                elif "obj" in name:
+                    size = int(size) * 8
+                    global_size[name] = size
+                else:
+                    pass
         for name, size in global_size.items():
             global_type = ir.IntType(size)
             glob = ir.GlobalVariable(self.module, global_type, name)
@@ -83,7 +89,11 @@ class Lifter:
                 if name == "argv" and function == 'main':
                     args[name] = ir.PointerType(ir.PointerType(ir.IntType(8)))
                 else:
-                    args[name] = (ir.IntType(8 * int(mapsym.find('typeref').get("size"))))
+                    i_type = ir.IntType(8 * int(mapsym.find('typeref').get("size")))
+                    if mapsym.find("typeref").get("metatype") == "2":
+                        args[name] = ir.PointerType(ir.PointerType(i_type))
+                    else:
+                        args[name] = i_type
             func_type = ir.FunctionType(func_return, list(args.values()))
             ir_func = ir.Function(self.module, func_type, function)
             for i in range(len(ir_func.args)):
@@ -104,3 +114,9 @@ class Lifter:
                                   self.ret_types[function], self))
         for func in funcs:
             func.populate_cfg()
+
+    def store_function_addresses(self):
+        address = {}
+        for function, xml in self.functions_xml.items():
+            address[xml.find("signature").get("addr")] = self.functions_ir[function]
+        return address

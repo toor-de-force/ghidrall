@@ -35,7 +35,7 @@ class Function:
         self.stack_last = None
         self.stack_word_size = None
         self.entry_block, self.locals, self.entry_builder = self.recover_locals()
-        self.current_builder = self.entry_builder
+        self.current_builder, self.current_block = self.entry_builder, self.entry_block
         self.blocks = self.build_cfg()
 
     def recover_locals(self):
@@ -47,6 +47,7 @@ class Function:
             for local in self.xml.find("locals").findall('mapsym'):
                 name = local.find("symbol").get("name")
                 size = int(local.find("typeref").get("size")) * 8
+                metatype = local.find("typeref").get("metatype")
                 local_id = name
                 local_vars[local_id] = entry_builder.alloca(ir.IntType(size), name=name)
         elif self.options['locals'] == 'byte_addressable':
@@ -64,7 +65,6 @@ class Function:
                         size = int(local.find("typeref").get("size")) * 8
                         temp = entry_builder.gep(self.stack, [int32(0), int32(offset)])
                         local_vars[name] = entry_builder.bitcast(temp, ir.PointerType(ir.IntType(size)), name=name)
-
                     else:
                         name = local.find("symbol").get("name")
                         size = int(local.find("typeref").get("size")) * 8
@@ -72,7 +72,47 @@ class Function:
                         local_vars[local_id] = entry_builder.alloca(ir.IntType(size), name=name)
             else:
                 raise Exception("Multiple local ranges or local range not in stack space")
-        #Recover register types
+        elif self.options['locals'] == 'single_struct':
+            ranges = self.xml.find("local_ranges").findall("range")
+            if len(ranges) == 1 and ranges[0].get("name") == "stack":
+                local_context = ir.global_context
+                local_struct = local_context.get_identified_type("local_struct." + self.lifter.filename + "." + self.name)
+                local_struct.packed = False
+                self.stack_first = int(ranges[0].get("first"), 16)
+                self.stack_last = int(ranges[0].get("last"), 16)
+                self.stack_word_size = int(ranges[0].get("size")) * 8
+                space_size = self.stack_last - self.stack_first
+                stack_range = []
+                first = True
+                for local in self.xml.find("locals").findall('mapsym'):
+                    if local.find("entries").find("entry").get("space") == "stack":
+                        offset = int(local.find("entries").find("entry").get("offset"), 16) - self.stack_first
+                        name = local.find("symbol").get("name")
+                        size_byte = int(local.find("typeref").get("size"))
+                        size = size_byte * 8
+                        if first:
+                            stack_range.append(["padding", 0, offset - 1])
+                            first = False
+                        else:
+                            last_index = stack_range[-1][2] + 1
+                            if offset != last_index:
+                                stack_range.append(["padding", last_index, offset - 1])
+                        stack_range.append([name, offset, offset + size_byte - 1])
+                    else:
+                        name = local.find("symbol").get("name")
+                        size = int(local.find("typeref").get("size")) * 8
+                        local_id = name
+                        local_vars[local_id] = entry_builder.alloca(ir.IntType(size), name=name)
+                stack_range_values = [ir.IntType((last_index - first_index + 1) * 8) for name, first_index, last_index in stack_range]
+                local_struct.set_body(*stack_range_values)
+                index = 0
+                struct = entry_builder.alloca(local_struct)
+                for name, first_index, last_index in stack_range:
+                    local_vars[name] = entry_builder.gep(struct, [int32(0), int32(index)], inbounds=True, name=name)
+                    index += 1
+            else:
+                raise Exception("Multiple local ranges or local range not in stack space")
+        # Recover register types
         register_vars, ptr_register_vars = {}, {}
         pdg = et.tostring(self.xml, encoding="unicode").splitlines()
         i = 0
@@ -120,6 +160,7 @@ class Function:
         for block in list(self.blocks.values()):
             branched = False
             self.current_builder = ir.IRBuilder(block.ir_block)
+            self.current_block = block
             builder = self.current_builder
             for op in block.ops:
                 opname = op.find("opname").text
@@ -141,12 +182,63 @@ class Function:
                     branched = True
                 elif opname == "CBRANCH":
                     conditional = self.fetch_input(op_inputs[1])
+                    target_location = op_inputs[0].find("symbol").text
+                    outs = self.current_block.xml_out.findall("target")
+                    out1 = outs[0].get("address")
+                    out2 = outs[1].get("address")
+                    swap = True
+                    if target_location == out1:
+                        target = outs[0].get("id")
+                    elif target_location == out2:
+                        target = outs[1].get("id")
+                    else:
+                        target_location = hex(int(target_location, 16) + 1)
+                        if target_location == out1:
+                            target = outs[0].get("id")
+                        elif target_location == out2:
+                            target = outs[1].get("id")
+                        else:
+                            # increment block number to figure out fallthru, fix cbranch target to other case
+                            fallthru_id = str(int(self.current_block.id) + 1)
+                            swap = False
+                            if fallthru_id in self.blocks:
+                                if fallthru_id == outs[0].get("id"):
+                                    fallthru = self.blocks[fallthru_id].ir_block
+                                    goto = self.blocks[outs[1].get("id")].ir_block
+                                elif fallthru_id == outs[1].get("id"):
+                                    fallthru = self.blocks[fallthru_id].ir_block
+                                    goto = self.blocks[outs[0].get("id")].ir_block
+                                else:
+                                    raise Exception("Can't recover broken block branch")
+                            else:
+                                raise Exception("Branch fallthru mismatch: " + target_location)
                     if conditional.type != int1:
                         conditional = builder.trunc(conditional, int1)
-                    builder.cbranch(conditional, block.goto.ir_block, block.fall_thru.ir_block)
+                    if swap:
+                        if target in self.blocks:
+                            goto = self.blocks[target].ir_block
+                            if out1 == target_location:
+                                fallthru = self.blocks[outs[1].get("id")].ir_block
+                            elif out2 == target_location:
+                                fallthru = self.blocks[outs[0].get("id")].ir_block
+                            else:
+                                raise Exception("Mismatch block label: " + target_location)
+                        else:
+                            raise Exception("Cannot trust conditional branch targets")
+                    if block.xml_out.find("fallthru").text == "true" and swap:
+                        tmp = fallthru
+                        fallthru = goto
+                        goto = tmp
+                    builder.cbranch(conditional, goto, fallthru)
                     branched = True
                 elif opname == "BRANCHIND":
-                    raise Exception("Not implemented: " + opname)
+                    outs = self.current_block.xml_out.findall("target")
+                    switch = builder.switch(value=self.fetch_input(op_inputs[0]), default=self.blocks[outs[0].get("id")].ir_block)
+                    added = []
+                    for i, out in enumerate(outs):
+                        if outs[i].get("id") not in added:
+                            switch.add_case(ir.Constant(ir.IntType(8), int(outs[i].get("id"))), self.blocks[outs[i].get("id")].ir_block)
+                        added.append(outs[i].get("id"))
                 elif opname == "CALL":
                     call_target = op_inputs[0].find("symbol").text
                     if call_target in instrumentation_list:
@@ -170,10 +262,45 @@ class Function:
                         elif self.lifter.ret_types[call_target] != "void":
                             self.store_output(op_output, result)
                 elif opname == "CALLIND":
-                    call_target = op_inputs[0].find("symbol").text
-                    func_type = ir.FunctionType(ir.VoidType(), [])
-                    ir_func = ir.Function(self.lifter.module, func_type, call_target)
-                    builder.call(ir_func, [])
+                    func_type = ir.FunctionType(void_type, [int32])
+                    ir_func = ir.Function(self.lifter.module, func_type, "special")
+                    new_entry = ir_func.append_basic_block("entry")
+                    new_entry_builder = ir.IRBuilder(new_entry)
+                    cmp_blocks = []
+                    i = 0
+                    for address, func_ptr in self.lifter.function_address.items():
+                        if not func_ptr.args and func_ptr.name != "main":
+                            cmp_block = ir_func.append_basic_block("cmp." + str(i))
+                            i += 1
+                            cmp_blocks.append(cmp_block)
+                    switch_blocks = []
+                    i = 0
+                    for address, func_ptr in self.lifter.function_address.items():
+                        if not func_ptr.args and func_ptr.name != "main":
+                            switch_block = ir_func.append_basic_block(str(i))
+                            i += 1
+                            switch_blocks.append(switch_block)
+                    end = ir_func.append_basic_block("end")
+                    end_builder = ir.IRBuilder(end)
+                    new_entry_builder.branch(cmp_blocks[0])
+                    j = 0
+                    for address, func_ptr in self.lifter.function_address.items():
+                        if not func_ptr.args and func_ptr.name != "main":
+                            cmp_block = cmp_blocks[j]
+                            cmp_builder = ir.IRBuilder(cmp_block)
+                            check = cmp_builder.icmp_unsigned("==", ir.Constant(int32, int(address, 16)), ir_func.args[0])
+                            print(int(address, 16))
+                            if j < len(cmp_blocks) - 1:
+                                cmp_builder.cbranch(check, switch_blocks[j], cmp_blocks[j+1])
+                            else:
+                                cmp_builder.cbranch(check, switch_blocks[j], end)
+                            switch_block = switch_blocks[j]
+                            switch_builder = ir.IRBuilder(switch_block)
+                            switch_builder.call(func_ptr, [])
+                            switch_builder.branch(end)
+                            j += 1
+                    end_builder.ret_void()
+                    builder.call(ir_func, [self.fetch_input(op_inputs[0])])
                 elif opname == "CALLOTHER":
                     raise Exception("Not implemented: " + opname)
                 elif opname == "RETURN":
@@ -352,9 +479,32 @@ class Function:
                 elif opname == "PTRADD":
                     self.op_ptr_add(op_inputs[0], op_inputs[1], op_inputs[2], op_output)
                 elif opname == "PTRSUB":
-                    if op_inputs[0].find("space").text == "stack" and self.options["locals"] == "byte_addressable":
+                    if op_inputs[1].find("symbol").text in self.lifter.function_address:
+                        # We are dealing with a function array
+                        name = op_output.find("symbol").text.split("[")[0]
+                        offset = int(op_output.find("symbol").get("offset")) * 8
+                        size = int(op_output.find("symbol").get("size")) * 8
+                        output_array = builder.gep(self.locals[name], [ir.Constant(ir.IntType(32), offset)])
+                        location = builder.bitcast(output_array, ir.PointerType(ir.IntType(size)))
+                        builder.store(ir.Constant(ir.IntType(32), int(op_inputs[1].find("symbol").text, 16)), location)
+                    elif op_inputs[0].find("space").text == "stack" and self.options["locals"] == "byte_addressable":
                         addr = int(op_inputs[0].find("symbol").text, 16)
-                        offset = self.fetch_input(op_inputs[1])
+                        name = op_inputs[1].find("symbol").text
+                        space = op_inputs[1].find("space").text
+                        size = int(op_inputs[1].find("size").text) * 8
+                        if space == "const":
+                            if "U" in name:
+                                try:
+                                    val = int(name.split('U')[0])
+                                except ValueError:
+                                    val = int(name.split('U')[0], 16)
+                            elif "0x" in name:
+                                val = int(name, 16)
+                            else:
+                                raise Exception("Bad indexing: " + name)
+                            offset = ir.Constant(ir.IntType(size), addr - self.stack_first)
+                        else:
+                            offset = self.fetch_input(op_inputs[1])
                         tmp = builder.gep(self.stack, [int32(0), offset], inbounds=True)
                         self.store_output(op_output, tmp)
                     else:
@@ -383,24 +533,30 @@ class Function:
         """Instrumentation features for test cases based on Pharos queries to convert to Seahorn"""
         lifter = self.lifter
         module = lifter.module
+        nongoal = self.options.get("nongoal", False)
         if call_target in lifter.instrumentation:
             return lifter.instrumentation[call_target]
         if call_target == "sym.path_start":
             ir_func = None
         elif call_target == "sym.path_goal":
-            args = []
-            func_type = ir.FunctionType(void_type, args)
-            ir_func = ir.Function(module, func_type, "verifier.error")
-            lifter.instrumentation[call_target] = ir_func
+            if not nongoal:
+                args = []
+                func_type = ir.FunctionType(void_type, args)
+                ir_func = ir.Function(module, func_type, "verifier.error")
+                lifter.instrumentation[call_target] = ir_func
+            else:
+                ir_func = None
         elif call_target == "sym.path_nongoal":
-            ir_func = None
-            # args = []
-            # func_type = ir.FunctionType(void_type, args)
-            # ir_func = ir.Function(module, func_type, "verifier.error")
-            # lifter.instrumentation[call_target] = ir_func
+            if nongoal:
+                args = []
+                func_type = ir.FunctionType(void_type, args)
+                ir_func = ir.Function(module, func_type, "verifier.error")
+                lifter.instrumentation[call_target] = ir_func
+            else:
+                ir_func = None
         elif call_target == "sym.imp.rand":
             args = []
-            func_type = ir.FunctionType(int8, args)
+            func_type = ir.FunctionType(int32, args)
             ir_func = ir.Function(module, func_type, "nd")
             lifter.instrumentation[call_target] = ir_func
         else:
@@ -418,8 +574,10 @@ class Function:
     def fetch_input(self, arg):
         builder = self.current_builder
         name = arg.find("symbol").text.strip("_.")
-        symbol_offset = int(arg.find("symbol").get("offset", "0")) * 8
-        symbol_size = int(arg.find("symbol").get("size", "0")) * 8
+        if ")" in name:
+            name = name.split(")")[-1]
+        symbol_offset = int(arg.find("offset").text, 16) * 8
+        symbol_size = int(arg.find("size").text, 16) * 8
         metatype = int(arg.find("metatype").text)
         size = int(arg.find("size").text) * 8
         space = arg.find("space").text
@@ -445,18 +603,6 @@ class Function:
         if space == "unique" and name not in self.locals:
             return self.temps[name]
         val = None
-        # if sym_id is not None and name != "argc" and name != "argv" and space != "unique":
-        #     if sym_id in self.lifter.global_vars:
-        #         val = builder.load(self.lifter.global_vars[sym_id])
-        #     elif sym_id in self.locals:
-        #         val = builder.load(self.locals[sym_id])
-        #     elif sym_id in self.temps:
-        #         val = self.temps[sym_id]
-        #     elif sym_id in self.args:
-        #         val = self.current_builder.load(self.args[sym_id])
-        #     else:
-        #         raise Exception("Unexpected argument: " + name)
-        # else:
         if name in self.lifter.global_vars:
             loc = self.lifter.global_vars[name]
         elif name in self.locals:
@@ -467,9 +613,14 @@ class Function:
             loc = self.args[name]
         else:
             raise Exception("Unexpected argument: " + name)
-
         if loc is not None:
-            if symbol_size != 0 or symbol_offset != 0:
+            if name in self.args:
+                return builder.load(loc)
+            elif name in self.lifter.global_vars:
+                return builder.load(loc)
+            elif name in self.locals:
+                return builder.load(loc)
+            elif symbol_size != 0 or symbol_offset != 0:
                 tmp = builder.gep(loc, [ir.Constant(ir.IntType(32), symbol_offset)])
                 return builder.load(builder.bitcast(tmp, ir.PointerType(ir.IntType(symbol_size))))
             else:
@@ -525,12 +676,17 @@ class Function:
             elif space == "unique":
                 self.temps[name] = result
                 return
+            elif name in self.args:
+                location = self.args[name]
             else:
-                print(self.lifter.module)
-                raise Exception("Not found: " + name)
+                self.temps[name] = result
+                return
         if symbol_size != 0 or symbol_offset != 0:
-            tmp = builder.gep(location, [ir.Constant(ir.IntType(symbol_size), symbol_offset)])
-            location = builder.bitcast(tmp, ir.PointerType(ir.IntType(symbol_size)))
+            if name in self.args:
+                raise Exception("Check")
+            else:
+                tmp = builder.gep(location, [ir.Constant(ir.IntType(symbol_size), symbol_offset)])
+                location = builder.bitcast(tmp, ir.PointerType(ir.IntType(symbol_size)))
         result, location = self.storage_check(result, location)
         builder.store(result, location)
 
@@ -662,10 +818,12 @@ class Function:
             output		Varnode result containing pointer to indexed array entry."""
         ptr = self.fetch_input(in0)
         index = self.fetch_input(in1)
-        size = self.fetch_input(in2)
-        assert isinstance(size.type, ir.IntType)
         assert isinstance(index.type, ir.IntType)
         assert isinstance(ptr.type, ir.PointerType)
-        new_ptr = self.current_builder.gep(ptr, [int32(1)], inbounds=True)
+        shift = ir.Constant(int32, 8 * int(in2.find("symbol").text))
+        adjusted = self.current_builder.mul(index, shift)
+        new_ptr = self.current_builder.gep(ptr, [adjusted], inbounds=True)
         assert isinstance(new_ptr.type, ir.PointerType)
+        if new_ptr.type.pointee != shift.type:
+            new_ptr = self.current_builder.bitcast(new_ptr, ir.PointerType(shift.type))
         self.store_output(out, new_ptr)

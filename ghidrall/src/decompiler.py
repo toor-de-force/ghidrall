@@ -43,6 +43,12 @@ class Decompiler:
                 pass
             pass
         pass
+        for function in self.function_list:
+            if "func" in function and function not in active_functions:
+                self.r.cmd("s " + function)
+                pdgl = self.r.cmd('pdgl')
+                self.functions_pdg[function] = pdgl
+                active_functions.append(function)
         return active_functions
 
     def get_pdgd(self, entry):

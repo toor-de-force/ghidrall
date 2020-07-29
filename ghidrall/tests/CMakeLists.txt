@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 
 project(tests)
 
+set(CMAKE_CXX_FLAGS "-O3")
+
 set(ALL_TESTS
   bad_diff_func
   bound_loop_with_var
@@ -19,7 +21,7 @@ set(ALL_TESTS
   goal_diff_func
   global_var
   global_var_updates
-  global_var_nongoal  
+  global_var_nongoal
   independent_ite
   independent_ite_param
   input_inside_bound_loop

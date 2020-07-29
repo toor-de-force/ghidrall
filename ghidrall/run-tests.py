@@ -2,225 +2,300 @@ import src.decompiler as decompiler
 import src.lifter as lifter
 import src.verifier as verifier
 import os
-import shutil
 import datetime
 import argparse
 
 parser = argparse.ArgumentParser(description="Lift the provided binary to LLVM")
-parser.add_argument("-chc", action="store_true", help="Build tests for bit-precise CHC engine in Seahorn")
 parser.add_argument("-l", "--locals", choices=["single_struct", "byte_addressable"], default="no_option",
                     help="choose how local variables are displayed")
+parser.add_argument("-n", "--nongoal", action="store_true", help="Lift solver heuristics for anti-goals")
+parser.add_argument("-o", "--optimization", choices=["0","1","2","3"], default=0, help="Optimization level of source")
+
 args = parser.parse_args()
-chc = args.chc
+nongoal = args.nongoal
+o = int(args.optimization)
 
 lifting_options = {"locals": args.locals,
                    "solver": "pharos",
-                   "entry": "main"}
+                   "entry": "main",
+                   "nongoal": nongoal}
 
 begin_time = datetime.datetime.now()
 
 instrumentation_list = ["\"nd\"", "\"verifier.error\"", "\"seahorn.fail\""]
-file_path = "./tests/build/"
 
-# Delete all test results except
-file_list = [
-    "bad_diff_func",
-    "bound_loop_with_var",
-    "compound_condition",
-    "compound_condition_param",
-    "compound_condition_param_v2",
-    "compound_condition_v2",
-    "compound_condition_v3",
-    "condcall_one",
-    "condcall_two",
-    "empty",
-    "exclusive_ite",
-    "exclusive_ite_goal_in_else",
-    "fake_failed_test",
-    "goal_diff_func",
-    "global_var",
-    "global_var_updates",
-    "global_var_nongoal",
-    "independent_ite",
-    "independent_ite_param",
-    "input_inside_bound_loop",
-    "inter_func_narrow_to_wide_constraint",
-    "inter_func_param",
-    "inter_func_wide_to_narrow_constraint",
-    "inter_rv",
-    "invalid_compound_condition",
-    "invalid_compound_condition_param",
-    "invalid_compound_condition_v2",
-    "invalid_condition",
-    "invalid_inter_func",
-    "invalid_nested_conditions",
-    "linear_flow",
-    "loop_even_odd",
-    "loop_even_odd_nongoal",
-    "multi_call_inter_cond",
-    "multi_call_inter_cond_else",
-    "multi_call_inter_seq",
-    "multiple_ite",
-    "multivar_compound_condition",
-    "nested_condition",
-    "nested_condition_v2",
-    "nested_condition_v3",
-    "nested_ite_condition",
-    "nested_ite_condition_param",
-    "nested_ite_condition_param_v2",
-    "nested_ite_condition_v2",
-    "nested_loop",
-    "oo_simple_goal",
-    "oo_simple_nongoal",
-    # "oo_virtual_func_goal",
-    # "oo_virtual_func_nongoal",
-    "param_n_var_conpound_condition",
-    "rv_cond",
-    "rv_same_var",
-    "rv_seq",
-    "rv_seq_v1",
-    "rv_seq_v2",
-    "seq_call_five",
-    "seq_call_four",
-    "seq_call_one",
-    "seq_call_three",
-    "seq_call_two",
-    "seq_v4",
-    "single_condition",
-    "single_condition_param",
-    "single_condition_param_v2",
-    "single_condition_v2",
-    "unbound_loop_with_var",
-    "var_values",
-    "var_values_param"
-    ]
+if o == 0:
+    path = "zero"
+elif o == 1:
+    path = "one"
+elif o == 2:
+    path = "two"
+elif o == 3:
+    path = "three"
+else:
+    path = "zero"
+
+file_path = "./tests/binaries/pathanalyzer/" + path + "/"
 
 sat = "; CHECK-L: sat\n"
 unsat = "; CHECK-L: unsat\n"
 warning = "; CHECK-L: WARNING: no assertion was found\n"
 
-check = {
-    "bad_diff_func" : "; CHECK-L: WARNING: no assertion was found\n",
-    "bound_loop_with_var" : "; CHECK-L: sat\n",
-    "compound_condition" : "; CHECK-L: sat\n",
-    "compound_condition_param" : "; CHECK-L: sat\n",
-    "compound_condition_param_v2" : "; CHECK-L: sat\n",
-    "compound_condition_v2" : "; CHECK-L: sat\n",
-    "compound_condition_v3" : "; CHECK-L: sat\n",
-    "condcall_one" : "; CHECK-L: sat\n",
-    "condcall_two" : "; CHECK-L: WARNING: no assertion was found\n",
-    "empty" : "; CHECK-L: sat\n",
-    "exclusive_ite" : "; CHECK-L: sat\n",
-    "exclusive_ite_goal_in_else" : "; CHECK-L: sat\n",
-    "fake_failed_test" : ";XFAIL: *\n\n; CHECK-L: sat\n",
-    "goal_diff_func" : "; CHECK-L: sat\n",
-    "global_var" : "; CHECK-L: sat\n",
-    "global_var_updates" : "; CHECK-L: sat\n",
-    "global_var_nongoal" : "; CHECK-L: unsat\n",
-    "independent_ite" : "; CHECK-L: sat\n",
-    "independent_ite_param" : "; CHECK-L: sat\n",
-    "input_inside_bound_loop" : "; CHECK-L: sat\n",
-    "inter_func_narrow_to_wide_constraint" : "; CHECK-L: sat\n",
-    "inter_func_param" : "; CHECK-L: sat\n",
-    "inter_func_wide_to_narrow_constraint" : "; CHECK-L: sat\n",
-    "inter_rv" : "; CHECK-L: sat\n",
-    "invalid_compound_condition" : "; CHECK-L: WARNING: no assertion was found\n",
-    "invalid_compound_condition_param" : "; CHECK-L: WARNING: no assertion was found\n",
-    "invalid_compound_condition_v2" : "; CHECK-L: WARNING: no assertion was found\n",
-    "invalid_condition" : "; CHECK-L: WARNING: no assertion was found\n",
-    "invalid_inter_func" : "; CHECK-L: WARNING: no assertion was found\n",
-    "invalid_nested_conditions" : "; CHECK-L: unsat\n",
-    "linear_flow" : "; CHECK-L: sat\n",
-    "loop_even_odd" : "; CHECK-L: sat\n",
-    "loop_even_odd_nongoal" : "; CHECK-L: sat\n",
-    "multi_call_inter_cond" : "; CHECK-L: sat\n",
-    "multi_call_inter_cond_else" : "; CHECK-L: sat\n",
-    "multi_call_inter_seq" : "; CHECK-L: sat\n",
-    "multiple_ite" : "; CHECK-L: sat\n",
-    "multivar_compound_condition" : "; CHECK-L: sat\n",
-    "nested_condition" : "; CHECK-L: sat\n",
-    "nested_condition_v2" : "; CHECK-L: sat\n",
-    "nested_condition_v3" : "; CHECK-L: sat\n",
-    "nested_ite_condition" : "; CHECK-L: sat\n",
-    "nested_ite_condition_param" : "; CHECK-L: sat\n",
-    "nested_ite_condition_param_v2" : "; CHECK-L: sat\n",
-    "nested_ite_condition_v2" : "; CHECK-L: sat\n",
-    "nested_loop" : "; CHECK-L: sat\n",
-    "oo_simple_goal" : "; CHECK-L: sat\n",  
-    "oo_simple_nongoal" : "; CHECK-L: sat\n", 
-    "oo_virtual_func_goal" : "; CHECK-L: sat\n", 
-    "oo_virtual_func_nongoal" : "; CHECK-L: sat\n", 
-    "param_n_var_conpound_condition" : "; CHECK-L: sat\n",
-    "rv_cond" : "; CHECK-L: sat\n",
-    "rv_same_var" : "; CHECK-L: sat\n",
-    "rv_seq" : "; CHECK-L: sat\n",
-    "rv_seq_v1" : "; CHECK-L: sat\n",
-    "rv_seq_v2" : "; CHECK-L: sat\n",
-    "seq_call_five" : "; CHECK-L: sat\n",
-    "seq_call_four" : "; CHECK-L: sat\n",
-    "seq_call_one" : "; CHECK-L: sat\n",
-    "seq_call_three" : "; CHECK-L: sat\n",
-    "seq_call_two" : "; CHECK-L: sat\n",
-    "seq_v4" : "; CHECK-L: sat\n",
-    "single_condition" : "; CHECK-L: sat\n",
-    "single_condition_param" : "; CHECK-L: sat\n",
-    "single_condition_param_v2" : "; CHECK-L: sat\n",
-    "single_condition_v2" : "; CHECK-L: sat\n",
-    "unbound_loop_with_var" : "; CHECK-L: sat\n",
-    "var_values" : "; CHECK-L: sat\n",
-    "var_values_param" : "; CHECK-L: sat\n"}
+check_goal = {
+    # "args_v1_32": "; CHECK-L: sat\n",
+    # "args_v1_64": "; CHECK-L: sat\n",
+    "bound_loop_with_var_32": "; CHECK-L: sat\n",
+    "bound_loop_with_var_64": "; CHECK-L: sat\n",
+    "call_trace_v1_32": "; CHECK-L: sat\n",
+    "call_trace_v1_64": "; CHECK-L: sat\n",
+    "call_trace_v2_32": "; CHECK-L: sat\n",
+    "call_trace_v2_64": "; CHECK-L: sat\n",
+    "call_trace_v3_32": "; CHECK-L: sat\n",
+    "call_trace_v3_64": "; CHECK-L: sat\n",
+    "call_trace_v4_32": "; CHECK-L: sat\n",
+    "call_trace_v4_64": "; CHECK-L: sat\n",
+    "call_trace_v5_32": "; CHECK-L: sat\n",
+    "call_trace_v5_64": "; CHECK-L: sat\n",
+    "call_trace_v6_32": "; CHECK-L: sat\n",
+    "call_trace_v6_64": "; CHECK-L: sat\n",
+    "compound_condition_param_v1_32": "; CHECK-L: sat\n",
+    "compound_condition_param_v1_64": "; CHECK-L: sat\n",
+    "compound_condition_param_v2_32": "; CHECK-L: sat\n",
+    "compound_condition_param_v2_64": "; CHECK-L: sat\n",
+    "compound_condition_v1_32": "; CHECK-L: sat\n",
+    "compound_condition_v1_64": "; CHECK-L: sat\n",
+    "compound_condition_v2_32": "; CHECK-L: sat\n",
+    "compound_condition_v2_64": "; CHECK-L: sat\n",
+    "compound_condition_v3_32": "; CHECK-L: sat\n",
+    "compound_condition_v3_64": "; CHECK-L: sat\n",
+    "condcall_v1_32": "; CHECK-L: sat\n",
+    "condcall_v1_64": "; CHECK-L: sat\n",
+    "condcall_v2_32": "; CHECK-L: sat\n",
+    "condcall_v2_64": "; CHECK-L: sat\n",
+    "down_call_chain_32": "; CHECK-L: sat\n",
+    "down_call_chain_64": "; CHECK-L: sat\n",
+    "empty_32": "; CHECK-L: sat\n",
+    "empty_64": "; CHECK-L: sat\n",
+    "endless_loop_32": "; CHECK-L: sat\n",
+    "endless_loop_64": "; CHECK-L: sat\n",
+    # "exception_32": "; CHECK-L: sat\n",
+    # "exception_64": "; CHECK-L: sat\n",
+    "exclusive_ite_32": "; CHECK-L: sat\n",
+    "exclusive_ite_64": "; CHECK-L: sat\n",
+    "exclusive_ite_goal_in_else_32": "; CHECK-L: sat\n",
+    "exclusive_ite_goal_in_else_64": "; CHECK-L: sat\n",
+    "explosive_conditions_v1_32": "; CHECK-L: sat\n",
+    "explosive_conditions_v1_64": "; CHECK-L: sat\n",
+    "fake_failed_test_32": "; CHECK-L: sat\n",
+    "fake_failed_test_64": "; CHECK-L: sat\n",
+    "fishyxml_v1_32": "; CHECK-L: sat\n",
+    "fishyxml_v1_64": "; CHECK-L: sat\n",
+    "fishyxml_v2_32": "; CHECK-L: sat\n",
+    "fishyxml_v2_64": "; CHECK-L: sat\n",
+    "fishyxml_v3_32": "; CHECK-L: sat\n",
+    "fishyxml_v3_64": "; CHECK-L: sat\n",
+    # "func_array_32": "; CHECK-L: sat\n",
+    # "func_array_64": "; CHECK-L: sat\n",
+    "global_var_v1_32": "; CHECK-L: sat\n",
+    "global_var_v1_64": "; CHECK-L: sat\n",
+    "global_var_v2_32": "; CHECK-L: sat\n",
+    "global_var_v2_64": "; CHECK-L: sat\n",
+    "global_var_v3_32": "; CHECK-L: sat\n",
+    "global_var_v3_64": "; CHECK-L: sat\n",
+    "independent_ite_32": "; CHECK-L: sat\n",
+    "independent_ite_64": "; CHECK-L: sat\n",
+    "independent_ite_param_32": "; CHECK-L: sat\n",
+    "independent_ite_param_64": "; CHECK-L: sat\n",
+    "input_inside_bound_loop_32": "; CHECK-L: sat\n",
+    "input_inside_bound_loop_64": "; CHECK-L: sat\n",
+    "input_inside_bound_loop_mod_32": "; CHECK-L: sat\n",
+    "input_inside_bound_loop_mod_64": "; CHECK-L: sat\n",
+    "inter_func_narrow_to_wide_constraint_32": "; CHECK-L: sat\n",
+    "inter_func_narrow_to_wide_constraint_64": "; CHECK-L: sat\n",
+    "inter_func_param_32": "; CHECK-L: sat\n",
+    "inter_func_param_64": "; CHECK-L: sat\n",
+    "inter_func_wide_to_narrow_constraint_32": "; CHECK-L: sat\n",
+    "inter_func_wide_to_narrow_constraint_64": "; CHECK-L: sat\n",
+    "inter_rv_32": "; CHECK-L: sat\n",
+    "inter_rv_64": "; CHECK-L: sat\n",
+    "linear_flow_32": "; CHECK-L: sat\n",
+    "linear_flow_64": "; CHECK-L: sat\n",
+    "loop_even_odd_32": "; CHECK-L: sat\n",
+    "loop_even_odd_64": "; CHECK-L: sat\n",
+    "multi_call_inter_cond_32": "; CHECK-L: sat\n",
+    "multi_call_inter_cond_64": "; CHECK-L: sat\n",
+    "multi_call_inter_cond_else_32": "; CHECK-L: sat\n",
+    "multi_call_inter_cond_else_64": "; CHECK-L: sat\n",
+    "multi_call_inter_seq_32": "; CHECK-L: sat\n",
+    "multi_call_inter_seq_64": "; CHECK-L: sat\n",
+    "multiple_ite_32": "; CHECK-L: sat\n",
+    "multiple_ite_64": "; CHECK-L: sat\n",
+    "multivar_compound_condition_v1_32": "; CHECK-L: sat\n",
+    "multivar_compound_condition_v1_64": "; CHECK-L: sat\n",
+    "multivar_compound_condition_v2_32": "; CHECK-L: sat\n",
+    "multivar_compound_condition_v2_64": "; CHECK-L: sat\n",
+    "nested_condition_v1_32": "; CHECK-L: sat\n",
+    "nested_condition_v1_64": "; CHECK-L: sat\n",
+    "nested_condition_v2_32": "; CHECK-L: sat\n",
+    "nested_condition_v2_64": "; CHECK-L: sat\n",
+    "nested_condition_v3_32": "; CHECK-L: sat\n",
+    "nested_condition_v3_64": "; CHECK-L: sat\n",
+    "nested_condition_v4_32": "; CHECK-L: sat\n",
+    "nested_condition_v4_64": "; CHECK-L: sat\n",
+    "nested_ite_condition_param_v1_32": "; CHECK-L: sat\n",
+    "nested_ite_condition_param_v1_64": "; CHECK-L: sat\n",
+    "nested_ite_condition_param_v2_32": "; CHECK-L: sat\n",
+    "nested_ite_condition_param_v2_64": "; CHECK-L: sat\n",
+    "nested_ite_condition_v1_32": "; CHECK-L: sat\n",
+    "nested_ite_condition_v1_64": "; CHECK-L: sat\n",
+    "nested_ite_condition_v2_32": "; CHECK-L: sat\n",
+    "nested_ite_condition_v2_64": "; CHECK-L: sat\n",
+    "nested_loop_32": "; CHECK-L: sat\n",
+    "nested_loop_64": "; CHECK-L: sat\n",
+    # "oo_simple_32": "; CHECK-L: sat\n",
+    # "oo_simple_64": "; CHECK-L: sat\n",
+    # "oo_virtual_func_32": "; CHECK-L: sat\n",
+    # "oo_virtual_func_64": "; CHECK-L: sat\n",
+    "outlaw_v1_32": "; CHECK-L: sat\n",
+    "outlaw_v1_64": "; CHECK-L: sat\n",
+    "outlaw_v2_32": "; CHECK-L: sat\n",
+    "outlaw_v2_64": "; CHECK-L: sat\n",
+    # "outlaw_v3_32": "; CHECK-L: sat\n",
+    # "outlaw_v3_64": "; CHECK-L: sat\n",
+    # "outlaw_v4_32": "; CHECK-L: sat\n",
+    # "outlaw_v4_64": "; CHECK-L: sat\n",
+    "pointer_write_32": "; CHECK-L: sat\n",
+    "pointer_write_64": "; CHECK-L: sat\n",
+    "recurse_v1_32": "; CHECK-L: sat\n",
+    "recurse_v1_64": "; CHECK-L: sat\n",
+    "recurse_v2_32": "; CHECK-L: sat\n",
+    "recurse_v2_64": "; CHECK-L: sat\n",
+    "rv_cond_32": "; CHECK-L: sat\n",
+    "rv_cond_64": "; CHECK-L: sat\n",
+    "rv_same_var_32": "; CHECK-L: sat\n",
+    "rv_same_var_64": "; CHECK-L: sat\n",
+    "rv_seq_v1_32": "; CHECK-L: sat\n",
+    "rv_seq_v1_64": "; CHECK-L: sat\n",
+    "rv_seq_v2_32": "; CHECK-L: sat\n",
+    "rv_seq_v2_64": "; CHECK-L: sat\n",
+    "rv_seq_v3_32": "; CHECK-L: sat\n",
+    "rv_seq_v3_64": "; CHECK-L: sat\n",
+    "single_condition_param_v1_32": "; CHECK-L: sat\n",
+    "single_condition_param_v1_64": "; CHECK-L: sat\n",
+    "single_condition_param_v2_32": "; CHECK-L: sat\n",
+    "single_condition_param_v2_64": "; CHECK-L: sat\n",
+    "single_condition_v1_32": "; CHECK-L: sat\n",
+    "single_condition_v1_64": "; CHECK-L: sat\n",
+    "single_condition_v2_32": "; CHECK-L: sat\n",
+    "single_condition_v2_64": "; CHECK-L: sat\n",
+    # "strcmp_32": "; CHECK-L: sat\n",
+    # "strcmp_64": "; CHECK-L: sat\n",
+    "stress_both_32": "; CHECK-L: sat\n",
+    "stress_both_64": "; CHECK-L: sat\n",
+    "stress_deep_32": "; CHECK-L: sat\n",
+    "stress_deep_64": "; CHECK-L: sat\n",
+    "stress_wide_32": "; CHECK-L: sat\n",
+    "stress_wide_64": "; CHECK-L: sat\n",
+    "switch_v1_32": "; CHECK-L: sat\n",
+    "switch_v1_64": "; CHECK-L: sat\n",
+    "switch_v2_32": "; CHECK-L: sat\n",
+    "switch_v2_64": "; CHECK-L: sat\n",
+    "switch_v3_32": "; CHECK-L: sat\n",
+    "switch_v3_64": "; CHECK-L: sat\n",
+    "switch_v4_32": "; CHECK-L: sat\n",
+    "switch_v4_64": "; CHECK-L: sat\n",
+    "switch_v5_32": "; CHECK-L: sat\n",
+    "switch_v5_64": "; CHECK-L: sat\n",
+    "unbound_loop_with_var_32": "; CHECK-L: sat\n",
+    "unbound_loop_with_var_64": "; CHECK-L: sat\n",
+    "unused_params_v1_32": "; CHECK-L: sat\n",
+    "unused_params_v1_64": "; CHECK-L: sat\n",
+    "unused_params_v2_32": "; CHECK-L: sat\n",
+    "unused_params_v2_64": "; CHECK-L: sat\n",
+    "up_and_down_v1_32": "; CHECK-L: sat\n",
+    "up_and_down_v1_64": "; CHECK-L: sat\n",
+    "var_values_32": "; CHECK-L: sat\n",
+    "var_values_64": "; CHECK-L: sat\n",
+    "var_values_param_32": "; CHECK-L: sat\n",
+    "var_values_param_64": "; CHECK-L: sat\n",
+    # "varargs_32": "; CHECK-L: sat\n",
+    # "varargs_64": "; CHECK-L: sat\n"
+    }
 
-try:
-    shutil.rmtree("./tests/results")
-except FileNotFoundError:
-    pass
-os.mkdir("tests/results", mode=0o777)
+check_non_goal = {
+    "bad_diff_func" : "; CHECK-L: sat\n",
+    "global_var_nongoal" : "; CHECK-L: unsat\n",
+    "invalid_compound_condition" : "; CHECK-L: unsat\n",
+    "invalid_compound_condition_param" : "; CHECK-L: unsat\n",
+    "invalid_compound_condition_v2" : "; CHECK-L: unsat\n",
+    "invalid_condition" : "; CHECK-L: unsat\n",
+    "invalid_inter_func" : "; CHECK-L: unsat\n",
+    "invalid_nested_conditions" : "; CHECK-L: unsat\n",
+    "loop_even_odd_nongoal" : "; CHECK-L: unsat\n",
+    "oo_simple_nongoal" : "; CHECK-L: unsat\n"}
+
+if nongoal:
+    goal = "nongoal"
+    file_list = list(check_non_goal.keys())
+    check = check_non_goal
+else:
+    goal = "goal"
+    file_list = list(check_goal.keys())
+    check = check_goal
+
+if not os.path.exists("tests/results"):
+    os.mkdir("tests/results", mode=0o777)
+
+failures = []
 
 for file in file_list:
-    results_path = "tests/results/" + file + "/"
-    os.mkdir(results_path, mode=0o777)
-    print("Decompiling " + file + "...", end="")
-    filename = file_path + file
-    decompile_info = decompiler.decompile_binary(filename,  lifting_options.get("entry"))
-    for function in list(decompile_info.functions_pdg.keys()):
-        f = open(results_path + file + "_" + function + ".xml", 'w')
-        f.write(decompile_info.functions_pdg[function])
-        f.close()
-    print("Done.")
-    print("Lifting " + file + "...", end="")
-    module = lifter.lift_binary(decompile_info, file, lifting_options)
-    print("Done.")
-    print("Verifying " + file + "...", end="")
-    verifier.verify(module)
-    print("Done.")
-    print("Compiling " + file + "...", end="")
-    verifier.compile_ir(module)
-    print("Done.")
-    if file in check:
-        if chc:
+    try:
+        print("Decompiling " + file + "...", end="")
+        filename = file_path + file
+        decompile_info = decompiler.decompile_binary(filename,  lifting_options.get("entry"))
+        print("Done.")
+        print("Lifting " + file + "...", end="")
+        module = lifter.lift_binary(decompile_info, file, lifting_options)
+        print("Done.")
+        print("Verifying " + file + "...", end="")
+        verifier.verify(module)
+        print("Done.")
+        print("Compiling " + file + "...", end="")
+        verifier.compile_ir(module)
+        print("Done.")
+        if file in check:
+            solve = "chc"
             run1 = "; RUN: %sea pf --bv-chc --inline -O0 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
             run2 = "; RUN: %sea pf --bv-chc --inline -O1 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
             run3 = "; RUN: %sea pf --bv-chc --inline -O2 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
             run4 = "; RUN: %sea pf --bv-chc --inline -O3 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
-        else:
-            run1 = "; RUN: %sea bpf --bmc=mono --inline -O0 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
-            run2 = "; RUN: %sea bpf --bmc=mono --inline -O1 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
-            run3 = "; RUN: %sea bpf --bmc=mono --inline -O2 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
-            run4 = "; RUN: %sea bpf --bmc=mono --inline -O3 --bound=7 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
-        module_string = run1 + run2 + run3 + run4 + check[file] + "\n" + str(module)
-        for instrument in instrumentation_list:
-            module_string = module_string.replace(instrument, instrument[1:-1])
-        results = "tests/results/"
-        f = open(results + file + ".ll", 'w')
-        f.write(module_string)
-        f.close()
-    else:
-        module_string = str(module)
-        # for instrument in instrumentation_list:
-        #     module_string = module_string.replace(instrument, instrument[1:-1])
-        # results = "tests/results/"
-        # f = open(results + file + ".ll", 'w')
-        # f.write(module_string)
-        # f.close()
+            module_string = run1 + run2 + run3 + run4 + check[file] + "\n" + str(module)
+            for instrument in instrumentation_list:
+                module_string = module_string.replace(instrument, instrument[1:-1])
+            results = "tests/results/"
+            f = open(results + file + "." + goal + "." + solve + "." + path + "." + args.locals + ".ll", 'w')
+            f.write(module_string)
+            f.close()
 
+            solve = "bmc"
+            run1 = "; RUN: %sea bpf --bmc=mono --horn-bv2=true --inline -O0 --bound=12 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+            run2 = "; RUN: %sea bpf --bmc=mono --horn-bv2=true --inline -O1 --bound=12 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+            run3 = "; RUN: %sea bpf --bmc=mono --horn-bv2=true --inline -O2 --bound=12 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+            run4 = "; RUN: %sea bpf --bmc=mono --horn-bv2=true --inline -O3 --bound=12 \"%s\" 2>&1 | OutputCheck %s --comment=\\;\n"
+            module_string = run1 + run2 + run3 + run4 + check[file] + "\n" + str(module)
+            for instrument in instrumentation_list:
+                module_string = module_string.replace(instrument, instrument[1:-1])
+            results = "tests/results/"
+            f = open(results + file + "." + goal + "." + solve + "." + path + "." + args.locals + ".ll", 'w')
+            f.write(module_string)
+            f.close()
+        else:
+            raise Exception("Not in check list")
+    except:
+        failures.append(file)
+        print("Failed for some reason")
+
+print("The following files failed:")
+for fail in failures:
+    print("\t" + fail)
 print("Time to lift: " + str(datetime.datetime.now() - begin_time))

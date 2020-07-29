@@ -33,14 +33,14 @@ class GhidrallBlock:
             fall_thru_true = self.xml_out.find("fallthru")
             if self.xml_out.find("fallthru") is not None:
                 if fall_thru_true.text == "true":
-                    self.goto = blocks[branches[0].get("id")]
-                    self.fall_thru = blocks[branches[1].get("id")]
-                else:
                     self.goto = blocks[branches[1].get("id")]
                     self.fall_thru = blocks[branches[0].get("id")]
+                else:
+                    self.goto = blocks[branches[0].get("id")]
+                    self.fall_thru = blocks[branches[1].get("id")]
             else:
                 raise Exception("There should be a fallthru branch")
         elif len(branches) == 0:
             pass
         else:
-            raise Exception("Should not be that many out branches")
+            pass
