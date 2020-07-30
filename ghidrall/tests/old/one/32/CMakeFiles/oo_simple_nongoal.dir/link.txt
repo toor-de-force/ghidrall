@@ -1,0 +1,1 @@
+/usr/bin/c++  -m32   CMakeFiles/oo_simple_nongoal.dir/oo_simple_nongoal.cpp.o  -o oo_simple_nongoal 

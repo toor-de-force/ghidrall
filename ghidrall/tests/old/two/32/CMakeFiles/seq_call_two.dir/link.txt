@@ -1,0 +1,1 @@
+/usr/bin/c++  -m32   CMakeFiles/seq_call_two.dir/seq_call_two.cpp.o  -o seq_call_two 

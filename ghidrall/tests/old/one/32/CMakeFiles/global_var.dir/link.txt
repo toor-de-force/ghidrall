@@ -1,0 +1,1 @@
+/usr/bin/c++  -m32   CMakeFiles/global_var.dir/global_var.cpp.o  -o global_var 

@@ -1,0 +1,1 @@
+/usr/bin/c++  -m32   CMakeFiles/oo_virtual_func_goal.dir/oo_virtual_func_goal.cpp.o  -o oo_virtual_func_goal 
