@@ -12,16 +12,19 @@ parser = argparse.ArgumentParser(description="Lift the provided binary to LLVM")
 parser.add_argument('Path', metavar='path', type=str, help="the path to the target binary")
 parser.add_argument("-s", "--solver", choices=["pharos", "seahorn"], default="pharos",
                     help="choose what solver notation to resolve from")
-parser.add_argument("-l", "--locals", choices=["single_struct", "byte_addressable"], default="no_option",
+parser.add_argument("-l", "--locals", choices=["single_struct", "no_option"], default="byte_addressable",
                     help="choose how local variables are displayed")
 parser.add_argument("-d", "--debug", action="store_true", help="dump intermediary xml")
 parser.add_argument("-e", "--entry", metavar='entry', type=str, help="choose entry function. Default \"main\"", default="main")
+parser.add_argument("-cgc", "--cgc_binaries", action="store_true", help="Do not process CGC Lib functions")
+
 
 args = parser.parse_args()
 file_name = args.Path
 lifting_options = {"locals": args.locals,
                    "solver": args.solver,
-                   "entry": args.entry}
+                   "entry": args.entry,
+                   "cgc": args.cgc_binaries}
 debug = args.debug
 if not os.path.isfile(file_name):
     print("Not a valid input file")

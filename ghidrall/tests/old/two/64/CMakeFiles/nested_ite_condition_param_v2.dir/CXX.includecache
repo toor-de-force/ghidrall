@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/tej/github/Ghidrall/ghidrall/tests/nested_ite_condition_param_v2.cpp
+test.hpp
+/home/tej/github/Ghidrall/ghidrall/tests/test.hpp
+
+/home/tej/github/Ghidrall/ghidrall/tests/test.hpp
+test.seahorn.hpp
+/home/tej/github/Ghidrall/ghidrall/tests/test.seahorn.hpp
+stdlib.h
+-
+time.h
+-
+

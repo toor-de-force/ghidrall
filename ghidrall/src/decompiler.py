@@ -22,35 +22,39 @@ class Decompiler:
 
     def find_active_functions(self, target):
         """Find all important functions in call hierarchy from entry, excluding instrumentation for pharos"""
-        active_functions = [target]
-        to_visit_functions = [target]
-        visited_functions = []
-        while len(to_visit_functions) > 0:
-            t = to_visit_functions.pop()
-            visited_functions.append(t)
-            self.r.cmd("s " + t)
-            pdgl = self.r.cmd('pdgl')
-            self.functions_pdg[t] = pdgl
-            for function in self.function_list:
-                if function == target:
-                    pass
-                elif function in pdgl:
-                    if function not in instrumentation_list and function not in active_functions:
-                        active_functions.append(function)
-                        if function not in visited_functions:
-                            to_visit_functions.append(function)
+        try:
+            active_functions = [target]
+            to_visit_functions = [target]
+            visited_functions = []
+            while len(to_visit_functions) > 0:
+                t = to_visit_functions.pop()
+                visited_functions.append(t)
+                self.r.cmd("s " + t)
+                pdgl = self.r.cmd('pdgl')
+                self.functions_pdg[t] = pdgl
+                for function in self.function_list:
+                    if function == target:
                         pass
+                    elif function in pdgl:
+                        if function not in instrumentation_list and function not in active_functions:
+                            active_functions.append(function)
+                            if function not in visited_functions:
+                                to_visit_functions.append(function)
+                            pass
+                    pass
                 pass
             pass
-        pass
-        for function in self.function_list:
-            if "func" in function and function not in active_functions:
-                self.r.cmd("s " + function)
-                pdgl = self.r.cmd('pdgl')
-                self.functions_pdg[function] = pdgl
-                active_functions.append(function)
-        return active_functions
+            for function in self.function_list:
+                if "func" in function and function not in active_functions:
+                    self.r.cmd("s " + function)
+                    pdgl = self.r.cmd('pdgl')
+                    self.functions_pdg[function] = pdgl
+                    active_functions.append(function)
+            return active_functions
+        except:
+            self.r.quit()
 
     def get_pdgd(self, entry):
         self.r.cmd("s " + entry)
         return self.r.cmd('pdgd')
+

@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 
 project(tests)
 
-set(CMAKE_CXX_FLAGS "-O3")
+set(CMAKE_CXX_FLAGS "-O2")
+set(CMAKE_CXX_FLAGS "-m64")
 
 set(ALL_TESTS
   bad_diff_func

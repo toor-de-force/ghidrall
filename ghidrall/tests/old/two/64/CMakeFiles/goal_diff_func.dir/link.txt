@@ -1,0 +1,1 @@
+/usr/bin/c++  -m64   CMakeFiles/goal_diff_func.dir/goal_diff_func.cpp.o  -o goal_diff_func 

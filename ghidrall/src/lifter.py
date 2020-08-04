@@ -24,10 +24,10 @@ class Lifter:
         self.filename = filename
         self.module = ir.Module(name=filename)
         self.options = lifting_options
-        self.module.data_layout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
-        self.module.triple = "x86_64-pc-linux-gnu"
+        self.module.data_layout = "e-m:e-p:32:32-f64:32:64-f80:32-n8:16:32-S128" if "64" in filename else "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+        self.module.triple = "x86_64-pc-linux-gnu" if "64" in filename else "i386-pc-linux-gnu"
         self.decompile_info = decompiler.functions_pdg
-        self.global_vars = self.fish_globals(decompiler.pdgd)
+        self.global_vars, self.global_addrs = self.fish_globals(decompiler.pdgd)
         self.instrumentation = {}
         self.function_names = list(self.decompile_info.keys())
         self.functions_ir, self.functions_xml, self.functions_args, self.ret_types = self.create_function_signatures()
@@ -38,8 +38,12 @@ class Lifter:
         """Find globals as identified by r2 in r2-internal-scope"""
         global_vars = {}
         global_size = {}
-        global_names = [symbol.get("name") for symbol in
-                        et.fromstring(pdgd).findall(".//scope[@name='radare2-internal']/symbollist/mapsym/symbol")]
+        global_addrs = {}
+        for mapsym in et.fromstring(pdgd).findall(".//scope[@name='radare2-internal']/symbollist/mapsym"):
+            if mapsym.find("symbol") is not None and mapsym.find("addr") is not None:
+                name = mapsym.find("symbol").get("name")
+                offset = mapsym.find("addr").get("offset")
+                global_addrs[name] = offset
         for key, pdgl in self.decompile_info.items():
             xml = et.fromstring(pdgl)
             for symbol in xml.find('block_graph').findall('.//input') + xml.find('block_graph').findall('.//output'):
@@ -47,7 +51,7 @@ class Lifter:
                 meta = symbol.find("metatype").text
                 size = symbol.find("size").text
                 sym_id = symbol.find("id").text
-                if name in global_names:
+                if name in global_addrs:
                     size = int(size) * 8
                     if name in global_size:
                         if size != global_size[name]:
@@ -59,12 +63,23 @@ class Lifter:
                     global_size[name] = size
                 else:
                     pass
+
         for name, size in global_size.items():
             global_type = ir.IntType(size)
             glob = ir.GlobalVariable(self.module, global_type, name)
             glob.initializer = global_type(0)
             global_vars[name] = glob
-        return global_vars
+
+        new_global_addrs = {}
+        for name, addr in global_addrs.items():
+            if name in global_vars:
+                new_global_addrs[addr] = global_vars[name]
+            else:
+                global_type = ir.IntType(64)
+                glob = ir.GlobalVariable(self.module, global_type, name)
+                global_vars[name] = glob
+                new_global_addrs[addr] = glob
+        return global_vars, new_global_addrs
 
     def create_function_signatures(self):
         """"Create the function signatures before building instructions and basic blocks so function calls resolve"""
@@ -104,16 +119,20 @@ class Lifter:
         return all_ir, all_xml, all_args, return_types
 
     def populate_functions(self):
-        """"Given a function signature, build basic blocks and instructions"""
-        funcs = []
+        """"Given a function signature, 32 basic blocks and instructions"""
+        funcs = {}
         for function in self.function_names:
-            funcs.append(Function(function,
+            if self.options["cgc"]:
+                pass
+            funcs[function] = (Function(function,
                                   self.functions_ir[function],
                                   self.functions_xml[function],
                                   self.functions_args[function],
                                   self.ret_types[function], self))
-        for func in funcs:
-            func.populate_cfg()
+        for key, value in funcs.items():
+            if self.options["cgc"] and "cgc" in key:
+                continue
+            value.populate_cfg()
 
     def store_function_addresses(self):
         address = {}

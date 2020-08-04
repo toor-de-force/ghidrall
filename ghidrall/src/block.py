@@ -13,7 +13,7 @@ class GhidrallBlock:
     """"Holds the relevant data for a basic block"""
 
     def __init__(self, xml, function):
-        """"Initialize function variables, recover locals, and build the CFG"""
+        """"Initialize function variables, recover locals, and 32 the CFG"""
         self.id = xml.find("label").get("id")
         self.address = xml.find("label").get("address")
         self.function = function

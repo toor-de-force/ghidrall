@@ -39,11 +39,7 @@ with open("results.csv", "w") as csv_file:
                   "two-chc-no_option-score", "two-chc-no_option-time", "two-chc-single_struct-score",
                   "two-chc-single_struct-time", "two-chc-byte_addressable-score", "two-chc-byte_addressable-time",
                   "two-bmc-no_option-score", "two-bmc-no_option-time", "two-bmc-single_struct-score",
-                  "two-bmc-single_struct-time", "two-bmc-byte_addressable-score", "two-bmc-byte_addressable-time",
-                  "three-chc-no_option-score", "three-chc-no_option-time", "three-chc-single_struct-score",
-                  "three-chc-single_struct-time", "three-chc-byte_addressable-score", "three-chc-byte_addressable-time",
-                  "three-bmc-no_option-score", "three-bmc-no_option-time", "three-bmc-single_struct-score",
-                  "three-bmc-single_struct-time", "three-bmc-byte_addressable-score", "three-bmc-byte_addressable-time"]
+                  "two-bmc-single_struct-time", "two-bmc-byte_addressable-score", "two-bmc-byte_addressable-time"]
 
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
     writer.writeheader()

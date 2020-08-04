@@ -9,18 +9,11 @@ int1 = ir.IntType(1)
 int8 = ir.IntType(8)
 void_type = ir.VoidType()
 
-
-def int_ext_type_check(inv, outv):
-    if isinstance(outv.type, ir.PointerType):
-        return inv, ir.IntType(outv.type.pointee.width)
-    return inv, outv
-
-
 class Function:
     """"Holds the relevant data for a function"""
 
     def __init__(self, function_name, ir_func, xml, args, return_type, lifter):
-        """"Initialize function variables, recover locals, and build the CFG"""
+        """"Initialize function variables, recover locals, and 32 the CFG"""
         self.name = function_name
         self.ir_func = ir_func
         self.xml = xml
@@ -40,6 +33,8 @@ class Function:
 
     def recover_locals(self):
         """"Recover stack variables based on decided structure from lifting options. Also recovers register types"""
+        if self.options["cgc"] and "cgc" in self.name:
+            return None, None, None
         local_vars = {}
         entry_block = self.ir_func.append_basic_block("entry")
         entry_builder = ir.IRBuilder(entry_block)
@@ -147,6 +142,8 @@ class Function:
         return entry_block, local_vars, entry_builder
 
     def build_cfg(self):
+        if self.options["cgc"] and "cgc" in self.name:
+            return []
         blocks = {}
         for xml_block in self.xml.findall('.//block'):
             current_block = GhidrallBlock(xml_block, self)
@@ -182,7 +179,7 @@ class Function:
                     branched = True
                 elif opname == "CBRANCH":
                     conditional = self.fetch_input(op_inputs[1])
-                    target_location = op_inputs[0].find("symbol").text
+                    target_location = op_inputs[0].find("symbol").text.split(".")[-1]
                     outs = self.current_block.xml_out.findall("target")
                     out1 = outs[0].get("address")
                     out2 = outs[1].get("address")
@@ -199,7 +196,7 @@ class Function:
                             target = outs[1].get("id")
                         else:
                             # increment block number to figure out fallthru, fix cbranch target to other case
-                            fallthru_id = str(int(self.current_block.id) + 1)
+                            fallthru_id = format(int(self.current_block.id, 16) + 1, 'x')
                             swap = False
                             if fallthru_id in self.blocks:
                                 if fallthru_id == outs[0].get("id"):
@@ -249,58 +246,94 @@ class Function:
                             result = None
                     else:
                         args = [self.fetch_input(arg) for arg in op_inputs[1:]]
-                        if len(args) == 0:
-                            result = builder.call(self.lifter.functions_ir[call_target], args=[])
+                        if call_target in self.lifter.functions_ir:
+                            if len(args) == 0:
+                                result = builder.call(self.lifter.functions_ir[call_target], args=[])
+                            else:
+                                final_args = []
+                                for arg, target_arg in zip(args, self.lifter.functions_ir[call_target].args):
+                                    final_args.append(self.arg_type_check(arg, target_arg))
+                                result = builder.call(self.lifter.functions_ir[call_target], args=final_args)
                         else:
-                            final_args = []
-                            for arg, target_arg in zip(args, self.lifter.functions_ir[call_target].args):
-                                final_args.append(self.arg_type_check(arg, target_arg))
-                            result = builder.call(self.lifter.functions_ir[call_target], args=final_args)
+                            # Function wasn't recovered
+                            if op_output is None:
+                                return_type = void_type
+                            else:
+                                return_type = ir.IntType(int(op_output.find("size").text) * 8)
+                            args_ty = [arg.type for arg in args]
+                            fnty = ir.FunctionType(return_type, args_ty)
+                            func = ir.Function(self.lifter.module, fnty, name=call_target)
+                            self.lifter.functions_ir[call_target] = func
+                            result = None
+                            if op_output is None:
+                                builder.call(func, args)
+                                self.lifter.ret_types[call_target] = "void"
+                            else:
+                                result = builder.call(func, args)
+                                self.store_output(op_output, result)
+                                self.lifter.ret_types[call_target] = "not void"
                     if op_output is not None and result is not None:
                         if call_target in instrumentation_list:
-                            self.store_output(op_output, result)
+                            if call_target == "sym.imp.rand":
+                                self.store_output(op_output, result)
+                            else:
+                                raise Exception("NO here: " + call_target)
                         elif self.lifter.ret_types[call_target] != "void":
                             self.store_output(op_output, result)
+                        else:
+                            pass
                 elif opname == "CALLIND":
-                    func_type = ir.FunctionType(void_type, [int32])
-                    ir_func = ir.Function(self.lifter.module, func_type, "special")
-                    new_entry = ir_func.append_basic_block("entry")
-                    new_entry_builder = ir.IRBuilder(new_entry)
-                    cmp_blocks = []
-                    i = 0
-                    for address, func_ptr in self.lifter.function_address.items():
-                        if not func_ptr.args and func_ptr.name != "main":
-                            cmp_block = ir_func.append_basic_block("cmp." + str(i))
-                            i += 1
-                            cmp_blocks.append(cmp_block)
-                    switch_blocks = []
-                    i = 0
-                    for address, func_ptr in self.lifter.function_address.items():
-                        if not func_ptr.args and func_ptr.name != "main":
-                            switch_block = ir_func.append_basic_block(str(i))
-                            i += 1
-                            switch_blocks.append(switch_block)
-                    end = ir_func.append_basic_block("end")
-                    end_builder = ir.IRBuilder(end)
-                    new_entry_builder.branch(cmp_blocks[0])
-                    j = 0
-                    for address, func_ptr in self.lifter.function_address.items():
-                        if not func_ptr.args and func_ptr.name != "main":
-                            cmp_block = cmp_blocks[j]
-                            cmp_builder = ir.IRBuilder(cmp_block)
-                            check = cmp_builder.icmp_unsigned("==", ir.Constant(int32, int(address, 16)), ir_func.args[0])
-                            print(int(address, 16))
-                            if j < len(cmp_blocks) - 1:
-                                cmp_builder.cbranch(check, switch_blocks[j], cmp_blocks[j+1])
-                            else:
-                                cmp_builder.cbranch(check, switch_blocks[j], end)
-                            switch_block = switch_blocks[j]
-                            switch_builder = ir.IRBuilder(switch_block)
-                            switch_builder.call(func_ptr, [])
-                            switch_builder.branch(end)
-                            j += 1
-                    end_builder.ret_void()
-                    builder.call(ir_func, [self.fetch_input(op_inputs[0])])
+                    if op_inputs[0] not in self.lifter.functions_ir:
+                        # We have a system call, let's generate an empty function header
+                        if op_output is None:
+                            return_type = void_type
+                        else:
+                            return_type = ir.IntType(int(op_output.find("size").text) * 8)
+                        args_ty = []
+                        fnty = ir.FunctionType(return_type, args_ty)
+                        func = ir.Function(self.lifter.module, fnty, name=op_inputs[0].find("symbol").text)
+                        self.lifter.functions_ir[op_inputs[0]] = func
+                        builder.call(func, [])
+                    else:
+                        # Actual Indirect Call
+                        func_type = ir.FunctionType(void_type, [int32])
+                        ir_func = ir.Function(self.lifter.module, func_type, "special")
+                        new_entry = ir_func.append_basic_block("entry")
+                        new_entry_builder = ir.IRBuilder(new_entry)
+                        cmp_blocks = []
+                        i = 0
+                        for address, func_ptr in self.lifter.function_address.items():
+                            if not func_ptr.args and func_ptr.name != "main":
+                                cmp_block = ir_func.append_basic_block("cmp." + str(i))
+                                i += 1
+                                cmp_blocks.append(cmp_block)
+                        switch_blocks = []
+                        i = 0
+                        for address, func_ptr in self.lifter.function_address.items():
+                            if not func_ptr.args and func_ptr.name != "main":
+                                switch_block = ir_func.append_basic_block(str(i))
+                                i += 1
+                                switch_blocks.append(switch_block)
+                        end = ir_func.append_basic_block("end")
+                        end_builder = ir.IRBuilder(end)
+                        new_entry_builder.branch(cmp_blocks[0])
+                        j = 0
+                        for address, func_ptr in self.lifter.function_address.items():
+                            if not func_ptr.args and func_ptr.name != "main":
+                                cmp_block = cmp_blocks[j]
+                                cmp_builder = ir.IRBuilder(cmp_block)
+                                check = cmp_builder.icmp_unsigned("==", ir.Constant(int32, int(address, 16)), ir_func.args[0])
+                                if j < len(cmp_blocks) - 1:
+                                    cmp_builder.cbranch(check, switch_blocks[j], cmp_blocks[j+1])
+                                else:
+                                    cmp_builder.cbranch(check, switch_blocks[j], end)
+                                switch_block = switch_blocks[j]
+                                switch_builder = ir.IRBuilder(switch_block)
+                                switch_builder.call(func_ptr, [])
+                                switch_builder.branch(end)
+                                j += 1
+                        end_builder.ret_void()
+                        builder.call(ir_func, [self.fetch_input(op_inputs[0])])
                 elif opname == "CALLOTHER":
                     raise Exception("Not implemented: " + opname)
                 elif opname == "RETURN":
@@ -314,6 +347,7 @@ class Function:
                     lhs, rhs = self.int_comp_type_check(self.fetch_input(op_inputs[0]), self.fetch_input(op_inputs[1]))
                     self.store_output(op_output, builder.icmp_unsigned('==', lhs, rhs))
                 elif opname == "INT_NOTEQUAL":
+
                     lhs, rhs = self.int_comp_type_check(self.fetch_input(op_inputs[0]), self.fetch_input(op_inputs[1]))
                     self.store_output(op_output, builder.icmp_unsigned('!=', lhs, rhs))
                 elif opname == "INT_SLESS":
@@ -329,10 +363,10 @@ class Function:
                     lhs, rhs = self.int_comp_type_check(self.fetch_input(op_inputs[0]), self.fetch_input(op_inputs[1]))
                     self.store_output(op_output, builder.icmp_unsigned('<=', lhs, rhs))
                 elif opname == "INT_ZEXT":
-                    arg, target = int_ext_type_check(self.fetch_input(op_inputs[0]), self.get_type(op_output))
+                    arg, target = self.int_ext_type_check(self.fetch_input(op_inputs[0]), self.get_type(op_output), op_inputs[0].find("size").text)
                     self.store_output(op_output, builder.zext(arg, target))
                 elif opname == "INT_SEXT":
-                    arg, target = int_ext_type_check(self.fetch_input(op_inputs[0]), self.get_type(op_output))
+                    arg, target = self.int_ext_type_check(self.fetch_input(op_inputs[0]), self.get_type(op_output), op_inputs[0].find("size").text)
                     self.store_output(op_output, builder.sext(arg, target))
                 elif opname == "INT_ADD":
                     lhs, rhs = self.int_math_type_check(self.fetch_input(op_inputs[0]),
@@ -501,14 +535,26 @@ class Function:
                             elif "0x" in name:
                                 val = int(name, 16)
                             else:
-                                raise Exception("Bad indexing: " + name)
+                                val = int(name)
                             offset = ir.Constant(ir.IntType(size), addr - self.stack_first)
                         else:
                             offset = self.fetch_input(op_inputs[1])
                         tmp = builder.gep(self.stack, [int32(0), offset], inbounds=True)
                         self.store_output(op_output, tmp)
+                    elif op_inputs[0].find("space").text == "ram":
+                        name = op_inputs[1].find("symbol").text
+                        if name in self.lifter.global_addrs:
+                            self.store_output(op_output, self.lifter.global_addrs[name])
+                        else:
+                            # Ad hoc declare a global
+                            size = int(op_output.find("size").text) * 8
+                            global_type = ir.IntType(size)
+                            glob = ir.GlobalVariable(self.lifter.module, global_type, name)
+                            self.lifter.global_vars[name] = glob
+                            self.lifter.global_addrs[name] = glob
+                            self.store_output(op_output, glob)
                     else:
-                        raise Exception("PTRSUB not in stack space or not in byte_addressable mode")
+                        raise Exception("PTRSUB not in stack space, global, or not in byte_addressable mode")
                 # elif opname == "SEGMENTOP":
                 #     raise Exception("Not implemented: " + opname)
                 # elif opname == "CPOOLREF":
@@ -576,6 +622,8 @@ class Function:
         name = arg.find("symbol").text.strip("_.")
         if ")" in name:
             name = name.split(")")[-1]
+        if "[" in name:
+            name = name.split("[")[0]
         symbol_offset = int(arg.find("offset").text, 16) * 8
         symbol_size = int(arg.find("size").text, 16) * 8
         metatype = int(arg.find("metatype").text)
@@ -692,6 +740,10 @@ class Function:
 
     def int_comp_type_check(self, lhs, rhs):
         """Ghidra should guarantee these are the same size, but we need to verify. Output is always ir.IntType(1)"""
+        while isinstance(lhs.type, ir.PointerType):
+            lhs = self.current_builder.load(lhs)
+        while isinstance(rhs.type, ir.PointerType):
+            rhs = self.current_builder.load(rhs)
         assert isinstance(lhs.type, ir.IntType)
         assert isinstance(rhs.type, ir.IntType)
         if lhs.type.width == rhs.type.width:
@@ -703,6 +755,7 @@ class Function:
 
     def int_math_type_check(self, lhs, rhs, target):
         """"Ensure that both inputs are the same size as the output storage location"""
+
         if isinstance(target.type, ir.PointerType):
             target = ir.IntType(target.type.pointee.width)
         else:
@@ -716,7 +769,7 @@ class Function:
             lhs = self.current_builder.trunc(lhs, target)
         if rhs.type.width < target.width:
             rhs = self.current_builder.zext(rhs, target)
-        elif lhs.type.width > target.width:
+        elif rhs.type.width > target.width:
             rhs = self.current_builder.trunc(rhs, target)
         return lhs, rhs
 
@@ -754,10 +807,11 @@ class Function:
             if isinstance(location.type.pointee, ir.PointerType):
                 return result, self.current_builder.bitcast(location, ir.PointerType(result.type))
             if result.type != location.type.pointee:
-                return result, self.current_builder.bitcast(location, result.type)
+                return result, self.current_builder.bitcast(location,  ir.PointerType(result.type))
             return result, location
         assert isinstance(result.type, ir.IntType)
-        assert isinstance(location.type.pointee, ir.IntType)
+        if result.type != location.type.pointee:
+            location = self.current_builder.bitcast(location, ir.PointerType(result.type))
         if result.type.width < location.type.pointee.width:
             result = self.current_builder.zext(result, location.type.pointee)
         else:
@@ -816,7 +870,10 @@ class Function:
             input1		Varnode containing integer index.
             input2	(constant)	Constant varnode indicating element size.
             output		Varnode result containing pointer to indexed array entry."""
-        ptr = self.fetch_input(in0)
+        if in0.find("symbol").text in self.locals:
+            ptr = self.locals[in0.find("symbol").text]
+        else:
+            ptr = self.fetch_input(in0)
         index = self.fetch_input(in1)
         assert isinstance(index.type, ir.IntType)
         assert isinstance(ptr.type, ir.PointerType)
@@ -827,3 +884,14 @@ class Function:
         if new_ptr.type.pointee != shift.type:
             new_ptr = self.current_builder.bitcast(new_ptr, ir.PointerType(shift.type))
         self.store_output(out, new_ptr)
+
+    def int_ext_type_check(self, inv, outv, in_type):
+        in_type = ir.IntType(int(in_type) * 8)
+        if inv.type != in_type:
+            if inv.type.width < in_type.width:
+                inv = self.current_builder.zext(inv, in_type)
+            else:
+                inv = self.current_builder.trunc(inv, in_type)
+        if isinstance(outv.type, ir.PointerType):
+            return inv, ir.IntType(outv.type.pointee.width)
+        return inv, outv
