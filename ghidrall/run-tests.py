@@ -408,6 +408,7 @@ for file in file_list:
     try:
         print("Decompiling " + file + "...", end="")
         filename = file_path + file
+        print(filename)
         decompile_info = decompiler.decompile_binary(filename,  lifting_options.get("entry"))
         print("Done.")
         print("Lifting " + file + "...", end="")
