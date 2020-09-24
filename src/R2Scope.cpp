@@ -492,7 +492,7 @@ LabSymbol *R2Scope::queryR2FunctionLabel(const Address &addr) const
 	if(!fcn)
 		return nullptr;
 
-	const char *label = r_anal_fcn_label_at(core->anal, fcn, addr.getOffset());
+	const char *label = r_anal_function_get_label_at(fcn, addr.getOffset());
 	if(!label)
 		return nullptr;
 
