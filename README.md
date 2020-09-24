@@ -39,6 +39,8 @@ python run-tests.py
 
 This will compile all the test programs that are pre-instrumented with analysis, decompile, lift and verify them all for verification.
 
-## Verifying tests
+## Docker
 
-Coming soon.
+The following docker container incorporates Seahorn for testing and maintains older versions of modules for compatibility's sake:
+
+https://hub.docker.com/repository/docker/toordeforce/ghidralltester
