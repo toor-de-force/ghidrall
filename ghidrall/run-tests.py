@@ -159,7 +159,7 @@ print("%s lifting failed" % len(lifting_fails))
 results = {}
 for key in seahorn_pass.keys():
     results[key] = "P"
-for key in seahorn_timeouts.keys()
+for key in seahorn_timeouts.keys():
     results[key] = "T"
 for key in seahorn_fails.keys():
     results[key] = "F"
