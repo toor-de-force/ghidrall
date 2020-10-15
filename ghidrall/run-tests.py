@@ -58,6 +58,7 @@ file_list = glob.glob('latest_tests/' + args.source_optimization + '/*')
 seahorn_fails = {}
 seahorn_pass = {}
 seahorn_timeouts = {}
+lifting_fails = {}
 
 for file in file_list:
     out = ""
@@ -81,7 +82,7 @@ for file in file_list:
         print("Verifying took %7.5f seconds." % (time.time() - start))
     except:
         print("Failed for some reason in lifting stage.")
-        seahorn_fails[file_name] = "Failed in lifting."
+        lifting_fails[file_name] = "Failed in lifting."
         continue
 
     # Create a temporary file to hold the LLVM results.
@@ -115,7 +116,7 @@ for file in file_list:
         print("Test failed in solver (rc=%s) after %7.5f seconds." % (
             E.returncode, time.time() - start))
         print(E.output)
-        seahorn_fails[file_name] = "Error"
+        seahorn_timeouts[file_name] = "Error"
         continue
 
     # Look at the output to detect the sat/unsat result, filter commands
@@ -150,4 +151,9 @@ for file in file_list:
 print("A total of %s tests were conducted" % len(file_list))
 print("%s passed" % len(seahorn_pass))
 print("%s failed" % len(seahorn_fails))
-print("%s timed out" % len(seahorn_timeouts))
+print("%s timed out (10 seconds)" % len(seahorn_timeouts))
+print("%s lifting failed" % len(lifting_fails))
+
+test = "/tmp/results/results_" + args.solver + "_" + args.source_optimization + ".txt"
+
+with open("/tmp/results/results.txt", "w") as f:
