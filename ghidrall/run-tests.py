@@ -110,18 +110,13 @@ for file in file_list:
     result = 'none'
     start = time.time()
     try:
-        proc = subprocess.Popen(cmd_args)
-        output = proc.communicate(timeout=1)
+        output = subprocess.check_output(cmd_args)
     except subprocess.CalledProcessError as E:
-        out = out + "Test failed in solver (rc=%s) after %7.5f seconds." % (
-            E.returncode, time.time() - start) + E.output
-        seahorn_fails[file_name] = out
-    except subprocess.TimeoutExpired:
-        proc.terminate()
-        print("Timed out.")
-        seahorn_timeouts[file_name] = "Timed out."
+        print("Test failed in solver (rc=%s) after %7.5f seconds." % (
+            E.returncode, time.time() - start))
+        print(E.output)
+        sys.exit(1)
 
-    proc.terminate()
     # Look at the output to detect the sat/unsat result, filter commands
     # from errors and warnings, etc.
     out_str = output.decode('utf-8')
@@ -133,7 +128,7 @@ for file in file_list:
         elif line == '':
             continue
         else:
-            out = out + '\n' + line
+            print("Line: ", line)
     f.close()
     print("Solving took %7.5f seconds." % (time.time() - start))
 
