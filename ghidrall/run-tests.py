@@ -95,9 +95,9 @@ for file in file_list:
 
     # Construct a command line to invoke seahorn based on arguments.
     if args.solver == 'chc':
-        cmd = 'sea pf --bv-chc --inline'
+        cmd = 'sea pf --bv-chc --cpu 10 --inline'
     else:
-        cmd = 'sea bpf --bmc=mono --horn-bv2=true --inline --bound=12'
+        cmd = 'sea bpf --bmc=mono --cpu 10 --horn-bv2=true --inline --bound=12'
     cmd += " -O%d" % int(args.optimization)
     # Print the command for the user to manually copy if needed.
     print(cmd, llvm_file)
