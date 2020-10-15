@@ -151,4 +151,4 @@ for file in file_list:
 print("A total of %s tests were conducted" % len(file_list))
 print("%s passed" % len(seahorn_pass))
 print("%s failed" % len(seahorn_fails))
-print("%s timed out" % len(seahorn_timeouts)
+print("%s timed out" % len(seahorn_timeouts))
