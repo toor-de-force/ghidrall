@@ -62,20 +62,26 @@ for file in file_list:
     out = ""
     file_name = file.split('/')[-1] + "_" + args.source_optimization
     print("Test for " + file_name)
-    # Decompile using Radare2.
-    start = time.time()
-    decompile_info = decompiler.decompile_binary(file,  lifting_options.get("entry"))
-    print("Decompiling took %7.5f seconds." % (time.time() - start))
 
-    # Lift into LLVM.
-    start = time.time()
-    module = lifter.lift_binary(decompile_info, file, lifting_options)
-    print("Lifting took %7.5f seconds." % (time.time() - start))
+    try:
+        # Decompile using Radare2.
+        start = time.time()
+        decompile_info = decompiler.decompile_binary(file,  lifting_options.get("entry"))
+        print("Decompiling took %7.5f seconds." % (time.time() - start))
 
-    # Verify?
-    start = time.time()
-    verifier.verify(module)
-    print("Verifying took %7.5f seconds." % (time.time() - start))
+        # Lift into LLVM.
+        start = time.time()
+        module = lifter.lift_binary(decompile_info, file, lifting_options)
+        print("Lifting took %7.5f seconds." % (time.time() - start))
+
+        # Verify?
+        start = time.time()
+        verifier.verify(module)
+        print("Verifying took %7.5f seconds." % (time.time() - start))
+    except:
+        print("Failed for some reason in lifting stage.")
+        seahorn_fails[file_name] = "Failed in lifting."
+        continue
 
     # Create a temporary file to hold the LLVM results.
     if args.llvm_file != '':
