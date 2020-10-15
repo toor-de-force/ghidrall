@@ -96,9 +96,9 @@ for file in file_list:
 
     # Construct a command line to invoke seahorn based on arguments.
     if args.solver == 'chc':
-        cmd = 'sea pf --bv-chc --inline'
+        cmd = 'sea pf --bv-chc --inline --cpu=10'
     else:
-        cmd = 'sea bpf --bmc=mono --horn-bv2=true --inline --bound=12'
+        cmd = 'sea bpf --bmc=mono --horn-bv2=true --inline --bound=12 --cpu=10'
     cmd += " -O%d" % int(args.optimization)
     # Print the command for the user to manually copy if needed.
     print(cmd, llvm_file)
@@ -115,7 +115,8 @@ for file in file_list:
         print("Test failed in solver (rc=%s) after %7.5f seconds." % (
             E.returncode, time.time() - start))
         print(E.output)
-        sys.exit(1)
+        seahorn_fails[file_name] = "Error"
+        continue
 
     # Look at the output to detect the sat/unsat result, filter commands
     # from errors and warnings, etc.
