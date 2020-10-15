@@ -16,7 +16,7 @@ first_start = time.time()
 
 # Parse options.
 parser = argparse.ArgumentParser(description="Lift the provided binary to LLVM")
-parser.add_argument('-a', "--source_optimization", choices=["0","1","2"], default="0",
+parser.add_argument('-so', "--source_optimization", choices=["0","1","2"], default="0",
                     help='the executable to analyze')
 parser.add_argument("-l", "--locals",
                     choices=["single_struct", "byte_addressable"],
@@ -55,8 +55,13 @@ lifting_options = {
 
 file_list = glob.glob('latest_tests/' + args.source_optimization + '/*')
 
+seahorn_fails = {}
+seahorn_pass = {}
+
 for file in file_list:
-    print("Test for " + file)
+    out = ""
+    file_name = file.split('/')[-1] + "_" + args.source_optimization
+    print("Test for " + file_name)
     # Decompile using Radare2.
     start = time.time()
     decompile_info = decompiler.decompile_binary(file,  lifting_options.get("entry"))
@@ -100,10 +105,9 @@ for file in file_list:
     try:
         output = subprocess.check_output(cmd_args)
     except subprocess.CalledProcessError as E:
-        print("Test failed in solver (rc=%s) after %7.5f seconds." % (
-            E.returncode, time.time() - start))
-        print(E.output)
-        sys.exit(1)
+        out = out + "Test failed in solver (rc=%s) after %7.5f seconds." % (
+            E.returncode, time.time() - start) + E.output
+        seahorn_fails[file_name] = out
 
     # Look at the output to detect the sat/unsat result, filter commands
     # from errors and warnings, etc.
@@ -116,7 +120,7 @@ for file in file_list:
         elif line == '':
             continue
         else:
-            print("Line: ", line)
+            out = out + '\n' + line
     f.close()
     print("Solving took %7.5f seconds." % (time.time() - start))
 
@@ -124,14 +128,16 @@ for file in file_list:
     # failure and exit with an appropriate return code.
     print("Total elapsed time was %7.5f seconds." % (time.time() - first_start))
     if result == 'sat' and args.nongoal == False:
-        print("Test passed!")
-        sys.exit(0)
+        out = out + "Test passed!"
+        seahorn_pass[file_name] = out
+
     elif result == 'unsat' and args.nongoal == True:
-        print("Test passed!")
-        sys.exit(0)
+        out =  out + "Test passed!"
+        seahorn_pass[file_name] = out
     else:
-        print("Test failed, solver returned %s" % result)
-        sys.exit(1)
+        out = out + "Test failed, solver returned %s" % result
+        seahorn_fails[file_name] = out
 
-
-
+print("A total of %s tests were conducted" % len(file_list))
+print("%s passed" % len(seahorn_pass))
+print("%s failed" % len(seahorn_fails))
