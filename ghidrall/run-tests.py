@@ -109,17 +109,19 @@ for file in file_list:
     # Run seahorn.
     result = 'none'
     start = time.time()
-    with subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, preexec_fn=os.setsid) as process:
-        try:
-            output = process.communicate(timeout=30)
-        except subprocess.CalledProcessError as E:
-            out = out + "Test failed in solver (rc=%s) after %7.5f seconds." % (
-                E.returncode, time.time() - start) + E.output
-            seahorn_fails[file_name] = out
-        except subprocess.TimeoutExpired:
-            print("Timed out.")
-            seahorn_timeouts[file_name] = "Timed out."
+    try:
+        proc = subprocess.Popen(cmd_args)
+        output = proc.communicate(timeout=1)
+    except subprocess.CalledProcessError as E:
+        out = out + "Test failed in solver (rc=%s) after %7.5f seconds." % (
+            E.returncode, time.time() - start) + E.output
+        seahorn_fails[file_name] = out
+    except subprocess.TimeoutExpired:
+        proc.terminate()
+        print("Timed out.")
+        seahorn_timeouts[file_name] = "Timed out."
 
+    proc.terminate()
     # Look at the output to detect the sat/unsat result, filter commands
     # from errors and warnings, etc.
     out_str = output.decode('utf-8')
