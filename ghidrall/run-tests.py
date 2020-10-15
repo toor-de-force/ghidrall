@@ -11,6 +11,8 @@ import src.decompiler as decompiler
 import src.lifter as lifter
 import src.verifier as verifier
 
+import csv
+
 # Take a timestamp for _total_ elapsed time.
 first_start = time.time()
 
@@ -154,6 +156,20 @@ print("%s failed" % len(seahorn_fails))
 print("%s timed out (10 seconds)" % len(seahorn_timeouts))
 print("%s lifting failed" % len(lifting_fails))
 
-test = "/tmp/results/results_" + args.solver + "_" + args.source_optimization + ".txt"
+results = {}
+for key in seahorn_pass.keys():
+    results[key] = "P"
+for key in seahorn_timeouts.keys()
+    results[key] = "T"
+for key in seahorn_fails.keys():
+    results[key] = "F"
+for key in lifting_fails.keys():
+    results[key] = "L"
 
-with open("/tmp/results/results.txt", "w") as f:
+csv_columns = ["File", "Result"]
+csv_file = "/tmp/results/results.csv"
+with open(csv_file, "w") as csvfile:
+    writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
+    writer.writeheader()
+    for data in results:
+        writer.writerow(data)
