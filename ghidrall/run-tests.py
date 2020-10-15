@@ -57,6 +57,7 @@ file_list = glob.glob('latest_tests/' + args.source_optimization + '/*')
 
 seahorn_fails = {}
 seahorn_pass = {}
+seahorn_timeouts = {}
 
 for file in file_list:
     out = ""
@@ -109,11 +110,14 @@ for file in file_list:
     result = 'none'
     start = time.time()
     try:
-        output = subprocess.check_output(cmd_args, timeout=10)
+        output = subprocess.check_output(cmd_args, timeout=30)
     except subprocess.CalledProcessError as E:
         out = out + "Test failed in solver (rc=%s) after %7.5f seconds." % (
             E.returncode, time.time() - start) + E.output
         seahorn_fails[file_name] = out
+    except subprocess.TimeoutExpired:
+        print("Timed out.")
+        seahorn_timeouts[file_name] = "Timed out."
 
     # Look at the output to detect the sat/unsat result, filter commands
     # from errors and warnings, etc.
@@ -147,3 +151,4 @@ for file in file_list:
 print("A total of %s tests were conducted" % len(file_list))
 print("%s passed" % len(seahorn_pass))
 print("%s failed" % len(seahorn_fails))
+print("%s timed out" % len(seahorn_timeouts)
