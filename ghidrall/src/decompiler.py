@@ -1,6 +1,7 @@
 import r2pipe
 
-instrumentation_list = ["sym.path_start", "sym.path_goal", "sym.path_nongoal", "sym.imp.rand"]
+instrumentation_list = ["sym.path_start", "sym.path_goal", "sym.path_nongoal", "sym.imp.rand",
+                        "sym.example_constrain_ret_int", "sym.example_constrain_arg_int__int"]
 
 
 def decompile_binary(target_binary, entry):

@@ -2,7 +2,8 @@ from llvmlite import ir
 import xml.etree.ElementTree as et
 from .block import GhidrallBlock
 
-instrumentation_list = ["sym.path_start", "sym.path_goal", "sym.path_nongoal", "sym.imp.rand"]
+instrumentation_list = ["sym.path_start", "sym.path_goal", "sym.path_nongoal", "sym.imp.rand",
+                        "sym.example_constrain_ret_int", "sym.example_constrain_arg_int__int"]
 int32 = ir.IntType(32)
 int64 = ir.IntType(64)
 int1 = ir.IntType(1)
@@ -604,6 +605,46 @@ class Function:
             args = []
             func_type = ir.FunctionType(int32, args)
             ir_func = ir.Function(module, func_type, "nd")
+            lifter.instrumentation[call_target] = ir_func
+        elif call_target == "sym.example_constrain_ret_int":
+            args = int32
+            func_type = ir.FunctionType(int32, args)
+            ir_func = ir.Function(module, func_type, "sym.assert_int__new_int")
+            entry_block = ir_func.append_basic_block(name="entry")
+            error_block = ir_func.append_basic_block(name="error")
+            exit_block = ir_func.append_basic_block(name="exit")
+            entry_builder = ir.IRBuilder(entry_block)
+            error_builder = ir.IRBuilder(error_block)
+            exit_builder = ir.IRBuilder(exit_block)
+            a = ir_func.args
+            b = entry_builder.alloca(int32)
+            nd = self.instrument("sym.imp.rand")
+            val = entry_builder.call(nd, [])
+            entry_builder.store(val, b)
+            result = entry_builder.icmp_signed("==", a, b)
+            entry_builder.cbranch(result, exit_block, error_block)
+            verifier_error = self.instrument("sym.path_nongoal" if nongoal else "sym.path_goal")
+            error_builder.call(verifier_error, [])
+            error_builder.branch(exit_block)
+            exit_builder.ret(b)
+            lifter.instrumentation[call_target] = ir_func
+        elif call_target == "sym.example_constrain_arg_int__int":
+            args = (int32, int32)
+            func_type = ir.FunctionType(void_type, args)
+            ir_func = ir.Function(module, func_type, "sym.assert_int__int")
+            entry_block = ir_func.append_basic_block(name="entry")
+            error_block = ir_func.append_basic_block(name="error")
+            exit_block = ir_func.append_basic_block(name="exit")
+            entry_builder = ir.IRBuilder(entry_block)
+            error_builder = ir.IRBuilder(error_block)
+            exit_builder = ir.IRBuilder(exit_block)
+            a, b = ir_func.args
+            result = entry_builder.icmp_signed("==", a, b)
+            entry_builder.cbranch(result, exit_block, error_block)
+            verifier_error = self.instrument("sym.path_nongoal" if nongoal else "sym.path_goal")
+            error_builder.call(verifier_error, [])
+            error_builder.branch(exit_block)
+            exit_builder.ret_void()
             lifter.instrumentation[call_target] = ir_func
         else:
             raise Exception("Not excepted instrumentation function")
