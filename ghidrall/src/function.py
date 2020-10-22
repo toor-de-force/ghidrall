@@ -918,7 +918,7 @@ class Function:
         index = self.fetch_input(in1)
         assert isinstance(index.type, ir.IntType)
         assert isinstance(ptr.type, ir.PointerType)
-        shift = ir.Constant(int32, 8 * int(in2.find("symbol").text))
+        shift = ir.Constant(ir.IntType(index.type.width), 8 * int(in2.find("symbol").text))
         adjusted = self.current_builder.mul(index, shift)
         new_ptr = self.current_builder.gep(ptr, [adjusted], inbounds=True)
         assert isinstance(new_ptr.type, ir.PointerType)
