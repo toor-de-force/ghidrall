@@ -40,3 +40,6 @@ RUN ln -s /usr/bin/llvm-link-10 /usr/bin/llvm-link
 RUN echo "export PATH=/usr/local/go/bin:/root/go/bin:${PATH}" >> /root/.bashrc
 
 WORKDIR /home/usea/Ghidrall/ghidrall
+
+RUN pip3 install pydot
+RUN pip3 install multiset
