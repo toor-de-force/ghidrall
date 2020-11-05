@@ -5,5 +5,5 @@
 	path = third-party/pugixml
 	url = https://github.com/toor-de-force/pugixml
 [submodule "comparator"]
-	path = comparator
+	path = ghidrall/comparator
 	url = https://github.com/toor-de-force/comparator

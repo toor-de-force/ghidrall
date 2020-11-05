@@ -11,7 +11,7 @@ parser.add_argument("-o", "--optimization",
                     default="0",
                     help="choose the level of optimization with gclang++")
 parser.add_argument("-n", "--name",
-                    default="output.ll",
+                    default="output",
                     help="Assign a name for the upstream .ll file")
 
 args = parser.parse_args()

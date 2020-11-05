@@ -1,5 +1,4 @@
-import comparator.Comparator as c
-
+from .comparator import Comparator as c
 import argparse
 
 parser = argparse.ArgumentParser(description="Generate test binaries and their associated .ll with GLLVM")
