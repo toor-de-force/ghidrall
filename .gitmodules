@@ -4,6 +4,6 @@
 [submodule "third-party/pugixml"]
 	path = third-party/pugixml
 	url = https://github.com/toor-de-force/pugixml
-[submodule "comparator/comparator"]
-	path = comparator/comparator
+[submodule "comparator"]
+	path = comparator
 	url = https://github.com/toor-de-force/comparator

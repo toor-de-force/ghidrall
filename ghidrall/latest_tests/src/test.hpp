@@ -24,11 +24,19 @@ extern time_t global_time;
 // won't find the symbols, which defeats the whole point of using
 // these calls to parameterize our tests.
 
-void NOINLINE path_start();
+time_t global_time;
 
-void NOINLINE path_goal();
+void NOINLINE path_start() {
+  time(&global_time);
+}
 
-void NOINLINE path_nongoal();
+void NOINLINE path_goal() {
+  time(&global_time);
+}
+
+void NOINLINE path_nongoal(){
+  time(&global_time);
+}
 
 // APIs here
 

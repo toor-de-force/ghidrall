@@ -26,4 +26,17 @@ RUN make install
 RUN pip3 install r2pipe
 RUN LLVM_CONFIG=/usr/lib/llvm-10/bin/llvm-config pip3 install llvmlite
 
+WORKDIR /home/usea/
+
+RUN wget https://golang.org/dl/go1.15.3.linux-amd64.tar.gz
+RUN tar -C /usr/local -xzf go1.15.3.linux-amd64.tar.gz
+ENV PATH "$PATH:/usr/local/go/bin"
+RUN go get github.com/SRI-CSL/gllvm/cmd/...
+ENV PATH "$PATH:/root/go/bin"
+RUN ln -s /usr/bin/clang-10 /usr/bin/clang
+RUN ln -s /usr/bin/clang++-10 /usr/bin/clang++
+RUN ln -s /usr/bin/llvm-ar-10 /usr/bin/llvm-ar
+RUN ln -s /usr/bin/llvm-link-10 /usr/bin/llvm-link
+RUN echo "export PATH=/usr/local/go/bin:/root/go/bin:${PATH}" >> /root/.bashrc
+
 WORKDIR /home/usea/Ghidrall/ghidrall
