@@ -14,7 +14,7 @@ def run_chain(path, name, opt):
     args = cmd.split()
     subprocess.check_output(args)
 
-    cmd = "llvm-dis-10 " + name + ".bc"
+    cmd = "llvm-dis-10 " + name + ".o.bc"
     args = cmd.split()
     subprocess.check_output(args)
 
