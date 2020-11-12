@@ -27,7 +27,7 @@ os.chdir('results')
 for file in os.listdir("../latest_tests/src"):
     if file.endswith(".cpp") and file != "apis.cpp":
         file_name = file.split(".")[0]
-        file_path = os.path.join("latest_tests/src", file)
+        file_path = os.path.join("../latest_tests/src", file)
         run_chain(file_path, file_name, "0")
         run_chain(file_path, file_name, "1")
         run_chain(file_path, file_name, "2")
