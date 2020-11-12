@@ -5,7 +5,7 @@ void example_constrain_arg(int x, int y) {
   assert_symbolic (x == y);
 }
 
-int example_constrain_ret(int y) {
+int example_constrain_ret(int x, int y) {
   // If we don't force this to a fresh symbolic value, it could be in a register that was
   // pre-initialized, which causes Spacer to fail.
   volatile int x = FRESH_SYMBOLIC;
