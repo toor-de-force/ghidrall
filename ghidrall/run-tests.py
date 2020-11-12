@@ -162,9 +162,9 @@ for key in lifting_fails.keys():
     results[key] = "L"
 
 csv_columns = ["File", "Result"]
-csv_file = "/tmp/results/results.csv"
+csv_file = "/tmp/results.csv"
 with open(csv_file, "w") as csvfile:
     writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
     writer.writeheader()
-    for data in results:
+    for data in list(results.items()):
         writer.writerow(data)
