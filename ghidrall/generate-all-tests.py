@@ -7,15 +7,15 @@ import shutil
 
 def run_chain(path, name, opt):
     try:
-        cmd = "gclang++ -o " + name + ".o -O" + opt + " " + path
+        cmd = "gclang++ -o " + name + "." + opt + ".o -O" + opt + " " + path
         args = cmd.split()
         subprocess.check_output(args)
 
-        cmd = "get-bc " + name + ".o"
+        cmd = "get-bc " + name + "." + opt + ".o"
         args = cmd.split()
         subprocess.check_output(args)
 
-        cmd = "llvm-dis-10 " + name + ".o.bc"
+        cmd = "llvm-dis-10 " + name + "." + opt + ".o.bc"
         args = cmd.split()
         subprocess.check_output(args)
     except:
