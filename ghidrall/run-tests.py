@@ -55,7 +55,7 @@ lifting_options = {
     "nongoal": args.nongoal
 }
 
-file_list = glob.glob('latest_tests/' + args.source_optimization + '/*')
+file_list = glob.glob('results/*.o')
 
 seahorn_fails = {}
 seahorn_pass = {}
