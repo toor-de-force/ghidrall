@@ -64,7 +64,7 @@ lifting_fails = {}
 
 for file in file_list:
     out = ""
-    file_name = file.split('/')[-1] + "_" + args.source_optimization
+    file_name = file + "." + args.source_optimization
     print("Test for " + file_name)
 
     try:
@@ -87,13 +87,8 @@ for file in file_list:
         lifting_fails[file_name] = "Failed in lifting."
         continue
 
-    # Create a temporary file to hold the LLVM results.
-    if args.llvm_file != '':
-        llvm_file = args.llvm_file
-        f = open(llvm_file, 'w')
-    else:
-        f = tempfile.NamedTemporaryFile(mode='w', suffix='.ll')
-        llvm_file = f.name
+    llvm_file = file_name + ".ll"
+    f = open(llvm_file, 'w')
     f.write(str(module))
     f.flush()
 
