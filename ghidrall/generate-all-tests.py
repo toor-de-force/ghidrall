@@ -12,7 +12,7 @@ import shutil
 def run_chain(path, name, opt):
     try:
         name = name + "_" + opt
-        cmd = "clang++ -o " + name + " -O" + opt + " " + path + " -flto -Wl,-plugin-opt,save-temps"
+        cmd = "clang++ -o " + name + ".o -O" + opt + " " + path + " -flto -Wl,-plugin-opt,save-temps"
         args = cmd.split()
         subprocess.check_output(args)
 
