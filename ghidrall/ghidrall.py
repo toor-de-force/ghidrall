@@ -9,6 +9,7 @@ import subprocess
 import src.decompiler as decompiler
 import src.lifter as lifter
 import src.verifier as verifier
+import src.optimizer as optimizer
 
 # Take a timestamp for _total_ elapsed time.
 first_start = time.time()
@@ -62,10 +63,13 @@ start = time.time()
 module = lifter.lift_binary(decompile_info, args.file, lifting_options)
 print("Lifting took %7.5f seconds." % (time.time() - start))
 
-# Verify?
+# Verify
 start = time.time()
 verifier.verify(module)
 print("Verifying took %7.5f seconds." % (time.time() - start))
+
+# Optimize
+optimizer.optimize(module)
 
 # Create a temporary file to hold the LLVM results.
 if args.llvm_file != '':
