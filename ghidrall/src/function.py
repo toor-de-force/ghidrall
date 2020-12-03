@@ -609,7 +609,7 @@ class Function:
         elif call_target == "sym.example_constrain_ret_int":
             args = int32
             func_type = ir.FunctionType(int32, args)
-            ir_func = ir.Function(module, func_type, "sym.assert_int__new_int")
+            ir_func = ir.Function(module, func_type, "sym.example_constrain_ret_int")
             entry_block = ir_func.append_basic_block(name="entry")
             error_block = ir_func.append_basic_block(name="error")
             exit_block = ir_func.append_basic_block(name="exit")
@@ -631,7 +631,7 @@ class Function:
         elif call_target == "sym.example_constrain_arg_int__int":
             args = (int32, int32)
             func_type = ir.FunctionType(void_type, args)
-            ir_func = ir.Function(module, func_type, "sym.assert_int__int")
+            ir_func = ir.Function(module, func_type, "sym.example_constrain_arg_int__int")
             entry_block = ir_func.append_basic_block(name="entry")
             error_block = ir_func.append_basic_block(name="error")
             exit_block = ir_func.append_basic_block(name="exit")
