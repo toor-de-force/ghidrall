@@ -5,21 +5,55 @@ from pathlib import Path
 import shutil
 
 
+# clang++ -o x x.cpp -flto -Wl,-plugin-opt,save-temps
+# llvm-dis-10 x.0.5.precodegen.bc
+# this generates our x.compile.ll
+
 def run_chain(path, name, opt):
     try:
-        cmd = "gclang++ -o " + name + "." + opt + ".o -O" + opt + " " + path
+        name = name + "_" + opt
+        cmd = "clang++ -o " + name + " -O" + opt + " " + path + " -flto -Wl,-plugin-opt,save-temps"
         args = cmd.split()
         subprocess.check_output(args)
 
-        cmd = "get-bc " + name + "." + opt + ".o"
+        cmd = "llvm-dis-10 " + name + ".o.0.5.precodegen.bc"
         args = cmd.split()
         subprocess.check_output(args)
 
-        cmd = "llvm-dis-10 " + name + "." + opt + ".o.bc"
+        cmd = "mv " + name + ".o " + name
+        args = cmd.split()
+        subprocess.check_output(args)
+
+        cmd = "mv " + name + ".o.0.5.precodegen.ll " + name + ".cmp.ll"
+        args = cmd.split()
+        subprocess.check_output(args)
+
+        cmd = "rm " + name + ".o.0.0.preopt.bc"
+        args = cmd.split()
+        subprocess.check_output(args)
+
+        cmd = "rm " + name + ".o.0.2.internalize.bc"
+        args = cmd.split()
+        subprocess.check_output(args)
+
+        cmd = "rm " + name + ".o.0.4.opt.bc"
+        args = cmd.split()
+        subprocess.check_output(args)
+
+        cmd = "rm " + name + ".o.0.5.precodegen.bc"
+        args = cmd.split()
+        subprocess.check_output(args)
+
+        cmd = "rm " + name + ".o.o"
+        args = cmd.split()
+        subprocess.check_output(args)
+
+        cmd = "rm " + name + ".o.resolution.txt"
         args = cmd.split()
         subprocess.check_output(args)
     except:
         pass
+
 
 dir_path = Path('results')
 if dir_path.exists() and dir_path.is_dir():
@@ -33,4 +67,4 @@ for file in os.listdir("../latest_tests/src"):
         run_chain(file_path, file_name, "0")
         run_chain(file_path, file_name, "1")
         run_chain(file_path, file_name, "2")
-
+    break
