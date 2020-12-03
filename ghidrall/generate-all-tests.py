@@ -67,4 +67,3 @@ for file in os.listdir("../latest_tests/src"):
         run_chain(file_path, file_name, "0")
         run_chain(file_path, file_name, "1")
         run_chain(file_path, file_name, "2")
-    break
