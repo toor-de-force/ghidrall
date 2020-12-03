@@ -26,8 +26,6 @@ parser.add_argument("-l", "--locals",
                     help="choose how local variables are displayed")
 parser.add_argument("-n", "--nongoal", action="store_true",
                     help="Lift solver heuristics for anti-goals")
-parser.add_argument("-L", "--llvm-file", default="",
-                    help="specify the llvm file name")
 parser.add_argument("-s", "--solver", choices=["bmc", "chc"], default="chc",
                     help="Use the specified solver")
 parser.add_argument("-o", "--optimization", choices=["0","1","2","3"], default=0,
@@ -166,5 +164,5 @@ csv_file = "/tmp/results.csv"
 with open(csv_file, "w") as csvfile:
     writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
     writer.writeheader()
-    for data in list(results.items()):
+    for data in results:
         writer.writerow(data)
