@@ -40,16 +40,14 @@ void NOINLINE path_nongoal(){
 
 // APIs here
 
-void example_constrain_arg (int, int);
-int example_constrain_ret (int);
-int example_counter (void);
-
-// This is a dummy import that we will treat as an assert statement in the sense of GCL.
-extern "C" void __assert_symbolic_dummy_import (bool);
-
-#define assert_symbolic_name __assert_symbolic_dummy_import
-#define assert_symbolic_name_str #assert_symbolic_name
-
-#define assert_symbolic(bool) assert_symbolic_name (bool);
+void example_constrain_arg (int, int){
+  time(&global_time);
+}
+int example_constrain_ret (int){
+  time(&global_time);
+}
+int example_counter (void){
+  time(&global_time);
+}
 
 #endif
