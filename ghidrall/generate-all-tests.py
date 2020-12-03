@@ -20,10 +20,6 @@ def run_chain(path, name, opt):
         args = cmd.split()
         subprocess.check_output(args)
 
-        cmd = "mv " + name + ".o " + name
-        args = cmd.split()
-        subprocess.check_output(args)
-
         cmd = "mv " + name + ".o.0.5.precodegen.ll " + name + ".cmp.ll"
         args = cmd.split()
         subprocess.check_output(args)
