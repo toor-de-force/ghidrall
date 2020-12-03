@@ -159,10 +159,8 @@ for key in seahorn_fails.keys():
 for key in lifting_fails.keys():
     results[key] = "L"
 
-csv_columns = ["File", "Result"]
 csv_file = "/tmp/results.csv"
 with open(csv_file, "w") as csvfile:
-    writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
-    writer.writeheader()
-    for data in results:
-        writer.writerow(data)
+    writer = csv.writer(csvfile)
+    for key, value in results.items():
+        writer.writerow([key, value])
