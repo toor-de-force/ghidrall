@@ -239,7 +239,7 @@ class Function:
                         added.append(outs[i].get("id"))
                 elif opname == "CALL":
                     call_target = op_inputs[0].find("symbol").text
-                    if call_target in instrumentation_list:
+                    if call_target in instrumentation_list and "example" not in call_target:
                         func_call = self.instrument(call_target)
                         if func_call is not None:
                             result = builder.call(func_call, [])
