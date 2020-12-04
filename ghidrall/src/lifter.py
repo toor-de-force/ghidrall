@@ -2,7 +2,9 @@ from llvmlite import ir
 import xml.etree.ElementTree as et
 from .function import Function
 
-instrumentation_list = ["sym.path_start", "sym.path_goal", "sym.path_nongoal", "sym.imp.rand"]
+instrumentation_list = ["sym.path_start", "sym.path_goal", "sym.path_nongoal", "sym.imp.rand"
+                        "sym.example_constrain_ret_int", "sym.example_constrain_arg_int__int",
+                        "sym.example_counter"]
 int32 = ir.IntType(32)
 int64 = ir.IntType(64)
 int1 = ir.IntType(1)

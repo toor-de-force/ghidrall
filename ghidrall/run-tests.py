@@ -85,7 +85,7 @@ for file in file_list:
         lifting_fails[file_name] = "Failed in lifting."
         continue
 
-    llvm_file = file_name + ".ll"
+    llvm_file = file_name.split('.')[0] + "dcmp.ll"
     f = open(llvm_file, 'w')
     f.write(str(module))
     f.flush()

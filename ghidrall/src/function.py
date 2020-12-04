@@ -3,7 +3,8 @@ import xml.etree.ElementTree as et
 from .block import GhidrallBlock
 
 instrumentation_list = ["sym.path_start", "sym.path_goal", "sym.path_nongoal", "sym.imp.rand",
-                        "sym.example_constrain_ret_int", "sym.example_constrain_arg_int__int"]
+                        "sym.example_constrain_ret_int", "sym.example_constrain_arg_int__int",
+                        "sym.example_counter"]
 int32 = ir.IntType(32)
 int64 = ir.IntType(64)
 int1 = ir.IntType(1)
@@ -239,7 +240,7 @@ class Function:
                         added.append(outs[i].get("id"))
                 elif opname == "CALL":
                     call_target = op_inputs[0].find("symbol").text
-                    if call_target in instrumentation_list and "example" not in call_target:
+                    if call_target in instrumentation_list:
                         func_call = self.instrument(call_target)
                         if func_call is not None:
                             result = builder.call(func_call, [])
@@ -274,8 +275,9 @@ class Function:
                                 self.store_output(op_output, result)
                                 self.lifter.ret_types[call_target] = "not void"
                     if op_output is not None and result is not None:
+                        print(self.lifter.module)
                         if call_target in instrumentation_list:
-                            if call_target == "sym.imp.rand":
+                            if call_target == "sym.imp.rand" or call_target == "sym.example_counter":
                                 self.store_output(op_output, result)
                             else:
                                 raise Exception("NO here: " + call_target)
@@ -336,6 +338,7 @@ class Function:
                         end_builder.ret_void()
                         builder.call(ir_func, [self.fetch_input(op_inputs[0])])
                 elif opname == "CALLOTHER":
+                    print(self.lifter.module)
                     raise Exception("Not implemented: " + opname)
                 elif opname == "RETURN":
                     if self.return_type == "void":
@@ -348,7 +351,7 @@ class Function:
                     lhs, rhs = self.int_comp_type_check(self.fetch_input(op_inputs[0]), self.fetch_input(op_inputs[1]))
                     self.store_output(op_output, builder.icmp_unsigned('==', lhs, rhs))
                 elif opname == "INT_NOTEQUAL":
-
+                    print(self.lifter.module)
                     lhs, rhs = self.int_comp_type_check(self.fetch_input(op_inputs[0]), self.fetch_input(op_inputs[1]))
                     self.store_output(op_output, builder.icmp_unsigned('!=', lhs, rhs))
                 elif opname == "INT_SLESS":
@@ -645,6 +648,20 @@ class Function:
             error_builder.call(verifier_error, [])
             error_builder.branch(exit_block)
             exit_builder.ret_void()
+            lifter.instrumentation[call_target] = ir_func
+        elif call_target == "sym.example_counter":
+            args = []
+            func_type = ir.FunctionType(int32, args)
+            global_type = int32
+            glob = ir.GlobalVariable(self.lifter.module, global_type, "counter")
+            self.lifter.global_vars["counter"] = glob
+            ir_func = ir.Function(module, func_type, "sym.example_counter")
+            entry_block = ir_func.append_basic_block(name="entry")
+            entry_builder = ir.IRBuilder(entry_block)
+            var = entry_builder.load(glob)
+            result = entry_builder.add(var, ir.Constant(int32, 1))
+            entry_builder.store(result, glob)
+            entry_builder.ret(result)
             lifter.instrumentation[call_target] = ir_func
         else:
             raise Exception("Not excepted instrumentation function")
