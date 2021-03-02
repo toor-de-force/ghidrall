@@ -1,1 +1,0 @@
-/usr/bin/c++  -m32   CMakeFiles/seq_call_three.dir/seq_call_three.cpp.o  -o seq_call_three 

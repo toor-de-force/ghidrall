@@ -1,1 +1,0 @@
-/usr/bin/c++  -m64   CMakeFiles/global_var_nongoal.dir/global_var_nongoal.cpp.o  -o global_var_nongoal 

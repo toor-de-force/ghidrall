@@ -1,1 +1,0 @@
-/usr/bin/c++  -m32   CMakeFiles/condcall_one.dir/condcall_one.cpp.o  -o condcall_one 

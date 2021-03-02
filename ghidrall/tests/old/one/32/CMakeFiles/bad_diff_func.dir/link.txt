@@ -1,1 +1,0 @@
-/usr/bin/c++  -m32   CMakeFiles/bad_diff_func.dir/bad_diff_func.cpp.o  -o bad_diff_func 

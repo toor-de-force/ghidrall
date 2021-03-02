@@ -4,10 +4,10 @@ build
 *.swp
 compile_commands.json
 ghidra/flex/
-/ghidrall/tests/build/*
-/ghidrall/tests/results/*
-!/ghidrall/tests/results/lit.cfg
-!/ghidrall/tests/README.md
-!/ghidrall/tests/seatest.py
+/tests/build/*
+/tests/results/*
+!/tests/results/lit.cfg
+!/tests/README.md
+!/tests/seatest.py
 /debug/
 .vscode

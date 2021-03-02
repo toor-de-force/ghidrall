@@ -1,1 +1,0 @@
-/usr/bin/c++  -m32   CMakeFiles/seq_call_four.dir/seq_call_four.cpp.o  -o seq_call_four 

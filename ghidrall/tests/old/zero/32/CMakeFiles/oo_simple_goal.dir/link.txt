@@ -1,1 +1,0 @@
-/usr/bin/c++  -m32   CMakeFiles/oo_simple_goal.dir/oo_simple_goal.cpp.o  -o oo_simple_goal 

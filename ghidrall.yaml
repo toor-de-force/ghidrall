@@ -1,0 +1,42 @@
+verify_options:
+# Optimization level
+  '-O3': ''
+#
+# PREPROCESSING
+#
+  CPU: 60
+  inline: ''
+  enable-loop-idiom: ''
+  enable-indvar: ''
+  no-lower-gv-init-struct: ''
+  externalize-addr-taken-functions: ''
+  no-kill-vaarg: ''
+  with-arith-overflow: true
+  horn-unify-assumes: true
+  horn-gsa: true
+  dsa: sea-flat
+  devirt-functions: types
+# bit-precise memory-precise operational semantics
+  bmc: opsem
+  horn-vcgen-use-ite: true
+# ignore control flow
+  horn-vcgen-only-dataflow: true
+# reduce by data dependence
+  horn-bmc-coi: true
+# static allocator supports symbolic allocation size
+  sea-opsem-allocator: static
+# stack allocation from a symbolic starting point
+  horn-explicit-sp0: true
+# lambdas for memory
+  horn-bv2-lambdas: true
+# use z3 simplifier during vcgen
+  horn-bv2-simplify: true
+# intermediate results in human readable form for debugging
+  '-S': ''
+# keep intermediate results for debugging
+  keep-temps: ''
+  temp-dir: /tmp/ghidrall
+# time and result stats
+  horn-stats: true
+# global initializers above this size are ignored
+  horn-bv2-max-gv-init-size: 1024

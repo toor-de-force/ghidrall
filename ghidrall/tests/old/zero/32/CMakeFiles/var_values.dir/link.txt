@@ -1,1 +1,0 @@
-/usr/bin/c++  -m32   CMakeFiles/var_values.dir/var_values.cpp.o  -o var_values 

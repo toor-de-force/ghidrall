@@ -1,1 +1,0 @@
-/usr/bin/c++  -m64   CMakeFiles/seq_call_one.dir/seq_call_one.cpp.o  -o seq_call_one 

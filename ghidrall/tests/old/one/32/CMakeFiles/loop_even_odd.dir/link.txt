@@ -1,1 +1,0 @@
-/usr/bin/c++  -m32   CMakeFiles/loop_even_odd.dir/loop_even_odd.cpp.o  -o loop_even_odd 

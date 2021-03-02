@@ -1,1 +1,0 @@
-/usr/bin/c++  -m64   CMakeFiles/rv_seq_v2.dir/rv_seq_v2.cpp.o  -o rv_seq_v2 

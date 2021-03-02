@@ -1,0 +1,678 @@
+args_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+assert_test_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.example_constrain_arg_int__int
+assert_test_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.example_constrain_ret_int
+assert_test_v3:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.example_counter
+bound_loop_with_var:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+call_trace_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.add_int
+call_trace_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func0_int
+  - sym.func1_int
+  - sym.func2_int
+call_trace_v3:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.add_int
+  - sym.far_add_int
+call_trace_v4:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func0_int
+  - sym.func1_int
+  - sym.func2_int
+call_trace_v5:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func1_int
+  - sym.func2_int
+call_trace_v6:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func
+  - sym.far_add_int
+  - sym.add_int
+compound_condition_param_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int
+compound_condition_param_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int
+compound_condition_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+compound_condition_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+compound_condition_v3:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+condcall_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int
+condcall_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func1_int
+  - sym.func2_int
+  - sym.func3_int
+down_call_chain:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func1_int
+  - sym.func2
+  - sym.func3
+empty:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+endless_loop:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+exception:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int
+exclusive_ite:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+exclusive_ite_goal_in_else:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+explosive_conditions_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int__int__int
+fake_failed_test:
+  - main
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+fishyxml_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_char_const___unsigned_int
+  - sym.func2_char_const
+fishyxml_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_char_const___unsigned_int
+  - sym.func2_char_const
+fishyxml_v3:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_char___unsigned_int
+  - sym.func2_char
+func_array:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func1
+  - sym.func2
+  - sym.func3
+  - sym.func4
+  - ghidrall.indirect.call
+global_var_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+global_var_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func
+  - sym.func2
+global_var_v3:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func
+  - sym.func2
+independent_ite:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+independent_ite_param:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int__int__int
+input_inside_bound_loop_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+input_inside_bound_loop_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+input_inside_bound_loop_v3:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+input_inside_bound_loop_v4:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+input_inside_bound_loop_v5:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+input_inside_bound_loop_v6:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+inter_func_narrow_to_wide_constraint:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func0
+  - sym.func1_int
+inter_func_param:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func0_int
+  - sym.func1_int__int
+inter_func_wide_to_narrow_constraint:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func0
+  - sym.func1_int
+inter_rv:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.add_int
+  - sym.func1
+  - sym.far_add_int
+linear_flow:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+loop_even_odd:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+multi_call_inter_cond:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func1_int
+  - sym.func2_int
+multi_call_inter_cond_else:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func0_int
+  - sym.func1_int
+multi_call_inter_seq:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func0_int
+  - sym.func1_int
+multiple_ite:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+multivar_compound_condition_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+multivar_compound_condition_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int
+nested_condition_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+nested_condition_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+nested_condition_v3:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+nested_condition_v4:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+nested_ite_condition_param_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int
+nested_ite_condition_param_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int
+nested_ite_condition_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+nested_ite_condition_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+nested_loop:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+oo_simple:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - method.Cls.Cls
+  - method.Cls.get_member
+  - sym.imp.operator_new_unsigned_long
+oo_virtual_func:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - method.Cls.Cls
+  - method.Cls.get_member
+  - sym.imp.operator_new_unsigned_long
+outlaw_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_unsigned_long
+  - sym.func2_unsigned_long
+outlaw_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_unsigned_long
+  - sym.func2_unsigned_long
+outlaw_v3:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+outlaw_v4:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+pointer_write:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.writeThroughPointer_int_volatile___int
+pointer_write_nongoal:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.writeThroughPointer_int_volatile___int
+recurse_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int
+recurse_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int
+rv_cond:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int
+rv_same_var:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int
+rv_seq_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int
+rv_seq_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int
+rv_seq_v3:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int
+single_condition_param_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int
+single_condition_param_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int
+single_condition_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+single_condition_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+strcmp:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.imp.strcmp
+stress_both:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+stress_deep:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+stress_wide:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+switch_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+switch_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+switch_v3:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+switch_v4:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+switch_v5:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+unbound_loop_with_var:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+unused_params_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func1_int__int__int
+  - sym.func2_int__int__char_const
+  - sym.func3_int__int
+unused_params_v2:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func1_int__int__int
+  - sym.func2_int__int__int
+  - sym.func3_int__int
+up_and_down_v1:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func1_int
+  - sym.func2_int
+  - sym.func3_int
+  - sym.func4_int
+  - sym.func5_int
+var_values:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+var_values_param:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int__int__int__bool__char
+varargs:
+  - main
+  - sym.nd
+  - sym.path_start
+  - sym.path_goal
+  - sym.path_nongoal
+  - sym.func_int__...

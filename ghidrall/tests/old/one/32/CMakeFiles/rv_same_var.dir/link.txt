@@ -1,1 +1,0 @@
-/usr/bin/c++  -m32   CMakeFiles/rv_same_var.dir/rv_same_var.cpp.o  -o rv_same_var 

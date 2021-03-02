@@ -1,9 +1,0 @@
-[submodule "ghidra/ghidra"]
-	path = ghidra/ghidra
-	url = https://github.com/toor-de-force/ghidra
-[submodule "third-party/pugixml"]
-	path = third-party/pugixml
-	url = https://github.com/toor-de-force/pugixml
-[submodule "comparator"]
-	path = ghidrall/comparator
-	url = https://github.com/toor-de-force/comparator

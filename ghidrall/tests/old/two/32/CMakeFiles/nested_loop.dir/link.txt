@@ -1,1 +1,0 @@
-/usr/bin/c++  -m32   CMakeFiles/nested_loop.dir/nested_loop.cpp.o  -o nested_loop 
