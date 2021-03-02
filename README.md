@@ -1,12 +1,12 @@
 # GHIDRALL
 
-This is an adaption of the r2ghidra-dec project. It leverages the ghidra decompiler's internal datastructures to emit P-code at a higher level than low/high p-code.
+This is an adaption of the rzghidra-dec project. It leverages the ghidra decompiler's internal datastructures to emit P-code at a higher level than low/high p-code.
 
 ## Installing
 
-Requires r2.
+Requires rizin.
 
-Same instructions from r2ghidra-dec.
+Same instructions from rzghidra-dec.
 
 First, make sure the submodule contained within this repository is fetched and up to date:
 
