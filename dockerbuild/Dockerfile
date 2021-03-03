@@ -7,6 +7,7 @@ RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install build-essential -y
 RUN apt-get install flex bison -y
+RUN apt-get install pkg-config -y
 RUN git clone https://github.com/radareorg/radare2.git
 RUN radare2/sys/install.sh
 
@@ -40,3 +41,5 @@ RUN ln -s /usr/bin/llvm-link-10 /usr/bin/llvm-link
 RUN echo "export PATH=/usr/local/go/bin:/root/go/bin:${PATH}" >> /root/.bashrc
 
 WORKDIR /home/usea/Ghidrall/ghidrall
+
+USER usea
