@@ -28,10 +28,11 @@ def run_tests(input_file_list, opt, goal_strat, local_strat, directory, cpu, doc
     for idx, file in enumerate(input_file_list):
         print(f"processing {file}, {idx + 1} of {len(input_file_list)} in chunk {cpu}")
         name = file.split('.')[0] + "_" + opt + "_" + goal_strat + "_" + local_strat
-        goal_location = os.path.join("/tmp", directory, file)
         if docker_true:
+            goal_location = os.path.join("/tmp", directory, file)
             cmd = BASE_COMMAND_DOCKER + goal_location
         else:
+            goal_location  = os.path.join(directory, file)
             cmd = BASE_COMMAND + goal_location
         start = time.time()
         try:
