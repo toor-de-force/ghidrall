@@ -5,7 +5,7 @@ Please use branch `new_frontend`. This will become the master branch in the near
 ## INSTALLING
 
 For a one stop shop, here is a new dockerhub image to pull:
-`docker pull blah && docker run -it blah`
+`docker pull toordeforce/ghidrall_2021:latest && docker run -it toordeforce/ghidrall_2021:latest`
 
 To build from the dockerfile run the following:
 1. `cd dockerbuild`
@@ -20,7 +20,7 @@ From either installation method:
 3. Run the SeaHorn tests with `python3 run_seahorn_for_tests.py`. If you are **NOT** within a docker, use tag `--docker` to run the tests with a SeaHorn docker container. If you are in the docker already, Seahorn is already baked in and you can run without the tag.
 
 For a single example:
-1. `clang++ -o tests/generated/0/binary/bound_loop_with_var.o -g -O0 -fno-inline-functions tests/src/bound_loop_with_var.cpp -flto -Wl,-plugin-opt,save-temps`
+1. `clang++ -o bound_loop_with_var.o -g -O0 -fno-inline-functions tests/src/bound_loop_with_var.cpp -flto -Wl,-plugin-opt,save-temps`
 2. `python3 ghidrall.py -f main bound_loop_with_var.o -l single_struct -o bound_loop_with_var.ll`
 3. `sea yama -y ghidrall.yaml bpf bound_loop_with_var.ll`
 
