@@ -23,3 +23,5 @@ For a single example:
 1. `clang++ -o tests/generated/0/binary/bound_loop_with_var.o -g -O0 -fno-inline-functions tests/src/bound_loop_with_var.cpp -flto -Wl,-plugin-opt,save-temps`
 2. `python3 ghidrall.py -f main bound_loop_with_var.o -l single_struct -o bound_loop_with_var.ll`
 3. `sea yama -y ghidrall.yaml bpf bound_loop_with_var.ll`
+
+SeaHorn will say no assertions found - this is a good thing! The LLVM optimizer found it was trivial to reach that goal, so it didn't bring it to the solver stage.
