@@ -10,7 +10,8 @@ import os.path
 import csv
 import subprocess
 
-BASE_COMMAND = 'sea yama -y /tmp/ghidrall.yaml bpf '
+BASE_COMMAND_DOCKER = 'sea yama -y /tmp/ghidrall.yaml bpf '
+BASE_COMMAND = 'sea yama -y ghidrall.yaml bpf '
 TOP_DIR = 'tests/generated'
 DOCKER_IMAGE = 'seahorn/seahorn-llvm10:nightly'
 CHUNKS = 4
@@ -27,7 +28,10 @@ def run_tests(input_file_list, opt, goal_strat, local_strat, directory, cpu, doc
         print(f"processing {file}, {idx + 1} of {len(input_file_list)} in chunk {cpu}")
         name = file.split('.')[0] + "_" + opt + "_" + goal_strat + "_" + local_strat
         goal_location = os.path.join("/tmp", directory, file)
-        cmd = BASE_COMMAND + goal_location
+        if docker_true:
+        	cmd = BASE_COMMAND_DOCKER + goal_location
+        else:
+        	cmd = BASE_COMMAND + goal_location
         start = time.time()
         try:
         	if docker_true:
