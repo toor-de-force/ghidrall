@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
-import os
-from pathlib import Path
-import docker
-import time
 import argparse
-from multiprocessing import Pool
-from docker.errors import ContainerError
-import os.path
 import csv
+import os
+import os.path
 import subprocess
+import time
+from multiprocessing import Pool
+from pathlib import Path
+
+import docker
+from docker.errors import ContainerError
 
 BASE_COMMAND_DOCKER = 'sea yama -y /tmp/ghidrall.yaml bpf '
 BASE_COMMAND = 'sea yama -y ghidrall.yaml bpf '
@@ -23,23 +24,23 @@ def run_tests(input_file_list, opt, goal_strat, local_strat, directory, cpu, doc
     message = {}
     ret = []
     if docker_true:
-    	docker_client = client
+        docker_client = client
     for idx, file in enumerate(input_file_list):
         print(f"processing {file}, {idx + 1} of {len(input_file_list)} in chunk {cpu}")
         name = file.split('.')[0] + "_" + opt + "_" + goal_strat + "_" + local_strat
         goal_location = os.path.join("/tmp", directory, file)
         if docker_true:
-        	cmd = BASE_COMMAND_DOCKER + goal_location
+            cmd = BASE_COMMAND_DOCKER + goal_location
         else:
-        	cmd = BASE_COMMAND + goal_location
+            cmd = BASE_COMMAND + goal_location
         start = time.time()
         try:
-        	if docker_true:
-            	out = docker_client.containers.run(DOCKER_IMAGE, cmd, volumes={os.getcwd(): {'bind': '/tmp/', 'mode': 'rw'}},
-                                        mem_limit='2g', cpuset_cpus=str(cpu), stdout=True)
+            if docker_true:
+                out = docker_client.containers.run(DOCKER_IMAGE, cmd, volumes={os.getcwd(): {'bind': '/tmp/', 'mode': 'rw'}},
+                                                   mem_limit='2g', cpuset_cpus=str(cpu), stdout=True)
             else:
-            	process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE)
-            	out, error = process.communicate()
+                process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE)
+                out, error = process.communicate()
             result = out.decode("utf-8")
             if goal_strat == "goal":
                 if "sat" in result and "unsat" not in result:
@@ -63,7 +64,7 @@ def run_tests(input_file_list, opt, goal_strat, local_strat, directory, cpu, doc
 
 
 if __name__ == "__main__":
-	# Parse options.
+    # Parse options
     parser = argparse.ArgumentParser(description="Run Seahorn on files")
     parser.add_argument("-l", "--locals",
                         choices=["single_struct", "byte_addressable", "no_option"],
@@ -75,17 +76,15 @@ if __name__ == "__main__":
                         help="Use the specified solver")
     parser.add_argument("-O", "--opt", choices=["0", "1", "2"], default="0",
                         help="Optimization level of source")
-    parser.add_argument("-d", "--docker", action="store_true", help="run tests within docker (not recommended if using dockerfile for Ghidrall")
-
-    if args.docker:
-	    print("pulling docker image...")
-	    client = docker.from_env()
-	    client.images.pull(DOCKER_IMAGE)
-	    print("done")
-
-
+    parser.add_argument("-d", "--docker", action="store_true", default=False,
+                        help="run tests within docker (not recommended if using dockerfile for Ghidrall")
 
     args = parser.parse_args()
+    if args.docker:
+        print("pulling docker image...")
+        client = docker.from_env()
+        client.images.pull(DOCKER_IMAGE)
+        print("done")
 
     binary_location = os.path.join("tests", "generated", args.opt, "binary")
     expected_files = [file.split('.')[0] for file in os.listdir(binary_location)]
