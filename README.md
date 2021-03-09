@@ -20,6 +20,6 @@ From either installation method:
 3. Run the SeaHorn tests with `python3 run_seahorn_for_tests.py`. If you are **NOT** within a docker, use tag `--docker` to run the tests with a SeaHorn docker container. If you are in the docker already, Seahorn is already baked in and you can run without the tag.
 
 For a single example:
-1. clang++ -o tests/generated/0/binary/bound_loop_with_var.o -g -O0 -fno-inline-functions tests/src/bound_loop_with_var.cpp -flto -Wl,-plugin-opt,save-temps
-2. python3 ghidrall.py -f main bound_loop_with_var.o -l single_struct -o bound_loop_with_var.ll
-3. sea yama -y ghidrall.yaml bpf bound_loop_with_var.ll
+1. `clang++ -o tests/generated/0/binary/bound_loop_with_var.o -g -O0 -fno-inline-functions tests/src/bound_loop_with_var.cpp -flto -Wl,-plugin-opt,save-temps`
+2. `python3 ghidrall.py -f main bound_loop_with_var.o -l single_struct -o bound_loop_with_var.ll`
+3. `sea yama -y ghidrall.yaml bpf bound_loop_with_var.ll`
