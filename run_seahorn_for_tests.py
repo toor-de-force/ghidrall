@@ -8,6 +8,7 @@ from multiprocessing import Pool
 from docker.errors import ContainerError
 import os.path
 import csv
+import subprocess
 
 BASE_COMMAND = 'sea yama -y /tmp/ghidrall.yaml bpf '
 TOP_DIR = 'tests/generated'
@@ -15,12 +16,13 @@ DOCKER_IMAGE = 'seahorn/seahorn-llvm10:nightly'
 CHUNKS = 4
 
 
-def run_tests(input_file_list, opt, goal_strat, local_strat, directory, cpu):
+def run_tests(input_file_list, opt, goal_strat, local_strat, directory, cpu, docker_true):
     results = {}
     times = {}
     message = {}
     ret = []
-    docker_client = client
+    if docker_true:
+    	docker_client = client
     for idx, file in enumerate(input_file_list):
         print(f"processing {file}, {idx + 1} of {len(input_file_list)} in chunk {cpu}")
         name = file.split('.')[0] + "_" + opt + "_" + goal_strat + "_" + local_strat
@@ -28,8 +30,12 @@ def run_tests(input_file_list, opt, goal_strat, local_strat, directory, cpu):
         cmd = BASE_COMMAND + goal_location
         start = time.time()
         try:
-            out = docker_client.containers.run(DOCKER_IMAGE, cmd, volumes={os.getcwd(): {'bind': '/tmp/', 'mode': 'rw'}},
+        	if docker_true:
+            	out = docker_client.containers.run(DOCKER_IMAGE, cmd, volumes={os.getcwd(): {'bind': '/tmp/', 'mode': 'rw'}},
                                         mem_limit='2g', cpuset_cpus=str(cpu), stdout=True)
+            else:
+            	process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE)
+            	out, error = process.communicate()
             result = out.decode("utf-8")
             if goal_strat == "goal":
                 if "sat" in result and "unsat" not in result:
@@ -53,12 +59,7 @@ def run_tests(input_file_list, opt, goal_strat, local_strat, directory, cpu):
 
 
 if __name__ == "__main__":
-    print("pulling docker image...")
-    client = docker.from_env()
-    client.images.pull(DOCKER_IMAGE)
-    print("done")
-
-    # Parse options.
+	# Parse options.
     parser = argparse.ArgumentParser(description="Run Seahorn on files")
     parser.add_argument("-l", "--locals",
                         choices=["single_struct", "byte_addressable", "no_option"],
@@ -70,6 +71,15 @@ if __name__ == "__main__":
                         help="Use the specified solver")
     parser.add_argument("-O", "--opt", choices=["0", "1", "2"], default="0",
                         help="Optimization level of source")
+    parser.add_argument("-d", "--docker", action="store_true", help="run tests within docker (not recommended if using dockerfile for Ghidrall")
+
+    if args.docker:
+	    print("pulling docker image...")
+	    client = docker.from_env()
+	    client.images.pull(DOCKER_IMAGE)
+	    print("done")
+
+
 
     args = parser.parse_args()
 
@@ -96,7 +106,7 @@ if __name__ == "__main__":
     o = args.opt
     l = args.locals
 
-    input_list = [[chunks[cpu], o, goal, l, locals_dir, cpu] for cpu in range(len(chunks))]
+    input_list = [[chunks[cpu], o, goal, l, locals_dir, cpu, args.docker] for cpu in range(len(chunks))]
     return_lists = pool.starmap(run_tests, input_list)
 
     csv_file = "/tmp/results.csv"
