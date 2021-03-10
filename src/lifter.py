@@ -250,7 +250,7 @@ class Lifter:
 
     def get_global(self, mapsym, glbls):
         symbol = mapsym.find('symbol').get('name').replace('str.', '')  # String globals have the prefix 'str.'
-        address = mapsym.find('addr').get('offset')
+        address = "0x{:08x}".format(int(mapsym.find('addr').get('offset'), 16))
         type_sym = mapsym.find('symbol').find('type')
         if type_sym is not None:  # We have type information
             metatype = type_sym.get('metatype')

@@ -97,6 +97,7 @@ class Operation(object):
                 if input_xml.find("symbol").get("size") != "0" and input_xml.find("symbol").get("offset") != "0":
                     name = name.split('.')[0]
                 elif input_xml.find("symbol").get("size") != "0" and input_xml.find("symbol").get("offset") == "0":
+                    name = name.split('.')[0]
                     smaller = True
                     smaller_size = int(input_xml.find("symbol").get("size")) * 8
                 else:
@@ -109,6 +110,12 @@ class Operation(object):
             # local variable
             if name in self.lifted_function.lifter.global_dict:
                 arg = self.lifted_function.lifter.global_dict[name]
+                # We're trying to get an index of an global array
+                if input_xml.find("symbol").get("size") != "0":
+                    sub_size = int(input_xml.find("symbol").get("size")) * 8
+                    sub_offset = int(input_xml.find("symbol").get("offset"))
+                    arg = self.builder.gep(arg, [int32(0), int32(sub_offset)])
+                    arg = self.builder.load(self.builder.bitcast(arg, ir.PointerType(ir.IntType(sub_size))))
             elif name in self.lifted_function.local_vars:
                 # TODO: Handle pointers to pointers in general
                 if name == "argv":
