@@ -49,15 +49,18 @@ undefined8 main(void)
 As C code, this doesn't make sense. It's treating the char array in main as seperate 4-byte variables and assuming they are adjacent in memory. In Ghidrall's byte_addressable mode, the variables are all represented on the stack and this convention of seperate variables forming a whole array makes more sense:
 
 ```
-; ModuleID = "vuln.bin"
+
+; ModuleID = "examples/buffer_overflow.bin"
 target triple = "i386-pc-linux-gnu"
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+
+declare void @"sym.imp.strcpy"(i64* %".1", i64 %".2") 
 
 @"reloc.__libc_start_main" = global i32 0
 @"segment.GNU_STACK" = global i32 0
 @"sym..bss" = global i32 0
 @"segment.LOAD1" = global i32 0
-@"reloc.strncpy" = global i32 0
+@"reloc.strcpy" = global i32 0
 @"0x004005e0" = global [51 x i8] c"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\00"
 @"reloc.__gmon_start" = global i32 0
 define void @"sym.foo"(i64 %"arg1") 
@@ -69,6 +72,8 @@ define void @"sym.foo"(i64 %"arg1")
   %".4" = getelementptr [999999 x i8], [999999 x i8]* %"stack", i32 0, i32 999979
   %"var_dh" = bitcast i8* %".4" to i64*
   %".5" = getelementptr inbounds [999999 x i8], [999999 x i8]* %"stack", i32 0, i64 999979
+  %".6" = bitcast i8* %".5" to i64*
+  call void @"sym.imp.strcpy"(i64* %".6", i64 %"arg1")
   ret void
 }
 
@@ -160,12 +165,13 @@ define i64 @"main"()
   ret i64 %".68"
 }
 
+
 ```
 
 To regenerate this example:
 
 1. clang -fno-stack-protector buffer_overflow.c -o buffer_overflow.bin
-2. python3 ghidrall.py examples/buffer_overflow.bin -f main,sym.foo,sym.imp.strncpy -l byte_addressable
+2. python3 ghidrall.py examples/buffer_overflow.bin -f main,sym.foo,sym.imp.strcpy -l byte_addressable
 
 Then inspect the result visually.
 
