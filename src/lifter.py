@@ -12,7 +12,8 @@ instrumented = ["sym.nd",
                 "sym.imp.operator_new_unsigned_long",
                 "ghidrall.indirect.call",
                 "sym.imp.strcmp",
-                "sym.imp.strcpy"]
+                "sym.imp.strcpy",
+                "sym.imp.strncpy"]
 
 int32 = ir.IntType(32)
 int64 = ir.IntType(64)
@@ -220,7 +221,13 @@ class Lifter:
             pi64 = ir.PointerType(ir.IntType(64))
             args = [pi64, int64, int64]
             func_type = ir.FunctionType(void_type, args)
-            ir_func = ir.Function(self.module, func_type, name="sym.imp.strcmp")
+            ir_func = ir.Function(self.module, func_type, name="sym.imp.strcpy")
+            return ir_func, void_type
+        elif name == "sym.imp.strncpy":
+            pi64 = ir.PointerType(ir.IntType(64))
+            args = [pi64, int64, int64, pi64]
+            func_type = ir.FunctionType(void_type, args)
+            ir_func = ir.Function(self.module, func_type, name="sym.imp.strncpy")
             return ir_func, void_type
         else:
             raise Exception(f"Function not instrumented: {name}")
