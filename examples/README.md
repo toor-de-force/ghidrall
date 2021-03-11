@@ -170,3 +170,49 @@ To regenerate this example:
 Then inspect the result visually.
 
 ## Password Challenge
+
+This one is a little more fun!
+
+We have two C programs, *password.bin* and *password_runnable.bin*. The former is a contrived example for working smoothly with Ghidrall and Seahorn, while the latter is one you can run yourself!
+
+To see how the password works, do the following: 
+
+1. `clang examples/password_runnable.c -o examples/password_runnable.bin`
+2. `chmod +x examples/password_runnable.bin`
+3. `./examples/password_runnable.bin reverse` -> the output will say "Success"
+4  `./examples/password_runnable.bin bad` -> No success statement :(
+   
+But what if you didn't know the password, and didn't have the source? Ghidrall + SeaHorn to the rescue!
+
+First lets compile the contrived version (this is just so the demo always works!):
+    
+`clang examples/password.c -o examples/password.bin`
+
+Then let's lift it with Ghidrall:
+
+`python3 ghidrall.py examples/password.bin -f main,sym.nd,sym.path_goal -l single_struct`
+
+This gives us *out.ll*. We can then gives this to SeaHorn.
+
+`sea bpf out.ll --cex=/tmp/h.ll --log=cex`
+
+This runs SeaHorn and tries to get to the "Success" message. SeaHorn will return **sat**, so let's check the counter example.
+
+` cat /tmp/h.ll `
+
+The important part will be at the top:
+
+```
+; ModuleID = 'harness'
+source_filename = "harness"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+
+@0 = private constant [7 x i32] [i32 114, i32 101, i32 118, i32 101, i32 100, i32 115, i32 101]
+@1 = private global i32 0
+
+```
+
+SeaHorn has recovered us a password as the **@0** LLVM array of 7 32-bit integers. These kinda look like ascii!
+Translating it to ascii, we get "revedse". Close! But the program isn't perfect, so maybe this password will work too!
+
+`./examples/password_runnable.bin revedse` -> We get success!
