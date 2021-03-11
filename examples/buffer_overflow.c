@@ -7,7 +7,7 @@ void foo(char *bar)
 {
    char c[5];
 
-   strncpy(c, bar, 5);  // no bounds checking
+   strcpy(c, bar);  // no bounds checking
 }
 
 int main()

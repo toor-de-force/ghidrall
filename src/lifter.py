@@ -219,7 +219,7 @@ class Lifter:
             return ir_func, int1
         elif name == "sym.imp.strcpy":
             pi64 = ir.PointerType(ir.IntType(64))
-            args = [pi64, int64, int64]
+            args = [pi64, int64]
             func_type = ir.FunctionType(void_type, args)
             ir_func = ir.Function(self.module, func_type, name="sym.imp.strcpy")
             return ir_func, void_type

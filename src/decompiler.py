@@ -13,6 +13,7 @@ class Decompiler:
     """Decompiler class for interfacing with Radare2 and pulling decompilation information in XML"""
 
     def __init__(self, target_binary, entry, functions):
+        self.target_binary = target_binary
         self.r = rzpipe.open(target_binary)
         self.r_backup = rzpipe.open(target_binary)  # Getting the call graph changes symbol names
         self.r_backup.cmd("aa")
@@ -35,6 +36,7 @@ class Decompiler:
                     self.active_functions_dict[func] = "active"
         self.functions_pdgl = {function: self.get_pdgl(function) for function in self.active_functions_dict.keys()}
         self.functions_pdgd = {function: self.get_pdgd(function) for function in self.active_functions_dict.keys()}
+
 
     def find_active_functions(self, entry):
         self.r.cmd('aaa')
@@ -71,6 +73,7 @@ class Decompiler:
     def get_pdgl(self, function):
         if function == 'loc.imp._ITM_deregisterTMCloneTable':
             return None
+        self.r_backup.cmd("aa")
         self.r_backup.cmd("s " + function)
         response = self.r_backup.cmd('pdgl')
         xml = et.fromstring(response)
