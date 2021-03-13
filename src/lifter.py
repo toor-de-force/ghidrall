@@ -12,7 +12,8 @@ instrumented = ["sym.nd",
                 "sym.imp.operator_new_unsigned_long",
                 "ghidrall.indirect.call",
                 "sym.imp.strcmp",
-                "sym.imp.strcpy"]
+                "sym.imp.strcpy",
+                "sym.imp.strncpy"]
 
 int32 = ir.IntType(32)
 int64 = ir.IntType(64)
@@ -21,21 +22,21 @@ int8 = ir.IntType(8)
 void_type = ir.VoidType()
 
 
-def lift_binary(decompile_info, filename, lifting_options):
+def lift_binary(decompile_info, filename, lifting_options,flagforarch):
     """Initiates a Lifter object with a decompiled binary and lifts"""
     ir.global_context.identified_types = {}
-    lifter = Lifter(decompile_info, filename, lifting_options)
+    lifter = Lifter(decompile_info, filename, lifting_options, flagforarch)
     return lifter.module
 
 
 class Lifter:
     """Decompiler class for interfacing with Rizin and pulling decompilation information in XML"""
 
-    def __init__(self, decompiler, filename, lifting_options):
+    def __init__(self, decompiler, filename, lifting_options,flagforarch):
         self.filename = filename
         self.decompiler = decompiler
         self.options = lifting_options
-        self.module = self.setup_module()
+        self.module = self.setup_module(flagforarch)
         self.verifier_error = None
         self.nd = None
         self.active_functions_list = [name for name, status in decompiler.active_functions_dict.items() if status == "active"]
@@ -47,12 +48,12 @@ class Lifter:
         self.define_indirect_call()
         self.populate_functions()
 
-    def setup_module(self):
+    def setup_module(self,flagforarch):
         m64 = "e-m:e-p:32:32-f64:32:64-f80:32-n8:16:32-S128"
         m32 = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
         module = ir.Module(self.filename)
-        module.data_layout = m64 if self.options["arch"] == "64" in self.filename else m32
-        module.triple = "x86_64-pc-linux-gnu" if "64" in self.filename else "i386-pc-linux-gnu"
+        module.data_layout = m64 if flagforarch==2 else m32
+        module.triple = "x86_64-pc-linux-gnu" if flagforarch==2 else "i386-pc-linux-gnu"
         return module
 
     def create_functions(self, decompiler):
@@ -218,9 +219,15 @@ class Lifter:
             return ir_func, int1
         elif name == "sym.imp.strcpy":
             pi64 = ir.PointerType(ir.IntType(64))
-            args = [pi64, int64, int64]
+            args = [pi64, int64]
             func_type = ir.FunctionType(void_type, args)
-            ir_func = ir.Function(self.module, func_type, name="sym.imp.strcmp")
+            ir_func = ir.Function(self.module, func_type, name="sym.imp.strcpy")
+            return ir_func, void_type
+        elif name == "sym.imp.strncpy":
+            pi64 = ir.PointerType(ir.IntType(64))
+            args = [pi64, int64, int64, pi64]
+            func_type = ir.FunctionType(void_type, args)
+            ir_func = ir.Function(self.module, func_type, name="sym.imp.strncpy")
             return ir_func, void_type
         else:
             raise Exception(f"Function not instrumented: {name}")
@@ -250,7 +257,7 @@ class Lifter:
 
     def get_global(self, mapsym, glbls):
         symbol = mapsym.find('symbol').get('name').replace('str.', '')  # String globals have the prefix 'str.'
-        address = mapsym.find('addr').get('offset')
+        address = "0x{:08x}".format(int(mapsym.find('addr').get('offset'), 16))
         type_sym = mapsym.find('symbol').find('type')
         if type_sym is not None:  # We have type information
             metatype = type_sym.get('metatype')
@@ -305,6 +312,3 @@ class Lifter:
                     current_builder.call(func.ir_func, [])
                     current_builder.branch(exit_block)
             exit_builder.ret_void()
-
-
-
