@@ -38,7 +38,8 @@ args = parser.parse_args()
 if args.lift_functions:
     assert(isinstance(args.lift_functions, str))
     args.lift_functions = args.lift_functions.split(",")
-
+filechecker= open((args.file),'rb')
+setflagforarch=filechecker.read(5)[-1]
 # Convert command line options into options for the lifter.
 lifting_options = {
     "locals": args.locals,
@@ -56,7 +57,7 @@ print("Decompiling took %7.5f seconds." % (time.time() - start))
 
 # Lift into LLVM.
 start = time.time()
-module = lifter.lift_binary(decompile_info, args.file, lifting_options)
+module = lifter.lift_binary(decompile_info, args.file, lifting_options, setflagforarch)
 print("Lifting took %7.5f seconds." % (time.time() - start))
 
 # Verify?
