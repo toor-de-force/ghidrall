@@ -38,8 +38,9 @@ args = parser.parse_args()
 if args.lift_functions:
     assert(isinstance(args.lift_functions, str))
     args.lift_functions = args.lift_functions.split(",")
-filechecker= open((args.file),'rb')
-setflagforarch=filechecker.read(5)[-1]
+rz=rzpipe.open(args.file)
+checker_obj=json.loads(rz.cmd("ij"))
+flagforarch=checker_obj["bin"]["bits"]
 # Convert command line options into options for the lifter.
 lifting_options = {
     "locals": args.locals,
