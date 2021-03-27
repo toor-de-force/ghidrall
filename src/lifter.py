@@ -52,8 +52,8 @@ class Lifter:
         m64 = "e-m:e-p:32:32-f64:32:64-f80:32-n8:16:32-S128"
         m32 = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
         module = ir.Module(self.filename)
-        module.data_layout = m64 if flagforarch==2 else m32
-        module.triple = "x86_64-pc-linux-gnu" if flagforarch==2 else "i386-pc-linux-gnu"
+        module.data_layout = m64 if flagforarch==64 else m32
+        module.triple = "x86_64-pc-linux-gnu" if flagforarch==64 else "i386-pc-linux-gnu"
         return module
 
     def create_functions(self, decompiler):
