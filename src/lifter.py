@@ -22,21 +22,21 @@ int8 = ir.IntType(8)
 void_type = ir.VoidType()
 
 
-def lift_binary(decompile_info, filename, lifting_options):
+def lift_binary(decompile_info, filename, lifting_options,flagforarch):
     """Initiates a Lifter object with a decompiled binary and lifts"""
     ir.global_context.identified_types = {}
-    lifter = Lifter(decompile_info, filename, lifting_options)
+    lifter = Lifter(decompile_info, filename, lifting_options, flagforarch)
     return lifter.module
 
 
 class Lifter:
     """Decompiler class for interfacing with Rizin and pulling decompilation information in XML"""
 
-    def __init__(self, decompiler, filename, lifting_options):
+    def __init__(self, decompiler, filename, lifting_options,flagforarch):
         self.filename = filename
         self.decompiler = decompiler
         self.options = lifting_options
-        self.module = self.setup_module()
+        self.module = self.setup_module(flagforarch)
         self.verifier_error = None
         self.nd = None
         self.active_functions_list = [name for name, status in decompiler.active_functions_dict.items() if status == "active"]
@@ -48,12 +48,12 @@ class Lifter:
         self.define_indirect_call()
         self.populate_functions()
 
-    def setup_module(self):
+    def setup_module(self,flagforarch):
         m64 = "e-m:e-p:32:32-f64:32:64-f80:32-n8:16:32-S128"
         m32 = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
         module = ir.Module(self.filename)
-        module.data_layout = m64 if self.options["arch"] == "64" in self.filename else m32
-        module.triple = "x86_64-pc-linux-gnu" if "64" in self.filename else "i386-pc-linux-gnu"
+        module.data_layout = m64 if flagforarch==64 else m32
+        module.triple = "x86_64-pc-linux-gnu" if flagforarch==64 else "i386-pc-linux-gnu"
         return module
 
     def create_functions(self, decompiler):
@@ -312,6 +312,3 @@ class Lifter:
                     current_builder.call(func.ir_func, [])
                     current_builder.branch(exit_block)
             exit_builder.ret_void()
-
-
-
